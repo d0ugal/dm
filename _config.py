@@ -46,3 +46,7 @@ blog.description = "Personal site and portfolio for Dougal Matthews"
 
 ## blog_timezone -- the timezone that you normally write your blog posts from
 blog.timezone = "Europe/London"
+
+
+blog.disqus_enabled = True
+blog.disqus.name = "dougalmatthews"

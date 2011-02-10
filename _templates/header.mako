@@ -1,10 +1,25 @@
-<h1><a href="${bf.util.site_path_helper()}">${bf.config.blog.name}</a></h1>
-<p>This is a simple blog build with Blogofile.</p>
-<p>It's completely unthemed and is written as minimally as possible, while still
-retaining most of the blog features.</p>
-<p>Make sure you read the <a href="http://www.blogofile.com/documentation">online
-documentation</a>.</p>
-<p>If you're looking for a more fleshed-out site try running 'blogofile init
-blogofile.com', but you'll need <a href="http://www.git-scm.org">git</a> installed first.</p>
-<p>This is a header that goes on every page.</p>
-<hr/>
+<div class="prepend-1 span-8 prepend-top">
+
+    <a href="/" title="Dougal Matthews" class="span-7" id="logo"></a>
+
+</div>
+
+<div id="nav" class="prepend-6 append-1 span-8 prepend-top last">
+
+    <div class="span-2">
+        <a href="/">Writing</a>
+    </div>
+
+    <div class="span-2">
+        <a href="/code/">Code</a>
+    </div>
+
+    <div class="span-2">
+        <a href="/work/">Work</a>
+    </div>
+
+    <div class="span-2 last">
+        <a href="/about/">About</a>
+    </div>
+
+</div>
