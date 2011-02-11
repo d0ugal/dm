@@ -48,5 +48,5 @@ blog.description = "Personal site and portfolio for Dougal Matthews"
 blog.timezone = "Europe/London"
 
 
-blog.disqus_enabled = True
+blog.disqus.enabled = True
 blog.disqus.name = "dougalmatthews"
