@@ -65,11 +65,18 @@ p {
 }
 
 #logo {
-	background-image: url(/media/img/logo.jpg);
+    font-size: 24px;
+    font-family: 'Molengo';
+    color: #fff;
 	background-repeat: no-repeat;
 	height: 40px;
 	margin-left: 10px;
 	display: block;
+    padding-top: 10px;
+}
+
+#logo .red {
+    color: red;
 }
 
 #footer{

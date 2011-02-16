@@ -1,6 +1,9 @@
-<div class="prepend-1 span-8 prepend-top">
+<div class="prepend-1 span-8">
 
-    <a href="/" title="Dougal Matthews" class="span-7" id="logo"></a>
+    <a href="/" title="Dougal Matthews" class="span-7" id="logo">
+        <span class="red">Dougal</span>
+        Matthews
+    </a>
 
 </div>
 

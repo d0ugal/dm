@@ -1,7 +1,9 @@
 ---
 categories: meta
-date: 2011/02/09 19:25:00
-title: Site Reboot
+tags:
+date: 2011/02/24 19:25:00
+title: Re-boot.
+author: Dougal
 ---
 
 Ever since I updated my website for the second SiteSprint I've wanted to 

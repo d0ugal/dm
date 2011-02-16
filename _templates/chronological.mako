@@ -2,9 +2,9 @@
 
 <div class="prepend-top">
 
-    % for post in posts:
+    % for i, post in enumerate(posts):
 
-        <div class="span-10">
+        <div class="span-11 ${i%2 and 'prepend-2 last' or ''}">
 
             <%include file="post.mako" args="post=post" />
 
