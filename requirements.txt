@@ -1,0 +1,5 @@
+reportlab==2.5
+pisa==3.0.33
+blogofile==0.7.1
+html5lib==0.90
+pyPdf==1.13

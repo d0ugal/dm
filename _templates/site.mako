@@ -1,5 +1,4 @@
 <%inherit file="base.mako" />
-
 <!DOCTYPE html>
 <html>
 <head>
