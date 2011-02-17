@@ -3,7 +3,6 @@ categories: meta
 tags:
 date: 2011/02/24 19:25:00
 title: Re-boot.
-summary: A site update.
 author: Dougal
 ---
 

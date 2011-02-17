@@ -3,7 +3,6 @@ categories: vagrant
 tags: vagrant, chef, python, django, ruby, osx
 date: 2011/02/26 19:25:00
 title: My Vagrant Workflow
-summary: How Vagrant and other related tools have effected my workflow.
 author: Dougal
 ---
 

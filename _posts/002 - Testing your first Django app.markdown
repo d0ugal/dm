@@ -3,7 +3,6 @@ categories: Django, Python
 tags: testing, unittest, tdd
 date: 2010/01/20 19:25:00
 title: Testing your first Django app
-summary: A simple tutorial showing how to do some basic unittesting.
 author: Dougal
 ---
 
