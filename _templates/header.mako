@@ -7,7 +7,7 @@
 
 </div>
 
-<div id="nav" class="prepend-6 append-1 span-8 prepend-top last">
+<div id="nav" class="prepend-4 append-1 span-10 prepend-top last">
 
     <div class="span-2">
         <a href="/">Articles</a>
@@ -21,8 +21,12 @@
         <a href="/work/">Work</a>
     </div>
 
-    <div class="span-2 last">
+    <div class="span-2">
         <a href="/about/">About</a>
+    </div>
+
+    <div class="span-2 last">
+        <a href="/cv/">CV</a>
     </div>
 
 </div>

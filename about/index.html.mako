@@ -5,7 +5,7 @@
     <h3>About</h3>
     <p>
         I'm a UK based coder specialising in web development with Python,
-        Django and JavaScriot. When I'm not coding I like to get out and about
+        Django and JavaScript. When I'm not coding I like to get out and about
         and particularly keen on travelling. My biggest adventure to date was
         in South America. You can see the route I travelled
         <a href="http://maps.google.com/maps/ms?ie=UTF&msa=0&msid=112831935826286115979.00046b2150dcab0c34abf">here</a> - all of that is by ground except one flight from Lima
