@@ -2,7 +2,7 @@
 
 <div class="span-16 prepend-top">
 
-    <h2>About</h2>
+    <h3>About</h3>
     <p>
         I'm a UK based coder specialising in web development with Python,
         Django and JavaScriot. When I'm not coding I like to get out and about

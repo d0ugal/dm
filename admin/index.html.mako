@@ -2,7 +2,7 @@
 
 <div class="prepend-top">
 
-    <h2>Not the Django admin</h2>
+    <h3>Not the Django admin</h3>
     
     <p>
         It looks like you know me quite well and expect this to be a Django 

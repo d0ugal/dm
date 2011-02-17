@@ -4,6 +4,8 @@
 <html>
 <head>
 
+    ${self.head()}
+
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
@@ -29,8 +31,6 @@
     <meta name="verify-v1" content="d4ZT12Eg5dza8IxtDZlqiZoC0EzBnLxeYeK2PTiaIrU=" />
     <meta name="msvalidate.01" content="08FE3976E4596314289973311F691DC2" />
     <meta name="y_key" content="ef34f6756bc76371" />
-
-    ${self.head()}
 
 </head>
 <body>

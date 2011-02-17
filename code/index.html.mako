@@ -2,7 +2,7 @@
 
 <div class="span-22 prepend-top">
 
-    <h2>Code</h2>
+    <h3>Code</h3>
     
     <div class="prepend-1 span-10">
 

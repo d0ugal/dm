@@ -4,9 +4,9 @@
 
     <a name="${post.slug}"></a>
 
-    <h2 class="blog_post_title">
+    <h${'2' if display == 'full' else '3'} class="blog_post_title">
         <a href="${post.permapath()}" rel="bookmark" title="Permanent Link to ${post.title}">${post.title}</a>
-    </h2>
+    </h${'2' if display == 'full' else '3'}>
 
     <strong>${post.date.strftime("%B %d, %Y")}</strong><br/>
 

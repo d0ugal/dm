@@ -2,7 +2,7 @@
 
 <div class="span-22 prepend-top">
 
-    <h2>Work</h2>
+    <h3>Work</h3>
 
     <p>
         I have been a consultant and web developer since early 2006. Largely
