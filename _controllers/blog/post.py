@@ -130,6 +130,7 @@ class Post(object):
             except KeyError:
                 self.filters = []
         self.content = bf.filter.run_chain(self.filters, post_src)
+        self.content_src = post_src
         
     def __parse_post_excerpting(self):
         if bf.config.controllers.blog.post_excerpts.enabled:

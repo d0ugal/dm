@@ -3,7 +3,8 @@ categories: Python, Django
 tags: forms, type
 date: 2009/12/16 19:25:00
 title: Nicer dynamic forms in django
-summary: Creating Django forms dynamically on the fly without going crazy.
+summary: Creating Django forms dynamically on the fly without going crazy and 
+  keeping a clean API
 author: Dougal
 ---
 

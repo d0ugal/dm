@@ -2,6 +2,7 @@ body {
 	color: #333;
 	margin: 0px;
     font-family: 'PT Serif', arial, serif;
+    font-size: 14px;
 }
 
 h1, h2, h3, h4, h5, h6{
@@ -79,6 +80,14 @@ p {
     color: red;
 }
 
-#footer{
+#footer {
     border-top: 1px solid #ddd
+}
+
+.blog_post_title {
+    margin-bottom: 0px;
+}
+
+.blog_post_title a {
+    color: #000;
 }

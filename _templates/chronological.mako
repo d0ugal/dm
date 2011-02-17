@@ -4,7 +4,7 @@
 
     % for i, post in enumerate(posts):
 
-        <div class="span-11 ${i%2 and 'prepend-2 last' or ''}">
+        <div class="span-11 append-bottom ${i%2 and 'prepend-1 last' or 'append-1'}">
 
             <%include file="post.mako" args="post=post, display='summary'" />
 
@@ -13,8 +13,6 @@
                     <a href="${post.permalink}#disqus_thread">Read and Post Comments</a>
                 </div>
             % endif
-
-            <hr class="interblog" />
 
         </div>
 
