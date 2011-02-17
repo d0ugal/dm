@@ -1,6 +1,6 @@
 <%page args="post, display='full'"/>
 
-<div class="blog_post">
+<div class="blog_post ${'prepend-top' if display == 'full' else ''}">
 
     <a name="${post.slug}"></a>
 
