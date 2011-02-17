@@ -1,4 +1,4 @@
-<%page args="post"/>
+<%page args="post, display='full'"/>
 
 <div class="blog_post">
 
@@ -30,7 +30,11 @@
     </small>
 
     <div class="post_prose">
-        ${self.post_prose(post)}
+        % if display == 'summary':
+            ${post.summary}
+        % else:
+            ${self.post_prose(post)}
+        % endif
     </div>
 
 </div>

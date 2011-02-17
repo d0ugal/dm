@@ -50,3 +50,4 @@ blog.timezone = "Europe/London"
 
 blog.disqus.enabled = True
 blog.disqus.name = "dougalmatthews"
+blog.posts_per_page = 6

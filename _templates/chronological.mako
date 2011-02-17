@@ -6,7 +6,7 @@
 
         <div class="span-11 ${i%2 and 'prepend-2 last' or ''}">
 
-            <%include file="post.mako" args="post=post" />
+            <%include file="post.mako" args="post=post, display='summary'" />
 
             % if bf.config.blog.disqus.enabled:
                 <div class="after_post">
