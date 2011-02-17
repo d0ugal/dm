@@ -4,6 +4,7 @@ tags: forms, type
 date: 2009/12/16 19:25:00
 title: Nicer dynamic forms in django
 author: Dougal
+permalink: /articles/2009/dec/16/nicer-dynamic-forms-django/
 ---
 
 I used to make dynamic forms for Django in very bad way, I'm happy to admit 

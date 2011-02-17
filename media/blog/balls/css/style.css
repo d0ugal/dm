@@ -1,0 +1,74 @@
+
+body{
+	
+	padding: 0px;
+	margin: 0px;
+	background-color: #eee;
+	
+}
+
+#mycanvas{
+	padding: 0px;
+	margin: 0px;
+	position:absolute;
+	left: 50%;
+	top: 50%;
+	margin-left:-350px;
+	margin-top:-350px;
+	border:solid 1px #ccc;
+	background-color: #fff;
+}
+
+#left{
+	
+	overflow:hidden;
+	
+	position:absolute;
+	margin: 0px;
+	width: 250px;
+	height: 700px;
+	padding: 0px;
+	top: 50%;
+	left: 50%;
+	margin-left:-625px;
+	margin-top:-350px;
+	border:solid 1px #ccc;
+	background-color: #ddd;
+}
+
+#console{
+	
+	overflow:hidden;
+	padding: 2px;
+	margin: 4px;
+	width: 236px;
+	height: 300px;
+	
+	border:solid 1px #ccc;
+	background-color: #fff;
+}
+
+#console2{
+	
+	overflow:hidden;
+	
+	padding: 2px;
+	margin: 4px;
+	width: 236px;
+	height: 200px;
+	
+	border:solid 1px #ccc;
+	background-color: #fff;
+}
+
+#controls{
+	
+	overflow:hidden;
+	padding: 2px;
+	margin: 4px;
+	width: 236px;
+	height: 165px;
+	
+	border:solid 1px #ccc;
+	background-color: #fff;
+}
