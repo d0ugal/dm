@@ -161,7 +161,7 @@ Intuitive analytical and design skills
     </tr>
     <tr>
         <td>09/2007 - 09/2007</td>
-        <td>1576 Advertising, on behalf of Gillespie MacAndrew and Hunters Residential
+        <td>Gillespie MacAndrew and Hunters Residential
         www.hunters - residential.co.uk</td>
         <td>Full Design and implementation of PHP and mySQL backend. Google maps property search interface with Ajax link to backend.
         Testing and Documentation.</td>
@@ -173,15 +173,7 @@ Intuitive analytical and design skills
     </tr>
     <tr>
         <td>06/2007</td>
-        <td>Spelvanfortuin
-        http://www.spelvanfortuin.nl/</td>
-        <td>Website Security audit & report
-        Full evaluation of the PHP and JavaScript</td>
-    </tr>
-    <tr>
-        <td>06/2007</td>
-        <td>Pure Services
-        www.pure-services.co.uk</td>
+        <td>Pure Services</td>
         <td>Website Design & mark-up implementation
         ASP.NET Programming (C#)
         Testing and Documentation</td>
@@ -195,8 +187,7 @@ Intuitive analytical and design skills
     </tr>
     <tr>
         <td>11/2006 - 02/2007</td>
-        <td>Zero Design, on behalf of
-        Saltire Suzuki - www.saltiresuzuki.com</td>
+        <td>Zero Design</td>
         <td>Website Programming Design
         Full Database Design & Implementation
         Lead Programmer</td>

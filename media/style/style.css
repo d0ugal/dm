@@ -1,12 +1,12 @@
 body {
     color: #333;
     margin: 0px;
-    font-family: 'PT Serif', arial, serif;
+    font-family: 'PT Serif Caption', arial, serif;
     font-size: 14px;
 }
 
 h1, h2, h3, h4, h5, h6{
-    font-family: 'PT Serif Caption', arial, serif;
+    font-family: 'PT Serif', arial, serif;
 }
 a, a:active {
     color: #9c1a02;
@@ -93,8 +93,12 @@ p {
     color: #000;
 }
 
+.dllink {
+    text-align: center;
+}
 
 div.codehilite { padding: 10px; margin-bottom: 1em; }
+.codehilite * { font-family: 'Droid Sans Mono','andale mono','lucida console',monospace; }
 .codehilite p, .codehilite pre { margin: 0; }
 .codehilite .hll { background-color: #49483e }
 .codehilite  { background: #272822; color: #f8f8f2 }

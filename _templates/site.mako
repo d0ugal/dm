@@ -18,6 +18,7 @@
     <link href='http://fonts.googleapis.com/css?family=PT+Serif+Caption' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Molengo' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
 
     <link href="/media/style/style.css" rel="stylesheet" type="text/css" />
     <!--[if lt IE 8]>

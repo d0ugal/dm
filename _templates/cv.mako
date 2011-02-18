@@ -2,28 +2,26 @@
 
 <div class="span-22 prepend-top">
 
-    <div class="box">
-
-        <div class="span-21 last append-bottom">
+    <div class="span-21 box">
 
         <h3>Curriculum Vitae</h3>
         <p>
-            Thanks for showing an interest in seeing my CV. You can see a 
-            simple HTML version below or view/save a copy as a adobe pdf or 
-            word document.
+            Thanks for showing an interest in my CV. You can download it in
+            a few different formats or view it below. If you have any
+            questions or need a different format, please <a href="/about/">
+            get in touch</a>.
         </p>
 
-        </div>
 
-        <div class="span-5">
+        <div class="dllink span-7">
             <a href="./dougalmatthews.pdf">Download as .pdf</a>
         </div>
 
-        <div class="span-5">
+        <div class="dllink span-7">
             <a target="_blank" href="./dougalmatthews.html">View as html</a>
         </div>
 
-        <div class="span-5 last">
+        <div class="dllink span-7 last">
             <a target="_blank" href="./dougalmatthews.doc">Download as .doc</a>
         </div>
 
@@ -31,7 +29,11 @@
 
     </div>
 
-    ${cv}
+    <div id="cv">
+
+        ${cv}
+
+    </div>
 
 </div>
 
