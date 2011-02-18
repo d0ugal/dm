@@ -48,7 +48,7 @@ blog.description = "Personal site and portfolio for Dougal Matthews"
 blog.timezone = "Europe/London"
 
 
-blog.disqus.enabled = True
+blog.disqus.enabled = False
 blog.disqus.name = "dougalmatthews"
 blog.posts_per_page = 6
 blog.post_excerpts.enabled = True
