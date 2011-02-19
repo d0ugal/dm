@@ -3,6 +3,7 @@ body {
     margin: 0px;
     font-family: 'PT Serif Caption', arial, serif;
     font-size: 14px;
+    text-align: justify;
 }
 
 h1, h2, h3, h4, h5, h6{
@@ -67,18 +68,18 @@ p {
 }
 
 #logo {
-    font-size: 24px;
-    font-family: 'Molengo';
+    font-size: 28px;
+    font-family: 'Lato';
     color: #fff;
     background-repeat: no-repeat;
     height: 40px;
     margin-left: 10px;
     display: block;
-    padding-top: 10px;
+    padding-top: 7px;
 }
 
 #logo .red {
-    color: red;
+    color: #DE2E14;
 }
 
 #footer {
@@ -90,11 +91,20 @@ p {
 }
 
 .blog_post_title a {
-    color: #000;
+    color: #6E1201;
 }
 
 .dllink {
     text-align: center;
+}
+
+.pager a{
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.after_post{
+    font-size: 12px;
 }
 
 div.codehilite { padding: 10px; margin-bottom: 1em; }

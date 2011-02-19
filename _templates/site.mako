@@ -15,9 +15,9 @@
     <link rel="stylesheet" href="/media/style/blueprint/ie.css" type="text/css" media="screen, projection" />
     <![endif]-->
 
+    <link href='http://fonts.googleapis.com/css?family=Lato:regular' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=PT+Serif+Caption' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Molengo' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
 
     <link href="/media/style/style.css" rel="stylesheet" type="text/css" />

@@ -17,17 +17,19 @@
         </div>
 
     % endfor
+    
+    <div class="pager span-24 last">
+        % if prev_link:
+            <a href="${prev_link}">« Previous Page</a>
+        % endif
 
-    % if prev_link:
-        <a href="${prev_link}">« Previous Page</a>
-    % endif
+        % if prev_link and next_link:
+            --
+        % endif
 
-    % if prev_link and next_link:
-        --
-    % endif
-
-    % if next_link:
-        <a href="${next_link}">Next Page »</a>
-    % endif
+        % if next_link:
+            <a href="${next_link}">Next Page »</a>
+        % endif
+    </div>
 
 </div>

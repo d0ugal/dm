@@ -52,7 +52,7 @@ blog.disqus.enabled = True
 blog.disqus.name = "dougalmatthews"
 blog.posts_per_page = 6
 blog.post_excerpts.enabled = True
-blog.post_excerpts.word_length = 50
+blog.post_excerpts.word_length = 40
 
 blog.post_default_filters = {
     "markdown": "markdown",
