@@ -15,15 +15,9 @@
     <link rel="stylesheet" href="/media/style/blueprint/ie.css" type="text/css" media="screen, projection" />
     <![endif]-->
 
-    <link href='http://fonts.googleapis.com/css?family=Lato:regular' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=PT+Serif+Caption' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lato:regular|PT+Serif+Caption|PT+Serif|Droid+Sans+Mono' rel='stylesheet' type='text/css'>
 
     <link href="/media/style/style.css" rel="stylesheet" type="text/css" />
-    <!--[if lt IE 8]>
-    <link rel="stylesheet" href="/media/style/uglyhacks.css" type="text/css" media="screen, projection" />
-    <![endif]-->
 
     <link rel="alternate" type="application/rss+xml" title="Dougal Matthews Everything " href="/s/all/" />
 
