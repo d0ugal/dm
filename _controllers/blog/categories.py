@@ -33,6 +33,8 @@ def write_categories():
         categories.update(post.categories)
     for category, category_posts in blog.categorized_posts.items():
         #Write category RSS feed
+        
+        # The built in Blogofile default feed path.
         rss_path = bf.util.fs_site_path_helper(
             blog.path, blog.category_dir,
             category.url_name, "feed")
@@ -41,6 +43,16 @@ def write_categories():
             blog.path, blog.category_dir,
             category.url_name, "feed", "atom")
         feed.write_feed(category_posts, atom_path, "atom.mako")
+
+        # Additional feed paths to match my current site.
+        rss_path = bf.util.fs_site_path_helper(
+                blog.path, "feeds", 'categories', category.url_name)
+        feed.write_feed(category_posts,rss_path, "rss.mako")
+
+        atom_path = bf.util.fs_site_path_helper(
+            blog.path, "feeds", 'categories', category.url_name, "atom")
+        feed.write_feed(category_posts, atom_path, "atom.mako")
+        
         page_num = 1
         while True:
             path = bf.util.path_join(root, category.url_name,

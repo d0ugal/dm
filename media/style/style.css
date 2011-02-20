@@ -104,6 +104,20 @@ p {
 }
 
 .after_post{
+    padding-top: 0.5em;
+    font-size: 12px;
+}
+
+.post_prose.summary{
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.post_prose.full{
+    margin-top: 1.5em;
+}
+
+.blog_post.summary strong{
     font-size: 12px;
 }
 

@@ -9,7 +9,7 @@
             <%include file="post.mako" args="post=post, display='summary'" />
 
             % if bf.config.blog.disqus.enabled:
-                <div class="after_post">
+                <div class="span-11 last after_post">
                     <a href="${post.permalink}#disqus_thread">Read and Post Comments</a>
                 </div>
             % endif

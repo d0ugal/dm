@@ -1,6 +1,6 @@
 <%page args="post, display='full'"/>
 
-<div class="blog_post ${'prepend-top' if display == 'full' else ''}">
+<div class="blog_post ${display} ${'prepend-top' if display == 'full' else 'span-11'} last">
 
     <a name="${post.slug}"></a>
 
@@ -8,7 +8,7 @@
         <a href="${post.permapath()}" rel="bookmark" title="Permanent Link to ${post.title}">${post.title}</a>
     </h${'2' if display == 'full' else '3'}>
 
-    <strong>${post.date.strftime("%B %d, %Y")}</strong><br/>
+    <strong ${'span-10' if display == 'full' else ''}>${post.date.strftime("%B %d, %Y")}</strong><br/>
 
     % if display == 'full':
         <small>
@@ -31,9 +31,9 @@
         </small>
     % endif
 
-    <div class="post_prose">
+    <div class="post_prose ${display}">
         % if display == 'summary':
-            <div class="prepend-top append-bottom limited span-11 last">
+            <div class="span-11 last">
             ${post.excerpt}
             </div>
         % else:
