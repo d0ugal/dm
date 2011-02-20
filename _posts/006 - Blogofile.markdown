@@ -39,7 +39,7 @@ Hosting isn't really an issue for me with Django as with tools like
 [Fabric](http://docs.fabfile.org/), [Chef](https://github.com/opscode/chef) and 
 [Gunicorn](http://gunicorn.org/) it doesn't need to be painful anymore. 
 However, there is something to be said for the simplicity of deploying a 
-complely static site. I don't need to worry about a wsgi server, a database
+complely static site. I don't need to worry about a wsgi server, a database 
 or anything else and backing up isn't an issue. 
 
 I do have a few gripes with Blogfile though, they are fairly minor but nothin'
@@ -51,3 +51,5 @@ a handy server for testing locally but you need to rebuild manually to see the
 changes. This is a little annoying and I usually have two tabs open, one doing 
 the rebuild every 10 seconds and one serving.
 
+Incidently, you can see the code for my Blogofile Blog on 
+[github](https://github.com/d0ugal/dm).
