@@ -116,6 +116,9 @@ a alias to make this easier.
     # is the same as
     python manage.py runserver 0.0.0.0:8000
 
+These shortcuts are best left for another post perhaps, but some more can be
+seen in my [dotfiles repository](https://github.com/d0ugal/dotfiles).
+
 To access the site itself, you'll then need to go to the IP address specified
 in the config file. In this case the full path will be 
 `http://33.33.00.10:8000`.
