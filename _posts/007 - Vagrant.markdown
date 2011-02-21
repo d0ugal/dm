@@ -8,14 +8,16 @@ author: Dougal
 
 [Vagrant](http://vagrantup.com/) is a command line tool for managing virtual 
 machines aimed at virtualising your development environment. It is essentially 
-a wrapper around Oracle's [VirtualBox](http://www.virtualbox.org/). However,
-while a wrapper its an awesome one and makes the whole process super slick, 
-quick and easy.
+a wrapper around Oracle's [VirtualBox](http://www.virtualbox.org/) but a very 
+good one. 
 
-Getting started is really easy. There is a quick start on the Vagrant website
-or you can try my version and grab a generic environment I've setup. You need
-to think of Vagrant projects as a bit like a github repo, you have one per
-directory so you can feel free to create one in your projets folder.
+Getting started is really easy, there is a good quick start on the Vagrant
+website, or you can try my version to get a development environment I've been
+using. Vagrant projects are initialised for a directory, in a way like a 
+git/hg repository is, so you have one per folder and you can then just create
+one in your project root. This means you can version control the VagrantFile
+itself and make sure all the developers on the project are using the same
+environment. Very cool.
 
     :::bash
     sudo gem update --system

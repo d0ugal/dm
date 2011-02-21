@@ -43,7 +43,7 @@ p {
 
 #nav {
     margin-bottom: 0px;
-    text-align: center;
+    text-align: right;
 }
 
 #nav div{
@@ -73,7 +73,6 @@ p {
     color: #fff;
     background-repeat: no-repeat;
     height: 40px;
-    margin-left: 10px;
     display: block;
     padding-top: 7px;
 }

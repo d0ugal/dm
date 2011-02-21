@@ -1,6 +1,6 @@
 <%inherit file="_templates/site.mako" />
 
-<div class="span-16 prepend-top">
+<div class="span-15 prepend-top">
 
     <h3>About</h3>
     <p>
@@ -48,27 +48,27 @@
 
 </div>
 
-<div class="span-6 push-1 prepend-top last">
+<div class="span-7 push-1 prepend-top last">
 
     <div class="box" id="me">
 
-        <img src="/media/img/dougal.matthews.jpg" alt="Dougal Matthews"/>
+        <img src="/media/img/dm3.jpg" alt="Dougal Matthews"/>
 
     </div>
 
     <div class="span-6 last">
 
-        <h3>Addending</h3>
+        <h3>Attending</h3>
         <ul>
             <li>EuroPython 2011</li>
         </ul>
 
-        <h3>I've been too</h3>
+        <h3>I've been to</h3>
         <ul>
             <li>EuroDjangoCon, 2009</li>
             <li>EuroPython, 2009</li>
             <li>DjangoCon Europe, 2010</li>
-            <li>EurpPython, 2010</li>
+            <li>EuroPython, 2010</li>
         </ul>
 
         <h3>User Groups</h3>

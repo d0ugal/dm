@@ -1,6 +1,6 @@
 <%inherit file="_templates/site.mako" />
 
-<div class="span-22 prepend-top">
+<div class="prepend-top">
 
     <h3>Work</h3>
 
