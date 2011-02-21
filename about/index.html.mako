@@ -12,7 +12,7 @@
         to Buenos Aires).
     </p>
 
-    <h3>Conferences and User Groups</h3>
+    <h4>Conferences and User Groups</h4>
     <p>
         I am a huge fan of conferences, user groups and generally getting 
         involved with the community. I plan to attend EuroPython 2011 this 
@@ -29,8 +29,9 @@
 
     <h4>Tech I Use</h4>
     <p>
-        I love following the trends and using the best kit out there to do my 
-        work as efficiently as possible.
+        I really enjoy following tech trends and and using the latest 
+        techniques as they evolve to make my work as painless and productive
+        as possible.
     </p>
     <p>
         I make most of my sites with Python and Django
