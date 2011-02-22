@@ -1,7 +1,7 @@
 ---
-categories: meta
-tags:
-date: 2011/02/24 19:25:00
+categories: python, meta
+tags: python, blogofile
+date: 2011/02/22 19:25:00
 title: Blogofile - rethinking simple websites
 slug: blogofile-rethinking-simple-websites
 author: Dougal

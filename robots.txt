@@ -1,0 +1,5 @@
+# Hello human.
+
+User-agent: *
+Disallow: /skynet/activate/
+

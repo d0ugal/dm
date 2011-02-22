@@ -3,6 +3,7 @@ categories: vagrant
 tags: vagrant, chef, python, django, ruby
 date: 2011/02/26 19:25:00
 title: My Vagrant Workflow
+draft: true
 author: Dougal
 ---
 
