@@ -9,7 +9,7 @@
 
 <div id="nav" class="prepend-5 span-10 prepend-top last">
 
-    <div class="span-2">
+    <div class="span-3">
         <a href="/">Articles</a>
     </div>
 
@@ -25,7 +25,7 @@
         <a href="/about/">About</a>
     </div>
 
-    <div class="span-2 last">
+    <div class="span-1 last">
         <a href="/cv/">CV</a>
     </div>
 
