@@ -1,0 +1,14 @@
+server {
+
+	listen   80 default;
+	server_name  d0.ugal.me;
+	error_page  404 /404.html;
+	access_log  /var/log/nginx/d0.ugal.me.access.log;
+
+	location / {
+		root   /var/www/dm/;
+		index  index.html index.htm index.xml;
+	}
+
+}
+
