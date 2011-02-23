@@ -123,8 +123,9 @@ server {
     rewrite  ^/Portfolio.html$  /portfolio/  permanent;
     rewrite  ^/portfolio.php$  /portfolio/  permanent;
     rewrite  ^/s/feeds/all/$  /feeds/all/   permanent;
-    rewrite  ^http://blog.dougalmatthews.com/2008/11/why-you-should-try-django-agility/?utm_source=Arkayne.com&utm_medium=Plugin&utm_campaign=awarelabs$  http://dougalmatthews.com/articles/2008/nov/4/why-you-should-try-django-agility/  permanent;
-    rewrite  ^http://www.dougalmatthews.com/store/DougalMatthews.pdf$  /cv/  permanent;
+    rewrite  ^/s/all/$  /feeds/all/   permanent;
+    rewrite  ^/store/DougalMatthews.pdf$  /cv/  permanent;
+    rewrite  ^/media/static/favicon.ico$  /favicon.ico  permanent;
 }
 
 server {
