@@ -15,7 +15,7 @@ server {
     rewrite  ^/services/$  /work/  permanent;
     rewrite  ^/projects/$  /code/  permanent;
     rewrite  ^/contact/$  /about/ permanent;
-
+    rewrite  ^/articles/categories/(.*)/$ /category/$1/ permanent;
     rewrite  ^/s/$  /  permanent;
     rewrite  ^/s/FS$  /articles/2010/aug/12/python-edinburgh/  permanent;
     rewrite  ^/s/FR$  /articles/2010/jan/20/testing-your-first-django-app/  permanent;
@@ -77,11 +77,65 @@ server {
     rewrite  ^/s/G$  /articles/2008/apr/19/design-patterns-singleton/  permanent;
     rewrite  ^/s/F$  /articles/2008/apr/12/new-blog/  permanent;
 
+    rewrite  ^/articles/2008/04/aptana-cloud/$  /articles/2008/apr/29/aptana-cloud/  permanent;
+    rewrite  ^/articles/2008/04/design-patterns-the-singleton/$  /articles/2008/apr/19/design-patterns-singleton/  permanent;
+    rewrite  ^/articles/2008/04/php-__autoload/$  /articles/2008/apr/26/lazy-loading-in-php-with-__autoload/  permanent;
+    rewrite  ^/articles/2008/05/analysing-php-objects-and-classes/$  /articles/2008/may/5/analysing-php-objects-and-classes/  permanent;
+    rewrite  ^/articles/2008/05/lambda-functions/$  /articles/2008/may/18/lambda-functions-does-your-language-support-it/  permanent;
+    rewrite  ^/articles/2008/05/object-creation-and-manipulation/$  /articles/2008/may/25/javascript-object-manipulation/  permanent;
+    rewrite  ^/articles/2008/05/object-manipulation/$  /articles/2008/may/25/javascript-object-manipulation/  permanent;
+    rewrite  ^/articles/2008/06/aptana-cloud-hands-on/$  /articles/2008/jun/1/aptana-cloud-hands-on/  permanent;
+    rewrite  ^/articles/2008/07/javascript-detecting-caps-lock/$  /articles/2008/jul/2/javascript-detecting-caps-lock/  permanent;
+    rewrite  ^/articles/2008/07/php-__set-and-__get-magic-methods/$  /articles/2008/jul/29/php-__set-and-__get-magic-methods/  permanent;
+    rewrite  ^/articles/2008/07/sharing-your-google-reader-shared-items/$  /articles/2008/jul/12/sharing-your-google-reader-shared-items/  permanent;
+    rewrite  ^/articles/2008/08/creating-rss-feeds-with-simplexml/$  /articles/2008/aug/22/creating-rss-feeds-with-simplexml/  permanent;
+    rewrite  ^/articles/2008/08/css-floats-and-container-height/$  /articles/2008/aug/26/css-floats-and-container-height/  permanent;
+    rewrite  ^/articles/2008/08/has-django-made-me-a-lazy-php-developer/$  /articles/2008/aug/19/has-django-made-me-a-lazy-php-developer/  permanent;
+    rewrite  ^/articles/2008/08/html-dom-and-easy-screen-scraping-in-php/$  /articles/2008/aug/29/html-dom-and-easy-screen-scraping-in-php/  permanent;
+    rewrite  ^/articles/2008/08/php-__call-and-__callstatic-magic-methods/$  /articles/2008/aug/24/php-__call-and-__callstatic-magic-methods/  permanent;
+    rewrite  ^/articles/2008/08/python-some-syntactic-sugar/$  /articles/2008/aug/4/python-some-syntactic-sugar/  permanent;
+    rewrite  ^/articles/2008/09/changing-default-storage-engine-in-mysql/$  /articles/2008/sep/3/changing-default-storage-engine-in-mysql/  permanent;
+    rewrite  ^/articles/2008/09/chrome-a-browser-from-google/$  /articles/2008/sep/2/chrome-a-browser-from-google/  permanent;
+    rewrite  ^/articles/2008/09/chrome-after-a-couple-of-hour/$  /articles/2008/sep/2/chrome-after-a-couple-of-hours/  permanent;
+    rewrite  ^/articles/2008/09/django-10-released-what-a-birthday-present/$  /articles/2008/sep/2/django-10-release-imminent/  permanent;
+    rewrite  ^/articles/2008/09/languages-ive-learned-in-order/$  /articles/2008/sep/27/languages-ive-learned-in-order/  permanent;
+    rewrite  ^/articles/2008/10/filter-the-django-modeladmin-set/$  /articles/2008/oct/14/filter-the-django-modeladmin-set/  permanent;
+    rewrite  ^/articles/2008/10/getting-django-up-and-running-on-centos-52-with-apachemod_python-and-mysql/$  /articles/2008/oct/9/getting-django-up-and-running-on-centos-52-with-a/  permanent;
+    rewrite  ^/articles/2008/10/grinds-my-gears-inline-javascript/$  /articles/2008/oct/11/grinds-my-gears-inline-javascript/  permanent;
+    rewrite  ^/articles/2008/10/grinds-my-gears-php-version-5/$  /articles/2008/oct/15/grinds-my-gears-php-version-5/  permanent;
+    rewrite  ^/articles/2008/10/php-has-too-many-frameworkscmss/$  /articles/2008/oct/31/choice-is-bad-php-has-too-many-frameworkscmss/  permanent;
+    rewrite  ^/articles/2008/10/small-update/$  /articles/2008/oct/1/small-update/  permanent;
+    rewrite  ^/articles/2008/11/book-memery/$  /articles/2008/nov/12/book-memery/  permanent;
+    rewrite  ^/articles/2008/11/grinds-my-gears-ie-6-users/$  /articles/2008/nov/5/grinds-my-gears-ie-6-users/  permanent;
+    rewrite  ^/articles/2008/11/why-you-should-try-django-agility/$  /articles/2008/nov/4/why-you-should-try-django-agility/  permanent;
+    rewrite  ^/articles/2009/02/eurodjangocon/$  /articles/2009/feb/11/eurodjangocon/  permanent;
+    rewrite  ^/articles/2009/05/$  /articles/2009/may/  permanent;
+    rewrite  ^/articles/category/django/feed/$  /feeds/categories/django/  permanent;
+    rewrite  ^/articles/category/java/$  /articles/tags/java/  permanent;
+    rewrite  ^/articles/category/python/feed/$  /feeds/categories/python/  permanent;
+    rewrite  ^/articles/favicon.ico$  /media/static/favicon.ico  permanent;
+    rewrite  ^/articles/feed/$  /feeds/all/  permanent;
+    rewrite  ^/articles/robots.txt$  /robots.txt  permanent;
+    rewrite  ^/contact.php$  /contact/  permanent;
+    rewrite  ^/favicon.ico$  /media/static/favicon.ico  permanent;
+    rewrite  ^/hp/pma/$  /projects/ajax-query-builder/  permanent;
+    rewrite  ^/hp/pma/_db_qbe.php$  /projects/ajax-query-builder/  permanent;
+    rewrite  ^/Portfolio.html$  /portfolio/  permanent;
+    rewrite  ^/portfolio.php$  /portfolio/  permanent;
+    rewrite  ^/s/feeds/all/$  /feeds/all/   permanent;
+    rewrite  ^http://blog.dougalmatthews.com/2008/11/why-you-should-try-django-agility/?utm_source=Arkayne.com&utm_medium=Plugin&utm_campaign=awarelabs$  http://dougalmatthews.com/articles/2008/nov/4/why-you-should-try-django-agility/  permanent;
+    rewrite  ^http://www.dougalmatthews.com/store/DougalMatthews.pdf$  /cv/  permanent;
 }
 
 server {
     listen 80;
     server_name myvent.co.uk *.myvent.co.uk www.dougalmatthews.com *.dougalmatthews.com;
+
+    if ($host ~* "^blog\.dougalmatthews\.com$") {
+        rewrite ^(.*)$ http://dougalmatthews.com/articles$1 permanent;
+        break;
+    }
+
     rewrite ^/(.*) http://dougalmatthews.com/$1 permanent;
 }
 
@@ -90,3 +144,4 @@ server {
     server_name do.ugal.me;
     rewrite ^/(.*)$ http://dougalmatthews.com/s/$1 permanent;
 }
+
