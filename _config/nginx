@@ -1,14 +1,92 @@
 server {
 
-	listen   80 default;
-	server_name  d0.ugal.me;
-	error_page  404 /404.html;
-	access_log  /var/log/nginx/d0.ugal.me.access.log;
+    listen   80 default;
+    server_name  dougalmatthews.com;
+    error_page  404 /404.html;
+    access_log  /var/log/nginx/dougalmatthews.com.access.log;
+    error_log  /var/log/nginx/dougalmatthews.com.error.log;
 
-	location / {
-		root   /var/www/dm/;
-		index  index.html index.htm index.xml;
-	}
+    location / {
+        root   /var/www/dm/;
+        index  index.html index.htm index.xml;
+    }
+    
+    rewrite  ^/articles/$  /  permanent;
+    rewrite  ^/services/$  /work/  permanent;
+    rewrite  ^/projects/$  /code/  permanent;
+    rewrite  ^/contact/$  /about/ permanent;
+
+    rewrite  ^/s/$  /  permanent;
+    rewrite  ^/s/FS$  /articles/2010/aug/12/python-edinburgh/  permanent;
+    rewrite  ^/s/FR$  /articles/2010/jan/20/testing-your-first-django-app/  permanent;
+    rewrite  ^/s/FQ$  /articles/2010/jan/13/my-project-52-and-managing-yours/  permanent;
+    rewrite  ^/s/FP$  /articles/2010/jan/8/fun-with-balls/  permanent;
+    rewrite  ^/s/FM$  /articles/2009/dec/16/nicer-dynamic-forms-django/  permanent;
+    rewrite  ^/s/FO$  /articles/2009/dec/15/sitesprint-post-mortem/  permanent;
+    rewrite  ^/s/FN$  /articles/2009/dec/14/django-its-just-python/  permanent;
+    rewrite  ^/s/FL$  /articles/2009/dec/10/itchy-fingers/  permanent;
+    rewrite  ^/s/FJ$  /articles/2009/nov/30/sitesprint-development-so-far/  permanent;
+    rewrite  ^/s/FI$  /articles/2009/nov/27/websites-and-comments/  permanent;
+    rewrite  ^/s/FH$  /articles/2009/nov/25/nested-code-blocks/  permanent;
+    rewrite  ^/s/E$  /articles/2009/nov/23/what-apps-do-i-use/  permanent;
+    rewrite  ^/s/D$  /articles/2009/nov/20/web-hosting-woes/  permanent;
+    rewrite  ^/s/C$  /articles/2009/nov/19/development-so-far/  permanent;
+    rewrite  ^/s/B$  /articles/2009/nov/17/new-website-and-sitesprint-entry/  permanent;
+    rewrite  ^/s/FG$  /articles/2009/may/22/europython-update/  permanent;
+    rewrite  ^/s/FA$  /articles/2009/feb/11/eurodjangocon/  permanent;
+    rewrite  ^/s/Ev$  /articles/2008/nov/12/book-memery/  permanent;
+    rewrite  ^/s/EP$  /articles/2008/nov/5/grinds-my-gears-ie-6-users/  permanent;
+    rewrite  ^/s/Ea$  /articles/2008/nov/4/why-you-should-try-django-agility/  permanent;
+    rewrite  ^/s/E3$  /articles/2008/oct/31/choice-is-bad-php-has-too-many-frameworkscmss/  permanent;
+    rewrite  ^/s/Ed$  /articles/2008/oct/30/msc-research-project-feedbackquestionnaire-reques/  permanent;
+    rewrite  ^/s/EU$  /articles/2008/oct/30/grinds-my-gears-godaddy/  permanent;
+    rewrite  ^/s/EA$  /articles/2008/oct/16/making-the-windows-xp-command-prompt-more-bareable/  permanent;
+    rewrite  ^/s/EI$  /articles/2008/oct/15/grinds-my-gears-php-version-5/  permanent;
+    rewrite  ^/s/Dt$  /articles/2008/oct/14/filter-the-django-modeladmin-set/  permanent;
+    rewrite  ^/s/Dq$  /articles/2008/oct/11/grinds-my-gears-inline-javascript/  permanent;
+    rewrite  ^/s/Dc$  /articles/2008/oct/9/getting-django-up-and-running-on-centos-52-with-a/  permanent;
+    rewrite  ^/s/D4$  /articles/2008/oct/1/small-update/  permanent;
+    rewrite  ^/s/DO$  /articles/2008/sep/27/languages-ive-learned-in-order/  permanent;
+    rewrite  ^/s/DJ$  /articles/2008/sep/27/resources-for-learning-javascript/  permanent;
+    rewrite  ^/s/DF$  /articles/2008/sep/19/facebook-now-pirate-friendly/  permanent;
+    rewrite  ^/s/Cm$  /articles/2008/sep/4/the-day-the-robot-attacked/  permanent;
+    rewrite  ^/s/Cg$  /articles/2008/sep/3/changing-default-storage-engine-in-mysql/  permanent;
+    rewrite  ^/s/CV$  /articles/2008/sep/2/chrome-after-a-couple-of-hours/  permanent;
+    rewrite  ^/s/Bu$  /articles/2008/sep/2/django-10-release-imminent/  permanent;
+    rewrite  ^/s/CK$  /articles/2008/sep/2/chrome-a-browser-from-google/  permanent;
+    rewrite  ^/s/Bw$  /articles/2008/aug/29/html-dom-and-easy-screen-scraping-in-php/  permanent;
+    rewrite  ^/s/B7$  /articles/2008/aug/26/css-floats-and-container-height/  permanent;
+    rewrite  ^/s/B2$  /articles/2008/aug/24/php-__call-and-__callstatic-magic-methods/  permanent;
+    rewrite  ^/s/BT$  /articles/2008/aug/22/new-design/  permanent;
+    rewrite  ^/s/BG$  /articles/2008/aug/22/creating-rss-feeds-with-simplexml/  permanent;
+    rewrite  ^/s/BB$  /articles/2008/aug/19/has-django-made-me-a-lazy-php-developer/  permanent;
+    rewrite  ^/s/r$  /articles/2008/aug/12/multiple-websites-in-the-same-django-project/  permanent;
+    rewrite  ^/s/j$  /articles/2008/aug/8/php-53-too-late/  permanent;
+    rewrite  ^/s/b$  /articles/2008/aug/4/python-some-syntactic-sugar/  permanent;
+    rewrite  ^/s/3$  /articles/2008/jul/29/php-__set-and-__get-magic-methods/  permanent;
+    rewrite  ^/s/W$  /articles/2008/jul/19/recording-users-by-country/  permanent;
+    rewrite  ^/s/V$  /articles/2008/jul/12/sharing-your-google-reader-shared-items/  permanent;
+    rewrite  ^/s/U$  /articles/2008/jul/2/javascript-detecting-caps-lock/  permanent;
+    rewrite  ^/s/N$  /articles/2008/jun/1/aptana-cloud-hands-on/  permanent;
+    rewrite  ^/s/M$  /articles/2008/may/25/javascript-object-manipulation/  permanent;
+    rewrite  ^/s/L$  /articles/2008/may/18/lambda-functions-does-your-language-support-it/  permanent;
+    rewrite  ^/s/K$  /articles/2008/may/11/galactocracy/  permanent;
+    rewrite  ^/s/J$  /articles/2008/may/5/analysing-php-objects-and-classes/  permanent;
+    rewrite  ^/s/I$  /articles/2008/apr/29/aptana-cloud/  permanent;
+    rewrite  ^/s/H$  /articles/2008/apr/26/lazy-loading-in-php-with-__autoload/  permanent;
+    rewrite  ^/s/G$  /articles/2008/apr/19/design-patterns-singleton/  permanent;
+    rewrite  ^/s/F$  /articles/2008/apr/12/new-blog/  permanent;
 
 }
 
+server {
+    listen 80;
+    server_name myvent.co.uk *.myvent.co.uk www.dougalmatthews.com *.dougalmatthews.com;
+    rewrite ^/(.*) http://dougalmatthews.com/$1 permanent;
+}
+
+server {
+    listen 80;
+    server_name do.ugal.me;
+    rewrite ^/(.*)$ http://dougalmatthews.com/s/$1 permanent;
+}

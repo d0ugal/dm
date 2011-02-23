@@ -48,17 +48,19 @@
         look at my CV.</a>.
     </p>
 
-    <div class="span-22 prepend-top last">
+    <h4>Got any questions?</h4>
+    <p>
+        You can email me directly at
+        <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#100;&#111;&#117;&#103;&#97;&#108;&#64;&#100;&#111;&#117;&#103;&#97;&#108;&#109;&#97;&#116;&#116;&#104;&#101;&#119;&#115;&#46;&#99;&#111;&#109;">&#100;&#111;&#117;&#103;&#97;&#108;&#64;&#100;&#111;&#117;&#103;&#97;&#108;&#109;&#97;&#116;&#116;&#104;&#101;&#119;&#115;&#46;&#99;&#111;&#109;</a>,
+        speak to me on Skype, <strong>dougal.matthews</strong>, or give me a
+        call on <strong>+44 (0) 7719780595</strong>.
+    </p>
 
-        <h4>Got any questions?</h4>
-        <p>
-            You can email me directly at
-            <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#100;&#111;&#117;&#103;&#97;&#108;&#64;&#100;&#111;&#117;&#103;&#97;&#108;&#109;&#97;&#116;&#116;&#104;&#101;&#119;&#115;&#46;&#99;&#111;&#109;">&#100;&#111;&#117;&#103;&#97;&#108;&#64;&#100;&#111;&#117;&#103;&#97;&#108;&#109;&#97;&#116;&#116;&#104;&#101;&#119;&#115;&#46;&#99;&#111;&#109;</a>,
-            speak to me on Skype, <strong>dougal.matthews</strong>, or give me a
-            call on <strong>+44 (0) 7719780595</strong>.
-        </p>
-
-    </div>
+    <h4>Trading Information</h4>
+    <p>
+        Pacha Solutions Limited is the name under which I trade. Registered 
+        company number SC385846.
+    </p>
 
 </div>
 
