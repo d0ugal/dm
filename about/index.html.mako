@@ -35,7 +35,7 @@
     </p>
     <p>
         I make most of my sites with Python and Django
-        (<a href="/2011/02/24/blogofile-rethinking-simple-websites/">but not 
+        (<a href="/2011/02/22/blogofile-rethinking-simple-websites/">but not 
         this one</a>) and 
         use git to version my code. My editor of choie is Vim, because its 
         awesomely fast and customisable.
