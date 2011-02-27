@@ -3,22 +3,23 @@ categories: vagrant
 tags: vagrant, chef, python, django, ruby
 date: 2011/02/26 19:25:00
 title: My Vagrant Workflow
-draft: true
 author: Dougal
 ---
 
 [Vagrant](http://vagrantup.com/) is a command line tool for managing virtual 
-machines aimed at virtualising your development environment. It is essentially 
-a wrapper around Oracle's [VirtualBox](http://www.virtualbox.org/) but a very 
-good one. 
+machines aimed at virtualising your development environment. It is 
+essentially a wrapper around Oracle's [VirtualBox](http://www.virtualbox.org/) 
+but a very good one. 
 
 Getting started is really easy, there is a good quick start on the Vagrant
 website, or you can try my version to get a development environment I've been
-using. Vagrant projects are initialised for a directory, in a way like a 
-git/hg repository is, so you have one per folder and you can then just create
-one in your project root. This means you can version control the VagrantFile
-itself and make sure all the developers on the project are using the same
-environment. Very cool.
+using - which is a basic box with some Python tools and postgres. Vagrant 
+projects are initialised for a directory and simply contains a file called 
+Vagrantfile (and an automaticly generated .vagrant file). Generally speaking 
+I would then do this once in each project root allowing the vagrant file to 
+be version controlled and configured for an individual proect. Then each 
+developer can create a virtual machine from the same config and this keeps 
+everybody on the same page.
 
     :::bash
     sudo gem update --system
@@ -27,9 +28,9 @@ environment. Very cool.
     vagrant init
 
 You may not need the first step there, but I did on my mac. There is a 
-detailed setup guide 
+detailed setup guide for different platforms 
 [here](http://vagrantup.com/docs/getting-started/index.html). So if you have
-any problems, head there first.
+any problems make sure you read that first.
 
 In your current directory you should now have a file named `Vagrantfile`. This
 is a simple Ruby based configuration file. The Vagrantfile is 
@@ -42,7 +43,7 @@ past that bit. Instead, copy the following into your vagrant file.
       config.vm.box = "lucid32"
       config.vm.box_url = "http://files.vagrantup.com/lucid32.box"
 
-      config.vm.forward_port("web", 8000, 60000)
+      config.vm.forward_port("web", 8000, 8000)
       config.vm.network("33.33.00.10")
 
       config.vm.provision :chef_solo do |chef|
@@ -74,22 +75,23 @@ liking or you can just leave it for now.
  > If you have already been using vagrant, you will likely have the lucid box
  > already. The vagrant quick start tips download it and call it 'base' since
  > this is a common name I have changed it to something more explicit and
- > save. However, to avoid re-downloading you may want to change lucid32 to
+ > safe. However, to avoid re-downloading you may want to change lucid32 to
  > base in your config file.
 
 What does this do? It setups up a new Ubuntu Lucid machine and runs some 
-chef recipies against it that I created. The base machine that its built on 
-is downloaded from the url in the config and the chef cookbooks from the
-other url that points to my github repository.
+chef recipies against that are downloading from my chef github repository. 
+The base machine that its built on is downloaded from the url in the config 
+this is provided by the Vagrant team (I've not had a chance to make my own
+boxes yet).
 
-The Chef cookbook then installs some system wide pacahes, creates a virtual
+The Chef cookbook then installs some system wide packages, creates a virtual
 environment, installs postgres and creates a database. These are not deploy
-ready scripts but rather more hack scripts to quickly bootstrap a development
+ready scripts but rather more hacky scripts to quickly bootstrap a development
 env.
 
 After saving, you can now do `vagrant up` this will take a while as it needs 
 to download the ubuntu box to create the VM from. The time delay is mostly 
-due to downloading of the box and also various pacakes like postgres so be 
+due to downloading of the box and also various packages like postgres so be 
 warned if you have a slow or limited connection, this is likely to sum up to 
 around 800mb or so.
 
@@ -103,16 +105,21 @@ After its finished, you should be able to do this.
 You will then be running from the virtual machine, but be in an activated 
 Python virtual enviroment and in a directory that is mapped to the host 
 machine. Thus the result of that should show the files for the directory that 
-you started in.
+you started in. In my case I generally then need to do 
+`pip install -r requirements.txt` and after that I can run the project - be it
+a Django website, or something different.
 
 After this you can pretty much carry on as normal. There are a few things to
 note that may effect you. Any tools that rely on accessing the Python
 iterpreter will not work as its not on a remote machine, I don't have a need
-for this so I've not worked out a solution. I simple use the python debugger
-directly in the ssh session.
+for this so I've not worked out a solution. I simply use the python debugger
+directly in the ssh session. Editors like pyDev will likely loose some 
+functionlity here but there may be work arounds...
 
 When using Django's runserver, you need to specify an IP address. I've created 
-a alias to make this easier.
+a alias to make this easier. This assumes you are still connected to the 
+virtual machine but if not, cd into the project directory and run 
+`vagrant ssh`. How awesome is it to not need to remember IP's or logins?
 
     :::bash
     djr
@@ -124,13 +131,15 @@ seen in my [dotfiles repository](https://github.com/d0ugal/dotfiles).
 
 To access the site itself, you'll then need to go to the IP address specified
 in the config file. In this case the full path will be 
-`http://33.33.00.10:8000`.
+`http://33.33.00.10:8000` or since we have set the port forwarding in the 
+config above you should be able to go to localhost:8000.
 
 I'm stil working out my complete workflow for vagrant but I'm using this
 machine as a base point for much of my work and creating a new machine for 
-each project. The awesome thing is that you have a recorded setup of how the
-machine is configured. The main downside is that it seems like it will be
-tiresome to make different virtual machines if they vary significantly.
-However, I'm sure there is something I can work out for this too.
+each project. The best thing so far for me is a recorded development 
+enviroment that I can use to create a VM now or in 6 months when revisiting 
+an older project. My main problem at the moment is the effort required to 
+make big changes (new configs, new recipies etc.) but this should get easier 
+as I make more.
 
 If you have any idea's or suggestions please let me know.
