@@ -1,5 +1,5 @@
 ---
-categories: MySQL
+categories: mysql
 tags: centos, django, innodb, mysql
 date: 2008/09/03 19:25:00
 title: Changing default storage engine in MySQL

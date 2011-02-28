@@ -1,5 +1,5 @@
 ---
-categories: Django, Python, Testing
+categories: django, python, testing
 tags: testing, unittest, tdd
 date: 2010/01/20 19:25:00
 title: Testing your first Django app

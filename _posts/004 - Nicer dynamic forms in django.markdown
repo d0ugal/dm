@@ -1,5 +1,5 @@
 ---
-categories: Python, Django
+categories: python, django
 tags: forms, type
 date: 2009/12/16 19:25:00
 title: Nicer dynamic forms in django

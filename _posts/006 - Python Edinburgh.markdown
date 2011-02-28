@@ -1,5 +1,5 @@
 ---
-categories: Python, Django
+categories: python, django
 tags: vagrant, chef, python, django, ruby, osx
 date: 2010/08/12 19:25:00
 title: Python Edinburgh

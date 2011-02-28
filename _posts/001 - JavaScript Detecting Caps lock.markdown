@@ -1,5 +1,5 @@
 ---
-categories: JavaScript
+categories: javascript
 tags: vagrant, chef, python, django, ruby, osx
 date: 2008/07/02 19:25:00
 title: JavaScript - Detecting Caps lock

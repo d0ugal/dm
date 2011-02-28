@@ -1,5 +1,5 @@
 ---
-categories: JavaScript
+categories: javascript
 tags: balls, canvas
 date: 2010/01/08 19:25:00
 title: Fun with Balls
