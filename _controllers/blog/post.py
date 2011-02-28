@@ -16,6 +16,8 @@ import operator
 import urlparse
 import hashlib
 import codecs
+import base64
+import urllib
 
 import pytz
 import yaml
@@ -58,7 +60,8 @@ reserved_field_names = {
     "source"     :"Reserved internally",
     "yaml"       :"Reserved internally",
     "content"    :"Reserved internally",
-    "filename"   :"Reserved internally"
+    "filename"   :"Reserved internally",
+    "encoding"   :"The file encoding format"
     }
 
 
@@ -125,7 +128,7 @@ class Post(object):
         if self.filters is None:
             try:
                 file_extension = os.path.splitext(self.filename)[-1][1:]
-                self.filters = bf.config.controllers.blog.post_default_filters[
+                self.filters = bf.config.controllers.blog.post.default_filters[
                     file_extension]
             except KeyError:
                 self.filters = []
@@ -175,6 +178,12 @@ class Post(object):
 
         if not self.categories or len(self.categories) == 0:
             self.categories = set([Category('Uncategorized')])
+        if self.guid:
+            uuid = urllib.quote(self.guid) #used for expandling :uuid in permalink template code below
+        else:
+            toHash = self.date.isoformat() + self.title.encode('utf8')
+            self.guid = base64.urlsafe_b64encode(hashlib.sha1(toHash).digest())
+            uuid = self.guid 
         if not self.permalink and \
                 bf.config.controllers.blog.auto_permalink.enabled:
             self.permalink = bf.config.site.url.rstrip("/") + \
@@ -195,9 +204,8 @@ class Post(object):
                     ":filename", re.sub(
                             "[ ?]", "-", self.filename).lower(), self.permalink)
 
-            # Generate sha hash based on title
-            self.permalink = re.sub(":uuid", hashlib.sha1(
-                    self.title.encode('utf-8')).hexdigest(), self.permalink)
+            # See guid logic above
+            self.permalink = re.sub(":uuid", uuid, self.permalink)
 
         logger.debug(u"Permalink: {0}".format(self.permalink))
      
@@ -325,8 +333,7 @@ def parse_posts(directory):
         #It refuses to open files without replacing newlines with CR+LF
         #reverting to regular open and decode:
         try:
-            src = open(post_path, "r").read().decode(
-                    bf.config.controllers.blog.post_encoding)
+            src = open(post_path, "r").read().decode("utf-8")
         except:
             logger.exception(u"Error reading post: {0}".format(post_path))
             raise
@@ -335,8 +342,6 @@ def parse_posts(directory):
         except PostParseException as e:
             logger.warning(u"{0} : Skipping this post.".format(e.value))
             continue
-        #Exclude some posts
-        if not (p.permalink is None or p.draft is True):
-            posts.append(p)
+        posts.append(p)
     posts.sort(key=operator.attrgetter('date'), reverse=True)
     return posts
