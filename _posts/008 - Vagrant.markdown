@@ -15,9 +15,9 @@ Getting started is really easy, there is a good quick start on the Vagrant
 website, or you can try my version to get a development environment I've been
 using - which is a basic box with some Python tools and postgres. Vagrant 
 projects are initialised for a directory and simply contains a file called 
-Vagrantfile (and an automaticly generated .vagrant file). Generally speaking 
+Vagrantfile (and an automatically generated .vagrant file). Generally speaking 
 I would then do this once in each project root allowing the vagrant file to 
-be version controlled and configured for an individual proect. Then each 
+be version controlled and configured for an individual project. Then each 
 developer can create a virtual machine from the same config and this keeps 
 everybody on the same page.
 
@@ -103,7 +103,7 @@ After its finished, you should be able to do this.
     ls -la
 
 You will then be running from the virtual machine, but be in an activated 
-Python virtual enviroment and in a directory that is mapped to the host 
+Python virtual environment and in a directory that is mapped to the host 
 machine. Thus the result of that should show the files for the directory that 
 you started in. In my case I generally then need to do 
 `pip install -r requirements.txt` and after that I can run the project - be it
@@ -111,10 +111,10 @@ a Django website, or something different.
 
 After this you can pretty much carry on as normal. There are a few things to
 note that may effect you. Any tools that rely on accessing the Python
-iterpreter will not work as its not on a remote machine, I don't have a need
+interpreter will not work as its not on a remote machine, I don't have a need
 for this so I've not worked out a solution. I simply use the python debugger
 directly in the ssh session. Editors like pyDev will likely loose some 
-functionlity here but there may be work arounds...
+functionality here but there may be a work around...
 
 When using Django's runserver, you need to specify an IP address. I've created 
 a alias to make this easier. This assumes you are still connected to the 
@@ -134,12 +134,12 @@ in the config file. In this case the full path will be
 `http://33.33.00.10:8000` or since we have set the port forwarding in the 
 config above you should be able to go to localhost:8000.
 
-I'm stil working out my complete workflow for vagrant but I'm using this
+I'm still working out my complete workflow for vagrant but I'm using this
 machine as a base point for much of my work and creating a new machine for 
 each project. The best thing so far for me is a recorded development 
-enviroment that I can use to create a VM now or in 6 months when revisiting 
+environment that I can use to create a VM now or in 6 months when revisiting 
 an older project. My main problem at the moment is the effort required to 
-make big changes (new configs, new recipies etc.) but this should get easier 
+make big changes (new configs, new recipes etc.) but this should get easier 
 as I make more.
 
 If you have any idea's or suggestions please let me know.
