@@ -12,9 +12,10 @@ server {
     }
 
     rewrite  ^/articles/$  /  permanent;
-    rewrite  ^/services/$  /work/  permanent;
-    rewrite  ^/projects/$  /code/  permanent;
-    rewrite  ^/contact/$  /about/ permanent;
+    rewrite  ^/services  /work/  permanent;
+    rewrite  ^/projects  /code/  permanent;
+    rewrite  ^/portfolio  /work/ permanent;
+    rewrite  ^/contact  /about/ permanent;
     rewrite  ^/articles/categories/(.*)/$ /category/$1/ permanent;
     rewrite  ^/articles/categories/(.*)/feed/$ /category/$1/feed/ permanent;
     rewrite  ^/articles/category/(.*)/ /category/$1/ permanent;
