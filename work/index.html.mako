@@ -25,7 +25,7 @@
     <p>
         I have also worked for a number of smaller agencies and software
         houses primarily based in Edinburgh and London. These include the
-        recently aquired <a href="http://www.loopo.co.uk/">Loopo Ltd</a>,
+        recently acquired <a href="http://www.loopo.co.uk/">Loopo Ltd</a>,
         <a href="http://www.tsuko.co.uk/">Tsuko</a>, <strong>1576</strong>
         and <a href="http://www.totallyzero.com/">Totally Zero</a> (prevously
         Zero Design). Through these companies I've been involved or
@@ -38,7 +38,7 @@
         <a href="http://www.hunters-residential.co.uk/">websites</a>.
     </p>
     <p>
-        I have had expierence working in a startup enviroment at the excillent
+        I have had experience working in a startup enviroment at the excellent
         <a href="http://awaremonitoring.com/">Aware Monitoring</a> and for the
         cloud computing provider
         <a href="http://www.flexiant.com/products/flexiscale/">Flexiscale</a>.
