@@ -12,7 +12,20 @@
         </p>
     </div>
 
-    <div class="span-11 append-bottom append-1">
+    <div class="span-11 append-bottom prepend-1">
+
+        <h4>
+            <a href="https://github.com/d0ugal/rawr">Rawr</a>
+        </h4>
+        <p>
+            A python command line utility for sending 
+            <a href="http://growl.info/">Growl</a> 
+            notifications over the network.
+        </p>
+
+    </div>
+
+    <div class="span-11 append-bottom append-1 last">
 
         <h4>
             <a href="https://github.com/d0ugal/dotfiles">dotfiles</a>
@@ -25,7 +38,7 @@
 
     </div>
 
-    <div class="span-11 append-bottom prepend-1 last">
+    <div class="span-11 append-bottom prepend-1">
 
         <h4>
             <a href="https://github.com/d0ugal/chef_recipes">Chef Recipies</a>
@@ -38,7 +51,7 @@
 
     </div>
 
-    <div class="span-11 append-bottom append-1">
+    <div class="span-11 append-bottom append-1 last">
 
         <h4>
             <a href="https://github.com/d0ugal/dm">DougalMatthews.com</a>
@@ -50,7 +63,7 @@
 
     </div>
 
-    <div class="span-11 append-bottom prepend-1 last">
+    <div class="span-11 append-bottom prepend-1">
 
         <h4>
             <a href="https://github.com/d0ugal/pythonedinburgh">Python Edinburgh</a>
@@ -62,7 +75,7 @@
 
     </div>
 
-    <div class="span-11 append-bottom append-1">
+    <div class="span-11 append-bottom append-1 last">
 
         <h4>
             <a href="https://github.com/d0ugal/emancala">emancala</a>
@@ -74,5 +87,7 @@
         </p>
 
     </div>
+
+
 
 </div>
