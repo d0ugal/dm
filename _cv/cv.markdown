@@ -13,9 +13,22 @@
         <td><b>Twitter</b></td>
         <td>@d0ugal</td>
     </tr>
+    <tr>
+        <td><b>Github</b></td>
+        <td>github.com/d0ugal</td>
+        <td><b>Bitbucket</b></td>
+        <td>bitbucket.org/d0ugal</td>
+    </tr>
 </table>
 
-I am a hard working highly motivated developer with proven skills in software design and development. I enjoy working as part of a team or working as a development lead. With a wide range of skills in web development I have worked in a number of different projects with small start-ups to traditional well established companies. I am interested in finding a challenging and interesting position where I can develop innovating and successful solutions to demanding problems. I also enjoy a highly active social life, meeting new people and travelling to get to know the world.
+I am a hard working highly motivated developer with proven skills in software 
+design and development. I enjoy working as part of a team or working as a 
+development lead. With a wide range of skills in web development I have 
+worked in a number of different projects with small start-ups to traditional 
+well established companies. I am interested in finding new challenges and 
+interesting position where I can develop innovating and successful solutions. 
+I also enjoy a highly active social life, skiing and travelling when I get a
+chance.
 
 ### Education
 
@@ -55,32 +68,27 @@ For my Masters dissertation I worked on machine learning and successfully create
         <th>Technologies/Frameworks</th>
     </tr>
     <tr>
-        <td>Python (2.5 years)</td>
-        <td>mySQL (4 years)</td>
-        <td>Django (Python) (2 years)</td>
+        <td>Python (3.5 years)</td>
+        <td>PostgreSQL (3 years)</td>
+        <td>Django (3 years)</td>
     </tr>
     <tr>
         <td>JavaScript (4 years)</td>
-        <td>PostgreSQL (2 years)</td>
-        <td>Ajax (3 years)</td>
-    </tr>
-    <tr>
-        <td>C# (.NET versions -3.5) (1 years)</td>
-        <td>SQL Server (1 years)</td>
-        <td>Zend Framework (PHP) (1 year)</td>
+        <td>mySQL (3 years)</td>
+        <td>Facebook Apps (PHP/Python)</td>
     </tr>
     <tr>
         <td>Java (1 year)</td>
         <td></td>
-        <td>Etomite (PHP) (1 year)</td>
-    </tr>
-    <tr>
-        <td>PHP (3 years)</td>
         <td></td>
-        <td>Facebook Apps (PHP/Python)</td>
     </tr>
     <tr>
-        <td>XHTML, XML and CSS</td>
+        <td>PHP (5 years)</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>XHTML, XML and CSS (8 years)</td>
         <td></td>
         <td></td>
     </tr>
@@ -90,16 +98,16 @@ For my Masters dissertation I worked on machine learning and successfully create
 
 <table>
     <tr>
+        <td>EuroPython 2011 (Florence, IT)</td>
+        <td>EuroPython 2009 (Birmingham, UK)</td>
+    </tr>
+    <tr>
         <td>EuroPython 2010 (Birmingham, UK)</td>
         <td>EuroDjangoCon 2009 (Prague, CZ)</td>
     </tr>
     <tr>
         <td>DjangoCon.eu 2010 (Berlin, DE)</td>
         <td>Microsoft Visual Studio Conference 2005 (Edinburgh, UK)</td>
-    </tr>
-    <tr>
-        <td>EuroPython 2009 (Birmingham, UK)</td>
-        <td></td>
     </tr>
 </table>
 
@@ -125,45 +133,64 @@ Intuitive analytical and design skills
         <th style="width:50%">Duties Description</th>
     </tr>
     <tr>
-        <td>09/2010 - Present</td>
+        <td>07/2010 - Present</td>
+        <td>Pitchup</td>
+        <td>Django and Python development working on the successful campsite
+        directory start up www.pitchup.com
+    </tr>
+    <tr>
+        <td>09/2010 - 07/2010</td>
         <td>Aviva plc</td>
-        <td>Django and Python consultancy and development. Working on aviva.co.uk and rac.co.uk</td>
+        <td>Django and Python development working on a number of Aviva's 
+        websites including www.rac.co.uk. I was involved in a number of large 
+        projects and led development of the RAC route planner.
+        </td>
     </tr>
     <tr>
         <td>09/2009 - 09/2010</td>
         <td>Loopo Ltd</td>
-        <td>Django and Python development working on Zinc Medical Recruitment, A medical trainee recruitment system used by  medical schools and colleges in England and Wales.</td>
+        <td>Django and Python development working on Zinc Medical Recruitment, 
+        A medical trainee recruitment system used by  medical schools and 
+        colleges in England and Wales.</td>
     </tr>
     <tr>
         <td>11/2009 - 12/2009</td>
         <td>Aware Monitoring</td>
-        <td>Development working on awaremonitoring.com for Viisys Ltd. The work involved Python, Django, RabbitMQ, Celery, jQuery, mySQL and various other related technologies.</td>
+        <td>Development working on awaremonitoring.com for Viisys Ltd. The 
+        work involved Python, Django, RabbitMQ, Celery, jQuery, mySQL and 
+        various other related technologies.</td>
     </tr>
     <tr>
         <td>02/2009 - 09/2009</td>
         <td>Mobilis Performance</td>
-        <td>Django and Python development of an online self diagnosis physiotherapist website.</td>
+        <td>Django and Python development of an online self diagnosis 
+        physiotherapist website.</td>
     </tr>
     <tr>
         <td>01/2009 - 05/2009</td>
         <td>Landmarts</td>
-        <td>Django and Python development for an online property and land website. Including implementations of various unique features in this market area. Featuring many Ajax features using jQuery and Google Maps.</td>
+        <td>Django and Python development for an online property and land 
+        website. Including implementations of various unique features in this 
+        market area. Featuring many Ajax features using jQuery and Google Maps.</td>
     </tr>
     <tr>
         <td>02/2008 - 09/2008</td>
         <td>XCalibre Communications</td>
-        <td>Java and PHP development. Working in the internals of flexiscale and the customer control panel. Development, Maintenance and testing.</td>
+        <td>Java and PHP development. Working in the internals of flexiscale 
+        and the customer control panel. Development, Maintenance and testing.</td>
     </tr>
     <tr>
         <td>08/2007 - 01/2008</td>
         <td>1576 Advertising</td>
-        <td>General web development work. Tasks including; PHP, mySQL, JavaScript, Ajax, Software Architecture.</td>
+        <td>General web development work. Tasks including; PHP, mySQL, 
+        JavaScript, Ajax, Software Architecture.</td>
     </tr>
     <tr>
         <td>09/2007 - 09/2007</td>
         <td>Gillespie MacAndrew and Hunters Residential
         www.hunters - residential.co.uk</td>
-        <td>Full Design and implementation of PHP and mySQL backend. Google maps property search interface with Ajax link to backend.
+        <td>Full Design and implementation of PHP and mySQL backend. Google 
+        maps property search interface with Ajax link to backend.
         Testing and Documentation.</td>
     </tr>
     <tr>
@@ -174,30 +201,24 @@ Intuitive analytical and design skills
     <tr>
         <td>06/2007</td>
         <td>Pure Services</td>
-        <td>Website Design & mark-up implementation
-        ASP.NET Programming (C#)
-        Testing and Documentation</td>
+        <td>Website Design and mark-up implementation.
+        ASP.NET Programming (C#).
+        Testing and Documentation.</td>
     </tr>
     <tr>
         <td>02/2007</td>
         <td>FoAN : Friends of African Nursing - www.foan.org.uk</td>
-        <td>Website Design & mark-up implementation
-        PHP Programming 
-        Testing and Documentation</td>
+        <td>Website Design and mark-up implementation.
+        PHP Programming. 
+        Testing and Documentation.</td>
     </tr>
     <tr>
         <td>11/2006 - 02/2007</td>
         <td>Zero Design</td>
-        <td>Website Programming Design
-        Full Database Design & Implementation
+        <td>PHP Website Development. Full Database Design & Implementation.
         Lead Programmer</td>
     </tr>
-    <tr>
-        <td>07/2006 - 09/2006</td>
-        <td>Universal Studios, Orlando, FL</td>
-        <td>Ride operations, Greeting Guests
-        General Entertaining and Maintenance</td>
-    </tr>
+
 </table>
 
 ### References and Recommendations
