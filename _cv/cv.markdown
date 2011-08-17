@@ -5,7 +5,7 @@
         <td><b>Phone</b></td>
         <td>+44 (0) 7719 780 595</td>
         <td><b>Website</b></td>
-        <td>http://www.dougalmatthews.com/</td>
+        <td>www.dougalmatthews.com</td>
     </tr>
     <tr>
         <td><b>Email</b></td>
@@ -21,12 +21,12 @@
     </tr>
 </table>
 
-I am a hard working highly motivated developer with proven skills in software 
-design and development. I enjoy working as part of a team or working as a 
-development lead. With a wide range of skills in web development I have 
-worked in a number of different projects with small start-ups to traditional 
-well established companies. I am interested in finding new challenges and 
-interesting position where I can develop innovating and successful solutions. 
+I am a hard working highly motivated developer with proven skills in software
+design and development. I enjoy working as part of a team or working as a
+development lead. With a wide range of skills in web development I have
+worked in a number of different projects with small start-ups to traditional
+well established companies. I am interested in finding new challenges and
+interesting position where I can develop innovating and successful solutions.
 I also enjoy a highly active social life, skiing and travelling when I get a
 chance.
 
@@ -111,18 +111,14 @@ For my Masters dissertation I worked on machine learning and successfully create
     </tr>
 </table>
 
-### General IT/Programming
+### Community Involvement
 
-Excellent knowledge of OOP (Object Orientated Programming) design principles and practices.
-Experience with Multi-Threaded Programs
-Extensive  understanding of Relational Database Management Systems (RDBMS)
+I co-founded a Python Edinburgh user group in Edinburgh which has been running
+for over a year now. With the group I have also successfully organised a
+coding weekend and a small conference.
 
-### General Skills
+I also try to attend and get involved with any user groups in the local area.
 
-Excellent problem solving skills and thinking outside the box
-Good communication and written skills
-Adept Group working skills 
-Intuitive analytical and design skills
 
 ### Experience
 
@@ -141,55 +137,55 @@ Intuitive analytical and design skills
     <tr>
         <td>09/2010 - 07/2010</td>
         <td>Aviva plc</td>
-        <td>Django and Python development working on a number of Aviva's 
-        websites including www.rac.co.uk. I was involved in a number of large 
+        <td>Django and Python development working on a number of Aviva's
+        websites including www.rac.co.uk. I was involved in a number of large
         projects and led development of the RAC route planner.
         </td>
     </tr>
     <tr>
         <td>09/2009 - 09/2010</td>
         <td>Loopo Ltd</td>
-        <td>Django and Python development working on Zinc Medical Recruitment, 
-        A medical trainee recruitment system used by  medical schools and 
+        <td>Django and Python development working on Zinc Medical Recruitment,
+        A medical trainee recruitment system used by  medical schools and
         colleges in England and Wales.</td>
     </tr>
     <tr>
         <td>11/2009 - 12/2009</td>
         <td>Aware Monitoring</td>
-        <td>Development working on awaremonitoring.com for Viisys Ltd. The 
-        work involved Python, Django, RabbitMQ, Celery, jQuery, mySQL and 
+        <td>Development working on awaremonitoring.com for Viisys Ltd. The
+        work involved Python, Django, RabbitMQ, Celery, jQuery, mySQL and
         various other related technologies.</td>
     </tr>
     <tr>
         <td>02/2009 - 09/2009</td>
         <td>Mobilis Performance</td>
-        <td>Django and Python development of an online self diagnosis 
+        <td>Django and Python development of an online self diagnosis
         physiotherapist website.</td>
     </tr>
     <tr>
         <td>01/2009 - 05/2009</td>
         <td>Landmarts</td>
-        <td>Django and Python development for an online property and land 
-        website. Including implementations of various unique features in this 
+        <td>Django and Python development for an online property and land
+        website. Including implementations of various unique features in this
         market area. Featuring many Ajax features using jQuery and Google Maps.</td>
     </tr>
     <tr>
         <td>02/2008 - 09/2008</td>
         <td>XCalibre Communications</td>
-        <td>Java and PHP development. Working in the internals of flexiscale 
+        <td>Java and PHP development. Working in the internals of flexiscale
         and the customer control panel. Development, Maintenance and testing.</td>
     </tr>
     <tr>
         <td>08/2007 - 01/2008</td>
         <td>1576 Advertising</td>
-        <td>General web development work. Tasks including; PHP, mySQL, 
+        <td>General web development work. Tasks including; PHP, mySQL,
         JavaScript, Ajax, Software Architecture.</td>
     </tr>
     <tr>
         <td>09/2007 - 09/2007</td>
         <td>Gillespie MacAndrew and Hunters Residential
         www.hunters - residential.co.uk</td>
-        <td>Full Design and implementation of PHP and mySQL backend. Google 
+        <td>Full Design and implementation of PHP and mySQL backend. Google
         maps property search interface with Ajax link to backend.
         Testing and Documentation.</td>
     </tr>
@@ -209,7 +205,7 @@ Intuitive analytical and design skills
         <td>02/2007</td>
         <td>FoAN : Friends of African Nursing - www.foan.org.uk</td>
         <td>Website Design and mark-up implementation.
-        PHP Programming. 
+        PHP Programming.
         Testing and Documentation.</td>
     </tr>
     <tr>
