@@ -115,9 +115,9 @@ For my Masters dissertation I worked on machine learning and successfully create
 
 I co-founded a Python Edinburgh user group in Edinburgh which has been running
 for over a year now. With the group I have also successfully organised a
-coding weekend and a small conference.
-
-I also try to attend and get involved with any user groups in the local area.
+coding weekend and a small conference. I also try to attend and get involved 
+with any user groups in the local area. I am also keen to try and contribute
+back and help with open source projects where possible.
 
 
 ### Experience
