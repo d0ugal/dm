@@ -1,7 +1,7 @@
 ---
 categories: django, python
 tags: python, django, signals, celery
-date: 2011/02/27 19:25:00
+date: 2011/10/10 17:21:00
 title: Making Django's signals asynchronous with Celery
 author: Dougal
 draft: true
