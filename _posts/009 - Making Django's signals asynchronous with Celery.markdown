@@ -74,3 +74,7 @@ the provided_args.
 Incidently, you'll notice that I added ignore_result=True to each of the tasks.
 While this isn't required, its not generally standard practice for signals
 recievers to return anything, so you will probably want to do this too.
+
+*Update*
+I have now opened a ticket to see if I can remove the requirement to monkey
+patch Django for this: https://code.djangoproject.com/ticket/17029
