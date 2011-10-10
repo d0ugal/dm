@@ -4,15 +4,14 @@ tags: python, django, signals, celery
 date: 2011/10/10 17:21:00
 title: Making Django's signals asynchronous with Celery
 author: Dougal
-draft: true
 ---
 
 I really enjoy working with both Django's signal framework and Celery tasks.
 Today it occured to me that it would be useful to combine the two and have
 “asynchronous signals”.
 
-Here is the solution that I cam up with, read on below if you want to see how
-I arrived at this and why I needed to monkey patch.
+Here is the solution that I came up with, read on below if you want to see how
+I arrived at this and why we need to monkey patch.
 
     :::python
     from celery.task import task
@@ -66,10 +65,10 @@ needed. Why can't be connect to tasks directly?
 
 This almost works, however, in the kwargs signal recievers are passed an
 instance of django.display.dispatcher.Signal and this contains an instance
-of threading.Lock - an object that can't be pickled. This leads me the
-monkey patch that is shown towards the top which simple adds a __reduce__
-method to the Signal class that alterns the pickle behaviour and only picked
-the provided_args.
+of threading.Lock - an object that can't be pickled. This leads me to the
+monkey patch that was shown at the start of this article which simply adds
+a __reduce__ method to the Signal class that alters the pickle behaviour and
+only pickles the provided_args property of the Signal instance.
 
 Incidently, you'll notice that I added ignore_result=True to each of the tasks.
 While this isn't required, its not generally standard practice for signals
