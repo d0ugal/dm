@@ -15,11 +15,37 @@
     <div class="span-10 append-1 append-bottom prepend-1">
 
         <h4>
+            <a href="https://github.com/d0ugal/html5video">html5video</a>
+        </h4>
+        <p>
+            A wrapper to ease the pain of creating all the different formats
+            required to successfully create HTML5 video across different
+            browsers.
+        </p>
+
+    </div>
+
+    <div class="span-10 append-1 append-bottom append-1 last">
+
+        <h4>
+            <a href="https://github.com/d0ugal/django-urlmiddleware">django-urlmiddleware</a>
+        </h4>
+        <p>
+            A Django app that allows you to add middleware classes to your
+            project in a similar way you would add views. This then means you
+            can add a LoginRequiredMiddleware to the path /accounts for example.
+        </p>
+
+    </div>
+
+    <div class="span-10 append-1 append-bottom prepend-1">
+
+        <h4>
             <a href="https://github.com/d0ugal/rawr">Rawr</a>
         </h4>
         <p>
-            A python command line utility for sending 
-            <a href="http://growl.info/">Growl</a> 
+            A python command line utility for sending
+            <a href="http://growl.info/">Growl</a>
             notifications over the network.
         </p>
 
@@ -31,8 +57,8 @@
             <a href="https://github.com/d0ugal/dotfiles">dotfiles</a>
         </h4>
         <p>
-            My dotfiles repository that contains a number of configurations 
-            and tweaks that I have made to my development machine. This 
+            My dotfiles repository that contains a number of configurations
+            and tweaks that I have made to my development machine. This
             includes my full .vimrc and set of plugins.
         </p>
 
@@ -57,7 +83,7 @@
             <a href="https://github.com/d0ugal/dm">DougalMatthews.com</a>
         </h4>
         <p>
-            The source code for this website. It is implemented using 
+            The source code for this website. It is implemented using
             Blogofile a Python powered static website generator.
         </p>
 
@@ -69,7 +95,7 @@
             <a href="https://github.com/d0ugal/pythonedinburgh">Python Edinburgh</a>
         </h4>
         <p>
-            A very simple Google AppEngine hosted Flask website for a Python 
+            A very simple Google AppEngine hosted Flask website for a Python
             user group in Edinburgh that I co-founded.
         </p>
 
