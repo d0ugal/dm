@@ -7,7 +7,7 @@
     <div class="span-24 last append-bottom">
         <p>
             A collection of projects that I have been involved in recently.
-            The ajority of these are now on github so feel free to fork,
+            The majority of these are now on github so feel free to fork,
             join in or just have a look around.
         </p>
     </div>
