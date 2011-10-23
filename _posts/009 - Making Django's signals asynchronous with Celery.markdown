@@ -6,10 +6,10 @@ title: Making Django's signals asynchronous with Celery
 author: Dougal
 ---
 
-**Update:** A comment on the ticket I opened by Alex Gaynor brought up a point
-that I hadn't fully considered. It's worth noticing before going further in
-this post and also worth pointing out my monkey patch doesn't answer this
-question.
+**Update:** A comment on [the ticket](https://code.djangoproject.com/ticket/17029)
+I opened by Alex Gaynor brought up a point that I hadn't fully considered. It's
+worth noticing before going further in this post and also worth pointing out my
+monkey patch doesn't answer this question.
 
 > After speaking with Carl, I'm marking this as wontfix because it is
 > non-obvious as to whether pickling a Signal should include the registered
