@@ -6,6 +6,17 @@ title: Making Django's signals asynchronous with Celery
 author: Dougal
 ---
 
+**Update**
+
+A comment on the ticket I opened by Alex Gaynor brought up a point that I hadn't
+fully considered. It's worth noticing before going further in this ticket and
+also worth pointing out my monkey patch doesn't answer this question.
+
+> After speaking with Carl, I'm marking this as wontfix because it is
+> non-obvious as to whether pickling a Signal should include the registered
+> receivers, and how that interacts with the weak referencing, since there's no
+> obvious semantic it seems better not to guess.
+
 I really enjoy working with both Django's signal framework and Celery tasks.
 Today it occured to me that it would be useful to combine the two and have
 “asynchronous signals”.
@@ -74,6 +85,4 @@ Incidently, you'll notice that I added ignore_result=True to each of the tasks.
 While this isn't required, its not generally standard practice for signals
 recievers to return anything, so you will probably want to do this too.
 
-*Update*
-I have now opened a ticket to see if I can remove the requirement to monkey
-patch Django for this: https://code.djangoproject.com/ticket/17029
+[View the ticket I opened a ticket to track this idea This link](https://code.djangoproject.com/ticket/17029)
