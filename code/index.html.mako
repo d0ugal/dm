@@ -41,32 +41,6 @@
     <div class="span-10 append-1 append-bottom prepend-1">
 
         <h4>
-            <a href="https://github.com/d0ugal/rawr">Rawr</a>
-        </h4>
-        <p>
-            A python command line utility for sending
-            <a href="http://growl.info/">Growl</a>
-            notifications over the network.
-        </p>
-
-    </div>
-
-    <div class="span-10 append-1 append-bottom append-1 last">
-
-        <h4>
-            <a href="https://github.com/d0ugal/dotfiles">dotfiles</a>
-        </h4>
-        <p>
-            My dotfiles repository that contains a number of configurations
-            and tweaks that I have made to my development machine. This
-            includes my full .vimrc and set of plugins.
-        </p>
-
-    </div>
-
-    <div class="span-10 append-1 append-bottom prepend-1">
-
-        <h4>
             <a href="https://github.com/d0ugal/chef_recipes">Chef Recipies</a>
         </h4>
         <p>
@@ -80,6 +54,18 @@
     <div class="span-10 append-1 append-bottom append-1 last">
 
         <h4>
+            <a href="https://github.com/d0ugal/znc_mailer">ZNC Mailer</a>
+        </h4>
+        <p>
+            A ZNC module written in C++ that sends emails to a given email
+            address when the user is not connected the IRC bouncer.
+        </p>
+
+    </div>
+
+    <div class="span-10 append-1 append-bottom prepend-1">
+
+        <h4>
             <a href="https://github.com/d0ugal/dm">DougalMatthews.com</a>
         </h4>
         <p>
@@ -89,7 +75,7 @@
 
     </div>
 
-    <div class="span-10 append-1 append-bottom prepend-1">
+    <div class="span-10 append-1 append-bottom append-1 last">
 
         <h4>
             <a href="https://github.com/d0ugal/pythonedinburgh">Python Edinburgh</a>
@@ -101,7 +87,33 @@
 
     </div>
 
+    <div class="span-10 append-1 append-bottom prepend-1">
+
+        <h4>
+            <a href="https://github.com/d0ugal/dotfiles">dotfiles</a>
+        </h4>
+        <p>
+            My dotfiles repository that contains a number of configurations
+            and tweaks that I have made to my development machine. This
+            includes my full .vimrc and set of plugins.
+        </p>
+
+    </div>
+
     <div class="span-10 append-1 append-bottom append-1 last">
+
+        <h4>
+            <a href="https://github.com/d0ugal/rawr">Rawr</a>
+        </h4>
+        <p>
+            A python command line utility for sending
+            <a href="http://growl.info/">Growl</a>
+            notifications over the network.
+        </p>
+
+    </div>
+
+    <div class="span-10 append-1 append-bottom prepend-1">
 
         <h4>
             <a href="https://github.com/d0ugal/emancala">emancala</a>
@@ -113,7 +125,6 @@
         </p>
 
     </div>
-
 
 
 </div>
