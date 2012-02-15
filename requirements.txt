@@ -1,5 +1,5 @@
 reportlab==2.5
 pisa==3.0.33
-blogofile==0.7.1
+-e git://github.com/EnigmaCurry/blogofile.git@34c7c815f2395fde6ea9382c126306e880d26712#egg=Blogofile-1.0.0_DEV-py2.6-dev
 html5lib==0.90
 pyPdf==1.13
