@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  <div class="intro">
+    <p>
+      These are like blog posts, but rather contain a set of notes and bits of
+      information I wish I knew about something when I started. I'll aim to keep
+      these up to date and relevant unlike blog posts which can become stale.
+    </p>
+  </div>
+
+  <div class="article_list">
+    {% for article in articles %}
+
+      {% if article.category != 'notes' %}
+        {% continue %}
+      {% endif %}
+
+      <article>
+        <time datetime="{{ article.date.isoformat() }}">
+          {{ article.date.strftime('%d %b %Y') }}
+        </time>
+        <a href="/{{ article.url }}" rel="bookmark" title="Permanent Link to {{ article.title }}">
+          {{ article.title }}
+        </a>
+      </article>
+
+    {% endfor %}
+  </div>
+
+{% endblock content %}

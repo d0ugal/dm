@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}{{ page.title }}{%endblock%}
+{% block content %}
+
+    <script src="/theme/js/github-stats.js"></script>
+    <script type="text/javascript">
+
+
+    </script>
+
+    <h1>{{ page.title }}</h1>
+    {{ context }}
+    {% import 'translations.html' as translations with context %}
+    {{ translations.translations_for(page) }}
+
+    {{ page.content }}
+
+{% endblock %}
