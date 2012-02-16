@@ -10,9 +10,19 @@
 <body>
 
 <style type="text/css">
-body {
-  font-size: 12px;
+
+@page {
+  margin: 1cm;
 }
+
+body {
+  font-size: 11.5px;
+}
+
+th {
+    text-align: left;
+}
+
 </style>
 
 ${cv}
