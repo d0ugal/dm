@@ -1,18 +1,17 @@
 {% extends "base.html" %}
-{% block title %}{{ page.title }}{%endblock%}
+{% block title %}{{ page.title }} - {%endblock%}
 {% block content %}
 
     <script src="/theme/js/github-stats.js"></script>
-    <script type="text/javascript">
-
-
-    </script>
 
     <h1>{{ page.title }}</h1>
-    {{ context }}
-    {% import 'translations.html' as translations with context %}
-    {{ translations.translations_for(page) }}
 
     {{ page.content }}
+
+    <ul>
+        <li>I have <span class="repo-count">...</span> GitHub repositories.</li>
+        <li><span class="forked-count">...</span> of them are forks and <span class="source-count">...</span> originate from my account.</li>
+        <li>In total they watched by <span class="watchers-count">...</span> people.</li>
+    </ul>
 
 {% endblock %}

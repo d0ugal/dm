@@ -3,9 +3,13 @@ $(function(){
   var Repo = (function(){
 
     function Repo(repo_json){
+
+      var that = this;
+
       $.each(repo_json, function(key, value){
-        this[key] = value;
+        that[key] = value;
       });
+
     }
 
     return Repo;
@@ -17,17 +21,18 @@ $(function(){
     function RepoManager(options) {
 
         this.repos = [];
-        this.language_repos = [];
-        this.watchers_count = [];
+        this.language_repos = {};
+        this.total_watchers = 0;
         this.forked_repos = [];
         this.source_repos = [];
 
     }
 
     RepoManager.prototype.add = function (repo) {
+
       var r = new Repo(repo);
       this.repos.push(r);
-
+      this.update_stats_with(r);
 
     }
 
@@ -37,7 +42,7 @@ $(function(){
           this.language_repos[repo.language] = [];
       }
 
-      language_counts[repo.language].push(repo);
+      this.language_repos[repo.language].push(repo);
 
       if(repo.fork){
         this.forked_repos.push(repo);
@@ -45,21 +50,24 @@ $(function(){
         this.source_repos.push(repo);
       }
 
-      this.watchers_count += repo.watchers_count;
+      this.total_watchers += repo.watchers_count;
 
-    }
-
-    RepoManager.prototype.stats = function(repo){
-      console.log(this.repos.length);
-      console.log(this.language_repos);
-      console.log(this.watchers_count);
-      console.log(this.forked_repos.length);
-      console.log(this.source_repos.length);
     }
 
     return new RepoManager();
 
   })()
+
+  page_updater = function(mapping){
+
+    $.each(mapping, function(path, value){
+
+      $(path).html(value);
+
+    });
+
+  };
+
 
   $.getJSON("https://api.github.com/users/d0ugal/repos?per_page=100&callback=?", function (result) {
 
@@ -69,7 +77,12 @@ $(function(){
         repo_manager.add(repo);
       });
 
-      console.log(repo_manager.stats())
+      page_updater({
+        '.repo-count': repo_manager.repos.length,
+        '.forked-count': repo_manager.forked_repos.length,
+        '.source-count': repo_manager.source_repos.length,
+        '.watchers-count': repo_manager.total_watchers
+      })
 
   });
 
