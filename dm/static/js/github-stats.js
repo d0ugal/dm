@@ -68,6 +68,7 @@ $(function(){
 
   };
 
+  $('.stats-list').show();
 
   $.getJSON("https://api.github.com/users/d0ugal/repos?per_page=100&callback=?", function (result) {
 

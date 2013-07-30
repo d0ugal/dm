@@ -79,7 +79,6 @@ article {
   background-image: none;
   box-shadow: none;
   border-radius: 0;
-  font-size: 1.2em;
   border-top: none;
   border-left: none;
   border-right: none;
@@ -134,6 +133,10 @@ article {
 
 #content{
   line-height: 1.4em;
+}
+
+.stats-list {
+  display: none;
 }
 
 
