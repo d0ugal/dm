@@ -1,0 +1,3 @@
+redirects:
+    feed/ : /feeds/all.rss.xml
+    feed/atom/ : /feeds/all.atom.xml

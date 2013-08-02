@@ -1,1 +1,1 @@
-web: cd serve && gunicorn dm:app -b 0.0.0.0:8000
+web: gunicorn serve:app

@@ -2,11 +2,10 @@
 
 {% block content %}
 
-  <div class="intro">
+  <div class="notes intro">
     <p>
-      These are like blog posts, but rather contain a set of notes and bits of
-      information I wish I knew about something when I started. I'll aim to keep
-      these up to date and relevant unlike blog posts which can become stale.
+      Similar to blog posts, notes contains bits of information I've learned
+      while working with something and I'll aim to keep up to date.
     </p>
   </div>
 
@@ -18,10 +17,14 @@
       {% endif %}
 
       <article>
-        <a href="/{{ article.url }}" rel="bookmark" title="Permanent Link to {{ article.title }}">
-          {{ article.title }}
-        </a>
-        <div class="summary">{{ article.short_summary }}</div>
+        <header>
+          <a href="{{ article.url }}" rel="bookmark" title="Permanent Link to {{ article.title }}">
+            {{ article.title }}
+          </a>
+        </header>
+        <div class="summary">
+          {{ article.short_summary }}
+        </div>
       </article>
 
     {% endfor %}

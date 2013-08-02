@@ -8,7 +8,7 @@ body {
 }
 
 .red {
-    color: #DE2E14;
+  color: #DE2E14;
 }
 
 .white {
@@ -54,17 +54,13 @@ pre {
   font-family: "Droid Sans Mono";
 }
 
-.note_list header {
-  float: left;
+.article_list .summary{
+  margin-left: 6em;
 }
 
-.note_list .summary {
-  margin-left: 7em;
-  width: 100px;
-  height: 1em;
-  overflow: hidden;
+.note_list article{
+  margin-bottom: 1em;
 }
-
 
 /* -- */
 
@@ -126,6 +122,10 @@ pre {
   padding: 1.5em 20% 1.5em 20%;
   line-height: 1.2em;
   transition: none;
+}
+
+.notes .intro {
+  text-align: left;
 }
 
 /* -- */
