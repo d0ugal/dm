@@ -5,3 +5,4 @@ SublimeText
 :category: notes
 :url: notes/saltstack/
 :save_as: notes/saltstack/index.html
+:short_summary: Plugins, settings and a few other tricks.

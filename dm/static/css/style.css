@@ -50,6 +50,22 @@ article {
   margin-left: 6em;
 }
 
+pre {
+  font-family: "Droid Sans Mono";
+}
+
+.note_list header {
+  float: left;
+}
+
+.note_list .summary {
+  margin-left: 7em;
+  width: 100px;
+  height: 1em;
+  overflow: hidden;
+}
+
+
 /* -- */
 
 .navbar .brand {
@@ -136,6 +152,10 @@ article {
 }
 
 .stats-list {
+  display: none;
+}
+
+.rate-limit {
   display: none;
 }
 

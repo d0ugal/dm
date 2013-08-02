@@ -5,4 +5,4 @@ SaltStack
 :category: notes
 :url: notes/saltstack/
 :save_as: notes/saltstack/index.html
-
+:short_summary: Making server management sane again with Python.

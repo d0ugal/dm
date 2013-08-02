@@ -5,6 +5,7 @@ MongoDb
 :category: notes
 :url: notes/mongodb/
 :save_as: notes/mongodb/index.html
+:short_summary: What I wish I knew about MongoDB before I started.
 
 
 Bulk Loading

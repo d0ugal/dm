@@ -10,7 +10,7 @@
     </p>
   </div>
 
-  <div class="article_list">
+  <div class="note_list">
     {% for article in articles %}
 
       {% if article.category != 'notes' %}
@@ -18,12 +18,10 @@
       {% endif %}
 
       <article>
-        <time datetime="{{ article.date.isoformat() }}">
-          {{ article.date.strftime('%d %b %Y') }}
-        </time>
         <a href="/{{ article.url }}" rel="bookmark" title="Permanent Link to {{ article.title }}">
           {{ article.title }}
         </a>
+        <div class="summary">{{ article.short_summary }}</div>
       </article>
 
     {% endfor %}

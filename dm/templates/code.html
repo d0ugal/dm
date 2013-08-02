@@ -8,6 +8,16 @@
 
     {{ page.content }}
 
+    <div class="rate-limit">
+        <p>
+            <strong>
+                Whoops. It appears we have hit the GitHub rate limit - did
+                you refresh this page a few times? The stats will be
+                unavailable for an hour - sorry.
+            </strong>
+        </p>
+    </div>
+
     <ul class="stats-list">
         <li>
             I have <span class="stats repo-count">
@@ -19,8 +29,15 @@
             <img src="/theme/img/28-1.gif"/></span> originate from my account.
         </li>
         <li>
-            In total they watched by <span class="stats watchers-count">
+            In total my repositories are watched by <span class="stats watchers-count">
             <img src="/theme/img/28-1.gif"/></span> people.
+        </li>
+        <li>
+            I am also a member of <span class="stats org-count">
+            <img src="/theme/img/28-1.gif"/></span> GitHub organisations.
+        <li>
+            The repositories are <span class="stats languages-by-popularity">
+            <img src="/theme/img/28-1.gif"/></span>.
         </li>
     </ul>
 
