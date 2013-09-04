@@ -6,8 +6,8 @@ Code
 
 I try to get involved in open source projects when I am able to at work
 and in my spare time. As I prefer to use git and the majority of the
-large open source projects I use are on GitHub you will find most of `my
-activity there`_.
+large open source projects I interact with are on GitHub you will find
+most of `my activity there`_.
 
 I've been lucky and privileged to be in contact with some some amazing
 developers through open source.

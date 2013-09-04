@@ -3,11 +3,14 @@ Work
 :date: 2013-07-28 16:51
 :author: Dougal Matthews
 
-I currently work for `Artirix`_, a London based company but I work from
-home in Glasgow. We specialise in working with data and search to help
-meet our customer needs. We offer a hosted search platform and more
-bespoke custom solutions for clients too. My work is 100% Python,
-building backend systems and services.
+I currently work as a Python developer specialising in back-end systems
+and services.
+
+From 2012 to 2013 I worked for `Artirix`_ Ltd as a Senior Developer. I
+specialised in working with data and search to help meet our customer
+needs. We offered a hosted search platform and more bespoke custom
+solutions for clients too. My work was 100% Python, building backend
+systems and services.
 
 Previously, I worked as consultant and developer since early 2006.
 Largely specialising in Python development. I've worked in both small

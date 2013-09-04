@@ -4,11 +4,9 @@ Résumé
 :author: Dougal Matthews
 :status: hidden
 
+Thanks for showing an interest in my CV. If you have any questions or
+need a different format, please `get in touch`_. Otherwise, just `download
+the pdf copy`_.
 
-- Contact Information
-- Intro
-- Qualifications
-- Notable projects?
-- Conferences and Training
-- Community involvement
-- Experience
+.. _get in touch: dougal@dougalmatthews.com
+.. _download the pdf copy: /theme/dougalmatthews.pdf

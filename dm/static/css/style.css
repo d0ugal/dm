@@ -1,6 +1,7 @@
 body {
   font-size: 18px;
   font-family: 'Palatino';
+  text-align: justify;
 }
 
 * {

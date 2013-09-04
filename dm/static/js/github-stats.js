@@ -156,8 +156,6 @@ $(function(){
 
   $.getJSON("https://api.github.com/users/d0ugal/orgs?callback=?", function(result){
 
-    console.log(result);
-
     if (rate_limit_check(result.meta)){
       return;
     }
