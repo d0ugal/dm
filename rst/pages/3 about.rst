@@ -47,8 +47,7 @@ Getting in touch.
 
 Email is probably best, get me directly on dougal@dougalmatthews.com or
 reach out to me on `Twitter`_. If Skype is your kinda thing, then my
-username is dougal.matthews. Or, if you prefer to phone, my number is
-+44 (0) 7719 780 595.
+username is dougal.matthews.
 
 
 .. _Twitter: http://twitter.com/d0ugal

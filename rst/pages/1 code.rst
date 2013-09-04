@@ -9,7 +9,7 @@ and in my spare time. As I prefer to use git and the majority of the
 large open source projects I interact with are on GitHub you will find
 most of `my activity there`_.
 
-I've been lucky and privileged to be in contact with some some amazing
+I've been lucky and privileged to be in contact with some amazing
 developers through open source.
 
 These statistics are pulled live from the GitHub API with a `small bit
