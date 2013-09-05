@@ -160,6 +160,11 @@ pre {
   display: none;
 }
 
+img.dougalmatthews{
+  float: right;
+  padding: 1em;
+}
+
 
 @media (max-width: 767px) {
   body {
