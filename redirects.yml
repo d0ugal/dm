@@ -3,3 +3,4 @@ redirects:
     feed/ : /feeds/all.rss.xml
     feed/atom/ : /feeds/all.atom.xml
     articles/ : /
+    articles/2008/may/5/analysing-php-objects-and-classes/: /old-content/
