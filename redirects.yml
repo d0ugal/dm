@@ -1,10 +1,12 @@
 redirects:
     "&/" : "/"
     "2011/02/27/my-vagrant-workflow/": "/2011/Feb/27/my-vagrant-workflow/"
+    "2011/10/10/making-django's-signals-asynchronous-with-celery/": "/2011/Oct/10/making-djangos-signals-async-with-celery/"
     "articles/" : "/"
     "articles/2008/may/5/analysing-php-objects-and-classes/" : "/old-content/"
     "articles/2008/sep/3/changing-default-storage-engine-in-mysql/" : "/2008/Sep/03/changing-default-storage-engine-in-mysql/"
     "category/django/feed/" : "/feeds/python.rss.xml"
+    "cv/": "/resume/"
     "favicon.ico" : "/theme/favicon.ico"
     "feed/" : "/feeds/all.rss.xml"
     "feed/atom/" : "/feeds/all.atom.xml"
