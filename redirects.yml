@@ -4,3 +4,4 @@ redirects:
     feed/atom/ : /feeds/all.atom.xml
     articles/ : /
     articles/2008/may/5/analysing-php-objects-and-classes/: /old-content/
+    articles/2008/sep/3/changing-default-storage-engine-in-mysql/: /2008/Sep/03/changing-default-storage-engine-in-mysql/
