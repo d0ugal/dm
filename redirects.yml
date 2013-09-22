@@ -2,3 +2,4 @@ redirects:
     favicon.ico : /theme/favicon.ico
     feed/ : /feeds/all.rss.xml
     feed/atom/ : /feeds/all.atom.xml
+    articles/ : /
