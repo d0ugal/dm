@@ -37,7 +37,7 @@ def not_found(error):
 
 
 @app.errorhandler(500)
-def server_error301(error):
+def server_error(error):
     return render_template('flask/500.html'), 404
 
 
