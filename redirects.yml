@@ -9,3 +9,4 @@ redirects:
     "feed/atom/" : "/feeds/all.atom.xml"
     "feeds/all/" : "/feeds/all.rss.xml"
     "feeds/categories/django/" : "/feeds/python.rss.xml"
+    "feeds/categories/python/" : "/feeds/python.rss.xml"
