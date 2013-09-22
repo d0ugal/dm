@@ -2,7 +2,7 @@ New Years Python Meme
 #####################
 
 :category: python
-:tags: python
+:tags: python, django
 :date: 2011/12/23 14:21
 :title: New Year's Python Meme
 :author: Dougal Matthews

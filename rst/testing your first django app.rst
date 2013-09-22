@@ -1,8 +1,8 @@
 Testing Your First Django App
 #############################
 
-:category: django, python, testing
-:tags: testing, unittest, tdd
+:category: python
+:tags: testing, unittest, tdd, django
 :date: 2010-01-20 19:25
 :title: Testing your first Django app
 :author: Dougal Matthews

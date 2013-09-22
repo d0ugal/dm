@@ -1,7 +1,7 @@
 Python Glasgow
 ##############
 
-:category: python, django
+:category: python
 :tags: python, django
 :date: 2013-07-28 19:25
 :title: Python Glasgow

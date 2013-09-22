@@ -1,8 +1,8 @@
 Blogofile
 #########
 
-:category: python, meta
-:tags: python, blogofile
+:category: python
+:tags: python, blogofile, meta
 :date: 2011-02-22 19:25
 :title: Blogofile - rethinking simple websites
 :slug: blogofile-rethinking-simple-websites

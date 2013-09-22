@@ -1,8 +1,8 @@
 Nicer Dynamic Forms in Django
 #############################
 
-:category: python, django
-:tags: forms, type
+:category: python
+:tags: forms, type, django
 :date: 2009/12/16 19:25
 :title: Nicer dynamic forms in django
 :author: Dougal Matthews

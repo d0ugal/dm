@@ -1,7 +1,7 @@
 Making Django's Signals Async with Celery
 #########################################
 
-:category: django, python
+:category: python
 :tags: python, django, signals, celery
 :date: 2011/10/10 17:21
 :title: Making Django's Signals Async with Celery

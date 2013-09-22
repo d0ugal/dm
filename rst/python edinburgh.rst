@@ -1,7 +1,7 @@
 Python Glasgow
 ##############
 
-:category: python, django
+:category: python
 :tags: vagrant, chef, python, django, ruby, osx
 :date: 2010-08-12 19:25
 :title: Python Edinburgh
