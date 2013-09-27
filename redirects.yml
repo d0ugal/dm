@@ -40,3 +40,4 @@ redirects:
     "s/about/": "/about"
     "s/robots.txt": "/robots.txt"
     "work/development/aware-monitoring/": "/work/"
+    "category/django/": "/category/python/"
