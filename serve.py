@@ -19,7 +19,12 @@ except KeyError:
     sentry = None
     print "MISSING SENTRY_DSN"
 
-redirect_map = yaml.load(open('redirects.yml'))['redirects']
+try:
+    redirect_map = yaml.load(open('redirects.yml'))['redirects']
+except Exception:
+    if sentry is not None:
+        sentry.captureException
+    redirect_map = {}
 
 def r301(path):
     return redirect(path, code=301)
