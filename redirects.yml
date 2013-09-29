@@ -34,7 +34,7 @@ redirects:
     "category/php/": "/old-content/"
     "category/python/1/": "/category/python/"
     "category/python/feed/": "/feeds/python.rss.xml"
-    "category/vagrant/": :/:
+    "category/vagrant/": "/"
     "cv/": "/resume/"
     "cv/dougalmatthews.doc": "/theme/dougalmatthews.pdf"
     "cv/dougalmatthews.pdf": "/theme/dougalmatthews.pdf"
