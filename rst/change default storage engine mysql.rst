@@ -31,7 +31,7 @@ Finally, make sure you restart MySQL.
     service mysqld restart
 
 
-It's pretty easy wen you know how, and you'll now had transactional tables by
+It's pretty easy when you know how, and you'll now had transactional tables by
 default.
 
 Alterantivaley though, you could use a `much better database`_.
