@@ -66,9 +66,16 @@ Settings
         "ignored_packages":
         [
         ],
+        "pep8": true,
+        "pep8_ignore":
+        [
+            "E128",
+            "E501"
+        ],
+        "pep8_max_line_length": 100,
+        "pyflakes_ignore": [],
         "rulers":
         [
-            72,
             80,
             99
         ],
@@ -79,7 +86,8 @@ Settings
         "translate_tabs_to_spaces": true,
         "trim_trailing_white_space_on_save": true,
         "vintage_start_in_command_mode": true,
-        "word_wrap": false
+        "word_wrap": false,
+        "show_minimap": false
     }
 
 Key Bindings
