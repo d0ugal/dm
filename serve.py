@@ -1,11 +1,12 @@
 from os import environ, path
 
-from flask import (Flask, render_template, send_from_directory,
-                    redirect, request)
+from flask import (Flask, render_template, send_from_directory, redirect, request)
+
 from raven.contrib.flask import Sentry
 import yaml
 
 file_dir = path.dirname(__file__)
+
 
 def create_app():
     return Flask("serve", template_folder='dm/templates')
@@ -21,18 +22,30 @@ except KeyError:
 
 try:
     redirect_map = yaml.load(open('redirects.yml'))['redirects']
+
+    for key in redirect_map.keys():
+        if key.startswith("/"):
+            raise Exception("Key %s starts with a /" % key)
+
+    for value in redirect_map.values():
+        if not value.startswith("/"):
+            raise Exception("Key %s doesn't start with a /" % value)
+
 except Exception:
     if sentry is not None:
         sentry.captureException
     redirect_map = {}
 
+
 def r301(path):
     return redirect(path, code=301)
+
 
 def _redirect(path):
 
     if path in redirect_map:
         return redirect_map[path]
+
 
 @app.errorhandler(404)
 def not_found(error):
