@@ -64,9 +64,14 @@ def home():
     return send_from_directory("output/", "index.html")
 
 
-@app.route('/admin/')
+@app.route('/admin/', methods=['GET', ])
 def admin():
     return render_template('flask/admin.html')
+
+
+@app.route('/admin/', methods=['POST', ])
+def admin_post():
+    return render_template('flask/admin_post.html')
 
 
 @app.route('/<path:filename>')
