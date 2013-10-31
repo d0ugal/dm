@@ -99,7 +99,7 @@ redirects:
     "hp/pma/Depending/" : "/old-content/"
     "hp/pma/_db_qbe.php" : "/old-content/"
     "hp/pma/_db_qbe.php" : "/old-content/"
-    "humans.txt" : "/theme/human.txt"
+    "humans.txt" : "/theme/humans.txt"
     "media/blog/balls/": "/old-content/"
     "media/img/dm3.jpg": "/theme/img/dougalmatthews.jpg"
     "media/style/blueprint/print.css" : "/old-content/"
