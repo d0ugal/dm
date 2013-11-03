@@ -69,6 +69,7 @@ Settings
         "pep8": true,
         "pep8_ignore":
         [
+            "E124",
             "E128",
             "E501"
         ],
@@ -89,6 +90,7 @@ Settings
         "word_wrap": false,
         "show_minimap": false
     }
+
 
 Key Bindings
 ~~~~~~~~~~~~
