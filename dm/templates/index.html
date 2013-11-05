@@ -17,10 +17,6 @@
   <div class="article_list">
     {% for article in articles %}
 
-      {% if article.category == 'notes' %}
-        {% continue %}
-      {% endif %}
-
       <article>
         <time datetime="{{ article.date.isoformat() }}">
           {{ article.date.strftime('%d %b %Y') }}

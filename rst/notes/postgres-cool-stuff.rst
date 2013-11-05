@@ -1,6 +1,6 @@
 PostgreSQL, The cool stuff.
 ###########################
-:date: 2012-10-01 18:23
+:date: 2012-11-09 18:23
 :author: Dougal Matthews
 :category: notes
 :url: /notes/postgres-the-cool-stuff/
