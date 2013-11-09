@@ -6,7 +6,6 @@ PostgreSQL, The cool stuff.
 :url: /notes/postgres-the-cool-stuff/
 :save_as: notes/postgres-the-cool-stuff/index.html
 :short_summary: Neat, fun and interesting features in Postgres.
-:status: draft
 
 A collection of my favourite Postgres features. Rather than going into much
 detail I will link you to the relevant documentation (for now).
