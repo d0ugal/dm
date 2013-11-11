@@ -43,8 +43,12 @@ Settings
 .. code-block:: json
 
     {
+        "bold_folder_labels": true,
+        "caret_style": "phase",
+        "create_window_at_startup": false,
         "dictionary": "Packages/Language - English/en_GB.dic",
         "draw_white_space": "selection",
+        "ensure_newline_at_eof_on_save": true,
         "fade_fold_buttons": false,
         "fold_buttons": true,
         "folder_exclude_patterns":
@@ -60,12 +64,18 @@ Settings
             ".vagrant"
         ],
         "font_face": "SourceCodePro-Regular",
-        "font_size": 11.0,
+        "font_size": 12,
         "highlight_line": true,
         "highlight_modified_tabs": true,
         "ignored_packages":
         [
         ],
+        "indent_guide_options":
+        [
+            "draw_normal",
+            "draw_active"
+        ],
+        "open_files_in_new_window": false,
         "pep8": true,
         "pep8_ignore":
         [
@@ -74,21 +84,24 @@ Settings
             "E501"
         ],
         "pep8_max_line_length": 100,
-        "pyflakes_ignore": [],
+        "pyflakes_ignore":
+        [
+        ],
         "rulers":
         [
             80,
             99
         ],
         "scroll_past_end": true,
+        "show_minimap": false,
         "spell_check": true,
         "tab_size": 4,
         "theme": "Soda Dark.sublime-theme",
         "translate_tabs_to_spaces": true,
+        "tree_animation_enabled": false,
         "trim_trailing_white_space_on_save": true,
         "vintage_start_in_command_mode": true,
-        "word_wrap": false,
-        "show_minimap": false
+        "word_wrap": false
     }
 
 
