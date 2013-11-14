@@ -12,7 +12,7 @@ detail I will link you to the relevant documentation (for now).
 
 
 hstore
-------
+~~~~~~
 
 Create a column which can store key value data in it. This can then be queried
 by keys and values. As a data type this maps well to a Python dictionary.
@@ -39,7 +39,7 @@ Quick example - insert data, select one key and filter by one key.
 
 
 PL/Python
----------
+~~~~~~~~~
 
 Use Python on the database. This allows you to reuse code, do faster python
 (as there is no round trip) and add database constraints with Python.
@@ -64,7 +64,7 @@ How to many a simple max function that given two numbers returns the biggest.
 
 
 Foreign Data Wrappers
----------------------
+~~~~~~~~~~~~~~~~~~~~~
 
 Access data in other databases from Postgres. There are a large number of
 wrappers that allow you to query databases like Redis or MongoDB. This is
@@ -77,7 +77,7 @@ data from one database to Postgres.
 
 
 Psycopg2 and Async
-------------------
+~~~~~~~~~~~~~~~~~~
 
 The Python psycopg2 driver supports async. This allows you to make queries and
 rather than wait for the result you can continue doing something while you wait.
@@ -102,7 +102,7 @@ Quick async example on an intentionally slow query.
 
 
 Table Inheritance
------------------
+~~~~~~~~~~~~~~~~~
 
 Rather than implementing 1-2-1 relationships between tables to fake inheritance
 you can actually extend tables via inheritance.
@@ -121,7 +121,7 @@ definition.
 
 
 Transaction Savepoints
-----------------------
+~~~~~~~~~~~~~~~~~~~~~~
 
 In a database transaction you can create savepoints and roll back a transaction
 to that point (rather than all or nothing.)
@@ -136,7 +136,7 @@ Nice example, borrowed from the docs.
     SAVEPOINT my_savepoint;
     UPDATE accounts SET balance = balance + 100.00
         WHERE name = 'Bob';
-    -- oops ... forget that and use Wally's account
+    ~~ oops ... forget that and use Wally's account
     ROLLBACK TO my_savepoint;
     UPDATE accounts SET balance = balance + 100.00
         WHERE name = 'Wally';
