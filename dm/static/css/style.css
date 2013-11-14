@@ -165,6 +165,14 @@ img.dougalmatthews{
   padding: 1em;
 }
 
+.highlight {
+  margin-bottom: 1em;
+}
+
+ul.simple {
+  margin-bottom: 1em;
+}
+
 
 @media (max-width: 767px) {
   body {
