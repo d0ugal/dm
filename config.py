@@ -31,7 +31,7 @@ PAGE_SAVE_AS = '{slug}/index.html'
 AUTHOR_URL = 'author/{slug}/'
 AUTHOR_SAVE_AS = 'author/{slug}/index.html'
 
-TAG_URL = 'tag/{slug}.html'
+TAG_URL = 'tag/{slug}/'
 TAG_SAVE_AS = 'tag/{slug}/index.html'
 
 NOTES_SAVE_AS = 'notes/index.html'
