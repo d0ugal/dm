@@ -22,6 +22,18 @@ slowly getting into running and cycling.
 
 .. _see the route I travelled: http://maps.google.com/maps/ms?ie=UTF&msa=0&msid=112831935826286115979.00046b2150dcab0c34abf
 
+
+Curriculum vitae
+~~~~~~~~~~~~~~~~
+
+Thanks for showing an interest in my CV. If you have any questions or
+need a different format, please `get in touch`_. Otherwise, just `download
+the pdf copy`_.
+
+.. _get in touch: dougal@dougalmatthews.com
+.. _download the pdf copy: /theme/dougalmatthews.pdf
+
+
 Conferences and User Groups
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

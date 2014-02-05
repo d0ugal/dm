@@ -3,8 +3,9 @@ Work
 :date: 2013-07-28 16:51
 :author: Dougal Matthews
 
-I currently work as a Python developer specialising in back-end systems
-and services.
+I am current a senior developer at Red Hat working on OpenStack and more
+specifically working on OpenStack Management. We are working to make it
+easier to manage, deploy and monitor your OpenStack deployment.
 
 From 2012 to 2013 I worked for `Artirix`_ Ltd as a Senior Developer. I
 specialised in working with data and search to help meet our customer
