@@ -71,6 +71,11 @@ def admin():
 
 @app.route('/admin/', methods=['POST', ])
 def admin_post():
+
+    if sentry:
+        vals = dict(request.form)
+        sentry.captureMessage("Admin login attempt")
+        sentry.captureMessage("Login values", **vals)
     return render_template('flask/admin_post.html')
 
 
