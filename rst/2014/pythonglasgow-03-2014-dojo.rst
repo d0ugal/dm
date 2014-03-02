@@ -6,8 +6,8 @@ Python Glasgow March Dojo
 :date: 2014-03-02 11:57
 :author: Dougal Matthews
 
-We are hosting another `code Dojo`! If you want a ticket, they are free, so
-`quickly grab one` before they are all gone.
+We are hosting another `code Dojo`_! If you want a ticket, they are free, so
+`quickly grab one`_ before they are all gone.
 
 Python Glasgow is user group for Pythonistas in (surprisingly) Glasgow,
 Scotland. The group is just over a year old now. We try to host a number of
