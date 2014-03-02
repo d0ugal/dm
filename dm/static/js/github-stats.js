@@ -172,5 +172,17 @@ $(function(){
   //   var events = result.data;
   // });
 
+  $.getJSON("http://stackalytics.com/api/1.0/contribution?user_id=dougal&callback=?", function(result){
+
+    var commits = result.contribution.commit_count;
+    var rs = result.contribution.marks
+    var reviews = rs['-2'] + rs['-1'] + rs['0'] + rs['1'] + rs['2'];
+
+    page_updater({
+      '.openstack-commits': commits,
+      '.openstack-reviews': reviews
+    });
+
+  });
 
 });
