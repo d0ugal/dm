@@ -1,6 +1,5 @@
 body {
   font-size: 18px;
-  font-family: 'Palatino';
   text-align: justify;
 }
 
@@ -171,6 +170,10 @@ img.dougalmatthews{
 
 ul.simple {
   margin-bottom: 1em;
+}
+
+#content p.topic-title.first {
+  font-weight: bold;
 }
 
 
