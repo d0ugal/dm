@@ -3,28 +3,28 @@ Work
 :date: 2013-07-28 16:51
 :author: Dougal Matthews
 
-I am current a senior developer at Red Hat working on OpenStack and more
-specifically working on OpenStack Management. We are working to make it
-easier to manage, deploy and monitor your OpenStack deployment.
+I currently work on `OpenStack`_ full time as a senior developer for `Red Hat`_,
+with the specific goal of making OpenStack easier to deploy and manage. To do
+this I primarily work on `TripleO`_ and `Tuskar`_ related projects. You can
+see more of my specific contributions `on Stackalytics`_
 
-From 2012 to 2013 I worked for `Artirix`_ Ltd as a Senior Developer. I
-specialised in working with data and search to help meet our customer
-needs. We offered a hosted search platform and more bespoke custom
-solutions for clients too. My work was 100% Python, building backend
-systems and services.
+Before joining Red Hat, I had worked in the industry for around seven years.
+The large majority of this was working for myself as a freelance developer and
+contractor. During this time my company specialised in Python and Django
+development.
 
-Since early 2006 I worked as consultant and developer. Largely
-specialising in Python development. I've worked in both small companies
-with only a handful of staff to large enterprise environments. The work
-was very varied, interesting and exposed me to a large variety of
-industries and development practices.
 
 Got any questions?
 ~~~~~~~~~~~~~~~~~~
 
-Email is probably best, get me directly on dougal@dougalmatthews.com or
-reach out to me on `Twitter`_. If Skype is your kinda thing, then my
-username is dougal.matthews.
+Email is probably best, get me directly on dougal@dougalmatthews.com, ping me
+on freenode (I'm d0ugal) or reach out to me on `Twitter`_. If Skype is your
+kinda thing, then my username is dougal.matthews.
 
-.. _Artirix: http://artirix.com
+
+.. _on Stackalytics: http://stackalytics.com/?release=icehouse&metric=commits&project_type=openstack&module=&company=&user_id=dougal
+.. _OpenStack: http://www.openstack.org
+.. _Red Hat: http://www.redhat.com
+.. _TripleO: https://wiki.openstack.org/wiki/TripleO
+.. _Tuskar: https://wiki.openstack.org/wiki/TripleO/Tuskar
 .. _Twitter: http://twitter.com/d0ugal
