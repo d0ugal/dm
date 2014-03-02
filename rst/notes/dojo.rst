@@ -7,7 +7,7 @@ Running a Code Dojo
 :tags: python, usergroup, dojo, pythonglasgow
 :url: /notes/running-a-code-dojo/
 :save_as: notes/running-a-code-dojo/index.html
-:short_summary: How we, Python Glasgow run Dojos!
+:short_summary: How we, Python Glasgow, run Code Dojos!
 
 At `Python Glasgow`_ we organise Python Coding Dojos. The format we follow is
 based on the `London Python Dojo`_. This document is an attempt to outline

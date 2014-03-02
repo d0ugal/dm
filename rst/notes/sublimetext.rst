@@ -61,10 +61,11 @@ Settings
             "*.egg",
             "*.egg-info",
             "__pycache__",
-            ".vagrant"
+            ".vagrant",
+            ".venv",
+            ".testrepository"
         ],
-        "font_face": "SourceCodePro-Regular",
-        "font_size": 12,
+        "font_size": 9,
         "highlight_line": true,
         "highlight_modified_tabs": true,
         "ignored_packages":
@@ -79,17 +80,14 @@ Settings
         "pep8": true,
         "pep8_ignore":
         [
-            "E124",
-            "E128",
-            "E501"
         ],
-        "pep8_max_line_length": 100,
+        "pep8_max_line_length": 79,
         "pyflakes_ignore":
         [
         ],
         "rulers":
         [
-            80,
+            79,
             99
         ],
         "scroll_past_end": true,
