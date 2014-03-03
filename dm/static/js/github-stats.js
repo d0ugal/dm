@@ -177,8 +177,10 @@ $(function(){
     var commits = result.contribution.commit_count;
     var rs = result.contribution.marks
     var reviews = rs['-2'] + rs['-1'] + rs['0'] + rs['1'] + rs['2'];
+    var loc_count = result.contribution.loc;
 
     page_updater({
+      '.openstack-loc': loc_count,
       '.openstack-commits': commits,
       '.openstack-reviews': reviews
     });
