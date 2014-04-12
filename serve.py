@@ -9,10 +9,12 @@ file_dir = path.dirname(__file__)
 
 
 def create_app():
-    return Flask("serve", template_folder='dm/templates')
+    return Flask("serve",
+                 template_folder='dm/templates', static_folder='output/static')
 
 app = create_app()
 app.config.from_object('flask_config')
+
 
 try:
     sentry = Sentry(app, dsn=environ['SENTRY_DSN'])
@@ -92,7 +94,7 @@ def pretty_static(filename):
 
     # Remove the .html
     if filename.endswith("/index.html"):
-        pretty_path, _ = filename.rsplit("/")
+        pretty_path, _ = filename.rsplit("/", 1)
         return r301("/%s/" % pretty_path)
     # Serve root
     elif filename == "index.html":
@@ -104,7 +106,9 @@ def pretty_static(filename):
     elif '.' not in filename and not filename.endswith("/"):
         return r301("/%s/" % filename)
     elif '.' not in filename:
-        sentry.captureMessage("Don't know how to serve file %s" % filename)
+        message = "Don't know how to serve file %s" % filename
+        print message
+        sentry.captureMessage(message)
 
     folder = "{file_dir}/output/".format(file_dir=file_dir)
 

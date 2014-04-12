@@ -172,6 +172,12 @@ ul.simple {
   font-weight: bold;
 }
 
+.entry-content img {
+  padding: 1em 0.5em 1em 0.5em;
+  margin: 1em 0em 1em 0em;
+  border: 1px solid #ddd;
+}
+
 
 @media (max-width: 767px) {
   body {
