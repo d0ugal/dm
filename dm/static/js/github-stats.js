@@ -168,11 +168,7 @@ $(function(){
 
   });
 
-  // $.getJSON("https://api.github.com/users/d0ugal/events?callback=?", function(result){
-  //   var events = result.data;
-  // });
-
-  $.getJSON("http://stackalytics.com/api/1.0/contribution?user_id=dougal&callback=?", function(result){
+  $.getJSON("http://stackalytics.com/api/1.0/contribution?user_id=dougal&release=all&callback=?", function(result){
 
     var commits = result.contribution.commit_count;
     var rs = result.contribution.marks
