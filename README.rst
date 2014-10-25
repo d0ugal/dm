@@ -1,4 +1,6 @@
 Dougal Matthews (.com)
 ----------------------
 
-This is the code and content for my website. www.dougalmatthews.com.
+The code and content, hacked together for my website.
+
+www.dougalmatthews.com
