@@ -22,7 +22,7 @@ on freenode (I'm d0ugal) or reach out to me on `Twitter`_. If Skype is your
 kinda thing, then my username is dougal.matthews.
 
 
-.. _on Stackalytics: http://stackalytics.com/?release=icehouse&metric=commits&project_type=openstack&module=&company=&user_id=dougal
+.. _on Stackalytics: http://stackalytics.com/?user_id=d0ugal
 .. _OpenStack: http://www.openstack.org
 .. _Red Hat: http://www.redhat.com
 .. _TripleO: https://wiki.openstack.org/wiki/TripleO
