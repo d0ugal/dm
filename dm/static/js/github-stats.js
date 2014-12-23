@@ -93,7 +93,7 @@ $(function(){
 
   })();
 
-  var page_updater = function(mapping){
+  var update_page = function(mapping){
 
     $.each(mapping, function(path, value){
 
@@ -103,35 +103,24 @@ $(function(){
 
   };
 
-  var rate_limit_check = function(meta){
-
-    if (meta['X-RateLimit-Remaining'] <= 0){
-
-      $('.stats-list').hide();
-      $('.rate-limit').show();
-      return true;
-
-    }
-
-    return false;
-
-  }
-
   $('.stats-list').show();
 
-  $.getJSON("https://api.github.com/users/d0ugal/repos?per_page=100&callback=?", function (result) {
+  $.when(
+      $.ajax("https://api.github.com/users/d0ugal/repos?per_page=100"),
+      $.ajax("https://api.github.com/users/d0ugal-archive/repos?per_page=100")
+  ).done(function (user, archive) {
 
-    if (rate_limit_check(result.meta)){
-      return;
-    }
+    user = user[0];
+    archive = archive[0];
 
-    var repos = result.data;
-
-    $.each(repos, function (i, repo) {
+    $.each(user, function (i, repo) {
+      repo_manager.add(repo);
+    });
+    $.each(archive, function (i, repo) {
       repo_manager.add(repo);
     });
 
-    page_updater({
+    update_page({
       '.forked-count': repo_manager.forked_repos.length,
       '.source-count': repo_manager.source_repos.length,
       '.watchers-count': repo_manager.total_watchers,
@@ -140,29 +129,25 @@ $(function(){
 
   });
 
-  $.getJSON("https://api.github.com/users/d0ugal?callback=?", function (result) {
+  $.when(
+      $.ajax("https://api.github.com/users/d0ugal"),
+      $.ajax("https://api.github.com/users/d0ugal-archive")
+  ).done(function (user, archive) {
 
-    if (rate_limit_check(result.meta)){
-      return;
-    }
+    user = user[0];
+    archive = archive[0];
 
-    var user = result.data;
-
-    page_updater({
-      '.repo-count': user.public_repos
+    update_page({
+      '.repo-count': user.public_repos + archive.public_repos
     });
 
   });
 
-  $.getJSON("https://api.github.com/users/d0ugal/orgs?callback=?", function(result){
+  $.when(
+    $.ajax("https://api.github.com/users/d0ugal/orgs")
+  ).done(function(orgs){
 
-    if (rate_limit_check(result.meta)){
-      return;
-    }
-
-    var orgs = result.data;
-
-    page_updater({
+    update_page({
       '.org-count': orgs.length
     });
 
@@ -171,11 +156,11 @@ $(function(){
   $.getJSON("http://stackalytics.com/api/1.0/contribution?user_id=d0ugal&release=all&callback=?", function(result){
 
     var commits = result.contribution.commit_count;
-    var rs = result.contribution.marks
+    var rs = result.contribution.marks;
     var reviews = rs['-2'] + rs['-1'] + rs['0'] + rs['1'] + rs['2'];
     var loc_count = result.contribution.loc;
 
-    page_updater({
+    update_page({
       '.openstack-loc': loc_count,
       '.openstack-commits': commits,
       '.openstack-reviews': reviews

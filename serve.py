@@ -1,6 +1,7 @@
 from os import environ, path
 
-from flask import (Flask, render_template, send_from_directory, redirect, request)
+from flask import (Flask, render_template, send_from_directory, redirect,
+                   request)
 
 from raven.contrib.flask import Sentry
 import yaml
