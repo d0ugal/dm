@@ -7,12 +7,12 @@ gunicorn==19.1.1
 itsdangerous==0.24
 Jinja2==2.7.3
 MarkupSafe==0.23
-pelican==3.4.0
-Pygments==1.6
-pytz==2014.7
+pelican==3.5.0
+Pygments==2.0.1
+pytz==2014.10
 PyYAML==3.11
 raven==5.1.1
 six==1.8.0
-Unidecode==0.04.16
+Unidecode==0.04.17
 Werkzeug==0.9.6
 wsgiref==0.1.2
