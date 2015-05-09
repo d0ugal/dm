@@ -4,4 +4,4 @@
 
 git push origin master;
 ghp-import output;
-git push origin ghp-import;
+git push origin gh-pages;
