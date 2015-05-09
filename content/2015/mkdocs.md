@@ -1,5 +1,5 @@
 title: MkDocs - Docs with Markdown
-category: mkdocs
+category: python
 tags: python, mkdocs, documentation
 date: 2015-05-09 13:17
 author: Dougal Matthews
@@ -43,3 +43,4 @@ coming in MkDocs. Both from a technical and users point of view.
 [change the theme]: http://www.mkdocs.org/user-guide/styling-your-docs/
 [custom theme]: http://www.mkdocs.org/user-guide/styling-your-docs/#custom-themes
 [navigation configuration]: http://www.mkdocs.org/user-guide/styling-your-docs/#custom-themes
+[page titles]: /user-guide/writing-your-docs/#configure-pages-and-navigation
