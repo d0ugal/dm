@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Dougal Matthews</title><link>http://dougalmatthews.com/</link><description></description><atom:link href="http://dougalmatthews.com/feeds/notes.rss.xml" rel="self"></atom:link><lastBuildDate>Sun, 02 Mar 2014 10:09:00 +0000</lastBuildDate><item><title>Running a Code Dojo</title><link>http://dougalmatthews.com//notes/running-a-code-dojo/</link><description>&lt;p&gt;At &lt;a class="reference external" href="http://www.pythonglasgow.org/"&gt;Python Glasgow&lt;/a&gt; we organise Python Coding Dojos. The format we follow is
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Dougal Matthews</title><link>http://www.dougalmatthews.com/</link><description></description><atom:link href="http://www.dougalmatthews.com/feeds/notes.rss.xml" rel="self"></atom:link><lastBuildDate>Sun, 02 Mar 2014 10:09:00 +0000</lastBuildDate><item><title>Running a Code Dojo</title><link>http://www.dougalmatthews.com//notes/running-a-code-dojo/</link><description>&lt;p&gt;At &lt;a class="reference external" href="http://www.pythonglasgow.org/"&gt;Python Glasgow&lt;/a&gt; we organise Python Coding Dojos. The format we follow is
 based on the &lt;a class="reference external" href="https://twitter.com/ldnpydojo"&gt;London Python Dojo&lt;/a&gt;. This document is an attempt to outline
 that process so we can follow it each time and evolve it as required.&lt;/p&gt;
 &lt;div class="contents topic" id="contents"&gt;
@@ -111,7 +111,7 @@ familiar with the data.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Dougal Matthews</dc:creator><pubDate>Sun, 02 Mar 2014 10:09:00 +0000</pubDate><guid>tag:dougalmatthews.com,2014-03-02:notes/running-a-code-dojo/</guid><category>python</category><category>usergroup</category><category>dojo</category><category>pythonglasgow</category></item><item><title>PostgreSQL, The cool stuff.</title><link>http://dougalmatthews.com//notes/postgres-the-cool-stuff/</link><description>&lt;p&gt;A collection of my favourite Postgres features. Rather than going into much
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Dougal Matthews</dc:creator><pubDate>Sun, 02 Mar 2014 10:09:00 +0000</pubDate><guid>tag:www.dougalmatthews.com,2014-03-02:notes/running-a-code-dojo/</guid><category>python</category><category>usergroup</category><category>dojo</category><category>pythonglasgow</category></item><item><title>PostgreSQL, The cool stuff.</title><link>http://www.dougalmatthews.com//notes/postgres-the-cool-stuff/</link><description>&lt;p&gt;A collection of my favourite Postgres features. Rather than going into much
 detail I will link you to the relevant documentation (for now).&lt;/p&gt;
 &lt;div class="section" id="hstore"&gt;
 &lt;h2&gt;hstore&lt;/h2&gt;
@@ -224,7 +224,7 @@ to that point (rather than all or nothing.)&lt;/p&gt;
 &lt;li&gt;&lt;a class="reference external" href="http://www.postgresql.org/docs/9.3/static/tutorial-transactions.html"&gt;http://www.postgresql.org/docs/9.3/static/tutorial-transactions.html&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Dougal Matthews</dc:creator><pubDate>Sat, 09 Nov 2013 18:23:00 +0000</pubDate><guid>tag:dougalmatthews.com,2013-11-09:notes/postgres-the-cool-stuff/</guid></item><item><title>SublimeText</title><link>http://dougalmatthews.com//notes/sublimetext/</link><description>&lt;div class="section" id="version"&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Dougal Matthews</dc:creator><pubDate>Sat, 09 Nov 2013 18:23:00 +0000</pubDate><guid>tag:www.dougalmatthews.com,2013-11-09:notes/postgres-the-cool-stuff/</guid></item><item><title>SublimeText</title><link>http://www.dougalmatthews.com//notes/sublimetext/</link><description>&lt;div class="section" id="version"&gt;
 &lt;h2&gt;Version&lt;/h2&gt;
 &lt;p&gt;Use SublimeText 3. It's much faster. Some plugins wont work, others you
 will need to manually install Python 3 branches and some are already
@@ -333,4 +333,4 @@ I wanted. The pain is worth it.&lt;/p&gt;
 &lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Dougal Matthews</dc:creator><pubDate>Sun, 04 Aug 2013 21:56:00 +0100</pubDate><guid>tag:dougalmatthews.com,2013-08-04:notes/sublimetext/</guid></item></channel></rss>
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Dougal Matthews</dc:creator><pubDate>Sun, 04 Aug 2013 21:56:00 +0100</pubDate><guid>tag:www.dougalmatthews.com,2013-08-04:notes/sublimetext/</guid></item></channel></rss>

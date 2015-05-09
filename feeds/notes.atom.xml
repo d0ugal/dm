@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews</title><link href="http://dougalmatthews.com/" rel="alternate"></link><link href="http://dougalmatthews.com/feeds/notes.atom.xml" rel="self"></link><id>http://dougalmatthews.com/</id><updated>2014-03-02T10:09:00+00:00</updated><entry><title>Running a Code Dojo</title><link href="http://dougalmatthews.com//notes/running-a-code-dojo/" rel="alternate"></link><updated>2014-03-02T10:09:00+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:dougalmatthews.com,2014-03-02:notes/running-a-code-dojo/</id><summary type="html">&lt;p&gt;At &lt;a class="reference external" href="http://www.pythonglasgow.org/"&gt;Python Glasgow&lt;/a&gt; we organise Python Coding Dojos. The format we follow is
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/notes.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2014-03-02T10:09:00+00:00</updated><entry><title>Running a Code Dojo</title><link href="http://www.dougalmatthews.com//notes/running-a-code-dojo/" rel="alternate"></link><updated>2014-03-02T10:09:00+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2014-03-02:notes/running-a-code-dojo/</id><summary type="html">&lt;p&gt;At &lt;a class="reference external" href="http://www.pythonglasgow.org/"&gt;Python Glasgow&lt;/a&gt; we organise Python Coding Dojos. The format we follow is
 based on the &lt;a class="reference external" href="https://twitter.com/ldnpydojo"&gt;London Python Dojo&lt;/a&gt;. This document is an attempt to outline
 that process so we can follow it each time and evolve it as required.&lt;/p&gt;
 &lt;div class="contents topic" id="contents"&gt;
@@ -111,7 +111,7 @@ familiar with the data.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</summary><category term="python"></category><category term="usergroup"></category><category term="dojo"></category><category term="pythonglasgow"></category></entry><entry><title>PostgreSQL, The cool stuff.</title><link href="http://dougalmatthews.com//notes/postgres-the-cool-stuff/" rel="alternate"></link><updated>2013-11-09T18:23:00+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:dougalmatthews.com,2013-11-09:notes/postgres-the-cool-stuff/</id><summary type="html">&lt;p&gt;A collection of my favourite Postgres features. Rather than going into much
+</summary><category term="python"></category><category term="usergroup"></category><category term="dojo"></category><category term="pythonglasgow"></category></entry><entry><title>PostgreSQL, The cool stuff.</title><link href="http://www.dougalmatthews.com//notes/postgres-the-cool-stuff/" rel="alternate"></link><updated>2013-11-09T18:23:00+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2013-11-09:notes/postgres-the-cool-stuff/</id><summary type="html">&lt;p&gt;A collection of my favourite Postgres features. Rather than going into much
 detail I will link you to the relevant documentation (for now).&lt;/p&gt;
 &lt;div class="section" id="hstore"&gt;
 &lt;h2&gt;hstore&lt;/h2&gt;
@@ -224,7 +224,7 @@ to that point (rather than all or nothing.)&lt;/p&gt;
 &lt;li&gt;&lt;a class="reference external" href="http://www.postgresql.org/docs/9.3/static/tutorial-transactions.html"&gt;http://www.postgresql.org/docs/9.3/static/tutorial-transactions.html&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-</summary></entry><entry><title>SublimeText</title><link href="http://dougalmatthews.com//notes/sublimetext/" rel="alternate"></link><updated>2013-08-04T21:56:00+01:00</updated><author><name>Dougal Matthews</name></author><id>tag:dougalmatthews.com,2013-08-04:notes/sublimetext/</id><summary type="html">&lt;div class="section" id="version"&gt;
+</summary></entry><entry><title>SublimeText</title><link href="http://www.dougalmatthews.com//notes/sublimetext/" rel="alternate"></link><updated>2013-08-04T21:56:00+01:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2013-08-04:notes/sublimetext/</id><summary type="html">&lt;div class="section" id="version"&gt;
 &lt;h2&gt;Version&lt;/h2&gt;
 &lt;p&gt;Use SublimeText 3. It's much faster. Some plugins wont work, others you
 will need to manually install Python 3 branches and some are already

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Dougal Matthews</title><link>http://dougalmatthews.com/</link><description></description><atom:link href="http://dougalmatthews.com/feeds/mysql.rss.xml" rel="self"></atom:link><lastBuildDate>Wed, 03 Sep 2008 19:25:00 +0100</lastBuildDate><item><title>Changing default storage engine in MySQL</title><link>http://dougalmatthews.com/2008/Sep/03/changing-default-storage-engine-in-mysql/</link><description>&lt;p&gt;It took me a while to find the answer to this, so I thought I'd share it to
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Dougal Matthews</title><link>http://www.dougalmatthews.com/</link><description></description><atom:link href="http://www.dougalmatthews.com/feeds/mysql.rss.xml" rel="self"></atom:link><lastBuildDate>Wed, 03 Sep 2008 19:25:00 +0100</lastBuildDate><item><title>Changing default storage engine in MySQL</title><link>http://www.dougalmatthews.com/2008/Sep/03/changing-default-storage-engine-in-mysql/</link><description>&lt;p&gt;It took me a while to find the answer to this, so I thought I'd share it to
 avoid anybody else wasting time with this. I needed to change the default
 storage engine so Django would use innoDB rather than MyISAM. Otherwise, it
 seemed to take the default.&lt;/p&gt;
@@ -16,4 +16,4 @@ default-storage-engine = innodb
 &lt;p&gt;It's pretty easy when you know how, and you'll now had transactional tables by
 default.&lt;/p&gt;
 &lt;p&gt;Alterantivaley though, you could use a &lt;a class="reference external" href="http://www.postgresql.org/"&gt;much better database&lt;/a&gt;.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Dougal Matthews</dc:creator><pubDate>Wed, 03 Sep 2008 19:25:00 +0100</pubDate><guid>tag:dougalmatthews.com,2008-09-03:2008/Sep/03/changing-default-storage-engine-in-mysql/</guid><category>centos</category><category>django</category><category>innodb</category><category>mysql</category></item></channel></rss>
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Dougal Matthews</dc:creator><pubDate>Wed, 03 Sep 2008 19:25:00 +0100</pubDate><guid>tag:www.dougalmatthews.com,2008-09-03:2008/Sep/03/changing-default-storage-engine-in-mysql/</guid><category>centos</category><category>django</category><category>innodb</category><category>mysql</category></item></channel></rss>

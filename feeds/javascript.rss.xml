@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Dougal Matthews</title><link>http://dougalmatthews.com/</link><description></description><atom:link href="http://dougalmatthews.com/feeds/javascript.rss.xml" rel="self"></atom:link><lastBuildDate>Fri, 08 Jan 2010 19:25:00 +0000</lastBuildDate><item><title>Fun with Balls</title><link>http://dougalmatthews.com/2010/Jan/08/fun-with-balls/</link><description>&lt;p&gt;As a simple for-fun ritual when I learn a new language I like to create
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Dougal Matthews</title><link>http://www.dougalmatthews.com/</link><description></description><atom:link href="http://www.dougalmatthews.com/feeds/javascript.rss.xml" rel="self"></atom:link><lastBuildDate>Fri, 08 Jan 2010 19:25:00 +0000</lastBuildDate><item><title>Fun with Balls</title><link>http://www.dougalmatthews.com/2010/Jan/08/fun-with-balls/</link><description>&lt;p&gt;As a simple for-fun ritual when I learn a new language I like to create
 a simple very basic application that has some 2D balls (spheres if you
 prefer) bouncing on the screen and then I would mess with settings and
 effects, fairly basic stuff. It's not really all that exciting but its
@@ -51,7 +51,7 @@ learn! Given the task now I would use jQuery and might consider using some
 HTML5 or CSS3 features. That actually sounds quite fun - I sense a
 mini project coming up.&lt;/p&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Dougal Matthews</dc:creator><pubDate>Fri, 08 Jan 2010 19:25:00 +0000</pubDate><guid>tag:dougalmatthews.com,2010-01-08:2010/Jan/08/fun-with-balls/</guid><category>balls</category><category>canvas</category></item><item><title>JavaScript - Detecting Caps lock</title><link>http://dougalmatthews.com/2008/Jul/02/javascript-detecting-caps-lock/</link><description>&lt;p&gt;I wanted to see if you could detect caps lock in JavaScript. Why? As a small
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Dougal Matthews</dc:creator><pubDate>Fri, 08 Jan 2010 19:25:00 +0000</pubDate><guid>tag:www.dougalmatthews.com,2010-01-08:2010/Jan/08/fun-with-balls/</guid><category>balls</category><category>canvas</category></item><item><title>JavaScript - Detecting Caps lock</title><link>http://www.dougalmatthews.com/2008/Jul/02/javascript-detecting-caps-lock/</link><description>&lt;p&gt;I wanted to see if you could detect caps lock in JavaScript. Why? As a small
 usability touch, basically alerting users that caps lock is enabled when they
 are entering passwords for example. I’ve wrapped up the logic in a simple
 function that can help you detect caps lock on a key press.&lt;/p&gt;
@@ -86,4 +86,4 @@ function that can help you detect caps lock on a key press.&lt;/p&gt;
 
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Dougal Matthews</dc:creator><pubDate>Wed, 02 Jul 2008 19:25:00 +0100</pubDate><guid>tag:dougalmatthews.com,2008-07-02:2008/Jul/02/javascript-detecting-caps-lock/</guid><category>vagrant</category><category>chef</category><category>python</category><category>django</category><category>ruby</category><category>osx</category></item></channel></rss>
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Dougal Matthews</dc:creator><pubDate>Wed, 02 Jul 2008 19:25:00 +0100</pubDate><guid>tag:www.dougalmatthews.com,2008-07-02:2008/Jul/02/javascript-detecting-caps-lock/</guid><category>vagrant</category><category>chef</category><category>python</category><category>django</category><category>ruby</category><category>osx</category></item></channel></rss>
