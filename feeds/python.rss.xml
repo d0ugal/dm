@@ -1,5 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Dougal Matthews</title><link>http://www.dougalmatthews.com/</link><description></description><atom:link href="http://www.dougalmatthews.com/feeds/python.rss.xml" rel="self"></atom:link><lastBuildDate>Sun, 02 Mar 2014 11:57:00 +0000</lastBuildDate><item><title>Python Glasgow March Dojo</title><link>http://www.dougalmatthews.com/2014/Mar/02/python-glasgow-march-dojo/</link><description>&lt;p&gt;We are hosting another &lt;a class="reference external" href="http://dougalmatthews.com/notes/running-a-code-dojo/"&gt;code Dojo&lt;/a&gt;! If you want a ticket, they are free, so
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Dougal Matthews</title><link>http://www.dougalmatthews.com/</link><description></description><atom:link href="http://www.dougalmatthews.com/feeds/python.rss.xml" rel="self"></atom:link><lastBuildDate>Sat, 09 May 2015 13:17:00 +0100</lastBuildDate><item><title>MkDocs - Docs with Markdown</title><link>http://www.dougalmatthews.com/2015/May/09/mkdocs-docs-with-markdown/</link><description>&lt;p&gt;&lt;a href="http://www.mkdocs.org"&gt;MkDocs&lt;/a&gt; is an open source Python tool for lowering the barrier to writing
+documentation. The goal is relatively simple and focused, we want to make it
+easier to write &lt;a href="http://ericholscher.com/blog/2014/feb/27/how-i-judge-documentation-quality/"&gt;high quality&lt;/a&gt; prose based documentation.&lt;/p&gt;
+&lt;p&gt;Originally started by Tom Christie, I took over maintenance and development
+about 6 months ago. Since then there has been a number of interesting changes,
+I want to start writing about these, but first this post will introduce the
+project for those unfamiliar with it.&lt;/p&gt;
+&lt;h2&gt;Quick start&lt;/h2&gt;
+&lt;p&gt;The &lt;a href="http://www.mkdocs.org"&gt;MkDocs documentation&lt;/a&gt; takes you through the process of getting
+started in detail. This is the super quick version.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Start a new project with &lt;code&gt;mkdocs new my_project&lt;/code&gt;. This will create a new
+   directory called my_project or add a mkdocs config to an existing
+   directory. It will also create a index.md file within a docs dir.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Move into the directory you provided above and run &lt;code&gt;mkdocs serve&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Now open up the index.md file and start editing, when you save, the browser
+   should automatically refresh and show the new changes.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;What next?&lt;/h2&gt;
+&lt;p&gt;You can &lt;a href="http://www.mkdocs.org/user-guide/styling-your-docs/"&gt;change the theme&lt;/a&gt;, create a &lt;a href="http://www.mkdocs.org/user-guide/styling-your-docs/#custom-themes"&gt;custom theme&lt;/a&gt;, tweak the &lt;a href="http://www.mkdocs.org/user-guide/styling-your-docs/#custom-themes"&gt;navigation
+configuration&lt;/a&gt; and &lt;a href="/user-guide/writing-your-docs/#configure-pages-and-navigation"&gt;page titles&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I plan to follow up this post and share some of the changes and improvements
+coming in MkDocs. Both from a technical and users point of view.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Dougal Matthews</dc:creator><pubDate>Sat, 09 May 2015 13:17:00 +0100</pubDate><guid>tag:www.dougalmatthews.com,2015-05-09:2015/May/09/mkdocs-docs-with-markdown/</guid><category>python</category><category>mkdocs</category><category>documentation</category></item><item><title>Python Glasgow March Dojo</title><link>http://www.dougalmatthews.com/2014/Mar/02/python-glasgow-march-dojo/</link><description>&lt;p&gt;We are hosting another &lt;a class="reference external" href="http://dougalmatthews.com/notes/running-a-code-dojo/"&gt;code Dojo&lt;/a&gt;! If you want a ticket, they are free, so
 &lt;a class="reference external" href="http://pythonglasgow-dojo-03-2014.eventbrite.co.uk/"&gt;quickly grab one&lt;/a&gt; before they are all gone.&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference external" href="http://www.pythonglasgow.org/"&gt;Python Glasgow&lt;/a&gt; is user group for Pythonistas in (surprisingly) Glasgow,
 Scotland. The group is just over a year old now. We try to host a number of

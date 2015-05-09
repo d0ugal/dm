@@ -25,7 +25,7 @@ started in detail. This is the super quick version.&lt;/p&gt;
 &lt;/ol&gt;
 &lt;h2&gt;What next?&lt;/h2&gt;
 &lt;p&gt;You can &lt;a href="http://www.mkdocs.org/user-guide/styling-your-docs/"&gt;change the theme&lt;/a&gt;, create a &lt;a href="http://www.mkdocs.org/user-guide/styling-your-docs/#custom-themes"&gt;custom theme&lt;/a&gt;, tweak the &lt;a href="http://www.mkdocs.org/user-guide/styling-your-docs/#custom-themes"&gt;navigation
-configuration&lt;/a&gt; and [page titles].&lt;/p&gt;
+configuration&lt;/a&gt; and &lt;a href="/user-guide/writing-your-docs/#configure-pages-and-navigation"&gt;page titles&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;I plan to follow up this post and share some of the changes and improvements
 coming in MkDocs. Both from a technical and users point of view.&lt;/p&gt;</summary><category term="python"></category><category term="mkdocs"></category><category term="documentation"></category></entry><entry><title>Python Glasgow March Dojo</title><link href="http://www.dougalmatthews.com/2014/Mar/02/python-glasgow-march-dojo/" rel="alternate"></link><updated>2014-03-02T11:57:00+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2014-03-02:2014/Mar/02/python-glasgow-march-dojo/</id><summary type="html">&lt;p&gt;We are hosting another &lt;a class="reference external" href="http://dougalmatthews.com/notes/running-a-code-dojo/"&gt;code Dojo&lt;/a&gt;! If you want a ticket, they are free, so
 &lt;a class="reference external" href="http://pythonglasgow-dojo-03-2014.eventbrite.co.uk/"&gt;quickly grab one&lt;/a&gt; before they are all gone.&lt;/p&gt;
