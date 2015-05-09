@@ -4,3 +4,5 @@ gunicorn==19.1.1
 pelican==3.5.0
 PyYAML==3.11
 raven==5.1.1
+Markdown==2.6.2
+ghp-import==0.3.1
