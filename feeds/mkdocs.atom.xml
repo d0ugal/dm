@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews</title><link href="http://dougalmatthews.com/" rel="alternate"></link><link href="http://dougalmatthews.com/feeds/mkdocs.atom.xml" rel="self"></link><id>http://dougalmatthews.com/</id><updated>2015-05-09T13:17:00+01:00</updated><entry><title>MkDocs - Docs with Markdown</title><link href="http://dougalmatthews.com/2015/May/09/mkdocs-docs-with-markdown/" rel="alternate"></link><updated>2015-05-09T13:17:00+01:00</updated><author><name>Dougal Matthews</name></author><id>tag:dougalmatthews.com,2015-05-09:2015/May/09/mkdocs-docs-with-markdown/</id><summary type="html">&lt;p&gt;&lt;a href="http://www.mkdocs.org"&gt;MkDocs&lt;/a&gt; is an open source Python tool for lowering the barrier to writing
+documentation. The goal is relatively simple and focused, we want to make it
+easier to write &lt;a href="http://ericholscher.com/blog/2014/feb/27/how-i-judge-documentation-quality/"&gt;high quality&lt;/a&gt; prose based documentation.&lt;/p&gt;
+&lt;p&gt;Originally started by Tom Christie, I took over maintenance and development
+about 6 months ago. Since then there has been a number of interesting changes,
+I want to start writing about these, but first this post will introduce the
+project for those unfamiliar with it.&lt;/p&gt;
+&lt;h2&gt;Quick start&lt;/h2&gt;
+&lt;p&gt;The &lt;a href="http://www.mkdocs.org"&gt;MkDocs documentation&lt;/a&gt; takes you through the process of getting
+started in detail. This is the super quick version.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Start a new project with &lt;code&gt;mkdocs new my_project&lt;/code&gt;. This will create a new
+   directory called my_project or add a mkdocs config to an existing
+   directory. It will also create a index.md file within a docs dir.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Move into the directory you provided above and run &lt;code&gt;mkdocs serve&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Now open up the index.md file and start editing, when you save, the browser
+   should automatically refresh and show the new changes.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;What next?&lt;/h2&gt;
+&lt;p&gt;You can &lt;a href="http://www.mkdocs.org/user-guide/styling-your-docs/"&gt;change the theme&lt;/a&gt;, create a &lt;a href="http://www.mkdocs.org/user-guide/styling-your-docs/#custom-themes"&gt;custom theme&lt;/a&gt;, tweak the &lt;a href="http://www.mkdocs.org/user-guide/styling-your-docs/#custom-themes"&gt;navigation
+configuration&lt;/a&gt; and [page titles].&lt;/p&gt;
+&lt;p&gt;I plan to follow up this post and share some of the changes and improvements
+coming in MkDocs. Both from a technical and users point of view.&lt;/p&gt;</summary><category term="python"></category><category term="mkdocs"></category><category term="documentation"></category></entry></feed>
