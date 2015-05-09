@@ -16,7 +16,7 @@ CATEGORY_FEED_RSS = 'feeds/%s.rss.xml'
 SOCIAL = (('twitter', 'http://twitter.com/d0ugal'),
           ('github', 'http://github.com/d0ugal'),)
 
-SITEURL = FEED_DOMAIN = "http://dougalmatthews.com"
+SITEURL = FEED_DOMAIN = "http://www.dougalmatthews.com"
 
 THEME = 'dm'
 
