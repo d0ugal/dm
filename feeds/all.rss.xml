@@ -1,5 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Dougal Matthews</title><link>http://www.dougalmatthews.com/</link><description></description><atom:link href="http://www.dougalmatthews.com/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Sat, 09 May 2015 13:17:00 +0100</lastBuildDate><item><title>MkDocs - Docs with Markdown</title><link>http://www.dougalmatthews.com/2015/May/09/mkdocs-docs-with-markdown/</link><description>&lt;p&gt;&lt;a href="http://www.mkdocs.org"&gt;MkDocs&lt;/a&gt; is an open source Python tool for lowering the barrier to writing
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Dougal Matthews</title><link>http://www.dougalmatthews.com/</link><description></description><atom:link href="http://www.dougalmatthews.com/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Sat, 27 Jun 2015 12:24:00 +0100</lastBuildDate><item><title>MkDocs Making Strides</title><link>http://www.dougalmatthews.com/2015/Jun/27/mkdocs-making-strides/</link><description>&lt;p&gt;When I &lt;a href="http://www.dougalmatthews.com/2015/May/09/mkdocs-docs-with-markdown/"&gt;last wrote about MkDocs&lt;/a&gt;, the most recent version was &lt;a href="http://www.mkdocs.org/about/release-notes/#version-0120-2015-04-14"&gt;0.12&lt;/a&gt;, but
+&lt;a href="http://www.mkdocs.org/about/release-notes/#version-0130-2015-05-26"&gt;0.13&lt;/a&gt; was just around the corner. We are now hard at work on &lt;a href="https://github.com/mkdocs/mkdocs/blob/master/docs/about/release-notes.md#version-0150-2015--"&gt;0.15&lt;/a&gt;! So it is
+about time to do a quick update.&lt;/p&gt;
+&lt;p&gt;With over 300 commits which include a ton of bug fixes and new features since
+&lt;a href="http://www.mkdocs.org/about/release-notes/#version-0120-2015-04-14"&gt;0.12&lt;/a&gt;, I wont bore you with the full list. That is what the &lt;a href="http://www.mkdocs.org/about/release-notes/"&gt;release notes&lt;/a&gt;
+are for. Instead I'll highlight a couple of my favourite additions that are
+released or will be coming in &lt;a href="https://github.com/mkdocs/mkdocs/blob/master/docs/about/release-notes.md#version-0150-2015--"&gt;0.15&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;Reload the development server with WebSockets&lt;/h3&gt;
+&lt;p&gt;This is actually a feature that landed in MkDocs a while ago, it just hasn't
+been mentioned much as it was an improvement to a feature that already
+existed; the development server. It also happens to be one of my favourite
+features as a user.&lt;/p&gt;
+&lt;p&gt;Whenever you edit a file and save changes in your editor, if &lt;code&gt;mkdocs serve&lt;/code&gt; is
+running, the filesystem event will be captured, the documentation rebuilt and
+the page will be automatically reloaded. This brings near live feedback to
+editing if you have your editor and browser sitting side by side.&lt;/p&gt;
+&lt;p&gt;We owe this functionality to the fantastic &lt;a href="http://livereload.readthedocs.org/en/latest/"&gt;python-livereload&lt;/a&gt; library which
+makes this very easy to do.&lt;/p&gt;
+&lt;h3&gt;Search&lt;/h3&gt;
+&lt;p&gt;The biggest addition in 0.13 was the much anticipated client side search.
+Below you can see a screenshot of it on use in the &lt;a href="http://www.mkdocs.org/?q=deploy"&gt;MkDocs documentation&lt;/a&gt;. The
+search results update almost instantly as you type, creating a really
+responsive search experience.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="MkDocs Search" src="/images/2015/search.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Search works in MkDocs by generating a JSON file with the full content of the
+documentation during the build. This is then used with &lt;a href="http://lunrjs.com/"&gt;lunr.js&lt;/a&gt; to create and
+search an index.&lt;/p&gt;
+&lt;h3&gt;A new CLI&lt;/h3&gt;
+&lt;p&gt;MkDocs also received a new CLI thanks to the excellent &lt;a href="http://click.pocoo.org/"&gt;Click&lt;/a&gt; library. On the
+surface this doesn't seem like a huge feature, but it is now far easier to
+discover usage from the command line with &lt;code&gt;mkdocs --help&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;mkdocs&lt;/span&gt;&lt;span class="x"&gt; --help&lt;/span&gt;
+&lt;span class="x"&gt;Usage: mkdocs [OPTIONS] COMMAND [ARGS]...&lt;/span&gt;
+
+&lt;span class="x"&gt;  MkDocs - Project documentation with Markdown.&lt;/span&gt;
+
+&lt;span class="x"&gt;Options:&lt;/span&gt;
+&lt;span class="x"&gt;  -V, --version  Show the version and exit.&lt;/span&gt;
+&lt;span class="x"&gt;  -q, --quiet    Silence warnings&lt;/span&gt;
+&lt;span class="x"&gt;  -v, --verbose  Enable verbose output&lt;/span&gt;
+&lt;span class="x"&gt;  -h, --help     Show this message and exit.&lt;/span&gt;
+
+&lt;span class="x"&gt;Commands:&lt;/span&gt;
+&lt;span class="x"&gt;  build      Build the MkDocs documentation&lt;/span&gt;
+&lt;span class="x"&gt;  gh-deploy  Deply your documentation to GitHub Pages&lt;/span&gt;
+&lt;span class="x"&gt;  json       Build the MkDocs documentation to JSON files...&lt;/span&gt;
+&lt;span class="x"&gt;  new        Create a new MkDocs project&lt;/span&gt;
+&lt;span class="x"&gt;  serve      Run the builtin development server&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Click is fantastic to work with and it made writing the CLI easy and very
+elegant compared with some of the more traditional Python libraries.&lt;/p&gt;
+&lt;h3&gt;Packageable Themes&lt;/h3&gt;
+&lt;p&gt;This feature &lt;strong&gt;is coming with MkDocs &lt;a href="https://github.com/mkdocs/mkdocs/blob/master/docs/about/release-notes.md#version-0150-2015--"&gt;0.15&lt;/a&gt;&lt;/strong&gt; and was just merged into the
+&lt;a href="https://github.com/mkdocs/mkdocs/commit/ff05df30dd2de8840fb185363afa41a5517a69ef"&gt;master branch today&lt;/a&gt;. Users will soon be able to &lt;a href="https://github.com/mkdocs/mkdocs/blob/master/docs/user-guide/custom-themes.md"&gt;create custom themes and
+distribute them&lt;/a&gt; as Python Packages on PyPI. This change also sees 13 of the
+15 MkDocs themes be moved into their own repos and packages. Doing so will
+allow for faster and more flexible development outside of the code repository.&lt;/p&gt;
+&lt;p&gt;I am really excited to see what themes users come up with!&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Now, back to work on MkDocs! I'll do some updates again soon about the next
+features that I am working on.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Dougal Matthews</dc:creator><pubDate>Sat, 27 Jun 2015 12:24:00 +0100</pubDate><guid>tag:www.dougalmatthews.com,2015-06-27:2015/Jun/27/mkdocs-making-strides/</guid><category>python</category><category>mkdocs</category><category>documentation</category></item><item><title>MkDocs - Docs with Markdown</title><link>http://www.dougalmatthews.com/2015/May/09/mkdocs-docs-with-markdown/</link><description>&lt;p&gt;&lt;a href="http://www.mkdocs.org"&gt;MkDocs&lt;/a&gt; is an open source Python tool for lowering the barrier to writing
 documentation. The goal is relatively simple and focused, we want to make it
 easier to write &lt;a href="http://ericholscher.com/blog/2014/feb/27/how-i-judge-documentation-quality/"&gt;high quality&lt;/a&gt; prose based documentation.&lt;/p&gt;
 &lt;p&gt;Originally started by Tom Christie, I took over maintenance and development
