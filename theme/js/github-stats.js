@@ -131,8 +131,7 @@ $(function(){
 
   $.when(
       $.ajax("https://api.github.com/users/d0ugal"),
-      $.ajax("https://api.github.com/users/d0ugal-archive"),
-      $.ajax("https://api.github.com/users/mkdocs")
+      $.ajax("https://api.github.com/users/d0ugal-archive")
   ).done(function (user, archive) {
 
     user = user[0];
