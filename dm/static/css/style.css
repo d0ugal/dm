@@ -148,6 +148,10 @@ pre {
   margin-bottom: 2em;
 }
 
+#content iframe {
+  margin-top: 2em;
+}
+
 .stats-list {
   display: none;
 }
@@ -174,9 +178,10 @@ ul.simple {
 }
 
 .entry-content img {
-  padding: 1em 0.5em 1em 0.5em;
-  margin: 1em 0em 1em 0em;
+  padding: 1em 1em 1em 1em;
+  margin: 10px auto;
   border: 1px solid #ddd;
+  display: block;
 }
 
 
