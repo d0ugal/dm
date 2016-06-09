@@ -15,9 +15,9 @@ Let's talk about code review. For something that takes a large chunk of my time 
         February 29, 2016
     </a>
 </blockquote>
-<!-- <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script> -->
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-It certainly isn't an enjoyable experience for some people. Let's start to talk about how we can improve it.
+It certainly isn't an enjoyable experience for some people. Let's start to talk about how we can improve it. I like code review, but know I could get more out of it.
 
 
 ### Why are we doing Reviews Anyway?
@@ -27,24 +27,42 @@ When asked, many developers cite the primary motivation for carrying out code re
 > [...] while finding defects remains the main motivation for review, reviews are less about defects than expected and instead provide additional benefits such as knowledge transfer, increased team awareness, and creation of alternative solutions to problems.
 
 Given there is so much more we can get out of code review, I think we need to
-reframe the discussion. It needn't be a negative process for anyone, but it can be a very rewarding and educational experience for everyone.
+reframe the discussion. It needn't be a negative process for anyone and it can be a very rewarding and educational experience for everyone.
+
+- Everyone should read and review code. It is one of the best ways to get better.
+- When doing research for this talk, I found lots of talks citing defect finding as the primary motivation.
 
 
-### Authoring changes
 
-- Context is kind
+### Authoring code
+
+- Look out for contributing guidelines
+- Giving a puppy
+- Context is king
+  - Why do they want it
+  - what does it do
+  - WRITE GOOD COMMIT MESSAGES.
 - Small and contained changes are much easier to review
+- Review your own code as/after you submit it.
+  - Reading the change over on GitHub quickly can often reveal something that you done by mistake.
+- tests
+- Opening the review/pull request is just the start of the conversation.
+- Don't ask somebody to merge your change, ask them to review it. Start a conversation, don't put pressure on the reviewer.
 
 
-### Reviewing changes
+### Reviewing code
 
 ![gif](http://i.imgur.com/gGwno33.gif)
 
-- Be polite
+- Make it easier for contributors - contributing guidelines, let them know what you expect
+- Automate linting. Remove the bikeshedding (as much as possible). Build failures come with no judgement.
+- Be polite and aware of tone.
+  - "Why didn't you?" is much more critical when written than if you say it casually to somebody.
 - Review to learn, not just to feedback (so review work of your seniors)
 - Let people know when they taught you something
 - Ask questions, don't tell
-
+- Never harsh, never personal. This creates a toxic environment.
+  - https://twitter.com/marklit82/status/737939325334237184
 
 ### Core Review Tooling
 
@@ -70,12 +88,15 @@ I feel I can confidently say that this is the most common way of doing code revi
 + Flags to give feedback
 + Review the commit message
 + shared responsibility between core reviewers
++ Metadata is useful, but a -1 can be harsh and it is hard to tell which comment you gave the -1 for
 - Not good with branches
 - Bad UI
 
 
-#### Phabricator
+#### Final thoughts
 
+- Collaboration wins.
+-
 
 
 [eoacomcr]: http://research.microsoft.com/apps/pubs/default.aspx?id=180283
