@@ -3,6 +3,22 @@ Talks
 :date: 2014-01-22 11:33
 :author: Dougal Matthews
 
+2016
+~~~~
+Effective Code Review [
+`video <https://www.youtube.com/watch?v=uIwl01Nazdg>`__ /
+`slides <https://speakerdeck.com/d0ugal/effective-code-review>`__ ]
+
+2015
+~~~~
+MkDocs: Documenting projects with Markdown [
+`video <https://www.youtube.com/watch?v=pzoOQg6BNG4I>`__ ]
+
+2014
+~~~~
+The Development of OpenStack [
+`slides <https://speakerdeck.com/d0ugal/the-development-of-openstack>`__ ]
+
 2013
 ~~~~
 ElasticSearch: Introduction and lessons learned [
