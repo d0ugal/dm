@@ -1,7 +1,7 @@
 title: Automate publishing to PyPI with pbr and Travis
 category: python
 tags: python, pypi, pbr, travis, twine, mkdocs
-date: 2016-09-1
+date: 2016-09-01 08:37
 author: Dougal Matthews
 
 Releasing new versions of your Open Source projects is a time demanding task. So in a [recent][retrace], and admittedly small, project I decided to try and make it as easy as possible.
