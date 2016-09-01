@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <link rel="icon" href="/theme/img/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="/theme/css/bootstrap.css" type="text/css" media="screen, projection" />
+  <link rel="stylesheet" href="/theme/css/bootstrap-responsive.css" type="text/css" media="screen, projection" />
+  <link href='http://fonts.googleapis.com/css?family=Lato:regular|PT+Serif+Caption|PT+Serif|Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+  <link href="/theme/css/monokai.css" rel="stylesheet" type="text/css" />
+  <link href="/theme/css/style.css" rel="stylesheet" type="text/css" />
+
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="57x57" href="/theme/img/iconified/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="60x60" href="/theme/img/iconified/apple-touch-icon-60x60.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/theme/img/iconified/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="76x76" href="/theme/img/iconified/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/theme/img/iconified/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="120x120" href="/theme/img/iconified/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/theme/img/iconified/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="/theme/img/iconified/apple-touch-icon-152x152.png" />
+
+  <title>Automate publishing to PyPI with pbr and Travis - Dougal Matthews</title>
+  <meta charset="utf-8" />
+  <link href="http://www.dougalmatthews.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Dougal Matthews Full Atom Feed" />
+  <link href="http://www.dougalmatthews.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Dougal Matthews RSS Feed" />
+  <link href="http://www.dougalmatthews.com/feeds/python.atom.xml" type="application/atom+xml" rel="alternate" title="Dougal Matthews Categories Atom Feed" />
+  <link href="http://www.dougalmatthews.com/feeds/python.rss.xml" type="application/rss+xml" rel="alternate" title="Dougal Matthews Categories RSS Feed" />
+
+  <meta name="google-site-verification" content="GNt31_M2DlGd--mcA_1JjGH46qPSDdpnSiWi7Y_9Ltk" />
+  <meta name="verify-v1" content="d4ZT12Eg5dza8IxtDZlqiZoC0EzBnLxeYeK2PTiaIrU=" />
+  <meta name="msvalidate.01" content="08FE3976E4596314289973311F691DC2" />
+  <meta name="y_key" content="ef34f6756bc76371" />
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="navbar-centre">
+        <a class="brand" href="/"><span class="red">Dougal</span> <span class="white">Matthews</span></a>
+        <ul class="nav">
+            <li ><a href="/code/">Code</a></li>
+            <li ><a href="/notes/">Notes</a></li>
+            <li ><a href="/work/">Work</a></li>
+            <li ><a href="/talks/">Talks</a></li>
+            <li ><a href="/about/">About</a></li>
+        <ul class="nav">
+      </div>
+    </div>
+  </div>
+
+  <div id="content_wrapper">
+
+    <div id="content" class="container prepent-top">
+
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="http://www.dougalmatthews.com/2016/Sep/01/automate-publishing-to-pypi-with-pbr-and-travis/" rel="bookmark"
+         title="Permalink to Automate publishing to PyPI with pbr and Travis">Automate publishing to PyPI with pbr and Travis</a></h2>
+ 
+  </header>
+    <footer class="post-info">
+      <time datetime="2016-09-01T00:00:00+01:00">
+        Thu 01 September 2016
+      </time>
+    </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <p>Releasing new versions of your Open Source projects is a time demanding task. So in a <a href="http://d0ugal.github.io/retrace/">recent</a>, and admittedly small, project I decided to try and make it as easy as possible.</p>
+<p>I started using <a href="http://docs.openstack.org/developer/pbr/">pbr</a> and <a href="https://travis-ci.org/">Travis</a> to automatically deploy to <a href="https://pypi.python.org/pypi">PyPI</a> each time I push a git tag. This means, creating a new release is as simple as <code>git tag 1.0.0</code> and <code>git push origin --tags</code>. Anyone with commit access can then easily and confidently roll a release.</p>
+<p>Let's break that down a bit.</p>
+<h2>pbr</h2>
+<p><a href="http://docs.openstack.org/developer/pbr/">Python Build Reasonableness</a> is a library for making packaging easier and more consistent. If you are happy to use it's conventions, which are mostly reasonable, it works very well. The project is developed under the OpenStack umbrella and used on most<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup> OpenStack project. That is how I was first introduced to it, but it works well outside of this ecosystem.</p>
+<p>To use <a href="http://docs.openstack.org/developer/pbr/">pbr</a>, you need to add it to your <code>setup.py</code>, the project encourages using a setup.cfg, so your full setup.py should look like this.</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+
+<span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span>
+
+<span class="n">setup</span><span class="p">(</span>
+    <span class="n">setup_requires</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;pbr&gt;=1.9&#39;</span><span class="p">,</span> <span class="s1">&#39;setuptools&gt;=17.1&#39;</span><span class="p">],</span>
+    <span class="n">pbr</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p>For retrace I had to make a few <a href="https://github.com/d0ugal/retrace/blob/master/setup.py">extra additions</a> because it is packaging up a single file, rather than a directory. After you have done this, much of the familiar details from a setup.py are added to a setup.cfg. This is most of the <a href="https://github.com/d0ugal/retrace/blob/master/setup.cfg">retrace setup.cfg</a>.</p>
+<div class="highlight"><pre><span></span><span class="k">[metadata]</span>
+<span class="na">name</span> <span class="o">=</span> <span class="s">retrace</span>
+<span class="na">author</span> <span class="o">=</span> <span class="s">Dougal Matthews</span>
+<span class="na">author-email</span> <span class="o">=</span> <span class="s">dougal@dougalmatthews.com</span>
+<span class="na">summary</span> <span class="o">=</span> <span class="s">Configurable retrying.</span>
+<span class="na">description-file</span> <span class="o">=</span> <span class="s">README.rst</span>
+<span class="na">home-page</span> <span class="o">=</span> <span class="s">https://github.com/d0ugal/retrace</span>
+<span class="na">classifier</span> <span class="o">=</span><span class="s"></span>
+<span class="s">    Intended Audience :: Developers&#39;</span>
+<span class="s">    Natural Language :: English&#39;</span>
+<span class="s">    Programming Language :: Python&#39;</span>
+<span class="s">    Programming Language :: Python :: 2.7&#39;</span>
+<span class="s">    Programming Language :: Python :: 3.4&#39;</span>
+<span class="s">    Programming Language :: Python :: 3.5&#39;</span>
+
+<span class="k">[files]</span>
+<span class="na">packages</span> <span class="o">=</span><span class="s"></span>
+<span class="s">    retrace</span>
+
+<span class="k">[wheel]</span>
+<span class="na">universal</span> <span class="o">=</span> <span class="s">1</span>
+</pre></div>
+
+
+<p>One of the <em>really</em> useful features in pbr is that it automatically versions your projects. It uses git tags for this, so if you tag something <code>1.0.0,</code> then the version published to PyPI etc. will be <code>1.0.0</code>. Then if you do some commits (lets say 5) and pip install then you will install <code>1.0.0.dev5</code>. Tagging a <code>1.0.1</code> then versions your bug fix release and resets the dev counter.</p>
+<p>It's really simple and removed the need to manually bump versions, which is one of the manual steps that can easily be messed up.</p>
+<h2>Travis</h2>
+<p>Hopefully most people know <a href="https://travis-ci.org/">Travis</a>, it is CI-aaS, Continuous Integration as a Service. They have built a really great product which they make free for Open Source projects.</p>
+<p>The most common Travis use case is probably for running tests and code linting, which are both fantastic reasons, but there are compelling reasons to have Travis automatically do deploys. Running the deploy on different
+local machines increases the chances of picking up something that wasn't committed to git. If you do this on a CI server, the deploy should always be done from a clean and consistent environment.</p>
+<p>This is most of the <a href="https://github.com/mkdocs/mkdocs/blob/master/.travis.yml">retrace .travis.yml</a> config file, trimmed down a little to keep it short, but it should be functional. The deploy block is the most interesting section.</p>
+<div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">language</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">python</span>
+<span class="l l-Scalar l-Scalar-Plain">python</span><span class="p p-Indicator">:</span> <span class="s">&#39;3.5&#39;</span>
+<span class="l l-Scalar l-Scalar-Plain">env</span><span class="p p-Indicator">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">TOXENV=py35</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">TOXENV=flake8</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">TOXENV=docs</span>
+<span class="l l-Scalar l-Scalar-Plain">install</span><span class="p p-Indicator">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pip install tox</span>
+<span class="l l-Scalar l-Scalar-Plain">script</span><span class="p p-Indicator">:</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">tox</span>
+<span class="l l-Scalar l-Scalar-Plain">deploy</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">provider</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">pypi</span>
+  <span class="l l-Scalar l-Scalar-Plain">user</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">d0ugal-deploy</span>
+  <span class="l l-Scalar l-Scalar-Plain">distributions</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">sdist bdist_wheel</span>
+  <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">secure</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">b4f6y1xw5B/RXXnOu6JIaNcgOBZ0/CkNaMeEXsoQSewYZNwobLPYALY9WaaOblarwrVa5NRD3e4x6SoL1/1NzQxfhCNMn7L82sssmtevnK+mSuUp4IZQa8WKyz+xLfnk28TlHgQbctAU9NaeQ6GuEflTRD7Bp8+xJ1C7h+yBUnw=</span>
+  <span class="l l-Scalar l-Scalar-Plain">on</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">tags</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+    <span class="l l-Scalar l-Scalar-Plain">repo</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">d0ugal/retrace</span>
+    <span class="l l-Scalar l-Scalar-Plain">condition</span><span class="p p-Indicator">:</span> <span class="s">&quot;$TOXENV</span><span class="nv"> </span><span class="s">=</span><span class="nv"> </span><span class="s">py35&quot;</span>
+</pre></div>
+
+
+<p>First we specify the provider as PyPI, then the PyPI user is set<sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup>. We specify both source and wheel distributions. The password is encrypted and added with <code>travis encrypt --add deploy.password</code> and then some conditions are set.
+We only want to deploy tags, the source repository and for a specific <code>TOXENV</code> (otherwise the deploy will be attempted for each env).</p>
+<p>Travis will then use <a href="https://pypi.python.org/pypi/twine">twine</a> to upload to PyPI, which uses HTTPS, even on older Python versions.</p>
+<h2>Updating documentation</h2>
+<p>As a bonus, this is a nice extra touch with Travis. You can easily have
+your documentation automatically built and published. In <a href="http://d0ugal.github.io/retrace/">retrace</a> the documentation is a small <a href="http://www.mkdocs.org/">MkDocs</a> project. With the following in your Travis
+config you can easily publish your documentation on every commit.</p>
+<div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">after_success</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">git config user.name &quot;Dougal Matthews&quot;;</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">git config user.email &quot;dougal@dougalmatthews.com&quot;;</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">git remote add gh-token &quot;https://${GH_TOKEN}@github.com/d0ugal/retrace.git&quot;;</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">git fetch gh-token &amp;&amp; git fetch gh-token gh-pages:gh-pages;</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pip install -IU -r test-requirements.txt .;</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">mkdocs gh-deploy -v --clean --remote-name gh-token;</span>
+</pre></div>
+
+
+<p>You may want to move this to only happen on a deploy, but for a small project
+like <a href="http://d0ugal.github.io/retrace/">retrace</a> there is typically a release after any changes that would require docs updates.</p>
+<hr />
+<p>Overall, I am <em>very</em> happy about how this came out. I would like to roll out a similar strategy to other projects that I maintain. The change isn't earth shatteringly huge, but it certainly greases the wheels a bit and makes things easier.</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>And quite possibly every OpenStack project, but there are <a href="http://git.openstack.org/cgit">quite a few</a>, so I don't plan on checking!&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>I have a dedicated user for automated deploys because I am paranoid about including my encrypted password.&#160;<a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+  </div><!-- /.entry-content -->
+</section>
+
+    </div>
+
+  </div>
+
+  <script src="/theme/js/bootstrap.min.js"></script>
+
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-947562-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script');
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      ga.setAttribute('async', 'true');
+      document.documentElement.firstChild.appendChild(ga);
+    })();
+
+  </script>
+  <script src="/theme/js/anti-butt.js"></script>
+
+</body>
+</html>
