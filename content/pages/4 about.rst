@@ -67,8 +67,7 @@ Getting in touch.
 -----------------
 
 Email is probably best, get me directly on dougal@dougalmatthews.com or
-reach out to me on `Twitter`_. If Skype is your kinda thing, then my
-username is dougal.matthews.
+reach out to me on `Twitter`_.
 
 
 .. _Twitter: http://twitter.com/d0ugal
