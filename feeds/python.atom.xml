@@ -1,5 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/python.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2016-09-01T08:37:00+01:00</updated><entry><title>Automate publishing to PyPI with pbr and Travis</title><link href="http://www.dougalmatthews.com/2016/Sep/01/automate-publishing-to-pypi-with-pbr-and-travis/" rel="alternate"></link><published>2016-09-01T08:37:00+01:00</published><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2016-09-01:2016/Sep/01/automate-publishing-to-pypi-with-pbr-and-travis/</id><summary type="html">&lt;p&gt;Releasing new versions of your Open Source projects is a time demanding task. So in a &lt;a href="http://d0ugal.github.io/retrace/"&gt;recent&lt;/a&gt;, and admittedly small, project I decided to try and make it as easy as possible.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/python.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2016-09-02T08:35:00+01:00</updated><entry><title>Retrace - Configurable, elegant retrying</title><link href="http://www.dougalmatthews.com/2016/Sep/02/retrace-configurable-elegant-retrying/" rel="alternate"></link><published>2016-09-02T08:35:00+01:00</published><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2016-09-02:2016/Sep/02/retrace-configurable-elegant-retrying/</id><summary type="html">&lt;p&gt;After I mentioned &lt;a href="https://github.com/d0ugal/retrace"&gt;Retrace&lt;/a&gt; here &lt;a href="/2016/Sep/01/automate-publishing-to-pypi-with-pbr-and-travis/"&gt;recently&lt;/a&gt; a few people have asked me about it, so I thought I'd write up a quick post.&lt;/p&gt;
+&lt;p&gt;Retrace is, essentially, a retry decorator. There are many projects like this but after trying a few I either ran into issues or found the API cumbersome. I wanted something with a really simple interface but with the ability to easily build on it.&lt;/p&gt;
+&lt;h2&gt;Simplicity&lt;/h2&gt;
+&lt;p&gt;By default, it will retry the function on any exception which subclasses Exception. Any exceptions that directly inherit from BaseException (like KeyboardInterrupt) wont be caught by default, as you generally don't want that.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;retrace&lt;/span&gt;
+
+&lt;span class="nd"&gt;@retrace.retry&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;unstable&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="c1"&gt;# ...&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Of course, you can change what you catch by passing &lt;code&gt;on_exception&lt;/code&gt; which can be any valid exception class.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;retrace&lt;/span&gt;
+
+&lt;span class="nd"&gt;@retrace.retry&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;on_exeption&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="ne"&gt;IOError&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;unstable&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="c1"&gt;# ...&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Portability&lt;/h2&gt;
+&lt;p&gt;Retrace is tested and supported on Python 2.7, 3.3, 3.4 and 3.5. It is also &lt;a href="http://d0ugal.github.io/retrace/#vendoring"&gt;designed to be &lt;strong&gt;easily vendorable&lt;/strong&gt;&lt;/a&gt;, I understand that you might not want, or be able to include a dependency for such a small utility. so you can easily just grab the &lt;code&gt;retrace.py&lt;/code&gt; file and include it in your project.&lt;/p&gt;
+&lt;h2&gt;Customisation&lt;/h2&gt;
+&lt;p&gt;Retrace supports limiters, intervals and validators. These are all fairly similar concepts, but play a different role. We will quickly take a look at each of these.&lt;/p&gt;
+&lt;h3&gt;Limiters&lt;/h3&gt;
+&lt;p&gt;A limiter defines how many times the function should be retried. This can be passed in as either a int or a callable.&lt;/p&gt;
+&lt;p&gt;For example, retry a maximum of 10 times.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nd"&gt;@retrace.retry&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;limit&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;unstable&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="c1"&gt;# ...&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;If a callable is passed in, the number of retries can be limited easily with any custom logic.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;random&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;retrace&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;random_limit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;attempt&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;attempt&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;randint&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;raise&lt;/span&gt; &lt;span class="n"&gt;retrace&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;LimitReached&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="nd"&gt;@retrace.retry&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;limit&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;random_limit&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;unstable&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="c1"&gt;# ...&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Intervals&lt;/h3&gt;
+&lt;p&gt;Intervals define the delay that is introduced between attempts. This can either be passed in as an int (which will then be the number of seconds) or as a callable.&lt;/p&gt;
+&lt;p&gt;Delay for 1 second between attempts.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nd"&gt;@retrace.retry&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;interval&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;unstable&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="c1"&gt;# ...&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Delay for &lt;code&gt;n&lt;/code&gt; seconds, where &lt;code&gt;n&lt;/code&gt; is the current number of attempts. This then gradually increases the delay by one second each try.&lt;/p&gt;
+&lt;p&gt;This works because &lt;code&gt;time.sleep&lt;/code&gt; is a callable and we pass in the current attempt number each time.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;time&lt;/span&gt;
+
+&lt;span class="nd"&gt;@retrace.retry&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;interval&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sleep&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;unstable&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="c1"&gt;# ...&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Validators&lt;/h3&gt;
+&lt;p&gt;Validators are used to verify that the result from the function passes a check.&lt;/p&gt;
+&lt;p&gt;If it isn't a callable, it can be any object that is then compared with the result. Check that the function returns the value &lt;code&gt;"EXPECTED"&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nd"&gt;@retrace.retry&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;validator&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;EXPECTED&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;unstable&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="c1"&gt;# ...&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;If it is a callable, it will be passed the result and it should return &lt;code&gt;True&lt;/code&gt; it has passed and &lt;code&gt;False&lt;/code&gt; if it has failed and the function should be called again.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;validate_string&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;isinstance&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="nd"&gt;@retrace.retry&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;validator&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;validate_string&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;unstable&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="c1"&gt;# ...&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr /&gt;
+&lt;p&gt;It's a small project, but I find it useful fairly frequently. If this is something that interests you I would really like your feedback. How could it be made better? What do you need that I have not through of? &lt;a href="https://github.com/d0ugal/retrace/issues/new"&gt;Please send me your ideas!&lt;/a&gt;&lt;/p&gt;</summary><category term="python"></category><category term="retry"></category><category term="exception"></category></entry><entry><title>Automate publishing to PyPI with pbr and Travis</title><link href="http://www.dougalmatthews.com/2016/Sep/01/automate-publishing-to-pypi-with-pbr-and-travis/" rel="alternate"></link><published>2016-09-01T08:37:00+01:00</published><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2016-09-01:2016/Sep/01/automate-publishing-to-pypi-with-pbr-and-travis/</id><summary type="html">&lt;p&gt;Releasing new versions of your Open Source projects is a time demanding task. So in a &lt;a href="http://d0ugal.github.io/retrace/"&gt;recent&lt;/a&gt;, and admittedly small, project I decided to try and make it as easy as possible.&lt;/p&gt;
 &lt;p&gt;I started using &lt;a href="http://docs.openstack.org/developer/pbr/"&gt;pbr&lt;/a&gt; and &lt;a href="https://travis-ci.org/"&gt;Travis&lt;/a&gt; to automatically deploy to &lt;a href="https://pypi.python.org/pypi"&gt;PyPI&lt;/a&gt; each time I push a git tag. This means, creating a new release is as simple as &lt;code&gt;git tag 1.0.0&lt;/code&gt; and &lt;code&gt;git push origin --tags&lt;/code&gt;. Anyone with commit access can then easily and confidently roll a release.&lt;/p&gt;
 &lt;p&gt;Let's break that down a bit.&lt;/p&gt;
 &lt;h2&gt;pbr&lt;/h2&gt;

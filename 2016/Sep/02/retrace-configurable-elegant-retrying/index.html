@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <link rel="icon" href="/theme/img/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="/theme/css/bootstrap.css" type="text/css" media="screen, projection" />
+  <link rel="stylesheet" href="/theme/css/bootstrap-responsive.css" type="text/css" media="screen, projection" />
+  <link href='http://fonts.googleapis.com/css?family=Lato:regular|PT+Serif+Caption|PT+Serif|Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+  <link href="/theme/css/monokai.css" rel="stylesheet" type="text/css" />
+  <link href="/theme/css/style.css" rel="stylesheet" type="text/css" />
+
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="57x57" href="/theme/img/iconified/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="60x60" href="/theme/img/iconified/apple-touch-icon-60x60.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/theme/img/iconified/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="76x76" href="/theme/img/iconified/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/theme/img/iconified/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="120x120" href="/theme/img/iconified/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/theme/img/iconified/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="/theme/img/iconified/apple-touch-icon-152x152.png" />
+
+  <title>Retrace - Configurable, elegant retrying - Dougal Matthews</title>
+  <meta charset="utf-8" />
+  <link href="http://www.dougalmatthews.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Dougal Matthews Full Atom Feed" />
+  <link href="http://www.dougalmatthews.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Dougal Matthews RSS Feed" />
+  <link href="http://www.dougalmatthews.com/feeds/python.atom.xml" type="application/atom+xml" rel="alternate" title="Dougal Matthews Categories Atom Feed" />
+  <link href="http://www.dougalmatthews.com/feeds/python.rss.xml" type="application/rss+xml" rel="alternate" title="Dougal Matthews Categories RSS Feed" />
+
+  <meta name="google-site-verification" content="GNt31_M2DlGd--mcA_1JjGH46qPSDdpnSiWi7Y_9Ltk" />
+  <meta name="verify-v1" content="d4ZT12Eg5dza8IxtDZlqiZoC0EzBnLxeYeK2PTiaIrU=" />
+  <meta name="msvalidate.01" content="08FE3976E4596314289973311F691DC2" />
+  <meta name="y_key" content="ef34f6756bc76371" />
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="navbar-centre">
+        <a class="brand" href="/"><span class="red">Dougal</span> <span class="white">Matthews</span></a>
+        <ul class="nav">
+            <li ><a href="/code/">Code</a></li>
+            <li ><a href="/notes/">Notes</a></li>
+            <li ><a href="/work/">Work</a></li>
+            <li ><a href="/talks/">Talks</a></li>
+            <li ><a href="/about/">About</a></li>
+        <ul class="nav">
+      </div>
+    </div>
+  </div>
+
+  <div id="content_wrapper">
+
+    <div id="content" class="container prepent-top">
+
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="http://www.dougalmatthews.com/2016/Sep/02/retrace-configurable-elegant-retrying/" rel="bookmark"
+         title="Permalink to Retrace - Configurable, elegant retrying">Retrace - Configurable, elegant retrying</a></h2>
+ 
+  </header>
+    <footer class="post-info">
+      <time datetime="2016-09-02T08:35:00+01:00">
+        Fri 02 September 2016
+      </time>
+    </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <p>After I mentioned <a href="https://github.com/d0ugal/retrace">Retrace</a> here <a href="/2016/Sep/01/automate-publishing-to-pypi-with-pbr-and-travis/">recently</a> a few people have asked me about it, so I thought I'd write up a quick post.</p>
+<p>Retrace is, essentially, a retry decorator. There are many projects like this but after trying a few I either ran into issues or found the API cumbersome. I wanted something with a really simple interface but with the ability to easily build on it.</p>
+<h2>Simplicity</h2>
+<p>By default, it will retry the function on any exception which subclasses Exception. Any exceptions that directly inherit from BaseException (like KeyboardInterrupt) wont be caught by default, as you generally don't want that.</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">retrace</span>
+
+<span class="nd">@retrace.retry</span>
+<span class="k">def</span> <span class="nf">unstable</span><span class="p">():</span>
+    <span class="c1"># ...</span>
+</pre></div>
+
+
+<p>Of course, you can change what you catch by passing <code>on_exception</code> which can be any valid exception class.</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">retrace</span>
+
+<span class="nd">@retrace.retry</span><span class="p">(</span><span class="n">on_exeption</span><span class="o">=</span><span class="ne">IOError</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">unstable</span><span class="p">():</span>
+    <span class="c1"># ...</span>
+</pre></div>
+
+
+<h2>Portability</h2>
+<p>Retrace is tested and supported on Python 2.7, 3.3, 3.4 and 3.5. It is also <a href="http://d0ugal.github.io/retrace/#vendoring">designed to be <strong>easily vendorable</strong></a>, I understand that you might not want, or be able to include a dependency for such a small utility. so you can easily just grab the <code>retrace.py</code> file and include it in your project.</p>
+<h2>Customisation</h2>
+<p>Retrace supports limiters, intervals and validators. These are all fairly similar concepts, but play a different role. We will quickly take a look at each of these.</p>
+<h3>Limiters</h3>
+<p>A limiter defines how many times the function should be retried. This can be passed in as either a int or a callable.</p>
+<p>For example, retry a maximum of 10 times.</p>
+<div class="highlight"><pre><span></span><span class="nd">@retrace.retry</span><span class="p">(</span><span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">unstable</span><span class="p">():</span>
+    <span class="c1"># ...</span>
+</pre></div>
+
+
+<p>If a callable is passed in, the number of retries can be limited easily with any custom logic.</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">retrace</span>
+
+<span class="k">def</span> <span class="nf">random_limit</span><span class="p">(</span><span class="n">attempt</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">attempt</span> <span class="o">&gt;</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">retrace</span><span class="o">.</span><span class="n">LimitReached</span><span class="p">()</span>
+
+<span class="nd">@retrace.retry</span><span class="p">(</span><span class="n">limit</span><span class="o">=</span><span class="n">random_limit</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">unstable</span><span class="p">():</span>
+    <span class="c1"># ...</span>
+</pre></div>
+
+
+<h3>Intervals</h3>
+<p>Intervals define the delay that is introduced between attempts. This can either be passed in as an int (which will then be the number of seconds) or as a callable.</p>
+<p>Delay for 1 second between attempts.</p>
+<div class="highlight"><pre><span></span><span class="nd">@retrace.retry</span><span class="p">(</span><span class="n">interval</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">unstable</span><span class="p">():</span>
+    <span class="c1"># ...</span>
+</pre></div>
+
+
+<p>Delay for <code>n</code> seconds, where <code>n</code> is the current number of attempts. This then gradually increases the delay by one second each try.</p>
+<p>This works because <code>time.sleep</code> is a callable and we pass in the current attempt number each time.</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+
+<span class="nd">@retrace.retry</span><span class="p">(</span><span class="n">interval</span><span class="o">=</span><span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">unstable</span><span class="p">():</span>
+    <span class="c1"># ...</span>
+</pre></div>
+
+
+<h3>Validators</h3>
+<p>Validators are used to verify that the result from the function passes a check.</p>
+<p>If it isn't a callable, it can be any object that is then compared with the result. Check that the function returns the value <code>"EXPECTED"</code>.</p>
+<div class="highlight"><pre><span></span><span class="nd">@retrace.retry</span><span class="p">(</span><span class="n">validator</span><span class="o">=</span><span class="s2">&quot;EXPECTED&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">unstable</span><span class="p">():</span>
+    <span class="c1"># ...</span>
+</pre></div>
+
+
+<p>If it is a callable, it will be passed the result and it should return <code>True</code> it has passed and <code>False</code> if it has failed and the function should be called again.</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">validate_string</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span>
+
+<span class="nd">@retrace.retry</span><span class="p">(</span><span class="n">validator</span><span class="o">=</span><span class="n">validate_string</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">unstable</span><span class="p">():</span>
+    <span class="c1"># ...</span>
+</pre></div>
+
+
+<hr />
+<p>It's a small project, but I find it useful fairly frequently. If this is something that interests you I would really like your feedback. How could it be made better? What do you need that I have not through of? <a href="https://github.com/d0ugal/retrace/issues/new">Please send me your ideas!</a></p>
+  </div><!-- /.entry-content -->
+</section>
+
+    </div>
+
+  </div>
+
+  <script src="/theme/js/bootstrap.min.js"></script>
+
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-947562-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script');
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      ga.setAttribute('async', 'true');
+      document.documentElement.firstChild.appendChild(ga);
+    })();
+
+  </script>
+  <script src="/theme/js/anti-butt.js"></script>
+
+</body>
+</html>
