@@ -1,7 +1,7 @@
 title: Retrace - Configurable, elegant retrying
 category: python
 tags: python, retry, exception
-date: 2016-09-02 08:35
+date: 2016-09-12 21:35
 author: Dougal Matthews
 
 After I mentioned [Retrace] here [recently][pbr-post] a few people have asked me about it, so I thought I'd write up a quick post.
