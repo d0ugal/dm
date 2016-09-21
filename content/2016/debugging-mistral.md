@@ -1,7 +1,7 @@
 title: Debugging Mistral in TripleO
 category: openstack
 tags: python, mistral, debug, tripleo
-date: 2016-09-19 15:15
+date: 2016-09-21 21:31
 author: Dougal Matthews
 
 During the OpenStack Newton cylce the TripleO project has started to use [Mistral], the OpenStack Workflow service. This has allowed us to provide an interface to TripleO that is used by the CLI and the new GUI (and potentially other consumes in the future).
