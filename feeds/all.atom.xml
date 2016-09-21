@@ -1,5 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/all.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2016-09-12T21:35:00+01:00</updated><entry><title>Retrace - Configurable, elegant retrying</title><link href="http://www.dougalmatthews.com/2016/Sep/12/retrace-configurable-elegant-retrying/" rel="alternate"></link><published>2016-09-12T21:35:00+01:00</published><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2016-09-12:2016/Sep/12/retrace-configurable-elegant-retrying/</id><summary type="html">&lt;p&gt;After I mentioned &lt;a href="https://github.com/d0ugal/retrace"&gt;Retrace&lt;/a&gt; here &lt;a href="/2016/Sep/01/automate-publishing-to-pypi-with-pbr-and-travis/"&gt;recently&lt;/a&gt; a few people have asked me about it, so I thought I'd write up a quick post.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/all.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2016-09-19T15:15:00+01:00</updated><entry><title>Debugging Mistral in TripleO</title><link href="http://www.dougalmatthews.com/2016/Sep/19/debugging-mistral-in-tripleo/" rel="alternate"></link><published>2016-09-19T15:15:00+01:00</published><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2016-09-19:2016/Sep/19/debugging-mistral-in-tripleo/</id><summary type="html">&lt;p&gt;During the OpenStack Newton cylce the TripleO project has started to use &lt;a href="http://docs.openstack.org/developer/mistral/"&gt;Mistral&lt;/a&gt;, the OpenStack Workflow service. This has allowed us to provide an interface to TripleO that is used by the CLI and the new GUI (and potentially other consumes in the future).&lt;/p&gt;
+&lt;p&gt;We naturally had to debug a few problems along the way. We'll go through the steps to track down the issue.&lt;/p&gt;
+&lt;h2&gt;Mistal Primer&lt;/h2&gt;
+&lt;p&gt;In TripleO, we call Mistral in two different ways - either by starting &lt;a href="http://docs.openstack.org/developer/mistral/terminology/workflows.html"&gt;Workflows&lt;/a&gt; or directly calling &lt;a href="http://docs.openstack.org/developer/mistral/terminology/actions.html"&gt;Actions&lt;/a&gt;. Workflows are started by creating &lt;a href="http://docs.openstack.org/developer/mistral/terminology/executions.html"&gt;Executions&lt;/a&gt;, this then represents the running workflow. Running actions are represented by Action Executions. Since Workflows are typically are made up of a number of action calls (or sub-workflow calls) this means start a Workflow will start one or more Executions and one or more Action Executions.&lt;/p&gt;
+&lt;p&gt;Unfortunately it isn't always clear if you are calling a workflow or action directly. So, first things first, what is happening in Mistral? Let's list the workflow executions and the action executions.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ openstack workflow execution list
+$ openstack action execution list
+&lt;span class="c1"&gt;# or&lt;/span&gt;
+$ mistal execution-list
+$ mistal action-execution-list
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;These commands can be generally useful if you are waiting for something to finish and want to look for signs of progress.&lt;/p&gt;
+&lt;p&gt;The most important columns to pay attention to are the "Workflow name" and "State" in both. Then then "State info" in the execution list and the "Task name" in the action execution list.&lt;/p&gt;
+&lt;h2&gt;Finding the error&lt;/h2&gt;
+&lt;p&gt;Okay, so something has gone wrong. Maybe you have an error that mentions Mistral or you noticed an error state in either the execution list or action execution list.&lt;/p&gt;
+&lt;p&gt;First check the executions. If you have a Workflow in error state, then you often want to look at the action executions unless there is an error in the workflow itself. The output here should give us enough information to tell if the workflow is a problem or one of the actions.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mistral execution-list &lt;span class="p"&gt;|&lt;/span&gt; grep &lt;span class="s2"&gt;&amp;quot;ERROR&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="c1"&gt;# Grab the execution ID from above.&lt;/span&gt;
+mistral execution-get &lt;span class="nv"&gt;$EXECUTION_ID&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+mistral execution-get-output &lt;span class="nv"&gt;$EXECUTION_ID&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Then check the actions. Often these are more useful to look at, but you first want to know which workflow execution you are debugging.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Also look at the actions&lt;/span&gt;
+mistral action-execution-list&lt;span class="p"&gt;;&lt;/span&gt;
+mistral action-execution-get-output &lt;span class="nv"&gt;$ACTION_ID&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;blockquote&gt;
+&lt;p&gt;NOTE: Sometimes an action execution is in the ERROR state, but that is expected. For example, in some workflows we check if a swift container exists and it is an "ERROR" if it doesn't, but it just changes the Workflow logic.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Hopefully this gives you some idea what is going on, but you may need to look into the Logs fo the full traceback...&lt;/p&gt;
+&lt;h2&gt;Logs&lt;/h2&gt;
+&lt;p&gt;The Mistral log is very detailed and useful for in depth debugging. To follow it and look for messages from the TripleO actions, or ERROR's I find this very useful.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;tail -f /var/log/mistral/mistral-server.log &lt;span class="p"&gt;|&lt;/span&gt; grep &lt;span class="s2"&gt;&amp;quot;ERROR\|tripleo_common&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Common-ish Problems&lt;/h2&gt;
+&lt;p&gt;A couple of problems I've seen a few times and how they can be spotted.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;"Error response from Zaqar. Code: 503. Title: Service temporarily unavailable. Description: Messages could not be enqueued. Please try again in a few seconds.."&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Sometimes workflows will fail when sending messages to Zaqar, this is how the result of a workflow is reported. Unfortunately this is hard to debug. You can usually safely retry the full workflow, or retry the individual task.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mistral task-list&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="c1"&gt;# Find the ID for the failed task.&lt;/span&gt;
+mistral task-rerun &lt;span class="nv"&gt;$ID&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Hopefully we can resolve this issue: https://bugs.launchpad.net/tripleo/+bug/1626103&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Another problem? I shall add to this as they come up!&lt;/li&gt;
+&lt;/ul&gt;</summary><category term="python"></category><category term="mistral"></category><category term="debug"></category><category term="tripleo"></category></entry><entry><title>Retrace - Configurable, elegant retrying</title><link href="http://www.dougalmatthews.com/2016/Sep/12/retrace-configurable-elegant-retrying/" rel="alternate"></link><published>2016-09-12T21:35:00+01:00</published><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2016-09-12:2016/Sep/12/retrace-configurable-elegant-retrying/</id><summary type="html">&lt;p&gt;After I mentioned &lt;a href="https://github.com/d0ugal/retrace"&gt;Retrace&lt;/a&gt; here &lt;a href="/2016/Sep/01/automate-publishing-to-pypi-with-pbr-and-travis/"&gt;recently&lt;/a&gt; a few people have asked me about it, so I thought I'd write up a quick post.&lt;/p&gt;
 &lt;p&gt;Retrace is, essentially, a retry decorator. There are many projects like this but after trying a few I either ran into issues or found the API cumbersome. I wanted something with a really simple interface but with the ability to easily build on it.&lt;/p&gt;
 &lt;h2&gt;Simplicity&lt;/h2&gt;
 &lt;p&gt;By default, it will retry the function on any exception which subclasses Exception. Any exceptions that directly inherit from BaseException (like KeyboardInterrupt) wont be caught by default, as you generally don't want that.&lt;/p&gt;

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <link rel="icon" href="/theme/img/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="/theme/css/bootstrap.css" type="text/css" media="screen, projection" />
+  <link rel="stylesheet" href="/theme/css/bootstrap-responsive.css" type="text/css" media="screen, projection" />
+  <link href='http://fonts.googleapis.com/css?family=Lato:regular|PT+Serif+Caption|PT+Serif|Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+  <link href="/theme/css/monokai.css" rel="stylesheet" type="text/css" />
+  <link href="/theme/css/style.css" rel="stylesheet" type="text/css" />
+
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="57x57" href="/theme/img/iconified/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="60x60" href="/theme/img/iconified/apple-touch-icon-60x60.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/theme/img/iconified/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="76x76" href="/theme/img/iconified/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/theme/img/iconified/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="120x120" href="/theme/img/iconified/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/theme/img/iconified/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="/theme/img/iconified/apple-touch-icon-152x152.png" />
+
+  <title>Debugging Mistral in TripleO - Dougal Matthews</title>
+  <meta charset="utf-8" />
+  <link href="http://www.dougalmatthews.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Dougal Matthews Full Atom Feed" />
+  <link href="http://www.dougalmatthews.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Dougal Matthews RSS Feed" />
+  <link href="http://www.dougalmatthews.com/feeds/openstack.atom.xml" type="application/atom+xml" rel="alternate" title="Dougal Matthews Categories Atom Feed" />
+  <link href="http://www.dougalmatthews.com/feeds/openstack.rss.xml" type="application/rss+xml" rel="alternate" title="Dougal Matthews Categories RSS Feed" />
+
+  <meta name="google-site-verification" content="GNt31_M2DlGd--mcA_1JjGH46qPSDdpnSiWi7Y_9Ltk" />
+  <meta name="verify-v1" content="d4ZT12Eg5dza8IxtDZlqiZoC0EzBnLxeYeK2PTiaIrU=" />
+  <meta name="msvalidate.01" content="08FE3976E4596314289973311F691DC2" />
+  <meta name="y_key" content="ef34f6756bc76371" />
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="navbar-centre">
+        <a class="brand" href="/"><span class="red">Dougal</span> <span class="white">Matthews</span></a>
+        <ul class="nav">
+            <li ><a href="/code/">Code</a></li>
+            <li ><a href="/notes/">Notes</a></li>
+            <li ><a href="/work/">Work</a></li>
+            <li ><a href="/talks/">Talks</a></li>
+            <li ><a href="/about/">About</a></li>
+        <ul class="nav">
+      </div>
+    </div>
+  </div>
+
+  <div id="content_wrapper">
+
+    <div id="content" class="container prepent-top">
+
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="http://www.dougalmatthews.com/2016/Sep/19/debugging-mistral-in-tripleo/" rel="bookmark"
+         title="Permalink to Debugging Mistral in TripleO">Debugging Mistral in TripleO</a></h2>
+ 
+  </header>
+    <footer class="post-info">
+      <time datetime="2016-09-19T15:15:00+01:00">
+        Mon 19 September 2016
+      </time>
+    </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <p>During the OpenStack Newton cylce the TripleO project has started to use <a href="http://docs.openstack.org/developer/mistral/">Mistral</a>, the OpenStack Workflow service. This has allowed us to provide an interface to TripleO that is used by the CLI and the new GUI (and potentially other consumes in the future).</p>
+<p>We naturally had to debug a few problems along the way. We'll go through the steps to track down the issue.</p>
+<h2>Mistal Primer</h2>
+<p>In TripleO, we call Mistral in two different ways - either by starting <a href="http://docs.openstack.org/developer/mistral/terminology/workflows.html">Workflows</a> or directly calling <a href="http://docs.openstack.org/developer/mistral/terminology/actions.html">Actions</a>. Workflows are started by creating <a href="http://docs.openstack.org/developer/mistral/terminology/executions.html">Executions</a>, this then represents the running workflow. Running actions are represented by Action Executions. Since Workflows are typically are made up of a number of action calls (or sub-workflow calls) this means start a Workflow will start one or more Executions and one or more Action Executions.</p>
+<p>Unfortunately it isn't always clear if you are calling a workflow or action directly. So, first things first, what is happening in Mistral? Let's list the workflow executions and the action executions.</p>
+<div class="highlight"><pre><span></span>$ openstack workflow execution list
+$ openstack action execution list
+<span class="c1"># or</span>
+$ mistal execution-list
+$ mistal action-execution-list
+</pre></div>
+
+
+<p>These commands can be generally useful if you are waiting for something to finish and want to look for signs of progress.</p>
+<p>The most important columns to pay attention to are the "Workflow name" and "State" in both. Then then "State info" in the execution list and the "Task name" in the action execution list.</p>
+<h2>Finding the error</h2>
+<p>Okay, so something has gone wrong. Maybe you have an error that mentions Mistral or you noticed an error state in either the execution list or action execution list.</p>
+<p>First check the executions. If you have a Workflow in error state, then you often want to look at the action executions unless there is an error in the workflow itself. The output here should give us enough information to tell if the workflow is a problem or one of the actions.</p>
+<div class="highlight"><pre><span></span>mistral execution-list <span class="p">|</span> grep <span class="s2">&quot;ERROR&quot;</span><span class="p">;</span>
+<span class="c1"># Grab the execution ID from above.</span>
+mistral execution-get <span class="nv">$EXECUTION_ID</span><span class="p">;</span>
+mistral execution-get-output <span class="nv">$EXECUTION_ID</span><span class="p">;</span>
+</pre></div>
+
+
+<p>Then check the actions. Often these are more useful to look at, but you first want to know which workflow execution you are debugging.</p>
+<div class="highlight"><pre><span></span><span class="c1"># Also look at the actions</span>
+mistral action-execution-list<span class="p">;</span>
+mistral action-execution-get-output <span class="nv">$ACTION_ID</span><span class="p">;</span>
+</pre></div>
+
+
+<blockquote>
+<p>NOTE: Sometimes an action execution is in the ERROR state, but that is expected. For example, in some workflows we check if a swift container exists and it is an "ERROR" if it doesn't, but it just changes the Workflow logic.</p>
+</blockquote>
+<p>Hopefully this gives you some idea what is going on, but you may need to look into the Logs fo the full traceback...</p>
+<h2>Logs</h2>
+<p>The Mistral log is very detailed and useful for in depth debugging. To follow it and look for messages from the TripleO actions, or ERROR's I find this very useful.</p>
+<div class="highlight"><pre><span></span>tail -f /var/log/mistral/mistral-server.log <span class="p">|</span> grep <span class="s2">&quot;ERROR\|tripleo_common&quot;</span><span class="p">;</span>
+</pre></div>
+
+
+<h2>Common-ish Problems</h2>
+<p>A couple of problems I've seen a few times and how they can be spotted.</p>
+<ul>
+<li>"Error response from Zaqar. Code: 503. Title: Service temporarily unavailable. Description: Messages could not be enqueued. Please try again in a few seconds.."</li>
+</ul>
+<p>Sometimes workflows will fail when sending messages to Zaqar, this is how the result of a workflow is reported. Unfortunately this is hard to debug. You can usually safely retry the full workflow, or retry the individual task.</p>
+<div class="highlight"><pre><span></span>mistral task-list<span class="p">;</span>
+<span class="c1"># Find the ID for the failed task.</span>
+mistral task-rerun <span class="nv">$ID</span><span class="p">;</span>
+</pre></div>
+
+
+<p>Hopefully we can resolve this issue: https://bugs.launchpad.net/tripleo/+bug/1626103</p>
+<ul>
+<li>Another problem? I shall add to this as they come up!</li>
+</ul>
+  </div><!-- /.entry-content -->
+</section>
+
+    </div>
+
+  </div>
+
+  <script src="/theme/js/bootstrap.min.js"></script>
+
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-947562-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script');
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      ga.setAttribute('async', 'true');
+      document.documentElement.firstChild.appendChild(ga);
+    })();
+
+  </script>
+  <script src="/theme/js/anti-butt.js"></script>
+
+</body>
+</html>
