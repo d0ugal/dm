@@ -166,7 +166,16 @@ img.dougalmatthews{
 }
 
 .highlight {
+  border-radius: 0;
   margin-bottom: 1em;
+}
+
+.highlight pre{
+  display: block;
+  overflow-x: auto;
+  white-space: pre;
+  padding-bottom: 1em;
+  margin-bottom: 0;
 }
 
 ul.simple {
