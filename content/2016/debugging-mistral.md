@@ -30,7 +30,7 @@ The most important columns to pay attention to are the "Workflow name" and "Stat
 
 Okay, so something has gone wrong. Maybe you have an error that mentions Mistral or you noticed an error state in either the execution list or action execution list.
 
-First check the executions. If you have a Workflow in error state, then you often want to look at the action executions unless there is an error in the workflow itself.
+First check the executions. If you have a Workflow in error state, then you often want to look at the action executions unless there is an error in the workflow itself. The output here should give us enough information to tell if the workflow is a problem or one of the actions.
 
 ```bash
 mistral execution-list | grep "ERROR";
@@ -76,7 +76,8 @@ mistral task-rerun $ID;
 
 Hopefully we can resolve this issue: https://bugs.launchpad.net/tripleo/+bug/1626103
 
-- Another problem?
+
+- Another problem? I shall add to this as they come up!
 
 
 [Mistral]: http://docs.openstack.org/developer/mistral/
