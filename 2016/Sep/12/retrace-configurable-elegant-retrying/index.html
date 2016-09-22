@@ -73,10 +73,17 @@
       </time>
     </footer><!-- /.post-info -->
   <div class="entry-content">
-    <p>After I mentioned <a href="https://github.com/d0ugal/retrace">Retrace</a> here <a href="/2016/Sep/01/automate-publishing-to-pypi-with-pbr-and-travis/">recently</a> a few people have asked me about it, so I thought I'd write up a quick post.</p>
-<p>Retrace is, essentially, a retry decorator. There are many projects like this but after trying a few I either ran into issues or found the API cumbersome. I wanted something with a really simple interface but with the ability to easily build on it.</p>
+    <p>After I mentioned <a href="https://github.com/d0ugal/retrace">Retrace</a> here <a href="/2016/Sep/01/automate-publishing-to-pypi-with-pbr-and-travis/">recently</a> a few people have asked
+me about it, so I thought I'd write up a quick post.</p>
+<p>Retrace is, essentially, a retry decorator. There are many projects like this
+but after trying a few I either ran into issues or found the API cumbersome. I
+wanted something with a really simple interface but with the ability to easily
+build on it.</p>
 <h2>Simplicity</h2>
-<p>By default, it will retry the function on any exception which subclasses Exception. Any exceptions that directly inherit from BaseException (like KeyboardInterrupt) wont be caught by default, as you generally don't want that.</p>
+<p>By default, it will retry the function on any exception which subclasses
+Exception. Any exceptions that directly inherit from BaseException (like
+KeyboardInterrupt) wont be caught by default, as you generally don't want
+that.</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">retrace</span>
 
 <span class="nd">@retrace.retry</span>
@@ -85,7 +92,8 @@
 </pre></div>
 
 
-<p>Of course, you can change what you catch by passing <code>on_exception</code> which can be any valid exception class.</p>
+<p>Of course, you can change what you catch by passing <code>on_exception</code> which can
+be any valid exception class.</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">retrace</span>
 
 <span class="nd">@retrace.retry</span><span class="p">(</span><span class="n">on_exeption</span><span class="o">=</span><span class="ne">IOError</span><span class="p">)</span>
@@ -95,11 +103,18 @@
 
 
 <h2>Portability</h2>
-<p>Retrace is tested and supported on Python 2.7, 3.3, 3.4 and 3.5. It is also <a href="http://d0ugal.github.io/retrace/#vendoring">designed to be <strong>easily vendorable</strong></a>, I understand that you might not want, or be able to include a dependency for such a small utility. so you can easily just grab the <code>retrace.py</code> file and include it in your project.</p>
+<p>Retrace is tested and supported on Python 2.7, 3.3, 3.4 and 3.5. It is also
+<a href="http://d0ugal.github.io/retrace/#vendoring">designed to be <strong>easily vendorable</strong></a>, I understand that you
+might not want, or be able to include a dependency for such a small utility.
+so you can easily just grab the <code>retrace.py</code> file and include it in your
+project.</p>
 <h2>Customisation</h2>
-<p>Retrace supports limiters, intervals and validators. These are all fairly similar concepts, but play a different role. We will quickly take a look at each of these.</p>
+<p>Retrace supports limiters, intervals and validators. These are all fairly
+similar concepts, but play a different role. We will quickly take a look at
+each of these.</p>
 <h3>Limiters</h3>
-<p>A limiter defines how many times the function should be retried. This can be passed in as either a int or a callable.</p>
+<p>A limiter defines how many times the function should be retried. This can be
+passed in as either a int or a callable.</p>
 <p>For example, retry a maximum of 10 times.</p>
 <div class="highlight"><pre><span></span><span class="nd">@retrace.retry</span><span class="p">(</span><span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">unstable</span><span class="p">():</span>
@@ -107,7 +122,8 @@
 </pre></div>
 
 
-<p>If a callable is passed in, the number of retries can be limited easily with any custom logic.</p>
+<p>If a callable is passed in, the number of retries can be limited easily with
+any custom logic.</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
 <span class="kn">import</span> <span class="nn">retrace</span>
 
@@ -122,7 +138,9 @@
 
 
 <h3>Intervals</h3>
-<p>Intervals define the delay that is introduced between attempts. This can either be passed in as an int (which will then be the number of seconds) or as a callable.</p>
+<p>Intervals define the delay that is introduced between attempts. This can
+either be passed in as an int (which will then be the number of seconds) or as
+a callable.</p>
 <p>Delay for 1 second between attempts.</p>
 <div class="highlight"><pre><span></span><span class="nd">@retrace.retry</span><span class="p">(</span><span class="n">interval</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">unstable</span><span class="p">():</span>
@@ -130,8 +148,10 @@
 </pre></div>
 
 
-<p>Delay for <code>n</code> seconds, where <code>n</code> is the current number of attempts. This then gradually increases the delay by one second each try.</p>
-<p>This works because <code>time.sleep</code> is a callable and we pass in the current attempt number each time.</p>
+<p>Delay for <code>n</code> seconds, where <code>n</code> is the current number of attempts. This then
+gradually increases the delay by one second each try.</p>
+<p>This works because <code>time.sleep</code> is a callable and we pass in the current
+attempt number each time.</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
 
 <span class="nd">@retrace.retry</span><span class="p">(</span><span class="n">interval</span><span class="o">=</span><span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">)</span>
@@ -141,15 +161,19 @@
 
 
 <h3>Validators</h3>
-<p>Validators are used to verify that the result from the function passes a check.</p>
-<p>If it isn't a callable, it can be any object that is then compared with the result. Check that the function returns the value <code>"EXPECTED"</code>.</p>
+<p>Validators are used to verify that the result from the function passes a
+check.</p>
+<p>If it isn't a callable, it can be any object that is then compared with the
+result. Check that the function returns the value <code>"EXPECTED"</code>.</p>
 <div class="highlight"><pre><span></span><span class="nd">@retrace.retry</span><span class="p">(</span><span class="n">validator</span><span class="o">=</span><span class="s2">&quot;EXPECTED&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">unstable</span><span class="p">():</span>
     <span class="c1"># ...</span>
 </pre></div>
 
 
-<p>If it is a callable, it will be passed the result and it should return <code>True</code> it has passed and <code>False</code> if it has failed and the function should be called again.</p>
+<p>If it is a callable, it will be passed the result and it should return <code>True</code>
+it has passed and <code>False</code> if it has failed and the function should be called
+again.</p>
 <div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">validate_string</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
     <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span>
 
@@ -160,7 +184,10 @@
 
 
 <hr />
-<p>It's a small project, but I find it useful fairly frequently. If this is something that interests you I would really like your feedback. How could it be made better? What do you need that I have not through of? <a href="https://github.com/d0ugal/retrace/issues/new">Please send me your ideas!</a></p>
+<p>It's a small project, but I find it useful fairly frequently. If this is
+something that interests you I would really like your feedback. How could it
+be made better? What do you need that I have not through of? <a href="https://github.com/d0ugal/retrace/issues/new">Please send me
+your ideas!</a></p>
   </div><!-- /.entry-content -->
 </section>
 

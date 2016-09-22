@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Dougal Matthews</title><link>http://www.dougalmatthews.com/</link><description></description><lastBuildDate>Mon, 12 Sep 2016 21:35:00 +0100</lastBuildDate><item><title>Retrace - Configurable, elegant retrying</title><link>http://www.dougalmatthews.com/2016/Sep/12/retrace-configurable-elegant-retrying/</link><description>&lt;p&gt;After I mentioned &lt;a href="https://github.com/d0ugal/retrace"&gt;Retrace&lt;/a&gt; here &lt;a href="/2016/Sep/01/automate-publishing-to-pypi-with-pbr-and-travis/"&gt;recently&lt;/a&gt; a few people have asked me about it, so I thought I'd write up a quick post.&lt;/p&gt;
-&lt;p&gt;Retrace is, essentially, a retry decorator. There are many projects like this but after trying a few I either ran into issues or found the API cumbersome. I wanted something with a really simple interface but with the ability to easily build on it.&lt;/p&gt;
+<rss version="2.0"><channel><title>Dougal Matthews</title><link>http://www.dougalmatthews.com/</link><description></description><lastBuildDate>Mon, 12 Sep 2016 21:35:00 +0100</lastBuildDate><item><title>Retrace - Configurable, elegant retrying</title><link>http://www.dougalmatthews.com/2016/Sep/12/retrace-configurable-elegant-retrying/</link><description>&lt;p&gt;After I mentioned &lt;a href="https://github.com/d0ugal/retrace"&gt;Retrace&lt;/a&gt; here &lt;a href="/2016/Sep/01/automate-publishing-to-pypi-with-pbr-and-travis/"&gt;recently&lt;/a&gt; a few people have asked
+me about it, so I thought I'd write up a quick post.&lt;/p&gt;
+&lt;p&gt;Retrace is, essentially, a retry decorator. There are many projects like this
+but after trying a few I either ran into issues or found the API cumbersome. I
+wanted something with a really simple interface but with the ability to easily
+build on it.&lt;/p&gt;
 &lt;h2&gt;Simplicity&lt;/h2&gt;
-&lt;p&gt;By default, it will retry the function on any exception which subclasses Exception. Any exceptions that directly inherit from BaseException (like KeyboardInterrupt) wont be caught by default, as you generally don't want that.&lt;/p&gt;
+&lt;p&gt;By default, it will retry the function on any exception which subclasses
+Exception. Any exceptions that directly inherit from BaseException (like
+KeyboardInterrupt) wont be caught by default, as you generally don't want
+that.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;retrace&lt;/span&gt;
 
 &lt;span class="nd"&gt;@retrace.retry&lt;/span&gt;
@@ -11,7 +18,8 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Of course, you can change what you catch by passing &lt;code&gt;on_exception&lt;/code&gt; which can be any valid exception class.&lt;/p&gt;
+&lt;p&gt;Of course, you can change what you catch by passing &lt;code&gt;on_exception&lt;/code&gt; which can
+be any valid exception class.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;retrace&lt;/span&gt;
 
 &lt;span class="nd"&gt;@retrace.retry&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;on_exeption&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="ne"&gt;IOError&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -21,11 +29,18 @@
 
 
 &lt;h2&gt;Portability&lt;/h2&gt;
-&lt;p&gt;Retrace is tested and supported on Python 2.7, 3.3, 3.4 and 3.5. It is also &lt;a href="http://d0ugal.github.io/retrace/#vendoring"&gt;designed to be &lt;strong&gt;easily vendorable&lt;/strong&gt;&lt;/a&gt;, I understand that you might not want, or be able to include a dependency for such a small utility. so you can easily just grab the &lt;code&gt;retrace.py&lt;/code&gt; file and include it in your project.&lt;/p&gt;
+&lt;p&gt;Retrace is tested and supported on Python 2.7, 3.3, 3.4 and 3.5. It is also
+&lt;a href="http://d0ugal.github.io/retrace/#vendoring"&gt;designed to be &lt;strong&gt;easily vendorable&lt;/strong&gt;&lt;/a&gt;, I understand that you
+might not want, or be able to include a dependency for such a small utility.
+so you can easily just grab the &lt;code&gt;retrace.py&lt;/code&gt; file and include it in your
+project.&lt;/p&gt;
 &lt;h2&gt;Customisation&lt;/h2&gt;
-&lt;p&gt;Retrace supports limiters, intervals and validators. These are all fairly similar concepts, but play a different role. We will quickly take a look at each of these.&lt;/p&gt;
+&lt;p&gt;Retrace supports limiters, intervals and validators. These are all fairly
+similar concepts, but play a different role. We will quickly take a look at
+each of these.&lt;/p&gt;
 &lt;h3&gt;Limiters&lt;/h3&gt;
-&lt;p&gt;A limiter defines how many times the function should be retried. This can be passed in as either a int or a callable.&lt;/p&gt;
+&lt;p&gt;A limiter defines how many times the function should be retried. This can be
+passed in as either a int or a callable.&lt;/p&gt;
 &lt;p&gt;For example, retry a maximum of 10 times.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nd"&gt;@retrace.retry&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;limit&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;unstable&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
@@ -33,7 +48,8 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;If a callable is passed in, the number of retries can be limited easily with any custom logic.&lt;/p&gt;
+&lt;p&gt;If a callable is passed in, the number of retries can be limited easily with
+any custom logic.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;random&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;retrace&lt;/span&gt;
 
@@ -48,7 +64,9 @@
 
 
 &lt;h3&gt;Intervals&lt;/h3&gt;
-&lt;p&gt;Intervals define the delay that is introduced between attempts. This can either be passed in as an int (which will then be the number of seconds) or as a callable.&lt;/p&gt;
+&lt;p&gt;Intervals define the delay that is introduced between attempts. This can
+either be passed in as an int (which will then be the number of seconds) or as
+a callable.&lt;/p&gt;
 &lt;p&gt;Delay for 1 second between attempts.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nd"&gt;@retrace.retry&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;interval&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;unstable&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
@@ -56,8 +74,10 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Delay for &lt;code&gt;n&lt;/code&gt; seconds, where &lt;code&gt;n&lt;/code&gt; is the current number of attempts. This then gradually increases the delay by one second each try.&lt;/p&gt;
-&lt;p&gt;This works because &lt;code&gt;time.sleep&lt;/code&gt; is a callable and we pass in the current attempt number each time.&lt;/p&gt;
+&lt;p&gt;Delay for &lt;code&gt;n&lt;/code&gt; seconds, where &lt;code&gt;n&lt;/code&gt; is the current number of attempts. This then
+gradually increases the delay by one second each try.&lt;/p&gt;
+&lt;p&gt;This works because &lt;code&gt;time.sleep&lt;/code&gt; is a callable and we pass in the current
+attempt number each time.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;time&lt;/span&gt;
 
 &lt;span class="nd"&gt;@retrace.retry&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;interval&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sleep&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -67,15 +87,19 @@
 
 
 &lt;h3&gt;Validators&lt;/h3&gt;
-&lt;p&gt;Validators are used to verify that the result from the function passes a check.&lt;/p&gt;
-&lt;p&gt;If it isn't a callable, it can be any object that is then compared with the result. Check that the function returns the value &lt;code&gt;"EXPECTED"&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Validators are used to verify that the result from the function passes a
+check.&lt;/p&gt;
+&lt;p&gt;If it isn't a callable, it can be any object that is then compared with the
+result. Check that the function returns the value &lt;code&gt;"EXPECTED"&lt;/code&gt;.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nd"&gt;@retrace.retry&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;validator&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;EXPECTED&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;unstable&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
     &lt;span class="c1"&gt;# ...&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;If it is a callable, it will be passed the result and it should return &lt;code&gt;True&lt;/code&gt; it has passed and &lt;code&gt;False&lt;/code&gt; if it has failed and the function should be called again.&lt;/p&gt;
+&lt;p&gt;If it is a callable, it will be passed the result and it should return &lt;code&gt;True&lt;/code&gt;
+it has passed and &lt;code&gt;False&lt;/code&gt; if it has failed and the function should be called
+again.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;validate_string&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;isinstance&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
@@ -86,12 +110,25 @@
 
 
 &lt;hr /&gt;
-&lt;p&gt;It's a small project, but I find it useful fairly frequently. If this is something that interests you I would really like your feedback. How could it be made better? What do you need that I have not through of? &lt;a href="https://github.com/d0ugal/retrace/issues/new"&gt;Please send me your ideas!&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Dougal Matthews</dc:creator><pubDate>Mon, 12 Sep 2016 21:35:00 +0100</pubDate><guid isPermaLink="false">tag:www.dougalmatthews.com,2016-09-12:2016/Sep/12/retrace-configurable-elegant-retrying/</guid><category>python</category><category>retry</category><category>exception</category></item><item><title>Automate publishing to PyPI with pbr and Travis</title><link>http://www.dougalmatthews.com/2016/Sep/01/automate-publishing-to-pypi-with-pbr-and-travis/</link><description>&lt;p&gt;Releasing new versions of your Open Source projects is a time demanding task. So in a &lt;a href="http://d0ugal.github.io/retrace/"&gt;recent&lt;/a&gt;, and admittedly small, project I decided to try and make it as easy as possible.&lt;/p&gt;
-&lt;p&gt;I started using &lt;a href="http://docs.openstack.org/developer/pbr/"&gt;pbr&lt;/a&gt; and &lt;a href="https://travis-ci.org/"&gt;Travis&lt;/a&gt; to automatically deploy to &lt;a href="https://pypi.python.org/pypi"&gt;PyPI&lt;/a&gt; each time I push a git tag. This means, creating a new release is as simple as &lt;code&gt;git tag 1.0.0&lt;/code&gt; and &lt;code&gt;git push origin --tags&lt;/code&gt;. Anyone with commit access can then easily and confidently roll a release.&lt;/p&gt;
+&lt;p&gt;It's a small project, but I find it useful fairly frequently. If this is
+something that interests you I would really like your feedback. How could it
+be made better? What do you need that I have not through of? &lt;a href="https://github.com/d0ugal/retrace/issues/new"&gt;Please send me
+your ideas!&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Dougal Matthews</dc:creator><pubDate>Mon, 12 Sep 2016 21:35:00 +0100</pubDate><guid isPermaLink="false">tag:www.dougalmatthews.com,2016-09-12:2016/Sep/12/retrace-configurable-elegant-retrying/</guid><category>python</category><category>retry</category><category>exception</category></item><item><title>Automate publishing to PyPI with pbr and Travis</title><link>http://www.dougalmatthews.com/2016/Sep/01/automate-publishing-to-pypi-with-pbr-and-travis/</link><description>&lt;p&gt;Releasing new versions of your Open Source projects is a time demanding task.
+So in a &lt;a href="http://d0ugal.github.io/retrace/"&gt;recent&lt;/a&gt;, and admittedly small, project I decided to try and
+make it as easy as possible.&lt;/p&gt;
+&lt;p&gt;I started using &lt;a href="http://docs.openstack.org/developer/pbr/"&gt;pbr&lt;/a&gt; and &lt;a href="https://travis-ci.org/"&gt;Travis&lt;/a&gt; to automatically deploy to &lt;a href="https://pypi.python.org/pypi"&gt;PyPI&lt;/a&gt; each time
+I push a git tag. This means, creating a new release is as simple as &lt;code&gt;git tag
+1.0.0&lt;/code&gt; and &lt;code&gt;git push origin --tags&lt;/code&gt;. Anyone with commit access can then easily
+and confidently roll a release.&lt;/p&gt;
 &lt;p&gt;Let's break that down a bit.&lt;/p&gt;
 &lt;h2&gt;pbr&lt;/h2&gt;
-&lt;p&gt;&lt;a href="http://docs.openstack.org/developer/pbr/"&gt;Python Build Reasonableness&lt;/a&gt; is a library for making packaging easier and more consistent. If you are happy to use it's conventions, which are mostly reasonable, it works very well. The project is developed under the OpenStack umbrella and used on most&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt; OpenStack project. That is how I was first introduced to it, but it works well outside of this ecosystem.&lt;/p&gt;
-&lt;p&gt;To use &lt;a href="http://docs.openstack.org/developer/pbr/"&gt;pbr&lt;/a&gt;, you need to add it to your &lt;code&gt;setup.py&lt;/code&gt;, the project encourages using a setup.cfg, so your full setup.py should look like this.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://docs.openstack.org/developer/pbr/"&gt;Python Build Reasonableness&lt;/a&gt; is a library for making packaging easier
+and more consistent. If you are happy to use it's conventions, which are
+mostly reasonable, it works very well. The project is developed under the
+OpenStack umbrella and used on most&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt; OpenStack project. That is how I was
+first introduced to it, but it works well outside of this ecosystem.&lt;/p&gt;
+&lt;p&gt;To use &lt;a href="http://docs.openstack.org/developer/pbr/"&gt;pbr&lt;/a&gt;, you need to add it to your &lt;code&gt;setup.py&lt;/code&gt;, the project encourages
+using a setup.cfg, so your full setup.py should look like this.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="ch"&gt;#!/usr/bin/env python&lt;/span&gt;
 
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;setuptools&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;setup&lt;/span&gt;
@@ -103,7 +140,10 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;For retrace I had to make a few &lt;a href="https://github.com/d0ugal/retrace/blob/master/setup.py"&gt;extra additions&lt;/a&gt; because it is packaging up a single file, rather than a directory. After you have done this, much of the familiar details from a setup.py are added to a setup.cfg. This is most of the &lt;a href="https://github.com/d0ugal/retrace/blob/master/setup.cfg"&gt;retrace setup.cfg&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;For retrace I had to make a few &lt;a href="https://github.com/d0ugal/retrace/blob/master/setup.py"&gt;extra additions&lt;/a&gt; because it is
+packaging up a single file, rather than a directory. After you have done this,
+much of the familiar details from a setup.py are added to a setup.cfg. This is
+most of the &lt;a href="https://github.com/d0ugal/retrace/blob/master/setup.cfg"&gt;retrace setup.cfg&lt;/a&gt;.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;[metadata]&lt;/span&gt;
 &lt;span class="na"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;retrace&lt;/span&gt;
 &lt;span class="na"&gt;author&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;Dougal Matthews&lt;/span&gt;
@@ -128,13 +168,27 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;One of the &lt;em&gt;really&lt;/em&gt; useful features in pbr is that it automatically versions your projects. It uses git tags for this, so if you tag something &lt;code&gt;1.0.0,&lt;/code&gt; then the version published to PyPI etc. will be &lt;code&gt;1.0.0&lt;/code&gt;. Then if you do some commits (lets say 5) and pip install then you will install &lt;code&gt;1.0.0.dev5&lt;/code&gt;. Tagging a &lt;code&gt;1.0.1&lt;/code&gt; then versions your bug fix release and resets the dev counter.&lt;/p&gt;
-&lt;p&gt;It's really simple and removed the need to manually bump versions, which is one of the manual steps that can easily be messed up.&lt;/p&gt;
+&lt;p&gt;One of the &lt;em&gt;really&lt;/em&gt; useful features in pbr is that it automatically versions
+your projects. It uses git tags for this, so if you tag something &lt;code&gt;1.0.0,&lt;/code&gt;
+then the version published to PyPI etc. will be &lt;code&gt;1.0.0&lt;/code&gt;. Then if you do some
+commits (lets say 5) and pip install then you will install &lt;code&gt;1.0.0.dev5&lt;/code&gt;.
+Tagging a &lt;code&gt;1.0.1&lt;/code&gt; then versions your bug fix release and resets the dev
+counter.&lt;/p&gt;
+&lt;p&gt;It's really simple and removed the need to manually bump versions, which is
+one of the manual steps that can easily be messed up.&lt;/p&gt;
 &lt;h2&gt;Travis&lt;/h2&gt;
-&lt;p&gt;Hopefully most people know &lt;a href="https://travis-ci.org/"&gt;Travis&lt;/a&gt;, it is CI-aaS, Continuous Integration as a Service. They have built a really great product which they make free for Open Source projects.&lt;/p&gt;
-&lt;p&gt;The most common Travis use case is probably for running tests and code linting, which are both fantastic reasons, but there are compelling reasons to have Travis automatically do deploys. Running the deploy on different
-local machines increases the chances of picking up something that wasn't committed to git. If you do this on a CI server, the deploy should always be done from a clean and consistent environment.&lt;/p&gt;
-&lt;p&gt;This is most of the &lt;a href="https://github.com/mkdocs/mkdocs/blob/master/.travis.yml"&gt;retrace .travis.yml&lt;/a&gt; config file, trimmed down a little to keep it short, but it should be functional. The deploy block is the most interesting section.&lt;/p&gt;
+&lt;p&gt;Hopefully most people know &lt;a href="https://travis-ci.org/"&gt;Travis&lt;/a&gt;, it is CI-aaS, Continuous Integration as a
+Service. They have built a really great product which they make free for Open
+Source projects.&lt;/p&gt;
+&lt;p&gt;The most common Travis use case is probably for running tests and code
+linting, which are both fantastic reasons, but there are compelling reasons to
+have Travis automatically do deploys. Running the deploy on different local
+machines increases the chances of picking up something that wasn't committed
+to git. If you do this on a CI server, the deploy should always be done from a
+clean and consistent environment.&lt;/p&gt;
+&lt;p&gt;This is most of the &lt;a href="https://github.com/mkdocs/mkdocs/blob/master/.travis.yml"&gt;retrace .travis.yml&lt;/a&gt; config file, trimmed down
+a little to keep it short, but it should be functional. The deploy block is
+the most interesting section.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;language&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;python&lt;/span&gt;
 &lt;span class="l l-Scalar l-Scalar-Plain"&gt;python&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;3.5&amp;#39;&lt;/span&gt;
 &lt;span class="l l-Scalar l-Scalar-Plain"&gt;env&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
@@ -150,7 +204,7 @@ local machines increases the chances of picking up something that wasn't committ
   &lt;span class="l l-Scalar l-Scalar-Plain"&gt;user&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;d0ugal-deploy&lt;/span&gt;
   &lt;span class="l l-Scalar l-Scalar-Plain"&gt;distributions&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;sdist bdist_wheel&lt;/span&gt;
   &lt;span class="l l-Scalar l-Scalar-Plain"&gt;password&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
-    &lt;span class="l l-Scalar l-Scalar-Plain"&gt;secure&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;b4f6y1xw5B/RXXnOu6JIaNcgOBZ0/CkNaMeEXsoQSewYZNwobLPYALY9WaaOblarwrVa5NRD3e4x6SoL1/1NzQxfhCNMn7L82sssmtevnK+mSuUp4IZQa8WKyz+xLfnk28TlHgQbctAU9NaeQ6GuEflTRD7Bp8+xJ1C7h+yBUnw=&lt;/span&gt;
+    &lt;span class="l l-Scalar l-Scalar-Plain"&gt;secure&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;b4f6y1xw5B/RXXnOu6JIaNcgOBZ0/CkNaMeEXsoQSewYZNwobLPYA&lt;/span&gt;
   &lt;span class="l l-Scalar l-Scalar-Plain"&gt;on&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
     &lt;span class="l l-Scalar l-Scalar-Plain"&gt;tags&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;true&lt;/span&gt;
     &lt;span class="l l-Scalar l-Scalar-Plain"&gt;repo&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;d0ugal/retrace&lt;/span&gt;
@@ -158,12 +212,17 @@ local machines increases the chances of picking up something that wasn't committ
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;First we specify the provider as PyPI, then the PyPI user is set&lt;sup id="fnref:2"&gt;&lt;a class="footnote-ref" href="#fn:2" rel="footnote"&gt;2&lt;/a&gt;&lt;/sup&gt;. We specify both source and wheel distributions. The password is encrypted and added with &lt;code&gt;travis encrypt --add deploy.password&lt;/code&gt; and then some conditions are set.
-We only want to deploy tags, the source repository and for a specific &lt;code&gt;TOXENV&lt;/code&gt; (otherwise the deploy will be attempted for each env).&lt;/p&gt;
-&lt;p&gt;Travis will then use &lt;a href="https://pypi.python.org/pypi/twine"&gt;twine&lt;/a&gt; to upload to PyPI, which uses HTTPS, even on older Python versions.&lt;/p&gt;
+&lt;p&gt;First we specify the provider as PyPI, then the PyPI user is set[^2]. We
+specify both source and wheel distributions. The password is encrypted and
+added with &lt;code&gt;travis encrypt --add deploy.password&lt;/code&gt; and then some conditions are
+set. We only want to deploy tags, the source repository and for a specific
+&lt;code&gt;TOXENV&lt;/code&gt; (otherwise the deploy will be attempted for each env).&lt;/p&gt;
+&lt;p&gt;Travis will then use &lt;a href="https://pypi.python.org/pypi/twine"&gt;twine&lt;/a&gt; to upload to PyPI, which uses HTTPS, even on
+older Python versions.&lt;/p&gt;
 &lt;h2&gt;Updating documentation&lt;/h2&gt;
-&lt;p&gt;As a bonus, this is a nice extra touch with Travis. You can easily have
-your documentation automatically built and published. In &lt;a href="http://d0ugal.github.io/retrace/"&gt;retrace&lt;/a&gt; the documentation is a small &lt;a href="http://www.mkdocs.org/"&gt;MkDocs&lt;/a&gt; project. With the following in your Travis
+&lt;p&gt;As a bonus, this is a nice extra touch with Travis. You can easily have your
+documentation automatically built and published. In &lt;a href="http://d0ugal.github.io/retrace/"&gt;retrace&lt;/a&gt; the
+documentation is a small &lt;a href="http://www.mkdocs.org/"&gt;MkDocs&lt;/a&gt; project. With the following in your Travis
 config you can easily publish your documentation on every commit.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;after_success&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
   &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;git config user.name &amp;quot;Dougal Matthews&amp;quot;;&lt;/span&gt;
@@ -176,17 +235,21 @@ config you can easily publish your documentation on every commit.&lt;/p&gt;
 
 
 &lt;p&gt;You may want to move this to only happen on a deploy, but for a small project
-like &lt;a href="http://d0ugal.github.io/retrace/"&gt;retrace&lt;/a&gt; there is typically a release after any changes that would require docs updates.&lt;/p&gt;
+like &lt;a href="http://d0ugal.github.io/retrace/"&gt;retrace&lt;/a&gt; there is typically a release after any changes that would
+require docs updates.&lt;/p&gt;
 &lt;hr /&gt;
-&lt;p&gt;Overall, I am &lt;em&gt;very&lt;/em&gt; happy about how this came out. I would like to roll out a similar strategy to other projects that I maintain. The change isn't earth shatteringly huge, but it certainly greases the wheels a bit and makes things easier.&lt;/p&gt;
+&lt;p&gt;Overall, I am &lt;em&gt;very&lt;/em&gt; happy about how this came out. I would like to roll out a
+similar strategy to other projects that I maintain. The change isn't earth
+shatteringly huge, but it certainly greases the wheels a bit and makes things
+easier.&lt;/p&gt;
 &lt;div class="footnote"&gt;
 &lt;hr /&gt;
 &lt;ol&gt;
 &lt;li id="fn:1"&gt;
-&lt;p&gt;And quite possibly every OpenStack project, but there are &lt;a href="http://git.openstack.org/cgit"&gt;quite a few&lt;/a&gt;, so I don't plan on checking!&amp;#160;&lt;a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id="fn:2"&gt;
-&lt;p&gt;I have a dedicated user for automated deploys because I am paranoid about including my encrypted password.&amp;#160;&lt;a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 2 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;And quite possibly every OpenStack project, but there are &lt;a href="http://git.openstack.org/cgit"&gt;quite a
+few&lt;/a&gt;, so I don't plan on checking! [^2]: I have
+a dedicated user for automated deploys because I am paranoid about including
+my encrypted password.&amp;#160;&lt;a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Dougal Matthews</dc:creator><pubDate>Thu, 01 Sep 2016 08:37:00 +0100</pubDate><guid isPermaLink="false">tag:www.dougalmatthews.com,2016-09-01:2016/Sep/01/automate-publishing-to-pypi-with-pbr-and-travis/</guid><category>python</category><category>pypi</category><category>pbr</category><category>travis</category><category>twine</category><category>mkdocs</category></item><item><title>MkDocs Making Strides</title><link>http://www.dougalmatthews.com/2015/Jun/27/mkdocs-making-strides/</link><description>&lt;p&gt;When I &lt;a href="http://www.dougalmatthews.com/2015/May/09/mkdocs-docs-with-markdown/"&gt;last wrote about MkDocs&lt;/a&gt;, the most recent version was &lt;a href="http://www.mkdocs.org/about/release-notes/#version-0120-2015-04-14"&gt;0.12&lt;/a&gt;, but

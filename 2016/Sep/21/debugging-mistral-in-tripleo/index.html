@@ -73,13 +73,30 @@
       </time>
     </footer><!-- /.post-info -->
   <div class="entry-content">
-    <p>During the OpenStack Newton cylce the TripleO project has started to use <a href="http://docs.openstack.org/developer/mistral/">Mistral</a>, the OpenStack Workflow service. This has allowed us to provide an interface to TripleO that is used by the CLI and the new GUI (and potentially other consumes in the future).</p>
-<p>We naturally had to debug a few problems along the way. We'll go through the steps to track down the issue.</p>
+    <p>During the OpenStack Newton cylce the TripleO project has started to use
+<a href="http://docs.openstack.org/developer/mistral/">Mistral</a>, the OpenStack Workflow service. This has allowed us to provide an
+interface to TripleO that is used by the CLI and the new GUI (and potentially
+other consumes in the future).</p>
+<p>We naturally had to debug a few problems along the way. We'll go through the
+steps to track down the issue.</p>
 <h2>Mistal Primer</h2>
-<p>In TripleO, we call Mistral in two different ways - either by starting <a href="http://docs.openstack.org/developer/mistral/terminology/workflows.html">Workflows</a> or directly calling <a href="http://docs.openstack.org/developer/mistral/terminology/actions.html">Actions</a>. Workflows are started by creating <a href="http://docs.openstack.org/developer/mistral/terminology/executions.html">Executions</a>, this then represents the running workflow. Running actions are represented by Action Executions. Since Workflows are typically are made up of a number of action calls (or sub-workflow calls) this means start a Workflow will start one or more Executions and one or more Action Executions.</p>
-<p>Unfortunately it isn't always clear if you are calling a workflow or action directly. So, first things first, what is happening in Mistral? Let's list the workflow executions and the action executions.</p>
+<p>In TripleO, we call Mistral in two different ways - either by starting
+<a href="http://docs.openstack.org/developer/mistral/terminology/workflows.html">Workflows</a> or directly calling <a href="http://docs.openstack.org/developer/mistral/terminology/actions.html">Actions</a>. Workflows are started by creating
+<a href="http://docs.openstack.org/developer/mistral/terminology/executions.html">Executions</a>, this then represents the running workflow. Running actions are
+represented by Action Executions. Since Workflows are typically are made up of
+a number of action calls (or sub-workflow calls) this means start a Workflow
+will start one or more Executions and one or more Action Executions.</p>
+<p>Unfortunately it isn't always clear if you are calling a workflow or action
+directly. So, first things first, what is happening in Mistral? Let's list the
+workflow executions and the action executions.</p>
 <blockquote>
-<p>A small <strong>gotcha</strong>; Unfortunately when we call Mistral actions directly they wont be stored in the Mistral database, and this wont show up in <code>mistral action-execution-list</code>. This is because by default they will run synchronously and then the result isn't saved. We can tell Mistral to save the result, but then the action runs asynchronously, which defeats the purpose of calling actions directly. I am working to change this behaviour. Direct action calls <em>can</em> be seen in the Mistral log.</p>
+<p>A small <strong>gotcha</strong>; Unfortunately when we call Mistral actions directly they
+wont be stored in the Mistral database, and this wont show up in <code>mistral
+action-execution-list</code>. This is because by default they will run
+synchronously and then the result isn't saved. We can tell Mistral to save
+the result, but then the action runs asynchronously, which defeats the
+purpose of calling actions directly. I am working to change this behaviour.
+Direct action calls <em>can</em> be seen in the Mistral log.</p>
 </blockquote>
 <div class="highlight"><pre><span></span>$ openstack workflow execution list
 $ openstack action execution list
@@ -89,11 +106,19 @@ $ mistal action-execution-list
 </pre></div>
 
 
-<p>These commands can be generally useful if you are waiting for something to finish and want to look for signs of progress.</p>
-<p>The most important columns to pay attention to are the "Workflow name" and "State" in both. Then then "State info" in the execution list and the "Task name" in the action execution list.</p>
+<p>These commands can be generally useful if you are waiting for something to
+finish and want to look for signs of progress.</p>
+<p>The most important columns to pay attention to are the "Workflow name" and
+"State" in both. Then then "State info" in the execution list and the "Task
+name" in the action execution list.</p>
 <h2>Finding the error</h2>
-<p>Okay, so something has gone wrong. Maybe you have an error that mentions Mistral or you noticed an error state in either the execution list or action execution list.</p>
-<p>First check the executions. If you have a Workflow in error state, then you often want to look at the action executions unless there is an error in the workflow itself. The output here should give us enough information to tell if the workflow is a problem or one of the actions.</p>
+<p>Okay, so something has gone wrong. Maybe you have an error that mentions
+Mistral or you noticed an error state in either the execution list or action
+execution list.</p>
+<p>First check the executions. If you have a Workflow in error state, then you
+often want to look at the action executions unless there is an error in the
+workflow itself. The output here should give us enough information to tell if
+the workflow is a problem or one of the actions.</p>
 <div class="highlight"><pre><span></span>mistral execution-list <span class="p">|</span> grep <span class="s2">&quot;ERROR&quot;</span><span class="p">;</span>
 <span class="c1"># Grab the execution ID from above.</span>
 mistral execution-get <span class="nv">$EXECUTION_ID</span><span class="p">;</span>
@@ -101,7 +126,8 @@ mistral execution-get-output <span class="nv">$EXECUTION_ID</span><span class="p
 </pre></div>
 
 
-<p>Then check the actions. Often these are more useful to look at, but you first want to know which workflow execution you are debugging.</p>
+<p>Then check the actions. Often these are more useful to look at, but you first
+want to know which workflow execution you are debugging.</p>
 <div class="highlight"><pre><span></span><span class="c1"># Also look at the actions</span>
 mistral action-execution-list<span class="p">;</span>
 mistral action-execution-get-output <span class="nv">$ACTION_ID</span><span class="p">;</span>
@@ -109,11 +135,16 @@ mistral action-execution-get-output <span class="nv">$ACTION_ID</span><span clas
 
 
 <blockquote>
-<p>NOTE: Sometimes an action execution is in the ERROR state, but that is expected. For example, in some workflows we check if a swift container exists and it is an "ERROR" if it doesn't, but it just changes the Workflow logic.</p>
+<p>NOTE: Sometimes an action execution is in the ERROR state, but that is
+expected. For example, in some workflows we check if a swift container
+exists and it is an "ERROR" if it doesn't, but it just changes the Workflow
+logic.</p>
 </blockquote>
 <p>Hopefully this gives you some idea what is going on, but you may need to look into the Logs fo the full traceback...</p>
 <h2>Logs</h2>
-<p>The Mistral log is very detailed and useful for in depth debugging. To follow it and look for messages from the TripleO actions, or ERROR's I find this very useful.</p>
+<p>The Mistral log is very detailed and useful for in depth debugging. To follow
+it and look for messages from the TripleO actions, or ERROR's I find this very
+useful.</p>
 <div class="highlight"><pre><span></span>tail -f /var/log/mistral/mistral-server.log <span class="p">|</span> grep <span class="s2">&quot;ERROR\|tripleo_common&quot;</span><span class="p">;</span>
 </pre></div>
 
@@ -121,9 +152,13 @@ mistral action-execution-get-output <span class="nv">$ACTION_ID</span><span clas
 <h2>Common-ish Problems</h2>
 <p>A couple of problems I've seen a few times and how they can be spotted.</p>
 <ul>
-<li>"Error response from Zaqar. Code: 503. Title: Service temporarily unavailable. Description: Messages could not be enqueued. Please try again in a few seconds.."</li>
+<li>"Error response from Zaqar. Code: 503. Title: Service temporarily
+  unavailable. Description: Messages could not be enqueued. Please try again
+  in a few seconds.."</li>
 </ul>
-<p>Sometimes workflows will fail when sending messages to Zaqar, this is how the result of a workflow is reported. Unfortunately this is hard to debug. You can usually safely retry the full workflow, or retry the individual task.</p>
+<p>Sometimes workflows will fail when sending messages to Zaqar, this is how the
+result of a workflow is reported. Unfortunately this is hard to debug. You can
+usually safely retry the full workflow, or retry the individual task.</p>
 <div class="highlight"><pre><span></span>mistral task-list<span class="p">;</span>
 <span class="c1"># Find the ID for the failed task.</span>
 mistral task-rerun <span class="nv">$ID</span><span class="p">;</span>
