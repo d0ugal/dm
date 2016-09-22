@@ -14,7 +14,7 @@ In TripleO, we call Mistral in two different ways - either by starting [Workflow
 
 Unfortunately it isn't always clear if you are calling a workflow or action directly. So, first things first, what is happening in Mistral? Let's list the workflow executions and the action executions.
 
-> A gotcha with Actions; Unfortunately when we call Mistral actions directly they wont be stored in the Mistral database, and this wont show up in `mistral action-execution-list`. This is because by default they will run synchronously and then the result isn't saved. We can tell Mistral to save the result, but then the action runs asynchronously, which defeats the purpose of calling actions directly. I am working to change this behaviour.
+> **A SMALL GOTCHA**; Unfortunately when we call Mistral actions directly they wont be stored in the Mistral database, and this wont show up in `mistral action-execution-list`. This is because by default they will run synchronously and then the result isn't saved. We can tell Mistral to save the result, but then the action runs asynchronously, which defeats the purpose of calling actions directly. I am working to change this behaviour. Direct action calls *can* be seen in the Mistral log.
 
 ```
 $ openstack workflow execution list
