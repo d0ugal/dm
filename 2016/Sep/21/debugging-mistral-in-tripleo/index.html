@@ -78,6 +78,9 @@
 <h2>Mistal Primer</h2>
 <p>In TripleO, we call Mistral in two different ways - either by starting <a href="http://docs.openstack.org/developer/mistral/terminology/workflows.html">Workflows</a> or directly calling <a href="http://docs.openstack.org/developer/mistral/terminology/actions.html">Actions</a>. Workflows are started by creating <a href="http://docs.openstack.org/developer/mistral/terminology/executions.html">Executions</a>, this then represents the running workflow. Running actions are represented by Action Executions. Since Workflows are typically are made up of a number of action calls (or sub-workflow calls) this means start a Workflow will start one or more Executions and one or more Action Executions.</p>
 <p>Unfortunately it isn't always clear if you are calling a workflow or action directly. So, first things first, what is happening in Mistral? Let's list the workflow executions and the action executions.</p>
+<blockquote>
+<p>A gotcha with Actions; Unfortunately when we call Mistral actions directly they wont be stored in the Mistral database, and this wont show up in <code>mistral action-execution-list</code>. This is because by default they will run synchronously and then the result isn't saved. We can tell Mistral to save the result, but then the action runs asynchronously, which defeats the purpose of calling actions directly. I am working to change this behaviour.</p>
+</blockquote>
 <div class="highlight"><pre><span></span>$ openstack workflow execution list
 $ openstack action execution list
 <span class="c1"># or</span>
