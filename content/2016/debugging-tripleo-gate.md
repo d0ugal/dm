@@ -89,7 +89,7 @@ also.
 
 ## What failures at the different stages might mean
 
-### Error during "Building mistral"
+### During "Building mistral"
 
 In TripleO CI, an rpm is built for mistral with the patch under review. This
 failed for some reason. Typically this can fail if there is a change that
@@ -102,7 +102,7 @@ https://github.com/rdo-packages/mistral-distgit
 
 For example, there was a failure in patch [374813](https://review.openstack.org/#/c/374813/) as it added jinja2 until I [added it to the rpm spec].
 
-### Error during "tripleo.sh -- Overcloud create started."
+### During "tripleo.sh -- Overcloud create started."
 
 At this stage we have actually started to deploy OpenStack. The output can be very noisy once it gets started and Heat is doing most of the work. However, there will be various messages stating things like "Started Mistral Workflow..." - so look for those, if there are failures here, it could well be a legitimate regression. You probably wont see much information here unfortunately, but you will see the the execution ID which can help direct you to the correct part of the Mistral logs.
 
