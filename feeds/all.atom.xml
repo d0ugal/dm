@@ -1,5 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/all.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2016-09-29T17:31:00+01:00</updated><entry><title>Debugging TripleO Gate Failures in Mistral</title><link href="http://www.dougalmatthews.com/2016/Sep/29/debugging-tripleo-gate-failures-in-mistral/" rel="alternate"></link><published>2016-09-29T17:31:00+01:00</published><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2016-09-29:2016/Sep/29/debugging-tripleo-gate-failures-in-mistral/</id><summary type="html">&lt;p&gt;TripleO started making use of Mistral in the OpenStack Newton cycle. To help
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/all.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2016-10-19T11:59:18+01:00</updated><entry><title>Installing Dev TripleO Packages</title><link href="http://www.dougalmatthews.com/2016/Oct/19/installing-dev-tripleo-packages/" rel="alternate"></link><published>2016-10-19T11:59:18+01:00</published><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2016-10-19:2016/Oct/19/installing-dev-tripleo-packages/</id><summary type="html">&lt;p&gt;I only recently learned that &lt;a href="http://docs.openstack.org/developer/tripleo-docs/advanced_deployment/tripleo.sh.html"&gt;tripleo.sh&lt;/a&gt; could help me easily build rpm's
+for projects used in TripleO. I wish I had known this sooner, as my previous
+approach to the problem was very hacky.&lt;/p&gt;
+&lt;p&gt;Basically, there are two flags you need to know. The first only needs to be
+ran once, to set things up.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;~/tripleo-ci/scripts/tripleo.sh --delorean-setup
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;I have cloned the tripleo-ci repo to &lt;code&gt;~/tripleo-ci&lt;/code&gt;. Just update your path if
+you have it in a different location.&lt;/p&gt;
+&lt;p&gt;After this completes, you can use the following command to build a project.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;~/tripleo-ci/scripts/tripleo.sh --delorean-build openstack/tripleo-common
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;By default, this will clone the git repo for the project and store it in
+&lt;code&gt;~/tripleo/tripleo-common&lt;/code&gt;. After that it will build the package and the rpm
+can be found nested under &lt;code&gt;~/tripleo/delorean/data/repos&lt;/code&gt; - find and grep
+locates it easily enough (but there may be an easier way?). After that a
+simple yum install and you are sorted.&lt;/p&gt;
+&lt;p&gt;You can then checkout a review from gerrit, or update the git repo in
+&lt;code&gt;,~/tripleo/&lt;/code&gt; and tripleo.sh will install that version, making it easy to
+build and install projects. If you manually clone the repo and store it there
+it wont do the initial checkout.&lt;/p&gt;
+&lt;p&gt;However, to make things even easier I put a script together. I can now do
+this to install a specific gerrit review for a project.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;~/tripleo-util/install-project.sh tripleo-common 385323&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This will checkout the review, build and run the yum install, all in one go.
+If you don't include a review number, it will do the same but install the
+master version, or whatever you have manually checked out.&lt;/p&gt;
+&lt;p&gt;The only catch is that some projects require you do extra steps, like
+restarting mistral and loading Workflows when you install tripleo-common. I
+am working on automating that stuff too. I have some scripts, but I want to
+bring it all together eventually.&lt;/p&gt;
+&lt;p&gt;You can see the full source for this script below:&lt;/p&gt;
+&lt;script src="http://gist-it.appspot.com/http://github.com/d0ugal/tripleo-util/blob/master/install-project.sh"&gt;&lt;/script&gt;</summary><category term="python"></category><category term="utils"></category><category term="tripleo"></category></entry><entry><title>Debugging TripleO Gate Failures in Mistral</title><link href="http://www.dougalmatthews.com/2016/Sep/29/debugging-tripleo-gate-failures-in-mistral/" rel="alternate"></link><published>2016-09-29T17:31:00+01:00</published><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2016-09-29:2016/Sep/29/debugging-tripleo-gate-failures-in-mistral/</id><summary type="html">&lt;p&gt;TripleO started making use of Mistral in the OpenStack Newton cycle. To help
 make sure everything is robust and well tested a TripleO Jenkins job now runs
 against all Mistral changes. Hopefully this will prove valuable and useful to
 both sides - it should avoid Mistral changes breaking TripleO and also

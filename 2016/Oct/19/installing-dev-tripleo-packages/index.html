@@ -23,7 +23,7 @@
   <link rel="apple-touch-icon" sizes="144x144" href="/theme/img/iconified/apple-touch-icon-144x144.png" />
   <link rel="apple-touch-icon" sizes="152x152" href="/theme/img/iconified/apple-touch-icon-152x152.png" />
 
-  <title>Dougal Matthews</title>
+  <title>Installing Dev TripleO Packages - Dougal Matthews</title>
   <meta charset="utf-8" />
   <link href="http://www.dougalmatthews.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Dougal Matthews Full Atom Feed" />
   <link href="http://www.dougalmatthews.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Dougal Matthews RSS Feed" />
@@ -60,58 +60,61 @@
 
     <div id="content" class="container prepent-top">
 
-
-  
-  <div class="intro">
-    <p>
-      Hi, I'm Dougal, a developer living in Scotland.
-    </p>
-    <p>
-      If you want to get in touch, drop me an
-      <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#100;&#111;&#117;&#103;&#97;&#108;&#64;&#100;&#111;&#117;&#103;&#97;&#108;&#109;&#97;&#116;&#116;&#104;&#101;&#119;&#115;&#46;&#99;&#111;&#109;">email</a>.
-      Otherwise, have a look around and see my latest posts below.
-    </p>
-  </div>
-
-  <div class="article_list">
-
-      <article>
-        <time datetime="2016-10-19T11:59:18+01:00">
-          19 Oct 2016
-        </time>
-        <header>
-          <a href="2016/Oct/19/installing-dev-tripleo-packages/" rel="bookmark" title="Permanent Link to Installing Dev TripleO Packages">
-            Installing Dev TripleO Packages
-          </a>
-        </header>
-      </article>
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="http://www.dougalmatthews.com/2016/Oct/19/installing-dev-tripleo-packages/" rel="bookmark"
+         title="Permalink to Installing Dev TripleO Packages">Installing Dev TripleO Packages</a></h2>
+ 
+  </header>
+    <footer class="post-info">
+      <time datetime="2016-10-19T11:59:18+01:00">
+        Wed 19 October 2016
+      </time>
+    </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <p>I only recently learned that <a href="http://docs.openstack.org/developer/tripleo-docs/advanced_deployment/tripleo.sh.html">tripleo.sh</a> could help me easily build rpm's
+for projects used in TripleO. I wish I had known this sooner, as my previous
+approach to the problem was very hacky.</p>
+<p>Basically, there are two flags you need to know. The first only needs to be
+ran once, to set things up.</p>
+<div class="highlight"><pre><span></span>~/tripleo-ci/scripts/tripleo.sh --delorean-setup
+</pre></div>
 
 
-      <article>
-        <time datetime="2016-09-29T17:31:00+01:00">
-          29 Sep 2016
-        </time>
-        <header>
-          <a href="2016/Sep/29/debugging-tripleo-gate-failures-in-mistral/" rel="bookmark" title="Permanent Link to Debugging TripleO Gate Failures in Mistral">
-            Debugging TripleO Gate Failures in Mistral
-          </a>
-        </header>
-      </article>
+<p>I have cloned the tripleo-ci repo to <code>~/tripleo-ci</code>. Just update your path if
+you have it in a different location.</p>
+<p>After this completes, you can use the following command to build a project.</p>
+<div class="highlight"><pre><span></span>~/tripleo-ci/scripts/tripleo.sh --delorean-build openstack/tripleo-common
+</pre></div>
 
 
-      <article>
-        <time datetime="2016-09-21T21:31:00+01:00">
-          21 Sep 2016
-        </time>
-        <header>
-          <a href="2016/Sep/21/debugging-mistral-in-tripleo/" rel="bookmark" title="Permanent Link to Debugging Mistral in TripleO">
-            Debugging Mistral in TripleO
-          </a>
-        </header>
-      </article>
+<p>By default, this will clone the git repo for the project and store it in
+<code>~/tripleo/tripleo-common</code>. After that it will build the package and the rpm
+can be found nested under <code>~/tripleo/delorean/data/repos</code> - find and grep
+locates it easily enough (but there may be an easier way?). After that a
+simple yum install and you are sorted.</p>
+<p>You can then checkout a review from gerrit, or update the git repo in
+<code>,~/tripleo/</code> and tripleo.sh will install that version, making it easy to
+build and install projects. If you manually clone the repo and store it there
+it wont do the initial checkout.</p>
+<p>However, to make things even easier I put a script together. I can now do
+this to install a specific gerrit review for a project.</p>
+<div class="highlight"><pre><span></span>~/tripleo-util/install-project.sh tripleo-common 385323<span class="p">;</span>
+</pre></div>
 
-  </div>
 
+<p>This will checkout the review, build and run the yum install, all in one go.
+If you don't include a review number, it will do the same but install the
+master version, or whatever you have manually checked out.</p>
+<p>The only catch is that some projects require you do extra steps, like
+restarting mistral and loading Workflows when you install tripleo-common. I
+am working on automating that stuff too. I have some scripts, but I want to
+bring it all together eventually.</p>
+<p>You can see the full source for this script below:</p>
+<script src="http://gist-it.appspot.com/http://github.com/d0ugal/tripleo-util/blob/master/install-project.sh"></script>
+  </div><!-- /.entry-content -->
+</section>
 
     </div>
 
