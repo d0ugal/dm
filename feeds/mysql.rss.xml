@@ -7,11 +7,11 @@ seemed to take the default.&lt;/p&gt;
 is located at /etc/my.cnf but this will probably vary across platforms.&lt;/p&gt;
 &lt;p&gt;Then in that file find the [mysqld] and add add the following line below it
 as shown below.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;[mysqld]
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;[mysqld]
 default-storage-engine = innodb
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Finally, make sure you restart MySQL.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;service mysqld restart
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;service mysqld restart
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;It's pretty easy when you know how, and you'll now had transactional tables by
 default.&lt;/p&gt;

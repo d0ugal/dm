@@ -75,7 +75,7 @@ detail I will link you to the relevant documentation (for now).</p>
 <p>Create a column which can store key value data in it. This can then be queried
 by keys and values. As a data type this maps well to a Python dictionary.</p>
 <p>Quick example - insert data, select one key and filter by one key.</p>
-<div class="highlight"><pre><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">example</span> <span class="p">(</span>
+<div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">example</span> <span class="p">(</span>
 <span class="n">id</span> <span class="nb">serial</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
 <span class="k">data</span> <span class="n">hstore</span><span class="p">);</span>
 
@@ -97,12 +97,12 @@ by keys and values. As a data type this maps well to a Python dictionary.</p>
 <p>Use Python on the database. This allows you to reuse code, do faster python
 (as there is no round trip) and add database constraints with Python.</p>
 <p>How to many a simple max function that given two numbers returns the biggest.</p>
-<div class="highlight"><pre><span class="k">CREATE</span> <span class="k">LANGUAGE</span> <span class="n">plpythonu</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">LANGUAGE</span> <span class="n">plpythonu</span><span class="p">;</span>
 
 <span class="k">CREATE</span> <span class="k">FUNCTION</span> <span class="n">pymax</span> <span class="p">(</span><span class="n">a</span> <span class="nb">integer</span><span class="p">,</span> <span class="n">b</span> <span class="nb">integer</span><span class="p">)</span>
   <span class="k">RETURNS</span> <span class="nb">integer</span>
 <span class="k">AS</span> <span class="err">$$</span>
-  <span class="n">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">:</span>
+  <span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">:</span>
     <span class="k">return</span> <span class="n">a</span>
   <span class="k">return</span> <span class="n">b</span>
 <span class="err">$$</span> <span class="k">LANGUAGE</span> <span class="n">plpythonu</span><span class="p">;</span>
@@ -132,13 +132,13 @@ rather than wait for the result you can continue doing something while you wait.
 Typically this is used when working with something like Twisted but for slower or
 longer queries it would be useful.</p>
 <p>Quick async example on an intentionally slow query.</p>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">psycopg2</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">psycopg2</span>
 <span class="kn">from</span> <span class="nn">psycopg2.extras</span> <span class="kn">import</span> <span class="n">wait_select</span>
 
 <span class="n">aconn</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">async</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">wait_select</span><span class="p">(</span><span class="n">aconn</span><span class="p">)</span>
 <span class="n">acurs</span> <span class="o">=</span> <span class="n">aconn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
-<span class="n">acurs</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s">&quot;SELECT pg_sleep(5); SELECT * FROM example;&quot;</span><span class="p">)</span>
+<span class="n">acurs</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT pg_sleep(5); SELECT * FROM example;&quot;</span><span class="p">)</span>
 <span class="n">wait_select</span><span class="p">(</span><span class="n">acurs</span><span class="o">.</span><span class="n">connection</span><span class="p">)</span>
 <span class="n">acurs</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
@@ -152,7 +152,7 @@ longer queries it would be useful.</p>
 you can actually extend tables via inheritance.</p>
 <p>Inheriting from another table is very easy, just part of the child table
 definition.</p>
-<div class="highlight"><pre><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">detailed_example</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">detailed_example</span><span class="p">(</span>
     <span class="n">more_data</span> <span class="n">hstore</span>
 <span class="p">)</span> <span class="k">INHERITS</span> <span class="p">(</span><span class="n">example</span><span class="p">);</span>
 </pre></div>
@@ -165,7 +165,7 @@ definition.</p>
 <p>In a database transaction you can create savepoints and roll back a transaction
 to that point (rather than all or nothing.)</p>
 <p>Nice example, borrowed from the docs.</p>
-<div class="highlight"><pre><span class="k">BEGIN</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><span class="k">BEGIN</span><span class="p">;</span>
 <span class="k">UPDATE</span> <span class="n">accounts</span> <span class="k">SET</span> <span class="n">balance</span> <span class="o">=</span> <span class="n">balance</span> <span class="o">-</span> <span class="mi">100</span><span class="p">.</span><span class="mi">00</span>
     <span class="k">WHERE</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Alice&#39;</span><span class="p">;</span>
 <span class="n">SAVEPOINT</span> <span class="n">my_savepoint</span><span class="p">;</span>

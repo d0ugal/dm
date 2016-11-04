@@ -81,11 +81,11 @@ seemed to take the default.</p>
 is located at /etc/my.cnf but this will probably vary across platforms.</p>
 <p>Then in that file find the [mysqld] and add add the following line below it
 as shown below.</p>
-<div class="highlight"><pre>[mysqld]
+<div class="highlight"><pre><span></span>[mysqld]
 default-storage-engine = innodb
 </pre></div>
 <p>Finally, make sure you restart MySQL.</p>
-<div class="highlight"><pre>service mysqld restart
+<div class="highlight"><pre><span></span>service mysqld restart
 </pre></div>
 <p>It's pretty easy when you know how, and you'll now had transactional tables by
 default.</p>

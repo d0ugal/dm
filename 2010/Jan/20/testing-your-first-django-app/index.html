@@ -91,7 +91,7 @@ proving that it works as expected.</p>
 <p>Let's first look at how you run the tests, make sure you are in the
 mysite directory and run the command <cite>python manage.py test</cite>. You will
 see output similar to this:</p>
-<div class="highlight"><pre>Creating test database...
+<div class="highlight"><pre><span></span>Creating test database...
 Creating table auth_permission
 Creating table auth_group
 Creating table auth_user
@@ -160,7 +160,7 @@ default tests that are present in the polls application we created
 earlier in the tutorial.</p>
 <p>Delete the contents of the tests.py file and add the following test
 case.</p>
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 
 <span class="kn">from</span> <span class="nn">django.test</span> <span class="kn">import</span> <span class="n">TestCase</span>
 
@@ -169,12 +169,12 @@ case.</p>
 <span class="k">class</span> <span class="nc">PollTest</span><span class="p">(</span><span class="n">TestCase</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">question</span><span class="o">=</span><span class="s">&quot;What is your favourite colour?&quot;</span>
+        <span class="n">question</span><span class="o">=</span><span class="s2">&quot;What is your favourite colour?&quot;</span>
         <span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">poll</span> <span class="o">=</span> <span class="n">Poll</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="n">question</span><span class="p">,</span> <span class="n">pub_date</span><span class="o">=</span><span class="n">now</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">poll</span><span class="o">.</span><span class="n">choice_set</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">choice</span><span class="o">=</span><span class="s">&quot;Red&quot;</span><span class="p">,</span> <span class="n">votes</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">poll</span><span class="o">.</span><span class="n">choice_set</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">choice</span><span class="o">=</span><span class="s">&quot;Bue&quot;</span><span class="p">,</span> <span class="n">votes</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">poll</span><span class="o">.</span><span class="n">choice_set</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">choice</span><span class="o">=</span><span class="s">&quot;Green&quot;</span><span class="p">,</span> <span class="n">votes</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">poll</span><span class="o">.</span><span class="n">choice_set</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">choice</span><span class="o">=</span><span class="s2">&quot;Red&quot;</span><span class="p">,</span> <span class="n">votes</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">poll</span><span class="o">.</span><span class="n">choice_set</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">choice</span><span class="o">=</span><span class="s2">&quot;Bue&quot;</span><span class="p">,</span> <span class="n">votes</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">poll</span><span class="o">.</span><span class="n">choice_set</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">choice</span><span class="o">=</span><span class="s2">&quot;Green&quot;</span><span class="p">,</span> <span class="n">votes</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">test_models</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">poll</span><span class="o">.</span><span class="n">choice_set</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="mi">3</span><span class="p">)</span>
@@ -197,23 +197,23 @@ fails a <cite>F</cite> will be displated and if there is an error <cite>E</cite>
 displayed. A failure is when one of the assertions fails and an error
 happens when there is an uncaught exception while running the test.</p>
 <p>Let's add another test case that does something more useful.</p>
-<div class="highlight"><pre><span class="c"># ...</span>
+<div class="highlight"><pre><span></span><span class="c1"># ...</span>
 <span class="kn">from</span> <span class="nn">django.test</span> <span class="kn">import</span> <span class="n">Client</span>
 
 <span class="kn">from</span> <span class="nn">mysite.polls.models</span> <span class="kn">import</span> <span class="n">Poll</span><span class="p">,</span> <span class="n">Choice</span>
 
 <span class="k">class</span> <span class="nc">PollTest</span><span class="p">(</span><span class="n">TestCase</span><span class="p">):</span>
 
-    <span class="c"># ...</span>
+    <span class="c1"># ...</span>
 
     <span class="k">def</span> <span class="nf">test_voting</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">c</span> <span class="o">=</span> <span class="n">Client</span><span class="p">()</span>
-        <span class="c"># Perform a vote on the poll by mocking a POST request.</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">&#39;/polls/1/vote/&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;choice&#39;</span><span class="p">:</span> <span class="s">&#39;1&#39;</span><span class="p">,})</span>
-        <span class="c"># In the vote view we redirect the user, so check the</span>
-        <span class="c"># response status code is 302.</span>
+        <span class="c1"># Perform a vote on the poll by mocking a POST request.</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;/polls/1/vote/&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;choice&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,})</span>
+        <span class="c1"># In the vote view we redirect the user, so check the</span>
+        <span class="c1"># response status code is 302.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">302</span><span class="p">)</span>
-        <span class="c"># Get the choice and check there is now one vote.</span>
+        <span class="c1"># Get the choice and check there is now one vote.</span>
         <span class="n">choice</span> <span class="o">=</span> <span class="n">Choice</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">choice</span><span class="o">.</span><span class="n">votes</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
@@ -235,34 +235,34 @@ information we can work with rather than the full html response. First
 we will write the test for how we want this to work. We want the system
 to return <cite>'1'</cite> on a valid vote and <cite>'0'</cite> on an invalid vote in the http
 response.</p>
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">PollTest</span><span class="p">(</span><span class="n">TestCase</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">PollTest</span><span class="p">(</span><span class="n">TestCase</span><span class="p">):</span>
 
-    <span class="c"># ...</span>
+    <span class="c1"># ...</span>
 
     <span class="k">def</span> <span class="nf">test_ajax_vote</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="n">c</span> <span class="o">=</span> <span class="n">Client</span><span class="p">()</span>
 
-        <span class="c"># Extra parameters to make this a Ajax style request.</span>
-        <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s">&#39;HTTP_X_REQUESTED_WITH&#39;</span><span class="p">:</span><span class="s">&#39;XMLHttpRequest&#39;</span><span class="p">}</span>
+        <span class="c1"># Extra parameters to make this a Ajax style request.</span>
+        <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;HTTP_X_REQUESTED_WITH&#39;</span><span class="p">:</span><span class="s1">&#39;XMLHttpRequest&#39;</span><span class="p">}</span>
 
-        <span class="c"># A valid vote</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">&#39;/polls/1/vote/&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;choice&#39;</span><span class="p">:</span> <span class="s">&#39;1&#39;</span><span class="p">,},</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="c1"># A valid vote</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;/polls/1/vote/&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;choice&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,},</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s">&#39;1&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">)</span>
 
-        <span class="c"># A invalid vote - choice doesn&#39;t exist</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">&#39;/polls/1/vote/&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;choice&#39;</span><span class="p">:</span> <span class="s">&#39;10&#39;</span><span class="p">,},</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="c1"># A invalid vote - choice doesn&#39;t exist</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;/polls/1/vote/&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;choice&#39;</span><span class="p">:</span> <span class="s1">&#39;10&#39;</span><span class="p">,},</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s">&#39;0&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s1">&#39;0&#39;</span><span class="p">)</span>
 
-        <span class="c"># An invalid vote - poll doesn&#39;t exist</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">&#39;/polls/2/vote/&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;choice&#39;</span><span class="p">:</span> <span class="s">&#39;1&#39;</span><span class="p">,},</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="c1"># An invalid vote - poll doesn&#39;t exist</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;/polls/2/vote/&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;choice&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,},</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="mi">404</span><span class="p">)</span>
 </pre></div>
 <p>Add this to your tests and then run the test suite. You should get
 output similar to this;</p>
-<div class="highlight"><pre>F..
+<div class="highlight"><pre><span></span>F..
 ===================================================================
 FAIL: test_ajax_vote (mysite.polls.tests.PollTest)
 -------------------------------------------------------------------
@@ -279,29 +279,29 @@ page. This then means the test fails at the first hurdle when we check
 the response code.</p>
 <p>Now all we need to do is update the code in the vote view to make the
 tests pass. Change your view so it matches the following.</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">vote</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">poll_id</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">vote</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">poll_id</span><span class="p">):</span>
     <span class="n">p</span> <span class="o">=</span> <span class="n">get_object_or_404</span><span class="p">(</span><span class="n">Poll</span><span class="p">,</span> <span class="n">pk</span><span class="o">=</span><span class="n">poll_id</span><span class="p">)</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">selected_choice</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">choice_set</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s">&#39;choice&#39;</span><span class="p">])</span>
+        <span class="n">selected_choice</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">choice_set</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s1">&#39;choice&#39;</span><span class="p">])</span>
     <span class="k">except</span> <span class="p">(</span><span class="ne">KeyError</span><span class="p">,</span> <span class="n">Choice</span><span class="o">.</span><span class="n">DoesNotExist</span><span class="p">):</span>
-        <span class="c"># bad vote, return &#39;0&#39;</span>
+        <span class="c1"># bad vote, return &#39;0&#39;</span>
         <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">is_ajax</span><span class="p">():</span>
-            <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="s">&quot;0&quot;</span><span class="p">)</span>
-        <span class="c"># Redisplay the poll voting form.</span>
-        <span class="k">return</span> <span class="n">render_to_response</span><span class="p">(</span><span class="s">&#39;polls/poll_detail.html&#39;</span><span class="p">,</span> <span class="p">{</span>
-            <span class="s">&#39;object&#39;</span><span class="p">:</span> <span class="n">p</span><span class="p">,</span>
-            <span class="s">&#39;error_message&#39;</span><span class="p">:</span> <span class="s">&quot;You didn&#39;t select a choice.&quot;</span><span class="p">,</span>
+            <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="s2">&quot;0&quot;</span><span class="p">)</span>
+        <span class="c1"># Redisplay the poll voting form.</span>
+        <span class="k">return</span> <span class="n">render_to_response</span><span class="p">(</span><span class="s1">&#39;polls/poll_detail.html&#39;</span><span class="p">,</span> <span class="p">{</span>
+            <span class="s1">&#39;object&#39;</span><span class="p">:</span> <span class="n">p</span><span class="p">,</span>
+            <span class="s1">&#39;error_message&#39;</span><span class="p">:</span> <span class="s2">&quot;You didn&#39;t select a choice.&quot;</span><span class="p">,</span>
         <span class="p">})</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">selected_choice</span><span class="o">.</span><span class="n">votes</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="n">selected_choice</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
-        <span class="c"># vote saved, return &#39;1&#39;</span>
+        <span class="c1"># vote saved, return &#39;1&#39;</span>
         <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">is_ajax</span><span class="p">():</span>
-            <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="s">&quot;1&quot;</span><span class="p">)</span>
-        <span class="c"># Always return an HttpResponseRedirect after successfully dealing</span>
-        <span class="c"># with POST data. This prevents data from being posted twice if a</span>
-        <span class="c"># user hits the Back button.</span>
-        <span class="k">return</span> <span class="n">HttpResponseRedirect</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s">&#39;poll_results&#39;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">id</span><span class="p">,)))</span>
+            <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="s2">&quot;1&quot;</span><span class="p">)</span>
+        <span class="c1"># Always return an HttpResponseRedirect after successfully dealing</span>
+        <span class="c1"># with POST data. This prevents data from being posted twice if a</span>
+        <span class="c1"># user hits the Back button.</span>
+        <span class="k">return</span> <span class="n">HttpResponseRedirect</span><span class="p">(</span><span class="n">reverse</span><span class="p">(</span><span class="s1">&#39;poll_results&#39;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">id</span><span class="p">,)))</span>
 </pre></div>
 <p>Re-run the test suite and it should now pass. You have successfully
 written your first tests for the polls app and even done a little bit of

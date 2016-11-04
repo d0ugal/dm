@@ -81,7 +81,7 @@ doing that already there isn't much for you here. If your messing around with
 <p>Lets take a simple use case; a quiz system. You can think of it like who
 wants to be a millionaire. We will have a Question with four possible
 answers. So two models...</p>
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
 
 <span class="k">class</span> <span class="nc">Question</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">test</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span>
@@ -93,16 +93,16 @@ answers. So two models...</p>
 </pre></div>
 <p>Basically we want a form that stores both the question and the
 answers and checks the answer is a valid choice. You could do it this way.</p>
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
 
 <span class="k">class</span> <span class="nc">QuizForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">Form</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">question</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">QuizForm</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">fields</span><span class="p">[</span><span class="s">&#39;question&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">widget</span><span class="o">=</span> \
+        <span class="bp">self</span><span class="o">.</span><span class="n">fields</span><span class="p">[</span><span class="s1">&#39;question&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">widget</span><span class="o">=</span> \
             <span class="n">forms</span><span class="o">.</span><span class="n">HiddenInput</span><span class="p">,</span> <span class="n">initial</span><span class="o">=</span><span class="n">question</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">fields</span><span class="p">[</span><span class="s">&#39;answers&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">ModelChoiceField</span><span class="p">(</span><span class="n">queryset</span><span class="o">=</span> \
+        <span class="bp">self</span><span class="o">.</span><span class="n">fields</span><span class="p">[</span><span class="s1">&#39;answers&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">ModelChoiceField</span><span class="p">(</span><span class="n">queryset</span><span class="o">=</span> \
             <span class="n">question</span><span class="o">.</span><span class="n">answers_set</span><span class="p">)</span>
 </pre></div>
 <p>Now in this example that's actually not too bad. It's still a bit hacky
@@ -118,16 +118,16 @@ and the type of that object is returned. The second is to create
 classes at runtime by using <cite>type()</cite> as a class constructor.</p>
 <p>First lets look at an example that has exactly with the same result
 as the previous example.</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">quiz_form_factory</span><span class="p">(</span><span class="n">question</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">quiz_form_factory</span><span class="p">(</span><span class="n">question</span><span class="p">):</span>
 
     <span class="n">properties</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s">&#39;question&#39;</span> <span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">widget</span><span class="o">=</span><span class="n">forms</span><span class="o">.</span><span class="n">HiddenInput</span><span class="p">,</span> \
+        <span class="s1">&#39;question&#39;</span> <span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">widget</span><span class="o">=</span><span class="n">forms</span><span class="o">.</span><span class="n">HiddenInput</span><span class="p">,</span> \
             <span class="n">initial</span><span class="o">=</span><span class="n">question</span><span class="o">.</span><span class="n">id</span><span class="p">),</span>
-        <span class="s">&#39;answers&#39;</span> <span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">ModelChoiceField</span><span class="p">(</span><span class="n">queryset</span><span class="o">=</span> \
+        <span class="s1">&#39;answers&#39;</span> <span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">ModelChoiceField</span><span class="p">(</span><span class="n">queryset</span><span class="o">=</span> \
             <span class="n">question</span><span class="o">.</span><span class="n">answers_set</span><span class="p">)</span>
     <span class="p">}</span>
 
-    <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="s">&#39;QuizForm&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">Form</span><span class="p">,),</span> <span class="n">properties</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="s1">&#39;QuizForm&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">Form</span><span class="p">,),</span> <span class="n">properties</span><span class="p">)</span>
 </pre></div>
 <p>And there we go, it's as simple as that. When using <cite>type()</cite> to
 construct classes it takes three parameters
@@ -135,18 +135,18 @@ construct classes it takes three parameters
 of the class, the base classes it inherits from and the properties the
 created class will have.</p>
 <p>Besides the above implementation the usage is slightly different.</p>
-<div class="highlight"><pre><span class="c"># start with a random question</span>
-<span class="n">question</span> <span class="o">=</span> <span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s">&#39;?&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><span class="c1"># start with a random question</span>
+<span class="n">question</span> <span class="o">=</span> <span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;?&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 
-<span class="c"># method A</span>
+<span class="c1"># method A</span>
 <span class="n">quiz_form</span> <span class="o">=</span> <span class="n">QuizForm</span><span class="p">(</span><span class="n">question</span><span class="p">)</span>
-<span class="c"># or with POST data</span>
+<span class="c1"># or with POST data</span>
 <span class="n">quiz_form</span> <span class="o">=</span> <span class="n">QuizForm</span><span class="p">(</span><span class="n">question</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">)</span>
 
-<span class="c"># method B</span>
+<span class="c1"># method B</span>
 <span class="n">QuizForm</span> <span class="o">=</span> <span class="n">quiz_form_factory</span><span class="p">(</span><span class="n">question</span><span class="p">)</span>
 <span class="n">quiz_form</span> <span class="o">=</span> <span class="n">QuizForm</span><span class="p">()</span>
-<span class="c"># or with POST data</span>
+<span class="c1"># or with POST data</span>
 <span class="n">quiz_form</span> <span class="o">=</span> <span class="n">QuizForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">)</span>
 </pre></div>
 <p>Again, perhaps I should have chosen a more complex example as the

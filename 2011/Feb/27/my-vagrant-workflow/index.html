@@ -85,7 +85,7 @@ I would then do this once in each project root allowing the vagrant file to
 be version controlled and configured for an individual project. Then each
 developer can create a virtual machine from the same config and this keeps
 everybody on the same page.</p>
-<div class="highlight"><pre>sudo gem update --system
+<div class="highlight"><pre><span></span>sudo gem update --system
 gem install vagrant
 cd /path/to/project
 vagrant init
@@ -97,7 +97,7 @@ any problems make sure you read that first.</p>
 is a simple Ruby based configuration file. The Vagrantfile is
 <a class="reference external" href="http://vagrantup.com/docs/vagrantfile.html">well documented</a> so we'll skip past that bit. Instead, copy the following
 into your vagrant file.</p>
-<div class="highlight"><pre><span class="no">Vagrant</span><span class="o">::</span><span class="no">Config</span><span class="o">.</span><span class="n">run</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+<div class="highlight"><pre><span></span><span class="no">Vagrant</span><span class="o">::</span><span class="no">Config</span><span class="o">.</span><span class="n">run</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
 
   <span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">box</span> <span class="o">=</span> <span class="s2">&quot;lucid32&quot;</span>
   <span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">box_url</span> <span class="o">=</span> <span class="s2">&quot;http://files.vagrantup.com/lucid32.box&quot;</span>
@@ -151,7 +151,7 @@ due to downloading of the box and also various packages like postgres so be
 warned if you have a slow or limited connection, this is likely to sum up to
 around 800mb or so.</p>
 <p>After its finished, you should be able to do this.</p>
-<div class="highlight"><pre>vagrant ssh
+<div class="highlight"><pre><span></span>vagrant ssh
 workon project_name
 ls -la
 </pre></div>
@@ -171,7 +171,7 @@ functionality here but there may be a work around...</p>
 a alias to make this easier. This assumes you are still connected to the
 virtual machine but if not, cd into the project directory and run
 <cite>vagrant ssh</cite>. How awesome is it to not need to remember IP's or logins?</p>
-<div class="highlight"><pre>djr
+<div class="highlight"><pre><span></span>djr
 # is the same as
 python manage.py runserver 0.0.0.0:8000
 </pre></div>

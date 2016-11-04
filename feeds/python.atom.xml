@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/python.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2016-09-12T21:35:00+01:00</updated><entry><title>Retrace - Configurable, elegant retrying</title><link href="http://www.dougalmatthews.com/2016/Sep/12/retrace-configurable-elegant-retrying/" rel="alternate"></link><published>2016-09-12T21:35:00+01:00</published><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2016-09-12:2016/Sep/12/retrace-configurable-elegant-retrying/</id><summary type="html">&lt;p&gt;After I mentioned &lt;a href="https://github.com/d0ugal/retrace"&gt;Retrace&lt;/a&gt; here &lt;a href="/2016/Sep/01/automate-publishing-to-pypi-with-pbr-and-travis/"&gt;recently&lt;/a&gt; a few people have asked
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/python.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2016-09-12T21:35:00+01:00</updated><entry><title>Retrace - Configurable, elegant retrying</title><link href="http://www.dougalmatthews.com/2016/Sep/12/retrace-configurable-elegant-retrying/" rel="alternate"></link><published>2016-09-12T21:35:00+01:00</published><updated>2016-09-12T21:35:00+01:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2016-09-12:2016/Sep/12/retrace-configurable-elegant-retrying/</id><summary type="html">&lt;p&gt;After I mentioned &lt;a href="https://github.com/d0ugal/retrace"&gt;Retrace&lt;/a&gt; here &lt;a href="/2016/Sep/01/automate-publishing-to-pypi-with-pbr-and-travis/"&gt;recently&lt;/a&gt; a few people have asked
 me about it, so I thought I'd write up a quick post.&lt;/p&gt;
 &lt;p&gt;Retrace is, essentially, a retry decorator. There are many projects like this
 but after trying a few I either ran into issues or found the API cumbersome. I
@@ -113,7 +113,7 @@ again.&lt;/p&gt;
 &lt;p&gt;It's a small project, but I find it useful fairly frequently. If this is
 something that interests you I would really like your feedback. How could it
 be made better? What do you need that I have not through of? &lt;a href="https://github.com/d0ugal/retrace/issues/new"&gt;Please send me
-your ideas!&lt;/a&gt;&lt;/p&gt;</summary><category term="python"></category><category term="retry"></category><category term="exception"></category></entry><entry><title>Automate publishing to PyPI with pbr and Travis</title><link href="http://www.dougalmatthews.com/2016/Sep/01/automate-publishing-to-pypi-with-pbr-and-travis/" rel="alternate"></link><published>2016-09-01T08:37:00+01:00</published><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2016-09-01:2016/Sep/01/automate-publishing-to-pypi-with-pbr-and-travis/</id><summary type="html">&lt;p&gt;Releasing new versions of your Open Source projects is a time demanding task.
+your ideas!&lt;/a&gt;&lt;/p&gt;</summary><category term="python"></category><category term="retry"></category><category term="exception"></category></entry><entry><title>Automate publishing to PyPI with pbr and Travis</title><link href="http://www.dougalmatthews.com/2016/Sep/01/automate-publishing-to-pypi-with-pbr-and-travis/" rel="alternate"></link><published>2016-09-01T08:37:00+01:00</published><updated>2016-09-01T08:37:00+01:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2016-09-01:2016/Sep/01/automate-publishing-to-pypi-with-pbr-and-travis/</id><summary type="html">&lt;p&gt;Releasing new versions of your Open Source projects is a time demanding task.
 So in a &lt;a href="http://d0ugal.github.io/retrace/"&gt;recent&lt;/a&gt;, and admittedly small, project I decided to try and
 make it as easy as possible.&lt;/p&gt;
 &lt;p&gt;I started using &lt;a href="http://docs.openstack.org/developer/pbr/"&gt;pbr&lt;/a&gt; and &lt;a href="https://travis-ci.org/"&gt;Travis&lt;/a&gt; to automatically deploy to &lt;a href="https://pypi.python.org/pypi"&gt;PyPI&lt;/a&gt; each time
@@ -252,7 +252,7 @@ a dedicated user for automated deploys because I am paranoid about including
 my encrypted password.&amp;#160;&lt;a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;/div&gt;</summary><category term="python"></category><category term="pypi"></category><category term="pbr"></category><category term="travis"></category><category term="twine"></category><category term="mkdocs"></category></entry><entry><title>MkDocs Making Strides</title><link href="http://www.dougalmatthews.com/2015/Jun/27/mkdocs-making-strides/" rel="alternate"></link><published>2015-06-27T12:24:00+01:00</published><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2015-06-27:2015/Jun/27/mkdocs-making-strides/</id><summary type="html">&lt;p&gt;When I &lt;a href="http://www.dougalmatthews.com/2015/May/09/mkdocs-docs-with-markdown/"&gt;last wrote about MkDocs&lt;/a&gt;, the most recent version was &lt;a href="http://www.mkdocs.org/about/release-notes/#version-0120-2015-04-14"&gt;0.12&lt;/a&gt;, but
+&lt;/div&gt;</summary><category term="python"></category><category term="pypi"></category><category term="pbr"></category><category term="travis"></category><category term="twine"></category><category term="mkdocs"></category></entry><entry><title>MkDocs Making Strides</title><link href="http://www.dougalmatthews.com/2015/Jun/27/mkdocs-making-strides/" rel="alternate"></link><published>2015-06-27T12:24:00+01:00</published><updated>2015-06-27T12:24:00+01:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2015-06-27:2015/Jun/27/mkdocs-making-strides/</id><summary type="html">&lt;p&gt;When I &lt;a href="http://www.dougalmatthews.com/2015/May/09/mkdocs-docs-with-markdown/"&gt;last wrote about MkDocs&lt;/a&gt;, the most recent version was &lt;a href="http://www.mkdocs.org/about/release-notes/#version-0120-2015-04-14"&gt;0.12&lt;/a&gt;, but
 &lt;a href="http://www.mkdocs.org/about/release-notes/#version-0130-2015-05-26"&gt;0.13&lt;/a&gt; was just around the corner. We are now hard at work on &lt;a href="https://github.com/mkdocs/mkdocs/blob/master/docs/about/release-notes.md#version-0150-2015--"&gt;0.15&lt;/a&gt;! So it is
 about time to do a quick update.&lt;/p&gt;
 &lt;p&gt;With over 300 commits which include a ton of bug fixes and new features since
@@ -283,7 +283,7 @@ search an index.&lt;/p&gt;
 &lt;p&gt;MkDocs also received a new CLI thanks to the excellent &lt;a href="http://click.pocoo.org/"&gt;Click&lt;/a&gt; library. On the
 surface this doesn't seem like a huge feature, but it is now far easier to
 discover usage from the command line with &lt;code&gt;mkdocs --help&lt;/code&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;mkdocs&lt;/span&gt;&lt;span class="x"&gt; --help&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;mkdocs&lt;/span&gt;&lt;span class="x"&gt; --help&lt;/span&gt;
 &lt;span class="x"&gt;Usage: mkdocs [OPTIONS] COMMAND [ARGS]...&lt;/span&gt;
 
 &lt;span class="x"&gt;  MkDocs - Project documentation with Markdown.&lt;/span&gt;
@@ -314,7 +314,7 @@ allow for faster and more flexible development outside of the code repository.&l
 &lt;p&gt;I am really excited to see what themes users come up with!&lt;/p&gt;
 &lt;hr /&gt;
 &lt;p&gt;Now, back to work on MkDocs! I'll do some updates again soon about the next
-features that I am working on.&lt;/p&gt;</summary><category term="python"></category><category term="mkdocs"></category><category term="documentation"></category></entry><entry><title>MkDocs - Docs with Markdown</title><link href="http://www.dougalmatthews.com/2015/May/09/mkdocs-docs-with-markdown/" rel="alternate"></link><published>2015-05-09T13:17:00+01:00</published><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2015-05-09:2015/May/09/mkdocs-docs-with-markdown/</id><summary type="html">&lt;p&gt;&lt;a href="http://www.mkdocs.org"&gt;MkDocs&lt;/a&gt; is an open source Python tool for lowering the barrier to writing
+features that I am working on.&lt;/p&gt;</summary><category term="python"></category><category term="mkdocs"></category><category term="documentation"></category></entry><entry><title>MkDocs - Docs with Markdown</title><link href="http://www.dougalmatthews.com/2015/May/09/mkdocs-docs-with-markdown/" rel="alternate"></link><published>2015-05-09T13:17:00+01:00</published><updated>2015-05-09T13:17:00+01:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2015-05-09:2015/May/09/mkdocs-docs-with-markdown/</id><summary type="html">&lt;p&gt;&lt;a href="http://www.mkdocs.org"&gt;MkDocs&lt;/a&gt; is an open source Python tool for lowering the barrier to writing
 documentation. The goal is relatively simple and focused, we want to make it
 easier to write &lt;a href="http://ericholscher.com/blog/2014/feb/27/how-i-judge-documentation-quality/"&gt;high quality&lt;/a&gt; prose based documentation.&lt;/p&gt;
 &lt;p&gt;Originally started by Tom Christie, I took over maintenance and development
@@ -342,26 +342,26 @@ started in detail. This is the super quick version.&lt;/p&gt;
 &lt;p&gt;You can &lt;a href="http://www.mkdocs.org/user-guide/styling-your-docs/"&gt;change the theme&lt;/a&gt;, create a &lt;a href="http://www.mkdocs.org/user-guide/styling-your-docs/#custom-themes"&gt;custom theme&lt;/a&gt;, tweak the &lt;a href="http://www.mkdocs.org/user-guide/styling-your-docs/#custom-themes"&gt;navigation
 configuration&lt;/a&gt; and &lt;a href="/user-guide/writing-your-docs/#configure-pages-and-navigation"&gt;page titles&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;I plan to follow up this post and share some of the changes and improvements
-coming in MkDocs. Both from a technical and users point of view.&lt;/p&gt;</summary><category term="python"></category><category term="mkdocs"></category><category term="documentation"></category></entry><entry><title>Python Glasgow March Dojo</title><link href="http://www.dougalmatthews.com/2014/Mar/02/python-glasgow-march-dojo/" rel="alternate"></link><published>2014-03-02T11:57:00+00:00</published><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2014-03-02:2014/Mar/02/python-glasgow-march-dojo/</id><summary type="html">&lt;p&gt;We are hosting another &lt;a class="reference external" href="http://dougalmatthews.com/notes/running-a-code-dojo/"&gt;code Dojo&lt;/a&gt;! If you want a ticket, they are free, so
+coming in MkDocs. Both from a technical and users point of view.&lt;/p&gt;</summary><category term="python"></category><category term="mkdocs"></category><category term="documentation"></category></entry><entry><title>Python Glasgow March Dojo</title><link href="http://www.dougalmatthews.com/2014/Mar/02/python-glasgow-march-dojo/" rel="alternate"></link><published>2014-03-02T11:57:00+00:00</published><updated>2014-03-02T11:57:00+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2014-03-02:2014/Mar/02/python-glasgow-march-dojo/</id><summary type="html">&lt;p&gt;We are hosting another &lt;a class="reference external" href="http://dougalmatthews.com/notes/running-a-code-dojo/"&gt;code Dojo&lt;/a&gt;! If you want a ticket, they are free, so
 &lt;a class="reference external" href="http://pythonglasgow-dojo-03-2014.eventbrite.co.uk/"&gt;quickly grab one&lt;/a&gt; before they are all gone.&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference external" href="http://www.pythonglasgow.org/"&gt;Python Glasgow&lt;/a&gt; is user group for Pythonistas in (surprisingly) Glasgow,
 Scotland. The group is just over a year old now. We try to host a number of
 different events and encouage new people of all skill levels to come along,
 learn about Python and meet fellow Pythonistas.&lt;/p&gt;
-</summary><category term="python"></category><category term="django"></category><category term="pythonglasgow"></category><category term="dojo"></category></entry><entry><title>Joining Red Hat</title><link href="http://www.dougalmatthews.com/2013/Nov/18/joining-red-hat/" rel="alternate"></link><published>2013-11-18T08:34:00+00:00</published><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2013-11-18:2013/Nov/18/joining-red-hat/</id><summary type="html">&lt;p&gt;Today is my first day working for &lt;a class="reference external" href="http://www.redhat.com/"&gt;Red Hat&lt;/a&gt; where I will be joining the
+</summary><category term="python"></category><category term="django"></category><category term="pythonglasgow"></category><category term="dojo"></category></entry><entry><title>Joining Red Hat</title><link href="http://www.dougalmatthews.com/2013/Nov/18/joining-red-hat/" rel="alternate"></link><published>2013-11-18T08:34:00+00:00</published><updated>2013-11-18T08:34:00+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2013-11-18:2013/Nov/18/joining-red-hat/</id><summary type="html">&lt;p&gt;Today is my first day working for &lt;a class="reference external" href="http://www.redhat.com/"&gt;Red Hat&lt;/a&gt; where I will be joining the
 &lt;a class="reference external" href="http://www.openstack.org/"&gt;OpenStack&lt;/a&gt; teams. I will be specifically working on &lt;a class="reference external" href="https://wiki.openstack.org/wiki/Tuskar"&gt;Tuskar&lt;/a&gt; under the newly
 incubated &lt;a class="reference external" href="https://wiki.openstack.org/wiki/TripleO"&gt;TripleO&lt;/a&gt; project. Tuskar is focused towards creating, monitoring and
 managing OpenStack installations.&lt;/p&gt;
 &lt;p&gt;I'm really excited about this new role and I'll no doubt be writing more on
 the subject as I learn and find my way around.&lt;/p&gt;
-</summary><category term="python"></category><category term="openstack"></category><category term="personal"></category></entry><entry><title>Python Glasgow</title><link href="http://www.dougalmatthews.com/2013/Jul/28/python-glasgow/" rel="alternate"></link><published>2013-07-28T19:25:00+01:00</published><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2013-07-28:2013/Jul/28/python-glasgow/</id><summary type="html">&lt;p&gt;&lt;a class="reference external" href="http://www.pythonglasgow.org/"&gt;Python Glasgow&lt;/a&gt; is user group for Pythonistas in (surprisingly) Glasgow.
+</summary><category term="python"></category><category term="openstack"></category><category term="personal"></category></entry><entry><title>Python Glasgow</title><link href="http://www.dougalmatthews.com/2013/Jul/28/python-glasgow/" rel="alternate"></link><published>2013-07-28T19:25:00+01:00</published><updated>2013-07-28T19:25:00+01:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2013-07-28:2013/Jul/28/python-glasgow/</id><summary type="html">&lt;p&gt;&lt;a class="reference external" href="http://www.pythonglasgow.org/"&gt;Python Glasgow&lt;/a&gt; is user group for Pythonistas in (surprisingly) Glasgow.
 We have been running for over 6 months now with a combination of pub meetups and
 coding dojos. We also plan to run talks in the coming months. This post is a
 quick reach out to anyone else that may be intersted or have not heard of the
 group yet.&lt;/p&gt;
 &lt;p&gt;Find out more at the new (but basic) &lt;a class="reference external" href="http://www.pythonglasgow.org/"&gt;website&lt;/a&gt; and &lt;a class="reference external" href="http://twitter.com/pythonglasgow"&gt;follow us on twitter&lt;/a&gt;
 or &lt;a class="reference external" href="http://mail.python.org/mailman/listinfo/glasgow"&gt;join the mailing list&lt;/a&gt;.&lt;/p&gt;
-</summary><category term="python"></category><category term="django"></category></entry><entry><title>New Year's Python Meme</title><link href="http://www.dougalmatthews.com/2011/Dec/23/new-years-python-meme/" rel="alternate"></link><published>2011-12-23T14:21:00+00:00</published><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2011-12-23:2011/Dec/23/new-years-python-meme/</id><summary type="html">&lt;p&gt;&lt;strong&gt;What is the coolest Python application, framework, or library you
+</summary><category term="python"></category><category term="django"></category></entry><entry><title>New Year's Python Meme</title><link href="http://www.dougalmatthews.com/2011/Dec/23/new-years-python-meme/" rel="alternate"></link><published>2011-12-23T14:21:00+00:00</published><updated>2011-12-23T14:21:00+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2011-12-23:2011/Dec/23/new-years-python-meme/</id><summary type="html">&lt;p&gt;&lt;strong&gt;What is the coolest Python application, framework, or library you
 have discovered in 2011?&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;I started using Tox in all my projects this year. It's got to be one of the
 best addition for testing multiple platforms and package versions.&lt;/p&gt;
@@ -389,7 +389,7 @@ and run the tests and then deploy to the production app.&lt;/p&gt;
 &lt;li&gt;copy-paste the questions and answer to them in your blog&lt;/li&gt;
 &lt;li&gt;tweet it with the #2012pythonmeme hashtag&lt;/li&gt;
 &lt;/ul&gt;
-</summary><category term="python"></category><category term="django"></category></entry><entry><title>Making Django's Signals Async with Celery</title><link href="http://www.dougalmatthews.com/2011/Oct/10/making-djangos-signals-async-with-celery/" rel="alternate"></link><published>2011-10-10T17:21:00+01:00</published><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2011-10-10:2011/Oct/10/making-djangos-signals-async-with-celery/</id><summary type="html">&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; A comment on &lt;a class="reference external" href="https://code.djangoproject.com/ticket/17029"&gt;the ticket&lt;/a&gt; I opened by Alex Gaynor brought up a
+</summary><category term="python"></category><category term="django"></category></entry><entry><title>Making Django's Signals Async with Celery</title><link href="http://www.dougalmatthews.com/2011/Oct/10/making-djangos-signals-async-with-celery/" rel="alternate"></link><published>2011-10-10T17:21:00+01:00</published><updated>2011-10-10T17:21:00+01:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2011-10-10:2011/Oct/10/making-djangos-signals-async-with-celery/</id><summary type="html">&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; A comment on &lt;a class="reference external" href="https://code.djangoproject.com/ticket/17029"&gt;the ticket&lt;/a&gt; I opened by Alex Gaynor brought up a
 point that I hadn't fully considered. It's worth noticing before going
 further in this post and also worth pointing out my monkey patch doesn't
 answer this question.&lt;/p&gt;
@@ -405,34 +405,34 @@ Today it occured to me that it would be useful to combine the two and have
 “asynchronous signals”.&lt;/p&gt;
 &lt;p&gt;Here is the solution that I came up with, read on below if you want to see how
 I arrived at this and why we need to monkey patch.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;celery.task&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;task&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;celery.task&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;task&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.db.models.signals&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;post_save&lt;/span&gt;
 
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;myproject.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;MyModel&lt;/span&gt;
 
-&lt;span class="c"&gt;# Warning. Monkey patch.&lt;/span&gt;
+&lt;span class="c1"&gt;# Warning. Monkey patch.&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.dispatch.dispatcher&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Signal&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;reducer&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Signal&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;providing_args&lt;/span&gt;&lt;span class="p"&gt;,))&lt;/span&gt;
 &lt;span class="n"&gt;Signal&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;__reduce__&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;reducer&lt;/span&gt;
 
-&lt;span class="c"&gt;# With the patch done, we can now connect to celery tasks.&lt;/span&gt;
+&lt;span class="c1"&gt;# With the patch done, we can now connect to celery tasks.&lt;/span&gt;
 &lt;span class="nd"&gt;@task&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ignore_result&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;async_post_save&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sender&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;instance&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="c"&gt;# do something with the instance.&lt;/span&gt;
+    &lt;span class="c1"&gt;# do something with the instance.&lt;/span&gt;
     &lt;span class="k"&gt;pass&lt;/span&gt;
 &lt;span class="n"&gt;post_save&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;connect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;async_post_save&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;delay&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sender&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;MyModel&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;The first solution that occured to me was to use an intermediate function that
 triggered the task. This works fine and doesn't require anything clever.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;celery.task&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;task&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;celery.task&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;task&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.db.models.signals&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;post_save&lt;/span&gt;
 
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;myproject.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;MyModel&lt;/span&gt;
 
 &lt;span class="nd"&gt;@task&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;async_post_save&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;instance&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="c"&gt;# do something with the instance.&lt;/span&gt;
+    &lt;span class="c1"&gt;# do something with the instance.&lt;/span&gt;
     &lt;span class="k"&gt;pass&lt;/span&gt;
 
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;post_save_reciever&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sender&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;instance&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -441,9 +441,9 @@ triggered the task. This works fine and doesn't require anything clever.&lt;/p&g
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;However, this adds an extra level of redirection to code that shouldn't be
 needed. Why can't be connect to tasks directly?&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nd"&gt;@task&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ignore_result&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nd"&gt;@task&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ignore_result&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;async_post_save&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sender&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;instance&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="c"&gt;# do something with the instance.&lt;/span&gt;
+    &lt;span class="c1"&gt;# do something with the instance.&lt;/span&gt;
     &lt;span class="k"&gt;pass&lt;/span&gt;
 &lt;span class="n"&gt;post_save&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;connect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;async_post_save&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;delay&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sender&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;MyModel&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -457,7 +457,7 @@ only pickles the provided_args property of the Signal instance.&lt;/p&gt;
 While this isn't required, its not generally standard practice for signals
 recievers to return anything, so you will probably want to do this too.&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference external" href="https://code.djangoproject.com/ticket/17029)"&gt;View the ticket I opened a ticket to track this idea This link&lt;/a&gt;&lt;/p&gt;
-</summary><category term="python"></category><category term="django"></category><category term="signals"></category><category term="celery"></category></entry><entry><title>My Vagrant Workflow</title><link href="http://www.dougalmatthews.com/2011/Feb/27/my-vagrant-workflow/" rel="alternate"></link><published>2011-02-27T19:25:00+00:00</published><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2011-02-27:2011/Feb/27/my-vagrant-workflow/</id><summary type="html">&lt;p&gt;&lt;a class="reference external" href="http://vagrantup.com"&gt;Vagrant&lt;/a&gt; is a command line tool for managing virtual machines aimed at
+</summary><category term="python"></category><category term="django"></category><category term="signals"></category><category term="celery"></category></entry><entry><title>My Vagrant Workflow</title><link href="http://www.dougalmatthews.com/2011/Feb/27/my-vagrant-workflow/" rel="alternate"></link><published>2011-02-27T19:25:00+00:00</published><updated>2011-02-27T19:25:00+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2011-02-27:2011/Feb/27/my-vagrant-workflow/</id><summary type="html">&lt;p&gt;&lt;a class="reference external" href="http://vagrantup.com"&gt;Vagrant&lt;/a&gt; is a command line tool for managing virtual machines aimed at
 virtualising your development environment. It is essentially a wrapper around
 Oracle's &lt;a class="reference external" href="http://www.virtualbox.org"&gt;VirtualBox&lt;/a&gt; but a very good one.&lt;/p&gt;
 &lt;p&gt;Getting started is really easy, there is a good quick start on the Vagrant
@@ -469,7 +469,7 @@ I would then do this once in each project root allowing the vagrant file to
 be version controlled and configured for an individual project. Then each
 developer can create a virtual machine from the same config and this keeps
 everybody on the same page.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;sudo gem update --system
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo gem update --system
 gem install vagrant
 cd /path/to/project
 vagrant init
@@ -481,7 +481,7 @@ any problems make sure you read that first.&lt;/p&gt;
 is a simple Ruby based configuration file. The Vagrantfile is
 &lt;a class="reference external" href="http://vagrantup.com/docs/vagrantfile.html"&gt;well documented&lt;/a&gt; so we'll skip past that bit. Instead, copy the following
 into your vagrant file.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="no"&gt;Vagrant&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="no"&gt;Config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="no"&gt;Vagrant&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="no"&gt;Config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
 
   &lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;vm&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;box&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;lucid32&amp;quot;&lt;/span&gt;
   &lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;vm&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;box_url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;http://files.vagrantup.com/lucid32.box&amp;quot;&lt;/span&gt;
@@ -535,7 +535,7 @@ due to downloading of the box and also various packages like postgres so be
 warned if you have a slow or limited connection, this is likely to sum up to
 around 800mb or so.&lt;/p&gt;
 &lt;p&gt;After its finished, you should be able to do this.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;vagrant ssh
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;vagrant ssh
 workon project_name
 ls -la
 &lt;/pre&gt;&lt;/div&gt;
@@ -555,7 +555,7 @@ functionality here but there may be a work around...&lt;/p&gt;
 a alias to make this easier. This assumes you are still connected to the
 virtual machine but if not, cd into the project directory and run
 &lt;cite&gt;vagrant ssh&lt;/cite&gt;. How awesome is it to not need to remember IP's or logins?&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;djr
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;djr
 # is the same as
 python manage.py runserver 0.0.0.0:8000
 &lt;/pre&gt;&lt;/div&gt;
@@ -573,7 +573,7 @@ an older project. My main problem at the moment is the effort required to
 make big changes (new configs, new recipes etc.) but this should get easier
 as I make more.&lt;/p&gt;
 &lt;p&gt;If you have any idea's or suggestions please let me know.&lt;/p&gt;
-</summary><category term="vagrant"></category><category term="chef"></category><category term="python"></category><category term="django"></category><category term="ruby"></category></entry><entry><title>Blogofile - rethinking simple websites</title><link href="http://www.dougalmatthews.com/2011/Feb/22/blogofile-rethinking-simple-websites/" rel="alternate"></link><published>2011-02-22T19:25:00+00:00</published><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2011-02-22:2011/Feb/22/blogofile-rethinking-simple-websites/</id><summary type="html">&lt;p&gt;This website has gone through a number of different solutions over the years
+</summary><category term="vagrant"></category><category term="chef"></category><category term="python"></category><category term="django"></category><category term="ruby"></category></entry><entry><title>Blogofile - rethinking simple websites</title><link href="http://www.dougalmatthews.com/2011/Feb/22/blogofile-rethinking-simple-websites/" rel="alternate"></link><published>2011-02-22T19:25:00+00:00</published><updated>2011-02-22T19:25:00+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2011-02-22:2011/Feb/22/blogofile-rethinking-simple-websites/</id><summary type="html">&lt;p&gt;This website has gone through a number of different solutions over the years
 but during &lt;a class="reference external" href="http://sitesprint.info/"&gt;SiteSprint&lt;/a&gt;(II) I settled on a new site built with &lt;a class="reference external" href="https://github.com/montylounge/django-mingus"&gt;Mingus&lt;/a&gt;.
 Mingus offers a great feature set and is really well made (it makes use of
 many reusable apps that already exist). However, I was tired. Tired of
@@ -610,7 +610,7 @@ usually have two tabs open, one doing the rebuild every 10 seconds and one
 serving.&lt;/p&gt;
 &lt;p&gt;Incidentally, you can see the code for my Blogofile Blog on
 &lt;a class="reference external" href="https://github.com/d0ugal/dm"&gt;github&lt;/a&gt;.&lt;/p&gt;
-</summary><category term="python"></category><category term="blogofile"></category><category term="meta"></category></entry><entry><title>Python Edinburgh</title><link href="http://www.dougalmatthews.com/2010/Aug/12/python-edinburgh/" rel="alternate"></link><published>2010-08-12T19:25:00+01:00</published><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2010-08-12:2010/Aug/12/python-edinburgh/</id><summary type="html">&lt;p&gt;Python Edinburgh is user group for Pythonistas in (surprisingly) Edinburgh.
+</summary><category term="python"></category><category term="blogofile"></category><category term="meta"></category></entry><entry><title>Python Edinburgh</title><link href="http://www.dougalmatthews.com/2010/Aug/12/python-edinburgh/" rel="alternate"></link><published>2010-08-12T19:25:00+01:00</published><updated>2010-08-12T19:25:00+01:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2010-08-12:2010/Aug/12/python-edinburgh/</id><summary type="html">&lt;p&gt;Python Edinburgh is user group for Pythonistas in (surprisingly) Edinburgh.
 This is a kick start of a group that died out unfortunately and only met once
 this year.&lt;/p&gt;
 &lt;p&gt;Find out more at the new (but basic) &lt;a class="reference external" href="http://www.pythonedinburgh.org/"&gt;website&lt;/a&gt; and &lt;a class="reference external" href="http://twitter.com/pythonedinburgh"&gt;follow us on twitter&lt;/a&gt;
@@ -618,7 +618,7 @@ or &lt;a class="reference external" href="http://mail.python.org/mailman/listinf
 &lt;p&gt;The group is going to be meeting on the 4th Tuesday of each month. The next
 being on the 24th August at &lt;a class="reference external" href="http://www.bertsbar.co.uk/berts-bar/about/how-to-find-us.html"&gt;Bert's Bar&lt;/a&gt;. Hope to see some of you there -
 please let us know if your coming so we can get the numbers right.&lt;/p&gt;
-</summary><category term="vagrant"></category><category term="chef"></category><category term="python"></category><category term="django"></category><category term="ruby"></category><category term="osx"></category></entry><entry><title>Testing your first Django app</title><link href="http://www.dougalmatthews.com/2010/Jan/20/testing-your-first-django-app/" rel="alternate"></link><published>2010-01-20T19:25:00+00:00</published><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2010-01-20:2010/Jan/20/testing-your-first-django-app/</id><summary type="html">&lt;p&gt;This is my &lt;strong&gt;unofficial&lt;/strong&gt; part five for the &lt;a class="reference external" href="http://docs.djangoproject.com/en/1.1/intro/tutorial01/#intro-tutorial01"&gt;Django tutorial&lt;/a&gt;. I've attempted
+</summary><category term="vagrant"></category><category term="chef"></category><category term="python"></category><category term="django"></category><category term="ruby"></category><category term="osx"></category></entry><entry><title>Testing your first Django app</title><link href="http://www.dougalmatthews.com/2010/Jan/20/testing-your-first-django-app/" rel="alternate"></link><published>2010-01-20T19:25:00+00:00</published><updated>2010-01-20T19:25:00+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2010-01-20:2010/Jan/20/testing-your-first-django-app/</id><summary type="html">&lt;p&gt;This is my &lt;strong&gt;unofficial&lt;/strong&gt; part five for the &lt;a class="reference external" href="http://docs.djangoproject.com/en/1.1/intro/tutorial01/#intro-tutorial01"&gt;Django tutorial&lt;/a&gt;. I've attempted
 to write this in a similar style to the Django documentation and hopefully
 this will be useful for those looking for the next step after the tutorial or
 trying out testing with django for the first time. Testing is something I
@@ -636,7 +636,7 @@ proving that it works as expected.&lt;/p&gt;
 &lt;p&gt;Let's first look at how you run the tests, make sure you are in the
 mysite directory and run the command &lt;cite&gt;python manage.py test&lt;/cite&gt;. You will
 see output similar to this:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;Creating test database...
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Creating test database...
 Creating table auth_permission
 Creating table auth_group
 Creating table auth_user
@@ -705,7 +705,7 @@ default tests that are present in the polls application we created
 earlier in the tutorial.&lt;/p&gt;
 &lt;p&gt;Delete the contents of the tests.py file and add the following test
 case.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;datetime&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;datetime&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;datetime&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;datetime&lt;/span&gt;
 
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.test&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;TestCase&lt;/span&gt;
 
@@ -714,12 +714,12 @@ case.&lt;/p&gt;
 &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;PollTest&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;TestCase&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
 
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;setUp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="n"&gt;question&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;What is your favourite colour?&amp;quot;&lt;/span&gt;
+        &lt;span class="n"&gt;question&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;What is your favourite colour?&amp;quot;&lt;/span&gt;
         &lt;span class="n"&gt;now&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;now&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
         &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;poll&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Poll&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;create&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;question&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;question&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;pub_date&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;now&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;poll&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;choice_set&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;create&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;choice&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Red&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;votes&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;poll&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;choice_set&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;create&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;choice&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Bue&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;votes&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;poll&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;choice_set&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;create&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;choice&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Green&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;votes&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;poll&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;choice_set&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;create&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;choice&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Red&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;votes&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;poll&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;choice_set&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;create&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;choice&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Bue&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;votes&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;poll&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;choice_set&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;create&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;choice&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Green&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;votes&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;test_models&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;assertEqual&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;poll&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;choice_set&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;all&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -742,23 +742,23 @@ fails a &lt;cite&gt;F&lt;/cite&gt; will be displated and if there is an error &l
 displayed. A failure is when one of the assertions fails and an error
 happens when there is an uncaught exception while running the test.&lt;/p&gt;
 &lt;p&gt;Let's add another test case that does something more useful.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# ...&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# ...&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.test&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Client&lt;/span&gt;
 
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;mysite.polls.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Poll&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Choice&lt;/span&gt;
 
 &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;PollTest&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;TestCase&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
 
-    &lt;span class="c"&gt;# ...&lt;/span&gt;
+    &lt;span class="c1"&gt;# ...&lt;/span&gt;
 
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;test_voting&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Client&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-        &lt;span class="c"&gt;# Perform a vote on the poll by mocking a POST request.&lt;/span&gt;
-        &lt;span class="n"&gt;response&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;post&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;/polls/1/vote/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;choice&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,})&lt;/span&gt;
-        &lt;span class="c"&gt;# In the vote view we redirect the user, so check the&lt;/span&gt;
-        &lt;span class="c"&gt;# response status code is 302.&lt;/span&gt;
+        &lt;span class="c1"&gt;# Perform a vote on the poll by mocking a POST request.&lt;/span&gt;
+        &lt;span class="n"&gt;response&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;post&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/polls/1/vote/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;choice&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,})&lt;/span&gt;
+        &lt;span class="c1"&gt;# In the vote view we redirect the user, so check the&lt;/span&gt;
+        &lt;span class="c1"&gt;# response status code is 302.&lt;/span&gt;
         &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;assertEqual&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;status_code&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;302&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-        &lt;span class="c"&gt;# Get the choice and check there is now one vote.&lt;/span&gt;
+        &lt;span class="c1"&gt;# Get the choice and check there is now one vote.&lt;/span&gt;
         &lt;span class="n"&gt;choice&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Choice&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pk&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
         &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;assertEqual&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;choice&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;votes&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -780,34 +780,34 @@ information we can work with rather than the full html response. First
 we will write the test for how we want this to work. We want the system
 to return &lt;cite&gt;'1'&lt;/cite&gt; on a valid vote and &lt;cite&gt;'0'&lt;/cite&gt; on an invalid vote in the http
 response.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;PollTest&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;TestCase&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;PollTest&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;TestCase&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
 
-    &lt;span class="c"&gt;# ...&lt;/span&gt;
+    &lt;span class="c1"&gt;# ...&lt;/span&gt;
 
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;test_ajax_vote&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
 
         &lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Client&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 
-        &lt;span class="c"&gt;# Extra parameters to make this a Ajax style request.&lt;/span&gt;
-        &lt;span class="n"&gt;kwargs&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;HTTP_X_REQUESTED_WITH&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;XMLHttpRequest&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+        &lt;span class="c1"&gt;# Extra parameters to make this a Ajax style request.&lt;/span&gt;
+        &lt;span class="n"&gt;kwargs&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;HTTP_X_REQUESTED_WITH&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;XMLHttpRequest&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
 
-        &lt;span class="c"&gt;# A valid vote&lt;/span&gt;
-        &lt;span class="n"&gt;response&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;post&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;/polls/1/vote/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;choice&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,},&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="c1"&gt;# A valid vote&lt;/span&gt;
+        &lt;span class="n"&gt;response&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;post&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/polls/1/vote/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;choice&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,},&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
         &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;assertEqual&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;status_code&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;200&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;assertEqual&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;assertEqual&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
-        &lt;span class="c"&gt;# A invalid vote - choice doesn&amp;#39;t exist&lt;/span&gt;
-        &lt;span class="n"&gt;response&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;post&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;/polls/1/vote/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;choice&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;10&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,},&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="c1"&gt;# A invalid vote - choice doesn&amp;#39;t exist&lt;/span&gt;
+        &lt;span class="n"&gt;response&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;post&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/polls/1/vote/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;choice&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;10&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,},&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
         &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;assertEqual&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;status_code&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;200&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;assertEqual&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;assertEqual&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
-        &lt;span class="c"&gt;# An invalid vote - poll doesn&amp;#39;t exist&lt;/span&gt;
-        &lt;span class="n"&gt;response&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;post&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;/polls/2/vote/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;choice&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,},&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="c1"&gt;# An invalid vote - poll doesn&amp;#39;t exist&lt;/span&gt;
+        &lt;span class="n"&gt;response&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;post&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/polls/2/vote/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;choice&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,},&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
         &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;assertEqual&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;status_code&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;404&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Add this to your tests and then run the test suite. You should get
 output similar to this;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;F..
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;F..
 ===================================================================
 FAIL: test_ajax_vote (mysite.polls.tests.PollTest)
 -------------------------------------------------------------------
@@ -824,29 +824,29 @@ page. This then means the test fails at the first hurdle when we check
 the response code.&lt;/p&gt;
 &lt;p&gt;Now all we need to do is update the code in the vote view to make the
 tests pass. Change your view so it matches the following.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;vote&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;poll_id&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;vote&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;poll_id&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;get_object_or_404&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Poll&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;pk&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;poll_id&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-        &lt;span class="n"&gt;selected_choice&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;choice_set&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pk&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;POST&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;choice&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+        &lt;span class="n"&gt;selected_choice&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;choice_set&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pk&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;POST&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;choice&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
     &lt;span class="k"&gt;except&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ne"&gt;KeyError&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Choice&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DoesNotExist&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="c"&gt;# bad vote, return &amp;#39;0&amp;#39;&lt;/span&gt;
+        &lt;span class="c1"&gt;# bad vote, return &amp;#39;0&amp;#39;&lt;/span&gt;
         &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;is_ajax&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
-            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;HttpResponse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;0&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-        &lt;span class="c"&gt;# Redisplay the poll voting form.&lt;/span&gt;
-        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;render_to_response&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;polls/poll_detail.html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-            &lt;span class="s"&gt;&amp;#39;object&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-            &lt;span class="s"&gt;&amp;#39;error_message&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;You didn&amp;#39;t select a choice.&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;HttpResponse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;0&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="c1"&gt;# Redisplay the poll voting form.&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;render_to_response&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;polls/poll_detail.html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="s1"&gt;&amp;#39;object&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="s1"&gt;&amp;#39;error_message&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;You didn&amp;#39;t select a choice.&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
         &lt;span class="p"&gt;})&lt;/span&gt;
     &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
         &lt;span class="n"&gt;selected_choice&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;votes&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
         &lt;span class="n"&gt;selected_choice&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-        &lt;span class="c"&gt;# vote saved, return &amp;#39;1&amp;#39;&lt;/span&gt;
+        &lt;span class="c1"&gt;# vote saved, return &amp;#39;1&amp;#39;&lt;/span&gt;
         &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;is_ajax&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
-            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;HttpResponse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;1&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-        &lt;span class="c"&gt;# Always return an HttpResponseRedirect after successfully dealing&lt;/span&gt;
-        &lt;span class="c"&gt;# with POST data. This prevents data from being posted twice if a&lt;/span&gt;
-        &lt;span class="c"&gt;# user hits the Back button.&lt;/span&gt;
-        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;HttpResponseRedirect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;reverse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;poll_results&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;,)))&lt;/span&gt;
+            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;HttpResponse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;1&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="c1"&gt;# Always return an HttpResponseRedirect after successfully dealing&lt;/span&gt;
+        &lt;span class="c1"&gt;# with POST data. This prevents data from being posted twice if a&lt;/span&gt;
+        &lt;span class="c1"&gt;# user hits the Back button.&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;HttpResponseRedirect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;reverse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;poll_results&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;,)))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Re-run the test suite and it should now pass. You have successfully
 written your first tests for the polls app and even done a little bit of
@@ -873,7 +873,7 @@ step.&lt;/p&gt;
 &amp;quot;Code without tests is broken as designed&amp;quot;
 - Jacob Kaplan-Moss&lt;/blockquote&gt;
 &lt;/div&gt;
-</summary><category term="testing"></category><category term="unittest"></category><category term="tdd"></category><category term="django"></category></entry><entry><title>Nicer dynamic forms in django</title><link href="http://www.dougalmatthews.com/2009/Dec/16/nicer-dynamic-forms-in-django/" rel="alternate"></link><published>2009-12-16T19:25:00+00:00</published><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2009-12-16:2009/Dec/16/nicer-dynamic-forms-in-django/</id><summary type="html">&lt;p&gt;I used to make dynamic forms for Django in very bad way, I'm happy to admit
+</summary><category term="testing"></category><category term="unittest"></category><category term="tdd"></category><category term="django"></category></entry><entry><title>Nicer dynamic forms in django</title><link href="http://www.dougalmatthews.com/2009/Dec/16/nicer-dynamic-forms-in-django/" rel="alternate"></link><published>2009-12-16T19:25:00+00:00</published><updated>2009-12-16T19:25:00+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2009-12-16:2009/Dec/16/nicer-dynamic-forms-in-django/</id><summary type="html">&lt;p&gt;I used to make dynamic forms for Django in very bad way, I'm happy to admit
 that now as I've improved my process.&lt;/p&gt;
 &lt;p&gt;Basically the solution is to use &lt;cite&gt;type()&lt;/cite&gt; as I'm sure many of you know. If your
 doing that already there isn't much for you here. If your messing around with
@@ -881,7 +881,7 @@ doing that already there isn't much for you here. If your messing around with
 &lt;p&gt;Lets take a simple use case; a quiz system. You can think of it like who
 wants to be a millionaire. We will have a Question with four possible
 answers. So two models...&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.db&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.db&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;
 
 &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Question&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Model&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="n"&gt;test&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CharField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;max_length&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;128&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -893,16 +893,16 @@ answers. So two models...&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Basically we want a form that stores both the question and the
 answers and checks the answer is a valid choice. You could do it this way.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;forms&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;forms&lt;/span&gt;
 
 &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;QuizForm&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;forms&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Form&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
 
     &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;question&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="nb"&gt;super&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;QuizForm&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
-        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fields&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;question&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;forms&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IntegerField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;widget&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; \
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fields&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;question&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;forms&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IntegerField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;widget&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; \
             &lt;span class="n"&gt;forms&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;HiddenInput&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;initial&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;question&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fields&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;answers&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;forms&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ModelChoiceField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;queryset&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; \
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fields&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;answers&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;forms&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ModelChoiceField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;queryset&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; \
             &lt;span class="n"&gt;question&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;answers_set&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Now in this example that's actually not too bad. It's still a bit hacky
@@ -918,16 +918,16 @@ and the type of that object is returned. The second is to create
 classes at runtime by using &lt;cite&gt;type()&lt;/cite&gt; as a class constructor.&lt;/p&gt;
 &lt;p&gt;First lets look at an example that has exactly with the same result
 as the previous example.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;quiz_form_factory&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;question&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;quiz_form_factory&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;question&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
 
     &lt;span class="n"&gt;properties&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-        &lt;span class="s"&gt;&amp;#39;question&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;forms&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IntegerField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;widget&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;forms&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;HiddenInput&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; \
+        &lt;span class="s1"&gt;&amp;#39;question&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;forms&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IntegerField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;widget&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;forms&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;HiddenInput&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; \
             &lt;span class="n"&gt;initial&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;question&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
-        &lt;span class="s"&gt;&amp;#39;answers&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;forms&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ModelChoiceField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;queryset&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; \
+        &lt;span class="s1"&gt;&amp;#39;answers&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;forms&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ModelChoiceField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;queryset&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; \
             &lt;span class="n"&gt;question&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;answers_set&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="p"&gt;}&lt;/span&gt;
 
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;type&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;QuizForm&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;forms&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Form&lt;/span&gt;&lt;span class="p"&gt;,),&lt;/span&gt; &lt;span class="n"&gt;properties&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;type&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;QuizForm&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;forms&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Form&lt;/span&gt;&lt;span class="p"&gt;,),&lt;/span&gt; &lt;span class="n"&gt;properties&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;And there we go, it's as simple as that. When using &lt;cite&gt;type()&lt;/cite&gt; to
 construct classes it takes three parameters
@@ -935,18 +935,18 @@ construct classes it takes three parameters
 of the class, the base classes it inherits from and the properties the
 created class will have.&lt;/p&gt;
 &lt;p&gt;Besides the above implementation the usage is slightly different.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# start with a random question&lt;/span&gt;
-&lt;span class="n"&gt;question&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Question&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;all&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;order_by&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;?&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# start with a random question&lt;/span&gt;
+&lt;span class="n"&gt;question&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Question&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;all&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;order_by&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;?&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 
-&lt;span class="c"&gt;# method A&lt;/span&gt;
+&lt;span class="c1"&gt;# method A&lt;/span&gt;
 &lt;span class="n"&gt;quiz_form&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;QuizForm&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;question&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="c"&gt;# or with POST data&lt;/span&gt;
+&lt;span class="c1"&gt;# or with POST data&lt;/span&gt;
 &lt;span class="n"&gt;quiz_form&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;QuizForm&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;question&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;POST&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
-&lt;span class="c"&gt;# method B&lt;/span&gt;
+&lt;span class="c1"&gt;# method B&lt;/span&gt;
 &lt;span class="n"&gt;QuizForm&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;quiz_form_factory&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;question&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;quiz_form&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;QuizForm&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;span class="c"&gt;# or with POST data&lt;/span&gt;
+&lt;span class="c1"&gt;# or with POST data&lt;/span&gt;
 &lt;span class="n"&gt;quiz_form&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;QuizForm&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;POST&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Again, perhaps I should have chosen a more complex example as the

@@ -89,34 +89,34 @@ Today it occured to me that it would be useful to combine the two and have
 “asynchronous signals”.</p>
 <p>Here is the solution that I came up with, read on below if you want to see how
 I arrived at this and why we need to monkey patch.</p>
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">celery.task</span> <span class="kn">import</span> <span class="n">task</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">celery.task</span> <span class="kn">import</span> <span class="n">task</span>
 <span class="kn">from</span> <span class="nn">django.db.models.signals</span> <span class="kn">import</span> <span class="n">post_save</span>
 
 <span class="kn">from</span> <span class="nn">myproject.models</span> <span class="kn">import</span> <span class="n">MyModel</span>
 
-<span class="c"># Warning. Monkey patch.</span>
+<span class="c1"># Warning. Monkey patch.</span>
 <span class="kn">from</span> <span class="nn">django.dispatch.dispatcher</span> <span class="kn">import</span> <span class="n">Signal</span>
 <span class="k">def</span> <span class="nf">reducer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">Signal</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">providing_args</span><span class="p">,))</span>
 <span class="n">Signal</span><span class="o">.</span><span class="n">__reduce__</span> <span class="o">=</span> <span class="n">reducer</span>
 
-<span class="c"># With the patch done, we can now connect to celery tasks.</span>
+<span class="c1"># With the patch done, we can now connect to celery tasks.</span>
 <span class="nd">@task</span><span class="p">(</span><span class="n">ignore_result</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">async_post_save</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="c"># do something with the instance.</span>
+    <span class="c1"># do something with the instance.</span>
     <span class="k">pass</span>
 <span class="n">post_save</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">async_post_save</span><span class="o">.</span><span class="n">delay</span><span class="p">,</span> <span class="n">sender</span><span class="o">=</span><span class="n">MyModel</span><span class="p">)</span>
 </pre></div>
 <p>The first solution that occured to me was to use an intermediate function that
 triggered the task. This works fine and doesn't require anything clever.</p>
-<div class="highlight"><pre><span class="kn">from</span> <span class="nn">celery.task</span> <span class="kn">import</span> <span class="n">task</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">celery.task</span> <span class="kn">import</span> <span class="n">task</span>
 <span class="kn">from</span> <span class="nn">django.db.models.signals</span> <span class="kn">import</span> <span class="n">post_save</span>
 
 <span class="kn">from</span> <span class="nn">myproject.models</span> <span class="kn">import</span> <span class="n">MyModel</span>
 
 <span class="nd">@task</span>
 <span class="k">def</span> <span class="nf">async_post_save</span><span class="p">(</span><span class="n">instance</span><span class="p">):</span>
-    <span class="c"># do something with the instance.</span>
+    <span class="c1"># do something with the instance.</span>
     <span class="k">pass</span>
 
 <span class="k">def</span> <span class="nf">post_save_reciever</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -125,9 +125,9 @@ triggered the task. This works fine and doesn't require anything clever.</p>
 </pre></div>
 <p>However, this adds an extra level of redirection to code that shouldn't be
 needed. Why can't be connect to tasks directly?</p>
-<div class="highlight"><pre><span class="nd">@task</span><span class="p">(</span><span class="n">ignore_result</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><span class="nd">@task</span><span class="p">(</span><span class="n">ignore_result</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">async_post_save</span><span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="c"># do something with the instance.</span>
+    <span class="c1"># do something with the instance.</span>
     <span class="k">pass</span>
 <span class="n">post_save</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">async_post_save</span><span class="o">.</span><span class="n">delay</span><span class="p">,</span> <span class="n">sender</span><span class="o">=</span><span class="n">MyModel</span><span class="p">)</span>
 </pre></div>
