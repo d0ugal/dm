@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <link rel="icon" href="/theme/img/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="/theme/css/bootstrap.css" type="text/css" media="screen, projection" />
+  <link rel="stylesheet" href="/theme/css/bootstrap-responsive.css" type="text/css" media="screen, projection" />
+  <link href='http://fonts.googleapis.com/css?family=Lato:regular|PT+Serif+Caption|PT+Serif|Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+  <link href="/theme/css/monokai.css" rel="stylesheet" type="text/css" />
+  <link href="/theme/css/style.css" rel="stylesheet" type="text/css" />
+
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="57x57" href="/theme/img/iconified/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="60x60" href="/theme/img/iconified/apple-touch-icon-60x60.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/theme/img/iconified/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="76x76" href="/theme/img/iconified/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/theme/img/iconified/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="120x120" href="/theme/img/iconified/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/theme/img/iconified/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="/theme/img/iconified/apple-touch-icon-152x152.png" />
+
+  <title>Create an Excellent Python Dev Env - Dougal Matthews</title>
+  <meta charset="utf-8" />
+  <link href="http://www.dougalmatthews.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Dougal Matthews Full Atom Feed" />
+  <link href="http://www.dougalmatthews.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Dougal Matthews RSS Feed" />
+  <link href="http://www.dougalmatthews.com/feeds/python.atom.xml" type="application/atom+xml" rel="alternate" title="Dougal Matthews Categories Atom Feed" />
+  <link href="http://www.dougalmatthews.com/feeds/python.rss.xml" type="application/rss+xml" rel="alternate" title="Dougal Matthews Categories RSS Feed" />
+
+  <meta name="google-site-verification" content="GNt31_M2DlGd--mcA_1JjGH46qPSDdpnSiWi7Y_9Ltk" />
+  <meta name="verify-v1" content="d4ZT12Eg5dza8IxtDZlqiZoC0EzBnLxeYeK2PTiaIrU=" />
+  <meta name="msvalidate.01" content="08FE3976E4596314289973311F691DC2" />
+  <meta name="y_key" content="ef34f6756bc76371" />
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="navbar-centre">
+        <a class="brand" href="/"><span class="red">Dougal</span> <span class="white">Matthews</span></a>
+        <ul class="nav">
+            <li ><a href="/code/">Code</a></li>
+            <li ><a href="/notes/">Notes</a></li>
+            <li ><a href="/work/">Work</a></li>
+            <li ><a href="/talks/">Talks</a></li>
+            <li ><a href="/about/">About</a></li>
+        <ul class="nav">
+      </div>
+    </div>
+  </div>
+
+  <div id="content_wrapper">
+
+    <div id="content" class="container prepent-top">
+
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="http://www.dougalmatthews.com/2016/Nov/12/create-an-excellent-python-dev-env/" rel="bookmark"
+         title="Permalink to Create an Excellent Python Dev Env">Create an Excellent Python Dev Env</a></h2>
+ 
+  </header>
+    <footer class="post-info">
+      <time datetime="2016-11-12T15:45:00+00:00">
+        Sat 12 November 2016
+      </time>
+    </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <p>There are a huge number of Python dev tools around, a number of them are
+essential for my day to day development. However, they tend to suffer from a
+lack of discoverability and it takes a while to find what works for you.</p>
+<p>I'm going to quickly share what I use, some of these are well known, some are
+probably not. I'd expect most people to pick and choose from this post as you
+are unlikely to want everything I use, but there should be something useful for
+most people.</p>
+<p>These are my primary goals:</p>
+<ul>
+<li>Be able to install any Python version easily.</li>
+<li>Don't ever touch the system Python.</li>
+<li>An easy way to setup virtualenvs for specific projects.</li>
+<li>Install and isolate a number of Python tools.</li>
+</ul>
+<p>How do we get there?</p>
+<h2>pyenv</h2>
+<p>pyenv pitches itself as "simple python version management" and it does just
+that. Once setup, you can easily install and switch between Python versions,
+including specific point releases. <code>pyenv install --list</code> reveals it knows how
+to install a <em>whopping</em> 271 different Python versions at the moment from cpython
+2.1.3 up to 3.7-dev and pypy and stackless.</p>
+<p>The <a href="https://github.com/yyuu/pyenv#installation">install process</a> is a bit manual, but there is an <a href="https://github.com/yyuu/pyenv-installer">install tool</a>
+that makes it easier. After installing, I do something like this:</p>
+<div class="highlight"><pre><span></span>pyenv install -s 2.7.12<span class="p">;</span>
+pyenv install -s 3.5.2<span class="p">;</span>
+pyenv install -s 3.4.5<span class="p">;</span>
+pyenv install -s pypy-5.4.1<span class="p">;</span>
+pyenv global 2.7.12 3.5.2 3.4.5 pypy-5.4.1<span class="p">;</span>
+</pre></div>
+
+
+<p>This installs the Python versions I typically need, and then sets them as the 
+global default. The order is important, 2.7.12 becomes the default for python
+as it is first and 3.5.2 becomes the default for python3.</p>
+<p>If you just want to use a specific Python version in a directory, and it's 
+subdirectories, you can run the command <code>pyenv local 3.5.2</code> and it will create
+a <code>.python-version</code> file. Warning, if you do this in your home directory by
+mistake it can be very confusing. </p>
+<p>One feature I'd love pyenv to have, is a way to tell it to install a Python 
+version (like 2.7 or 3.5) and have it automatically install the latest point
+release (and add a new command that removes and updates them when needed)</p>
+<h2>pyenv-virtualenv</h2>
+<p>For a long time I was a big user of virtualenvwrapper, however, my transition 
+to pyenv and <a href="https://fishshell.com">fish</a> caused some issues. I stumbled on pyenv-virtualenv
+(not to be mistaken with pyenv-virtualenvwrapper which also doesn't support 
+fish) which covers all my needs. I wrote a few fish functions to make 
+it a little easier to use. It isn't hard, but maybe just a little verbose.</p>
+<p>For example, here is a handy way to make a temporary virtualenv, I found this 
+feature of virtualenvwrapper (the mktmpenv command) particularly useful.</p>
+<div class="highlight"><pre><span></span><span class="k">function</span> venv-tmp
+  <span class="k">set</span> venv_tmp_name <span class="s2">&quot;tmp-&quot;</span><span class="o">(</span><span class="nb">random</span><span class="o">)</span>
+  pyenv virtualenv <span class="o">(</span>expr substr <span class="o">(</span>python --version 2&gt;<span class="o">&amp;</span>1<span class="o">)</span> <span class="m">8</span> 20<span class="o">)</span> <span class="nv">$venv_tmp_name</span>
+  venv-activate <span class="nv">$venv_tmp_name</span>
+<span class="k">end</span>
+
+<span class="k">function</span> venv-tmp-cleanup
+  <span class="k">for</span> val <span class="k">in</span> <span class="o">(</span>pyenv versions <span class="o">|</span> grep <span class="s2">&quot;/envs/tmp-&quot;</span><span class="o">)</span>
+    venv-rm <span class="o">(</span>basename <span class="nv">$val</span><span class="o">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+
+
+<p>Generally it doesn't give me much over what virtualenvwrapper did (other than 
+fish support) but I do like that it is managed by pyenv and integrates well.</p>
+<h2>pipsi</h2>
+<p>pipsi is a more recent addition to my setup. It is a fairy simple tool which
+allows you to install Python CLI tools in their own virtualenv and then the 
+command is added to your path. The main advantage here is that they are all 
+isolated and don't need to have compatible requirements. Uninstalling is also
+much cleaner and easier - you just delete the virtualenv.</p>
+<p>I install a bunch of Python projects this way, here are some of the most 
+useful.</p>
+<ul>
+<li><a href="https://pypi.python.org/pypi/tox">tox</a>: My defacto way of running tests. </li>
+<li><a href="http://www.mkdocs.org">mkdocs</a>: A beautifully simple documentation tool (I might be <a href="http://www.mkdocs.org/about/release-notes/#maintenance-team">biased</a>).</li>
+<li><a href="https://pypi.python.org/pypi/git-review">git-review</a>: The <code>git review</code> command for gerrit integration.</li>
+<li><a href="https://pypi.python.org/pypi/flake8">flake8</a>: Python linting, mostly installs like this for vim.</li>
+</ul>
+<h1>Putting it all together</h1>
+<p>So, overall I don't actually use that many projects, but I have very happy with 
+how it works. I have the setup automated, and it looks like this.</p>
+<div class="highlight"><pre><span></span># pyenv
+if [ ! -d ~.pyenv ]; then
+    curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
+    git clone https://github.com/yyuu/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
+else
+    pyenv update
+fi;
+
+pyenv install -s 2.7.12;
+pyenv install -s 3.5.2;
+pyenv install -s 3.4.5;
+pyenv install -s pypy-5.4.1;
+pyenv global 2.7.12 3.5.2 3.4.5 pypy-5.4.1;
+~/.pyenv/shims/pip install -U pip pipsi
+rm -rf ~/.local/venvs
+~/.pyenv/shims/pipsi install tox
+~/.pyenv/shims/pipsi install mkdocs
+~/.pyenv/shims/pipsi install git-review
+~/.pyenv/shims/pipsi install 1pass
+~/.pyenv/shims/pipsi install flake8
+~/.pyenv/shims/pipsi install yaql
+~/.pyenv/shims/pipsi install livereload
+</pre></div>
+
+
+<p>The summary is, first install pyenv and setup the Python versions you need.
+Then install pipsi into the default pyenv environment and use that to install
+the other tools. The system Python should never be touched.</p>
+<p>A couple of things are missing as you'll need to setup paths and so on, so 
+please do look at the install guides for each.</p>
+  </div><!-- /.entry-content -->
+</section>
+
+    </div>
+
+  </div>
+
+  <script src="/theme/js/bootstrap.min.js"></script>
+
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-947562-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script');
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      ga.setAttribute('async', 'true');
+      document.documentElement.firstChild.appendChild(ga);
+    })();
+
+  </script>
+  <script src="/theme/js/anti-butt.js"></script>
+
+</body>
+</html>
