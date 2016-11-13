@@ -1,0 +1,37 @@
+---
+version: '2.0'
+name: scraper
+description: Web Scraping Workbook
+
+workflows:
+
+  get_web_page:
+
+    description: >
+      Fetch a given URL. Store it. Extract all the links and queue them.
+
+    input:
+      - url
+
+    tasks:
+
+      limit_domain:
+        on-success:
+          - download_url: <% 'dougalmatthews.com' in $.url %>
+
+      download_url:
+        action: std.http url=<% $.url %>
+        on-success: extract_links
+
+      extract_links:
+        publish: <% regex('(([\w-]+://?|www[.])[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/)))').searchAll(task(download_url).result.content) %>
+        on-success:
+          - follow_links
+          - save_content
+
+      follow_links:
+        with-items: url in <% task(extract_links) %>
+        workflow: get_web_page url=<$ $.url $>
+
+      save_contents:
+        task: std.noop
