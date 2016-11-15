@@ -17,21 +17,32 @@ workflows:
 
       limit_domain:
         on-success:
-          - download_url: <% 'dougalmatthews.com' in $.url %>
+          - get_mistral_env: <% 'dougalmatthews.com' in $.url %>
+
+      get_mistral_env:
+        action: mistral.environments_get name='scraper'
+        on-success:
+          - mark_visited: <% not $.url in task(get_mistral_env).result.variables.visited %>
+          - download_url: <% not $.url in task(get_mistral_env).result.variables.visited %>
+
+      mark_visited:
+        action: mistral.environments_update name='scraper' variables=<% {visited => [$.url] + task(get_mistral_env).result.variables.visited} %>
 
       download_url:
-        action: std.http url=<% $.url %>
+        action: std.http url=<% $.url %> allow_redirects=True
         on-success: extract_links
 
       extract_links:
-        publish: <% regex('(([\w-]+://?|www[.])[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/)))').searchAll(task(download_url).result.content) %>
+        publish:
+          urls: <% regex('((?:https?://|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:\'".,<>?\xab\xbb\u201c\u201d\u2018\u2019]))').searchAll(task(download_url).result.content) %>
         on-success:
+          - echo_links
           - follow_links
-          - save_content
+
+      echo_links:
+        action: std.echo output=<% task(extract_links).published.urls %>
 
       follow_links:
-        with-items: url in <% task(extract_links) %>
-        workflow: get_web_page url=<$ $.url $>
+        with-items: suburl in <% task(extract_links).published.urls %>
+        workflow: get_web_page url=<% $.suburl %>
 
-      save_contents:
-        task: std.noop
