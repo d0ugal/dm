@@ -1,5 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/all-en.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2016-11-12T15:45:00+00:00</updated><entry><title>Create an Excellent Python Dev Env</title><link href="http://www.dougalmatthews.com/2016/Nov/12/create-an-excellent-python-dev-env/" rel="alternate"></link><published>2016-11-12T15:45:00+00:00</published><updated>2016-11-12T15:45:00+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2016-11-12:2016/Nov/12/create-an-excellent-python-dev-env/</id><summary type="html">&lt;p&gt;There are a huge number of Python dev tools around, a number of them are
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/all-en.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2016-11-18T14:35:00+00:00</updated><entry><title>Mistral Workflow Engine</title><link href="http://www.dougalmatthews.com/2016/Nov/18/mistral-workflow-engine/" rel="alternate"></link><published>2016-11-18T14:35:00+00:00</published><updated>2016-11-18T14:35:00+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2016-11-18:2016/Nov/18/mistral-workflow-engine/</id><summary type="html">&lt;p&gt;This year I have been getting to know &lt;a href="http://docs.openstack.org/developer/mistral/"&gt;Mistral&lt;/a&gt;, the &lt;a href="https://www.openstack.org/"&gt;OpenStack&lt;/a&gt; workflow
+service and recently joined the &lt;a href="http://lists.openstack.org/pipermail/openstack-dev/2016-November/107021.html"&gt;Mistral core team&lt;/a&gt;. This post is going to be a
+bit of an introduction to the project and share some of my experiences with it.&lt;/p&gt;
+&lt;p&gt;But, first, what is a workflow service anyway?&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A workflow management system (WFMS) provides an infrastructure for the
+set-up, performance and monitoring of a defined sequence of tasks, arranged
+as a workflow.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;That is the one-line description from &lt;a href="https://en.wikipedia.org/wiki/Workflow_management_system"&gt;Wikipedia&lt;/a&gt;. Put simply, a workflow is a
+set of connected tasks that will be executed. However, the real advantage with
+a service like Mistral is that it manages and stores the state of the workflow.
+This means that it is able to restart or retry from any point.&lt;/p&gt;
+&lt;p&gt;The project is developed in the OpenStack community, but &lt;strong&gt;can be used outside
+of OpenStack&lt;/strong&gt;. We’ll come back to that later.&lt;/p&gt;
+&lt;h2&gt;The Hello Workflow&lt;/h2&gt;
+&lt;p&gt;Okay, so, let’s start with a simple workflow and see what it does and how it
+works. This should give you a taste of what the Mistral Workflow language looks
+like but this example is poor - I plan to demonstrate more interesting examples
+in future posts.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;version&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;2.0&amp;#39;&lt;/span&gt;
+
+&lt;span class="l l-Scalar l-Scalar-Plain"&gt;hello_world&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+    &lt;span class="l l-Scalar l-Scalar-Plain"&gt;tasks&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+        &lt;span class="l l-Scalar l-Scalar-Plain"&gt;say_hello&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+            &lt;span class="l l-Scalar l-Scalar-Plain"&gt;action&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;std.echo output=&amp;quot;Hello Workflow!”&lt;/span&gt;
+            &lt;span class="l l-Scalar l-Scalar-Plain"&gt;publish&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+                &lt;span class="l l-Scalar l-Scalar-Plain"&gt;output&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;&amp;lt;% task(say_hello).result %&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This is almost the simplest workflow possible, but it reveals a number of
+features in the Workflow language. We’ll step through it.&lt;/p&gt;
+&lt;p&gt;First we need to specify the version we are working with, at the moment this
+needs to be &lt;code&gt;version: ‘2.0’&lt;/code&gt;. It is the only supported version.&lt;/p&gt;
+&lt;p&gt;Next we have the name of our workflow, &lt;code&gt;hello_world&lt;/code&gt; and this workflow is made
+up of a set of tasks, in this case we only have one task, called &lt;code&gt;say_hello&lt;/code&gt;.
+The workflow calls the &lt;code&gt;std.echo&lt;/code&gt; action and passes a string as input. Once
+the task is finished, it will publish the result of the task and the workflow
+ends.&lt;/p&gt;
+&lt;p&gt;If we save the above workflow in a file called &lt;code&gt;hello_world.yaml&lt;/code&gt; we can then
+register it with the Mistral API.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ mistral workflow-create hello_world.yaml&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now that this workflow is stored in Mistral we can easily trigger it at any
+point. Workflows are started by creating executions.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ mistral execution-create hello_world&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;After this workflow has been started it can be monitored easily with the
+following commands. The &lt;code&gt;hello_world&lt;/code&gt; workflow should finish almost instantly,
+but workflows can run for an extended period of time.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ mistral execution-list&lt;span class="p"&gt;;&lt;/span&gt;
+$ mistral execution-get &lt;span class="nv"&gt;$UUID&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+$ mistral execution-get-output &lt;span class="nv"&gt;$UUID&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;What are actions?&lt;/h2&gt;
+&lt;p&gt;Actions are really where all the power comes from, without them the workflow
+wouldn't do very much, workflows just link together and connect a series of
+actions.&lt;/p&gt;
+&lt;p&gt;It is often helpful to isolate and run Mistral actions directly as you design
+the workflow. With the following action call we can replicate the functionality
+of the workflow above (since it only called one action).&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ mistral run-action std.echo &lt;span class="s1"&gt;&amp;#39;{&amp;quot;output&amp;quot;: &amp;quot;Hello Workflow!&amp;quot;}&amp;#39;&lt;/span&gt;
+&lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;result&amp;quot;&lt;/span&gt;: &lt;span class="s2"&gt;&amp;quot;Hello Workflow!&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Mistral only provides a small set of &lt;a href="http://docs.openstack.org/developer/mistral/dsl/dsl_v2.html#system-actions"&gt;system actions&lt;/a&gt; (Mistrals standard
+library), but they are all useful. Mistral also ships OpenStack actions for all
+the OpenStack services - these are extremely useful.&lt;/p&gt;
+&lt;p&gt;Most Mistral users will want to write custom actions eventually, the Mistral 
+documentation has a brief primer for &lt;a href="http://docs.openstack.org/developer/mistral/developer/creating_custom_action.html"&gt;writing custom actions&lt;/a&gt;. I hope to write
+more about this later and also make some improvements to the official
+documentation.&lt;/p&gt;
+&lt;h1&gt;Without OpenStack?&lt;/h1&gt;
+&lt;p&gt;OpenStack is a great project, and it is huge. So unless you are using it
+already it is unlikely you will install OpenStack to use Mistral. Thankfully
+Mistral isn't tied to OpenStack at all, but it can integrate well. Essentially,
+if you want to use Mistral with OpenStack you would setup KeyStone
+authentication (Keystone is the OpenStack identity service). Otherwise you can 
+use keycloak or run Mistral without authentication (but behind a proxy which
+should add authentication).&lt;/p&gt;
+&lt;p&gt;The documentation for this again is poor and something I want to write about
+and improve. So watch this space.&lt;/p&gt;</summary><category term="python"></category><category term="openstack"></category><category term="workflow"></category><category term="mistral"></category></entry><entry><title>Create an Excellent Python Dev Env</title><link href="http://www.dougalmatthews.com/2016/Nov/12/create-an-excellent-python-dev-env/" rel="alternate"></link><published>2016-11-12T15:45:00+00:00</published><updated>2016-11-12T15:45:00+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2016-11-12:2016/Nov/12/create-an-excellent-python-dev-env/</id><summary type="html">&lt;p&gt;There are a huge number of Python dev tools around, a number of them are
 essential for my day to day development. However, they tend to suffer from a
 lack of discoverability and it takes a while to find what works for you.&lt;/p&gt;
 &lt;p&gt;I'm going to quickly share what I use, some of these are well known, some are

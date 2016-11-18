@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <link rel="icon" href="/theme/img/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="/theme/css/bootstrap.css" type="text/css" media="screen, projection" />
+  <link rel="stylesheet" href="/theme/css/bootstrap-responsive.css" type="text/css" media="screen, projection" />
+  <link href='http://fonts.googleapis.com/css?family=Lato:regular|PT+Serif+Caption|PT+Serif|Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+  <link href="/theme/css/monokai.css" rel="stylesheet" type="text/css" />
+  <link href="/theme/css/style.css" rel="stylesheet" type="text/css" />
+
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="57x57" href="/theme/img/iconified/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="60x60" href="/theme/img/iconified/apple-touch-icon-60x60.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/theme/img/iconified/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="76x76" href="/theme/img/iconified/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/theme/img/iconified/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="120x120" href="/theme/img/iconified/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/theme/img/iconified/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="/theme/img/iconified/apple-touch-icon-152x152.png" />
+
+  <title>Mistral Workflow Engine - Dougal Matthews</title>
+  <meta charset="utf-8" />
+  <link href="http://www.dougalmatthews.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Dougal Matthews Full Atom Feed" />
+  <link href="http://www.dougalmatthews.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Dougal Matthews RSS Feed" />
+  <link href="http://www.dougalmatthews.com/feeds/openstack.atom.xml" type="application/atom+xml" rel="alternate" title="Dougal Matthews Categories Atom Feed" />
+  <link href="http://www.dougalmatthews.com/feeds/openstack.rss.xml" type="application/rss+xml" rel="alternate" title="Dougal Matthews Categories RSS Feed" />
+
+  <meta name="google-site-verification" content="GNt31_M2DlGd--mcA_1JjGH46qPSDdpnSiWi7Y_9Ltk" />
+  <meta name="verify-v1" content="d4ZT12Eg5dza8IxtDZlqiZoC0EzBnLxeYeK2PTiaIrU=" />
+  <meta name="msvalidate.01" content="08FE3976E4596314289973311F691DC2" />
+  <meta name="y_key" content="ef34f6756bc76371" />
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="navbar-centre">
+        <a class="brand" href="/"><span class="red">Dougal</span> <span class="white">Matthews</span></a>
+        <ul class="nav">
+            <li ><a href="/code/">Code</a></li>
+            <li ><a href="/notes/">Notes</a></li>
+            <li ><a href="/work/">Work</a></li>
+            <li ><a href="/talks/">Talks</a></li>
+            <li ><a href="/about/">About</a></li>
+        <ul class="nav">
+      </div>
+    </div>
+  </div>
+
+  <div id="content_wrapper">
+
+    <div id="content" class="container prepent-top">
+
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="http://www.dougalmatthews.com/2016/Nov/18/mistral-workflow-engine/" rel="bookmark"
+         title="Permalink to Mistral Workflow Engine">Mistral Workflow Engine</a></h2>
+ 
+  </header>
+    <footer class="post-info">
+      <time datetime="2016-11-18T14:35:00+00:00">
+        Fri 18 November 2016
+      </time>
+    </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <p>This year I have been getting to know <a href="http://docs.openstack.org/developer/mistral/">Mistral</a>, the <a href="https://www.openstack.org/">OpenStack</a> workflow
+service and recently joined the <a href="http://lists.openstack.org/pipermail/openstack-dev/2016-November/107021.html">Mistral core team</a>. This post is going to be a
+bit of an introduction to the project and share some of my experiences with it.</p>
+<p>But, first, what is a workflow service anyway?</p>
+<blockquote>
+<p>A workflow management system (WFMS) provides an infrastructure for the
+set-up, performance and monitoring of a defined sequence of tasks, arranged
+as a workflow.</p>
+</blockquote>
+<p>That is the one-line description from <a href="https://en.wikipedia.org/wiki/Workflow_management_system">Wikipedia</a>. Put simply, a workflow is a
+set of connected tasks that will be executed. However, the real advantage with
+a service like Mistral is that it manages and stores the state of the workflow.
+This means that it is able to restart or retry from any point.</p>
+<p>The project is developed in the OpenStack community, but <strong>can be used outside
+of OpenStack</strong>. We’ll come back to that later.</p>
+<h2>The Hello Workflow</h2>
+<p>Okay, so, let’s start with a simple workflow and see what it does and how it
+works. This should give you a taste of what the Mistral Workflow language looks
+like but this example is poor - I plan to demonstrate more interesting examples
+in future posts.</p>
+<div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">version</span><span class="p p-Indicator">:</span> <span class="s">&#39;2.0&#39;</span>
+
+<span class="l l-Scalar l-Scalar-Plain">hello_world</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">say_hello</span><span class="p p-Indicator">:</span>
+            <span class="l l-Scalar l-Scalar-Plain">action</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">std.echo output=&quot;Hello Workflow!”</span>
+            <span class="l l-Scalar l-Scalar-Plain">publish</span><span class="p p-Indicator">:</span>
+                <span class="l l-Scalar l-Scalar-Plain">output</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;% task(say_hello).result %&gt;</span>
+</pre></div>
+
+
+<p>This is almost the simplest workflow possible, but it reveals a number of
+features in the Workflow language. We’ll step through it.</p>
+<p>First we need to specify the version we are working with, at the moment this
+needs to be <code>version: ‘2.0’</code>. It is the only supported version.</p>
+<p>Next we have the name of our workflow, <code>hello_world</code> and this workflow is made
+up of a set of tasks, in this case we only have one task, called <code>say_hello</code>.
+The workflow calls the <code>std.echo</code> action and passes a string as input. Once
+the task is finished, it will publish the result of the task and the workflow
+ends.</p>
+<p>If we save the above workflow in a file called <code>hello_world.yaml</code> we can then
+register it with the Mistral API.</p>
+<div class="highlight"><pre><span></span>$ mistral workflow-create hello_world.yaml<span class="p">;</span>
+</pre></div>
+
+
+<p>Now that this workflow is stored in Mistral we can easily trigger it at any
+point. Workflows are started by creating executions.</p>
+<div class="highlight"><pre><span></span>$ mistral execution-create hello_world<span class="p">;</span>
+</pre></div>
+
+
+<p>After this workflow has been started it can be monitored easily with the
+following commands. The <code>hello_world</code> workflow should finish almost instantly,
+but workflows can run for an extended period of time.</p>
+<div class="highlight"><pre><span></span>$ mistral execution-list<span class="p">;</span>
+$ mistral execution-get <span class="nv">$UUID</span><span class="p">;</span>
+$ mistral execution-get-output <span class="nv">$UUID</span><span class="p">;</span>
+</pre></div>
+
+
+<h2>What are actions?</h2>
+<p>Actions are really where all the power comes from, without them the workflow
+wouldn't do very much, workflows just link together and connect a series of
+actions.</p>
+<p>It is often helpful to isolate and run Mistral actions directly as you design
+the workflow. With the following action call we can replicate the functionality
+of the workflow above (since it only called one action).</p>
+<div class="highlight"><pre><span></span>$ mistral run-action std.echo <span class="s1">&#39;{&quot;output&quot;: &quot;Hello Workflow!&quot;}&#39;</span>
+<span class="o">{</span><span class="s2">&quot;result&quot;</span>: <span class="s2">&quot;Hello Workflow!&quot;</span><span class="o">}</span>
+</pre></div>
+
+
+<p>Mistral only provides a small set of <a href="http://docs.openstack.org/developer/mistral/dsl/dsl_v2.html#system-actions">system actions</a> (Mistrals standard
+library), but they are all useful. Mistral also ships OpenStack actions for all
+the OpenStack services - these are extremely useful.</p>
+<p>Most Mistral users will want to write custom actions eventually, the Mistral 
+documentation has a brief primer for <a href="http://docs.openstack.org/developer/mistral/developer/creating_custom_action.html">writing custom actions</a>. I hope to write
+more about this later and also make some improvements to the official
+documentation.</p>
+<h1>Without OpenStack?</h1>
+<p>OpenStack is a great project, and it is huge. So unless you are using it
+already it is unlikely you will install OpenStack to use Mistral. Thankfully
+Mistral isn't tied to OpenStack at all, but it can integrate well. Essentially,
+if you want to use Mistral with OpenStack you would setup KeyStone
+authentication (Keystone is the OpenStack identity service). Otherwise you can 
+use keycloak or run Mistral without authentication (but behind a proxy which
+should add authentication).</p>
+<p>The documentation for this again is poor and something I want to write about
+and improve. So watch this space.</p>
+  </div><!-- /.entry-content -->
+</section>
+
+    </div>
+
+  </div>
+
+  <script src="/theme/js/bootstrap.min.js"></script>
+
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-947562-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script');
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      ga.setAttribute('async', 'true');
+      document.documentElement.firstChild.appendChild(ga);
+    })();
+
+  </script>
+  <script src="/theme/js/anti-butt.js"></script>
+
+</body>
+</html>
