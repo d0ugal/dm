@@ -1,7 +1,7 @@
 title: Mistral Workflow Engine
 category: openstack
 tags: python, openstack, workflow, mistral
-date: 2016-11-13 14:35
+date: 2016-11-18 14:35
 author: Dougal Matthews
 
 This year I have been getting to know [Mistral], the [OpenStack] workflow
