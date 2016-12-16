@@ -1231,7 +1231,18 @@ quick reach out to anyone else that may be intersted or have not heard of the
 group yet.&lt;/p&gt;
 &lt;p&gt;Find out more at the new (but basic) &lt;a class="reference external" href="http://www.pythonglasgow.org/"&gt;website&lt;/a&gt; and &lt;a class="reference external" href="http://twitter.com/pythonglasgow"&gt;follow us on twitter&lt;/a&gt;
 or &lt;a class="reference external" href="http://mail.python.org/mailman/listinfo/glasgow"&gt;join the mailing list&lt;/a&gt;.&lt;/p&gt;
-</summary><category term="python"></category><category term="django"></category></entry><entry><title>New Year's Python Meme</title><link href="http://www.dougalmatthews.com/2011/Dec/23/new-years-python-meme/" rel="alternate"></link><published>2011-12-23T14:21:00+00:00</published><updated>2011-12-23T14:21:00+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2011-12-23:2011/Dec/23/new-years-python-meme/</id><summary type="html">&lt;p&gt;&lt;strong&gt;What is the coolest Python application, framework, or library you
+</summary><category term="python"></category><category term="django"></category></entry><entry><title>MongoDb</title><link href="http://www.dougalmatthews.com//notes/mongodb/" rel="alternate"></link><published>2012-03-30T23:47:00+01:00</published><updated>2012-03-30T23:47:00+01:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2012-03-30:notes/mongodb/</id><summary type="html">&lt;div class="section" id="bulk-loading"&gt;
+&lt;h2&gt;Bulk Loading&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Disable balancer (when sharding)&lt;/li&gt;
+&lt;li&gt;Disable safe writes&lt;/li&gt;
+&lt;li&gt;Batch load in bulks&lt;/li&gt;
+&lt;li&gt;Verify database afterwards!&lt;/li&gt;
+&lt;li&gt;Verify replicas.&lt;/li&gt;
+&lt;li&gt;Create indexes afterwards (use background=1 to avoid locking the db)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</summary></entry><entry><title>New Year's Python Meme</title><link href="http://www.dougalmatthews.com/2011/Dec/23/new-years-python-meme/" rel="alternate"></link><published>2011-12-23T14:21:00+00:00</published><updated>2011-12-23T14:21:00+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2011-12-23:2011/Dec/23/new-years-python-meme/</id><summary type="html">&lt;p&gt;&lt;strong&gt;What is the coolest Python application, framework, or library you
 have discovered in 2011?&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;I started using Tox in all my projects this year. It's got to be one of the
 best addition for testing multiple platforms and package versions.&lt;/p&gt;
