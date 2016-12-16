@@ -1,6 +1,6 @@
 title: Mistral Workflow Engine
 category: openstack
-tags: python, openstack, workflow, mistral
+tags: python, openstack, workflow, mistral, tripleo
 date: 2016-11-18 14:35
 author: Dougal Matthews
 

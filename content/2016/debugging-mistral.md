@@ -1,6 +1,6 @@
 title: Debugging Mistral in TripleO
 category: openstack
-tags: python, mistral, debug, tripleo
+tags: python, mistral, debug, tripleo, openstack
 date: 2016-09-21 21:31
 author: Dougal Matthews
 

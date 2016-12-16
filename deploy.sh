@@ -3,5 +3,8 @@
 ./build.sh;
 
 git push origin master;
-ghp-import output;
+REV=$(git rev-parse --short HEAD);
+MSG="Deployed $REV";
+ghp-import output -m "$MSG";
 git push origin gh-pages;
+echo $MSG

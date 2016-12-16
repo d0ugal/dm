@@ -1,8 +1,5 @@
-Python Glasgow
-##############
-
 :category: python
-:tags: vagrant, chef, python, django, ruby, osx
+:tags: python
 :date: 2010-08-12 19:25
 :title: Python Edinburgh
 :author: Dougal Matthews

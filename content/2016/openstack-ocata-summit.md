@@ -1,6 +1,6 @@
 title: OpenStack Ocata Summit
 category: openstack
-tags: summit, mistral, tripleo
+tags: summit, mistral, tripleo, openstack
 date: 2016-11-03 20:24:10 
 author: Dougal Matthews
 

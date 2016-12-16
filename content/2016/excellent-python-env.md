@@ -1,6 +1,6 @@
 title: Create an Excellent Python Dev Env
 category: python
-tags: pyenv, virtualenv, pipsi
+tags: pyenv, virtualenv, pipsi, openstack
 date: 2016-11-12 15:45
 author: Dougal Matthews
 

@@ -1,6 +1,6 @@
 title: Installing Dev TripleO Packages
 category: openstack
-tags: python, utils, tripleo
+tags: python, utils, tripleo, openstack
 date: 2016-10-19 11:59:18
 author: Dougal Matthews
 

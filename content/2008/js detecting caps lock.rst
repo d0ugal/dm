@@ -2,7 +2,7 @@ JavaScript Detecting Caps lock
 ##############################
 
 :category: javascript
-:tags: vagrant, chef, python, django, ruby, osx
+:tags: javascript
 :date: 2008-07-02 19:25
 :title: JavaScript - Detecting Caps lock
 :author: Dougal Matthews

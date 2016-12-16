@@ -2,7 +2,7 @@ Fun With Balls
 ##############
 
 :category: javascript
-:tags: balls, canvas
+:tags: balls, canvas, javascript
 :date: 2010-01-08 19:25
 :title: Fun with Balls
 :author: Dougal Matthews

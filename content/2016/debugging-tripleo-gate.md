@@ -1,6 +1,6 @@
 title: Debugging TripleO Gate Failures in Mistral
 category: openstack
-tags: python, mistral, debug, tripleo
+tags: python, mistral, debug, tripleo, openstack
 date: 2016-09-29 17:31
 author: Dougal Matthews
 
