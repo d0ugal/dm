@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>Dougal Matthews</title><link>http://www.dougalmatthews.com/</link><description></description><lastBuildDate>Mon, 12 Dec 2016 19:34:24 +0000</lastBuildDate><item><title>Python 3 and pytest Intro in Glasgow</title><link>http://www.dougalmatthews.com/2016/Dec/12/python-3-and-pytest-intro-in-glasgow/</link><description>&lt;p&gt;I recently introduced a number of people to Python and pytest at the first 
+&lt;a href="https://www.meetup.com/GlasgowPairProg/"&gt;Glasgow Pair Programming&lt;/a&gt; Meetup. I think it was a success as I slowly
+took them through some simple programming problems to demonstrate the tooling
+available in Python.&lt;/p&gt;
+&lt;p&gt;This post is just a reference for everything I mentioned (and I remember
+mentioning!). So anyone that came along, or anyone looking for a similar list
+of references can find these Python tools.&lt;/p&gt;
+&lt;p&gt;I used ...&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.python.org/downloads/"&gt;Python 3.5&lt;/a&gt;, default to Python 3 and only used Python 2 if you must.
+  Python 3.6 is out soon, anything from 3.4 upwards is good.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://pip.pypa.io"&gt;pip&lt;/a&gt; to install packages from the Python Package Index (&lt;a href="https://pypi.python.org/pypi"&gt;PyPI&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;[pyenv] to install different Python versions. You may not need this if you
+  have a good enough Python version on your system by default&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://docs.python-guide.org/en/latest/dev/virtualenvs/"&gt;virtualenv&lt;/a&gt; to install Python packages for a specific project&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://doc.pytest.org/"&gt;pytest&lt;/a&gt;, the best way to write tests in Python. &lt;a href="https://docs.python.org/3.6/library/unittest.html"&gt;unittest&lt;/a&gt; works pretty well
+  too and has wider adoption.&lt;/li&gt;
+&lt;li&gt;The Python &lt;a href="https://docs.python.org/3.6/library/collections.html"&gt;collections&lt;/a&gt; module is great, it has some really nice things in
+  it. I didn't use &lt;a href="https://docs.python.org/3.6/library/itertools.html"&gt;itertools&lt;/a&gt; or &lt;a href="https://docs.python.org/3.6/library/functools.html"&gt;functools&lt;/a&gt; but they are also neat.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Outside of Python, I also used &lt;a href="https://tmux.github.io/"&gt;tmux&lt;/a&gt; to manage my sessions. &lt;a href="https://fishshell.com/"&gt;fish&lt;/a&gt; as my
+shell. &lt;a href="https://i3wm.org/"&gt;i3wm&lt;/a&gt; as my window manager in Fedora.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Dougal Matthews</dc:creator><pubDate>Mon, 12 Dec 2016 19:34:24 +0000</pubDate><guid isPermaLink="false">tag:www.dougalmatthews.com,2016-12-12:2016/Dec/12/python-3-and-pytest-intro-in-glasgow/</guid><category>python</category><category>pytest</category><category>glasgow</category></item></channel></rss>

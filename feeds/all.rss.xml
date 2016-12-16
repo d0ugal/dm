@@ -57,7 +57,28 @@ never directly make instances of it. This is also an issue for projects that
 follow convention, like Django.&lt;/p&gt;
 &lt;p&gt;Despite these limitations, I found it very useful for getting some easy wins
 and removing dead code. If you are familiar with the code, scanning through the
-report is pretty quick and easy.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Dougal Matthews</dc:creator><pubDate>Fri, 16 Dec 2016 08:24:10 +0000</pubDate><guid isPermaLink="false">tag:www.dougalmatthews.com,2016-12-16:2016/Dec/16/finding-dead-code-with-vulture/</guid><category>vulture</category><category>cleanup</category><category>python</category><category>openstack</category></item><item><title>Mistral Workflow Engine</title><link>http://www.dougalmatthews.com/2016/Nov/18/mistral-workflow-engine/</link><description>&lt;p&gt;This year I have been getting to know &lt;a href="http://docs.openstack.org/developer/mistral/"&gt;Mistral&lt;/a&gt;, the &lt;a href="https://www.openstack.org/"&gt;OpenStack&lt;/a&gt; workflow
+report is pretty quick and easy.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Dougal Matthews</dc:creator><pubDate>Fri, 16 Dec 2016 08:24:10 +0000</pubDate><guid isPermaLink="false">tag:www.dougalmatthews.com,2016-12-16:2016/Dec/16/finding-dead-code-with-vulture/</guid><category>vulture</category><category>cleanup</category><category>python</category><category>openstack</category></item><item><title>Python 3 and pytest Intro in Glasgow</title><link>http://www.dougalmatthews.com/2016/Dec/12/python-3-and-pytest-intro-in-glasgow/</link><description>&lt;p&gt;I recently introduced a number of people to Python and pytest at the first 
+&lt;a href="https://www.meetup.com/GlasgowPairProg/"&gt;Glasgow Pair Programming&lt;/a&gt; Meetup. I think it was a success as I slowly
+took them through some simple programming problems to demonstrate the tooling
+available in Python.&lt;/p&gt;
+&lt;p&gt;This post is just a reference for everything I mentioned (and I remember
+mentioning!). So anyone that came along, or anyone looking for a similar list
+of references can find these Python tools.&lt;/p&gt;
+&lt;p&gt;I used ...&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.python.org/downloads/"&gt;Python 3.5&lt;/a&gt;, default to Python 3 and only used Python 2 if you must.
+  Python 3.6 is out soon, anything from 3.4 upwards is good.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://pip.pypa.io"&gt;pip&lt;/a&gt; to install packages from the Python Package Index (&lt;a href="https://pypi.python.org/pypi"&gt;PyPI&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;[pyenv] to install different Python versions. You may not need this if you
+  have a good enough Python version on your system by default&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://docs.python-guide.org/en/latest/dev/virtualenvs/"&gt;virtualenv&lt;/a&gt; to install Python packages for a specific project&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://doc.pytest.org/"&gt;pytest&lt;/a&gt;, the best way to write tests in Python. &lt;a href="https://docs.python.org/3.6/library/unittest.html"&gt;unittest&lt;/a&gt; works pretty well
+  too and has wider adoption.&lt;/li&gt;
+&lt;li&gt;The Python &lt;a href="https://docs.python.org/3.6/library/collections.html"&gt;collections&lt;/a&gt; module is great, it has some really nice things in
+  it. I didn't use &lt;a href="https://docs.python.org/3.6/library/itertools.html"&gt;itertools&lt;/a&gt; or &lt;a href="https://docs.python.org/3.6/library/functools.html"&gt;functools&lt;/a&gt; but they are also neat.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Outside of Python, I also used &lt;a href="https://tmux.github.io/"&gt;tmux&lt;/a&gt; to manage my sessions. &lt;a href="https://fishshell.com/"&gt;fish&lt;/a&gt; as my
+shell. &lt;a href="https://i3wm.org/"&gt;i3wm&lt;/a&gt; as my window manager in Fedora.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Dougal Matthews</dc:creator><pubDate>Mon, 12 Dec 2016 19:34:24 +0000</pubDate><guid isPermaLink="false">tag:www.dougalmatthews.com,2016-12-12:2016/Dec/12/python-3-and-pytest-intro-in-glasgow/</guid><category>python</category><category>pytest</category><category>glasgow</category></item><item><title>Mistral Workflow Engine</title><link>http://www.dougalmatthews.com/2016/Nov/18/mistral-workflow-engine/</link><description>&lt;p&gt;This year I have been getting to know &lt;a href="http://docs.openstack.org/developer/mistral/"&gt;Mistral&lt;/a&gt;, the &lt;a href="https://www.openstack.org/"&gt;OpenStack&lt;/a&gt; workflow
 service and recently joined the &lt;a href="http://lists.openstack.org/pipermail/openstack-dev/2016-November/107021.html"&gt;Mistral core team&lt;/a&gt;. This post is going to be a
 bit of an introduction to the project and share some of my experiences with it.&lt;/p&gt;
 &lt;p&gt;But, first, what is a workflow service anyway?&lt;/p&gt;
