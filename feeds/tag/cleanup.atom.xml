@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/tag/cleanup.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2016-12-16T08:24:10+00:00</updated><entry><title>Finding dead code with Vulture</title><link href="http://www.dougalmatthews.com/2016/Dec/16/finding-dead-code-with-vulture/" rel="alternate"></link><published>2016-12-16T08:24:10+00:00</published><updated>2016-12-16T08:24:10+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2016-12-16:2016/Dec/16/finding-dead-code-with-vulture/</id><summary type="html">&lt;p&gt;Somebody recently introduced me to &lt;a href="https://pypi.python.org/pypi/vulture"&gt;Vulture&lt;/a&gt;, a Python project for finding
+dead code. &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Vulture uses the ast module to build abstract syntax trees for all given
+files. While traversing all syntax trees it records the names of defined and
+used objects. Afterwards, it reports the objects which have been defined, but
+not used. This analysis ignores scopes and focuses only on object names.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;That quote is taken from the project readme, it gives you a good overview of 
+how it works.&lt;/p&gt;
+&lt;p&gt;After you have installed (&lt;a href="http://www.dougalmatthews.com/2016/Nov/12/create-an-excellent-python-dev-env/"&gt;I installed&lt;/a&gt; Vulture with &lt;a href="https://github.com/mitsuhiko/pipsi"&gt;pipsi&lt;/a&gt;) usage is as 
+simple as...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;vulture path/to/code
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;For example, given this small bit of Python&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;fn&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;
+
+&lt;span class="n"&gt;fn&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Saving that and running vulture against it will give me the following output.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ vulture code.py 
+code.py:2: Unused variable &lt;span class="s1"&gt;&amp;#39;x&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;It cleverly finds the variable defined in a function that isn't used. It does
+know that the function is used. This works well over multiple files too.&lt;/p&gt;
+&lt;p&gt;Using &lt;code&gt;--exclude&lt;/code&gt; can create more useful results. Often you can find code that
+isn't used with &lt;a href="https://coverage.readthedocs.io"&gt;coverage.py&lt;/a&gt;. However, I generally run only with my unit
+tests, so it is quite common for dead code to be left, with a single unit test
+validating that it still works. Vulture's exclude flag means you can exclude
+the tests, so code only used in the tests will appear unused.&lt;/p&gt;
+&lt;p&gt;I used this trick to look for dead code in &lt;a href="http://www.mkdocs.org/"&gt;MkDocs&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ vulture mkdocs --exclude mkdocs/tests
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You can see what that output looks like in this
+&lt;a href="https://gist.github.com/d0ugal/fd50b633e586a8c5239e9bad61674197"&gt;gist&lt;/a&gt;. I also 
+used it on some OpenStack projects I am involved with 
+&lt;a href="https://review.openstack.org/#/c/409255/"&gt;and&lt;/a&gt;
+&lt;a href="https://review.openstack.org/#/c/409256/"&gt;found&lt;/a&gt;
+&lt;a href="https://review.openstack.org/#/c/409257/"&gt;some&lt;/a&gt;
+&lt;a href="https://review.openstack.org/#/c/409258/"&gt;unused&lt;/a&gt; code I could then delete.&lt;/p&gt;
+&lt;p&gt;Unfortunately, false positives are common. Vulture only gives you a good place
+to start your investigation. For example, if used on a library, you will have
+code that is expected to be used externally (and is only called by your tests).
+Vulture will also complain that every unittest test class isn't used as you
+never directly make instances of it. This is also an issue for projects that
+follow convention, like Django.&lt;/p&gt;
+&lt;p&gt;Despite these limitations, I found it very useful for getting some easy wins
+and removing dead code. If you are familiar with the code, scanning through the
+report is pretty quick and easy.&lt;/p&gt;</summary><category term="vulture"></category><category term="cleanup"></category><category term="python"></category><category term="openstack"></category></entry></feed>

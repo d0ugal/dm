@@ -1,6 +1,10 @@
 body {
-  font-size: 18px;
+  font-size: 16px;
   text-align: justify;
+}
+
+blockquote p {
+    font-size: 16.5px;
 }
 
 .red {

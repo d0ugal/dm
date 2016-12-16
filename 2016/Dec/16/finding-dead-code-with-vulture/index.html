@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <link rel="icon" href="/theme/img/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="/theme/css/bootstrap.css" type="text/css" media="screen, projection" />
+  <link rel="stylesheet" href="/theme/css/bootstrap-responsive.css" type="text/css" media="screen, projection" />
+  <link href='http://fonts.googleapis.com/css?family=Lato:regular|PT+Serif+Caption|PT+Serif|Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+  <link href="/theme/css/monokai.css" rel="stylesheet" type="text/css" />
+  <link href="/theme/css/style.css" rel="stylesheet" type="text/css" />
+
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="57x57" href="/theme/img/iconified/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="60x60" href="/theme/img/iconified/apple-touch-icon-60x60.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/theme/img/iconified/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="76x76" href="/theme/img/iconified/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/theme/img/iconified/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="120x120" href="/theme/img/iconified/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/theme/img/iconified/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="/theme/img/iconified/apple-touch-icon-152x152.png" />
+
+  <title>Finding dead code with Vulture - Dougal Matthews</title>
+  <meta charset="utf-8" />
+  <link href="http://www.dougalmatthews.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Dougal Matthews Full Atom Feed" />
+  <link href="http://www.dougalmatthews.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Dougal Matthews RSS Feed" />
+  <link href="http://www.dougalmatthews.com/feeds/python.atom.xml" type="application/atom+xml" rel="alternate" title="Dougal Matthews Categories Atom Feed" />
+  <link href="http://www.dougalmatthews.com/feeds/python.rss.xml" type="application/rss+xml" rel="alternate" title="Dougal Matthews Categories RSS Feed" />
+
+  <meta name="google-site-verification" content="GNt31_M2DlGd--mcA_1JjGH46qPSDdpnSiWi7Y_9Ltk" />
+  <meta name="verify-v1" content="d4ZT12Eg5dza8IxtDZlqiZoC0EzBnLxeYeK2PTiaIrU=" />
+  <meta name="msvalidate.01" content="08FE3976E4596314289973311F691DC2" />
+  <meta name="y_key" content="ef34f6756bc76371" />
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="navbar-centre">
+        <a class="brand" href="/"><span class="red">Dougal</span> <span class="white">Matthews</span></a>
+        <ul class="nav">
+            <li ><a href="/code/">Code</a></li>
+            <!--<li ><a href="/projects/">Projects</a></li>-->
+            <li ><a href="/work/">Work</a></li>
+            <li ><a href="/talks/">Talks</a></li>
+            <li ><a href="/about/">About</a></li>
+        <ul class="nav">
+      </div>
+    </div>
+  </div>
+
+  <div id="content_wrapper">
+
+    <div id="content" class="container prepent-top">
+
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="http://www.dougalmatthews.com/2016/Dec/16/finding-dead-code-with-vulture/" rel="bookmark"
+         title="Permalink to Finding dead code with Vulture">Finding dead code with Vulture</a></h2>
+ 
+  </header>
+    <footer class="post-info">
+      <time datetime="2016-12-16T08:24:10+00:00">
+        Fri 16 December 2016
+      </time>
+    </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <p>Somebody recently introduced me to <a href="https://pypi.python.org/pypi/vulture">Vulture</a>, a Python project for finding
+dead code. </p>
+<blockquote>
+<p>Vulture uses the ast module to build abstract syntax trees for all given
+files. While traversing all syntax trees it records the names of defined and
+used objects. Afterwards, it reports the objects which have been defined, but
+not used. This analysis ignores scopes and focuses only on object names.</p>
+</blockquote>
+<p>That quote is taken from the project readme, it gives you a good overview of 
+how it works.</p>
+<p>After you have installed (<a href="http://www.dougalmatthews.com/2016/Nov/12/create-an-excellent-python-dev-env/">I installed</a> Vulture with <a href="https://github.com/mitsuhiko/pipsi">pipsi</a>) usage is as 
+simple as...</p>
+<div class="highlight"><pre><span></span>vulture path/to/code
+</pre></div>
+
+
+<p>For example, given this small bit of Python</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fn</span><span class="p">():</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="mi">2</span>
+
+<span class="n">fn</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Saving that and running vulture against it will give me the following output.</p>
+<div class="highlight"><pre><span></span>$ vulture code.py 
+code.py:2: Unused variable <span class="s1">&#39;x&#39;</span>
+</pre></div>
+
+
+<p>It cleverly finds the variable defined in a function that isn't used. It does
+know that the function is used. This works well over multiple files too.</p>
+<p>Using <code>--exclude</code> can create more useful results. Often you can find code that
+isn't used with <a href="https://coverage.readthedocs.io">coverage.py</a>. However, I generally run only with my unit
+tests, so it is quite common for dead code to be left, with a single unit test
+validating that it still works. Vulture's exclude flag means you can exclude
+the tests, so code only used in the tests will appear unused.</p>
+<p>I used this trick to look for dead code in <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+<div class="highlight"><pre><span></span>$ vulture mkdocs --exclude mkdocs/tests
+</pre></div>
+
+
+<p>You can see what that output looks like in this
+<a href="https://gist.github.com/d0ugal/fd50b633e586a8c5239e9bad61674197">gist</a>. I also 
+used it on some OpenStack projects I am involved with 
+<a href="https://review.openstack.org/#/c/409255/">and</a>
+<a href="https://review.openstack.org/#/c/409256/">found</a>
+<a href="https://review.openstack.org/#/c/409257/">some</a>
+<a href="https://review.openstack.org/#/c/409258/">unused</a> code I could then delete.</p>
+<p>Unfortunately, false positives are common. Vulture only gives you a good place
+to start your investigation. For example, if used on a library, you will have
+code that is expected to be used externally (and is only called by your tests).
+Vulture will also complain that every unittest test class isn't used as you
+never directly make instances of it. This is also an issue for projects that
+follow convention, like Django.</p>
+<p>Despite these limitations, I found it very useful for getting some easy wins
+and removing dead code. If you are familiar with the code, scanning through the
+report is pretty quick and easy.</p>
+  </div><!-- /.entry-content -->
+</section>
+
+    </div>
+
+  </div>
+
+  <script src="/theme/js/bootstrap.min.js"></script>
+
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-947562-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script');
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      ga.setAttribute('async', 'true');
+      document.documentElement.firstChild.appendChild(ga);
+    })();
+
+  </script>
+  <script src="/theme/js/anti-butt.js"></script>
+
+</body>
+</html>
