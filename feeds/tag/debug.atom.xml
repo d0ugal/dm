@@ -94,7 +94,7 @@ you to the correct part of the Mistral logs.&lt;/p&gt;
 Feel free to try pinging me (I'm d0ugal) and if I'm around I'll help. As
 other different cases pop up I'll try and cover them in additional posts.
 Since gating Mistral with TripleO is new, I don't have many useful examples
-yet.&lt;/p&gt;</summary><category term="python"></category><category term="mistral"></category><category term="debug"></category><category term="tripleo"></category></entry><entry><title>Debugging Mistral in TripleO</title><link href="http://www.dougalmatthews.com/2016/Sep/21/debugging-mistral-in-tripleo/" rel="alternate"></link><published>2016-09-21T21:31:00+01:00</published><updated>2016-09-21T21:31:00+01:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2016-09-21:2016/Sep/21/debugging-mistral-in-tripleo/</id><summary type="html">&lt;p&gt;During the OpenStack Newton cylce the TripleO project has started to use
+yet.&lt;/p&gt;</summary><category term="python"></category><category term="mistral"></category><category term="debug"></category><category term="tripleo"></category><category term="openstack"></category></entry><entry><title>Debugging Mistral in TripleO</title><link href="http://www.dougalmatthews.com/2016/Sep/21/debugging-mistral-in-tripleo/" rel="alternate"></link><published>2016-09-21T21:31:00+01:00</published><updated>2016-09-21T21:31:00+01:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2016-09-21:2016/Sep/21/debugging-mistral-in-tripleo/</id><summary type="html">&lt;p&gt;During the OpenStack Newton cylce the TripleO project has started to use
 &lt;a href="http://docs.openstack.org/developer/mistral/"&gt;Mistral&lt;/a&gt;, the OpenStack Workflow service. This has allowed us to provide an
 interface to TripleO that is used by the CLI and the new GUI (and potentially
 other consumes in the future).&lt;/p&gt;
@@ -189,4 +189,4 @@ mistral task-rerun &lt;span class="nv"&gt;$ID&lt;/span&gt;&lt;span class="p"&gt;
 &lt;p&gt;Hopefully we can resolve this issue: https://bugs.launchpad.net/tripleo/+bug/1626103&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Another problem? I shall add to this as they come up!&lt;/li&gt;
-&lt;/ul&gt;</summary><category term="python"></category><category term="mistral"></category><category term="debug"></category><category term="tripleo"></category></entry></feed>
+&lt;/ul&gt;</summary><category term="python"></category><category term="mistral"></category><category term="debug"></category><category term="tripleo"></category><category term="openstack"></category></entry></feed>

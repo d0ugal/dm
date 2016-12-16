@@ -86,4 +86,4 @@ worth mentioning that with a &lt;cite&gt;type()&lt;/cite&gt; constructed form it
 exactly like a regular form after creation where with method A the
 developer needs to pass in the question instance each time and be aware
 of this requirement and how it varies from a typical Django style form.&lt;/p&gt;
-</summary><category term="forms"></category><category term="type"></category><category term="django"></category></entry></feed>
+</summary><category term="forms"></category><category term="type"></category><category term="django"></category><category term="python"></category></entry></feed>

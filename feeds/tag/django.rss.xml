@@ -224,15 +224,7 @@ an older project. My main problem at the moment is the effort required to
 make big changes (new configs, new recipes etc.) but this should get easier
 as I make more.&lt;/p&gt;
 &lt;p&gt;If you have any idea's or suggestions please let me know.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Dougal Matthews</dc:creator><pubDate>Sun, 27 Feb 2011 19:25:00 +0000</pubDate><guid isPermaLink="false">tag:www.dougalmatthews.com,2011-02-27:2011/Feb/27/my-vagrant-workflow/</guid><category>vagrant</category><category>chef</category><category>python</category><category>django</category><category>ruby</category></item><item><title>Python Edinburgh</title><link>http://www.dougalmatthews.com/2010/Aug/12/python-edinburgh/</link><description>&lt;p&gt;Python Edinburgh is user group for Pythonistas in (surprisingly) Edinburgh.
-This is a kick start of a group that died out unfortunately and only met once
-this year.&lt;/p&gt;
-&lt;p&gt;Find out more at the new (but basic) &lt;a class="reference external" href="http://www.pythonedinburgh.org/"&gt;website&lt;/a&gt; and &lt;a class="reference external" href="http://twitter.com/pythonedinburgh"&gt;follow us on twitter&lt;/a&gt;
-or &lt;a class="reference external" href="http://mail.python.org/mailman/listinfo/edinburgh"&gt;join the mailing list&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;The group is going to be meeting on the 4th Tuesday of each month. The next
-being on the 24th August at &lt;a class="reference external" href="http://www.bertsbar.co.uk/berts-bar/about/how-to-find-us.html"&gt;Bert's Bar&lt;/a&gt;. Hope to see some of you there -
-please let us know if your coming so we can get the numbers right.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Dougal Matthews</dc:creator><pubDate>Thu, 12 Aug 2010 19:25:00 +0100</pubDate><guid isPermaLink="false">tag:www.dougalmatthews.com,2010-08-12:2010/Aug/12/python-edinburgh/</guid><category>vagrant</category><category>chef</category><category>python</category><category>django</category><category>ruby</category><category>osx</category></item><item><title>Testing your first Django app</title><link>http://www.dougalmatthews.com/2010/Jan/20/testing-your-first-django-app/</link><description>&lt;p&gt;This is my &lt;strong&gt;unofficial&lt;/strong&gt; part five for the &lt;a class="reference external" href="http://docs.djangoproject.com/en/1.1/intro/tutorial01/#intro-tutorial01"&gt;Django tutorial&lt;/a&gt;. I've attempted
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Dougal Matthews</dc:creator><pubDate>Sun, 27 Feb 2011 19:25:00 +0000</pubDate><guid isPermaLink="false">tag:www.dougalmatthews.com,2011-02-27:2011/Feb/27/my-vagrant-workflow/</guid><category>vagrant</category><category>chef</category><category>python</category><category>django</category><category>ruby</category></item><item><title>Testing your first Django app</title><link>http://www.dougalmatthews.com/2010/Jan/20/testing-your-first-django-app/</link><description>&lt;p&gt;This is my &lt;strong&gt;unofficial&lt;/strong&gt; part five for the &lt;a class="reference external" href="http://docs.djangoproject.com/en/1.1/intro/tutorial01/#intro-tutorial01"&gt;Django tutorial&lt;/a&gt;. I've attempted
 to write this in a similar style to the Django documentation and hopefully
 this will be useful for those looking for the next step after the tutorial or
 trying out testing with django for the first time. Testing is something I
@@ -487,7 +479,7 @@ step.&lt;/p&gt;
 &amp;quot;Code without tests is broken as designed&amp;quot;
 - Jacob Kaplan-Moss&lt;/blockquote&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Dougal Matthews</dc:creator><pubDate>Wed, 20 Jan 2010 19:25:00 +0000</pubDate><guid isPermaLink="false">tag:www.dougalmatthews.com,2010-01-20:2010/Jan/20/testing-your-first-django-app/</guid><category>testing</category><category>unittest</category><category>tdd</category><category>django</category></item><item><title>Nicer dynamic forms in django</title><link>http://www.dougalmatthews.com/2009/Dec/16/nicer-dynamic-forms-in-django/</link><description>&lt;p&gt;I used to make dynamic forms for Django in very bad way, I'm happy to admit
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Dougal Matthews</dc:creator><pubDate>Wed, 20 Jan 2010 19:25:00 +0000</pubDate><guid isPermaLink="false">tag:www.dougalmatthews.com,2010-01-20:2010/Jan/20/testing-your-first-django-app/</guid><category>testing</category><category>unittest</category><category>tdd</category><category>django</category><category>python</category></item><item><title>Nicer dynamic forms in django</title><link>http://www.dougalmatthews.com/2009/Dec/16/nicer-dynamic-forms-in-django/</link><description>&lt;p&gt;I used to make dynamic forms for Django in very bad way, I'm happy to admit
 that now as I've improved my process.&lt;/p&gt;
 &lt;p&gt;Basically the solution is to use &lt;cite&gt;type()&lt;/cite&gt; as I'm sure many of you know. If your
 doing that already there isn't much for you here. If your messing around with
@@ -574,7 +566,7 @@ worth mentioning that with a &lt;cite&gt;type()&lt;/cite&gt; constructed form it
 exactly like a regular form after creation where with method A the
 developer needs to pass in the question instance each time and be aware
 of this requirement and how it varies from a typical Django style form.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Dougal Matthews</dc:creator><pubDate>Wed, 16 Dec 2009 19:25:00 +0000</pubDate><guid isPermaLink="false">tag:www.dougalmatthews.com,2009-12-16:2009/Dec/16/nicer-dynamic-forms-in-django/</guid><category>forms</category><category>type</category><category>django</category></item><item><title>Changing default storage engine in MySQL</title><link>http://www.dougalmatthews.com/2008/Sep/03/changing-default-storage-engine-in-mysql/</link><description>&lt;p&gt;It took me a while to find the answer to this, so I thought I'd share it to
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Dougal Matthews</dc:creator><pubDate>Wed, 16 Dec 2009 19:25:00 +0000</pubDate><guid isPermaLink="false">tag:www.dougalmatthews.com,2009-12-16:2009/Dec/16/nicer-dynamic-forms-in-django/</guid><category>forms</category><category>type</category><category>django</category><category>python</category></item><item><title>Changing default storage engine in MySQL</title><link>http://www.dougalmatthews.com/2008/Sep/03/changing-default-storage-engine-in-mysql/</link><description>&lt;p&gt;It took me a while to find the answer to this, so I thought I'd share it to
 avoid anybody else wasting time with this. I needed to change the default
 storage engine so Django would use innoDB rather than MyISAM. Otherwise, it
 seemed to take the default.&lt;/p&gt;
@@ -591,39 +583,4 @@ default-storage-engine = innodb
 &lt;p&gt;It's pretty easy when you know how, and you'll now had transactional tables by
 default.&lt;/p&gt;
 &lt;p&gt;Alterantivaley though, you could use a &lt;a class="reference external" href="http://www.postgresql.org/"&gt;much better database&lt;/a&gt;.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Dougal Matthews</dc:creator><pubDate>Wed, 03 Sep 2008 19:25:00 +0100</pubDate><guid isPermaLink="false">tag:www.dougalmatthews.com,2008-09-03:2008/Sep/03/changing-default-storage-engine-in-mysql/</guid><category>centos</category><category>django</category><category>innodb</category><category>mysql</category></item><item><title>JavaScript - Detecting Caps lock</title><link>http://www.dougalmatthews.com/2008/Jul/02/javascript-detecting-caps-lock/</link><description>&lt;p&gt;I wanted to see if you could detect caps lock in JavaScript. Why? As a small
-usability touch, basically alerting users that caps lock is enabled when they
-are entering passwords for example. I’ve wrapped up the logic in a simple
-function that can help you detect caps lock on a key press.&lt;/p&gt;
-&lt;p&gt;Sorry. Demo no longer exists, just copy the code and it should work straight off ;)&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;function&lt;/span&gt; &lt;span class="nx"&gt;isCapslock&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;e&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
-
-    &lt;span class="nx"&gt;e&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;e&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;?&lt;/span&gt; &lt;span class="nx"&gt;e&lt;/span&gt; &lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;window&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;event&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-    &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;charCode&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;e&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;which&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-        &lt;span class="nx"&gt;charCode&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;e&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;which&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;e&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;keyCode&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-        &lt;span class="nx"&gt;charCode&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;e&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;keyCode&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="p"&gt;}&lt;/span&gt;
-
-    &lt;span class="kd"&gt;var&lt;/span&gt; &lt;span class="nx"&gt;shifton&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;e&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;shiftKey&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-        &lt;span class="nx"&gt;shifton&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;e&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;shiftKey&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;e&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;modifiers&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-        &lt;span class="nx"&gt;shifton&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;!!&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;e&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;modifiers&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-    &lt;span class="p"&gt;}&lt;/span&gt;
-
-    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;charCode&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="mi"&gt;97&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="nx"&gt;charCode&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="mi"&gt;122&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="nx"&gt;shifton&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="p"&gt;}&lt;/span&gt;
-
-    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;charCode&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="mi"&gt;65&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="nx"&gt;charCode&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="mi"&gt;90&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="o"&gt;!&lt;/span&gt;&lt;span class="nx"&gt;shifton&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="p"&gt;}&lt;/span&gt;
-
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="kc"&gt;false&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Dougal Matthews</dc:creator><pubDate>Wed, 02 Jul 2008 19:25:00 +0100</pubDate><guid isPermaLink="false">tag:www.dougalmatthews.com,2008-07-02:2008/Jul/02/javascript-detecting-caps-lock/</guid><category>vagrant</category><category>chef</category><category>python</category><category>django</category><category>ruby</category><category>osx</category></item></channel></rss>
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Dougal Matthews</dc:creator><pubDate>Wed, 03 Sep 2008 19:25:00 +0100</pubDate><guid isPermaLink="false">tag:www.dougalmatthews.com,2008-09-03:2008/Sep/03/changing-default-storage-engine-in-mysql/</guid><category>centos</category><category>django</category><category>innodb</category><category>mysql</category></item></channel></rss>

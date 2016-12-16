@@ -88,4 +88,4 @@ authentication (Keystone is the OpenStack identity service). Otherwise you can
 use keycloak or run Mistral without authentication (but behind a proxy which
 should add authentication).&lt;/p&gt;
 &lt;p&gt;The documentation for this again is poor and something I want to write about
-and improve. So watch this space.&lt;/p&gt;</summary><category term="python"></category><category term="openstack"></category><category term="workflow"></category><category term="mistral"></category></entry></feed>
+and improve. So watch this space.&lt;/p&gt;</summary><category term="python"></category><category term="openstack"></category><category term="workflow"></category><category term="mistral"></category><category term="tripleo"></category></entry></feed>

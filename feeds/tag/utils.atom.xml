@@ -38,4 +38,4 @@ restarting mistral and loading Workflows when you install tripleo-common. I
 am working on automating that stuff too. I have some scripts, but I want to
 bring it all together eventually.&lt;/p&gt;
 &lt;p&gt;You can see the full source for this script below:&lt;/p&gt;
-&lt;script src="http://gist-it.appspot.com/http://github.com/d0ugal/tripleo-util/blob/master/install-project.sh"&gt;&lt;/script&gt;</summary><category term="python"></category><category term="utils"></category><category term="tripleo"></category></entry></feed>
+&lt;script src="http://gist-it.appspot.com/http://github.com/d0ugal/tripleo-util/blob/master/install-project.sh"&gt;&lt;/script&gt;</summary><category term="python"></category><category term="utils"></category><category term="tripleo"></category><category term="openstack"></category></entry></feed>

@@ -110,4 +110,4 @@ rm -rf ~/.local/venvs
 Then install pipsi into the default pyenv environment and use that to install
 the other tools. The system Python should never be touched.&lt;/p&gt;
 &lt;p&gt;A couple of things are missing as you'll need to setup paths and so on, so 
-please do look at the install guides for each.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Dougal Matthews</dc:creator><pubDate>Sat, 12 Nov 2016 15:45:00 +0000</pubDate><guid isPermaLink="false">tag:www.dougalmatthews.com,2016-11-12:2016/Nov/12/create-an-excellent-python-dev-env/</guid><category>pyenv</category><category>virtualenv</category><category>pipsi</category></item></channel></rss>
+please do look at the install guides for each.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Dougal Matthews</dc:creator><pubDate>Sat, 12 Nov 2016 15:45:00 +0000</pubDate><guid isPermaLink="false">tag:www.dougalmatthews.com,2016-11-12:2016/Nov/12/create-an-excellent-python-dev-env/</guid><category>pyenv</category><category>virtualenv</category><category>pipsi</category><category>openstack</category></item></channel></rss>
