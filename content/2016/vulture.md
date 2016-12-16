@@ -1,7 +1,7 @@
 title: Finding dead code with Vulture
 category: python
 tags: vulture, cleanup, python, openstack
-date: 2016-12-15 20:24:10 
+date: 2016-12-16 08:24:10
 author: Dougal Matthews
 
 Somebody recently introduced me to [Vulture], a Python project for finding
