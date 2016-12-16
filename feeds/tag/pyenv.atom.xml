@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/tag/pyenv.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2016-11-12T15:45:00+00:00</updated><entry><title>Create an Excellent Python Dev Env</title><link href="http://www.dougalmatthews.com/2016/Nov/12/create-an-excellent-python-dev-env/" rel="alternate"></link><published>2016-11-12T15:45:00+00:00</published><updated>2016-11-12T15:45:00+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2016-11-12:2016/Nov/12/create-an-excellent-python-dev-env/</id><summary type="html">&lt;p&gt;There are a huge number of Python dev tools around, a number of them are
+essential for my day to day development. However, they tend to suffer from a
+lack of discoverability and it takes a while to find what works for you.&lt;/p&gt;
+&lt;p&gt;I'm going to quickly share what I use, some of these are well known, some are
+probably not. I'd expect most people to pick and choose from this post as you
+are unlikely to want everything I use, but there should be something useful for
+most people.&lt;/p&gt;
+&lt;p&gt;These are my primary goals:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Be able to install any Python version easily.&lt;/li&gt;
+&lt;li&gt;Don't ever touch the system Python.&lt;/li&gt;
+&lt;li&gt;An easy way to setup virtualenvs for specific projects.&lt;/li&gt;
+&lt;li&gt;Install and isolate a number of Python tools.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;How do we get there?&lt;/p&gt;
+&lt;h2&gt;pyenv&lt;/h2&gt;
+&lt;p&gt;pyenv pitches itself as "simple python version management" and it does just
+that. Once setup, you can easily install and switch between Python versions,
+including specific point releases. &lt;code&gt;pyenv install --list&lt;/code&gt; reveals it knows how
+to install a &lt;em&gt;whopping&lt;/em&gt; 271 different Python versions at the moment from cpython
+2.1.3 up to 3.7-dev and pypy and stackless.&lt;/p&gt;
+&lt;p&gt;The &lt;a href="https://github.com/yyuu/pyenv#installation"&gt;install process&lt;/a&gt; is a bit manual, but there is an &lt;a href="https://github.com/yyuu/pyenv-installer"&gt;install tool&lt;/a&gt;
+that makes it easier. After installing, I do something like this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pyenv install -s 2.7.12&lt;span class="p"&gt;;&lt;/span&gt;
+pyenv install -s 3.5.2&lt;span class="p"&gt;;&lt;/span&gt;
+pyenv install -s 3.4.5&lt;span class="p"&gt;;&lt;/span&gt;
+pyenv install -s pypy-5.4.1&lt;span class="p"&gt;;&lt;/span&gt;
+pyenv global 2.7.12 3.5.2 3.4.5 pypy-5.4.1&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This installs the Python versions I typically need, and then sets them as the 
+global default. The order is important, 2.7.12 becomes the default for python
+as it is first and 3.5.2 becomes the default for python3.&lt;/p&gt;
+&lt;p&gt;If you just want to use a specific Python version in a directory, and it's 
+subdirectories, you can run the command &lt;code&gt;pyenv local 3.5.2&lt;/code&gt; and it will create
+a &lt;code&gt;.python-version&lt;/code&gt; file. Warning, if you do this in your home directory by
+mistake it can be very confusing. &lt;/p&gt;
+&lt;p&gt;One feature I'd love pyenv to have, is a way to tell it to install a Python 
+version (like 2.7 or 3.5) and have it automatically install the latest point
+release (and add a new command that removes and updates them when needed)&lt;/p&gt;
+&lt;h2&gt;pyenv-virtualenv&lt;/h2&gt;
+&lt;p&gt;For a long time I was a big user of virtualenvwrapper, however, my transition 
+to pyenv and &lt;a href="https://fishshell.com"&gt;fish&lt;/a&gt; caused some issues. I stumbled on pyenv-virtualenv
+(not to be mistaken with pyenv-virtualenvwrapper which also doesn't support 
+fish) which covers all my needs. I wrote a few fish functions to make 
+it a little easier to use. It isn't hard, but maybe just a little verbose.&lt;/p&gt;
+&lt;p&gt;For example, here is a handy way to make a temporary virtualenv, I found this 
+feature of virtualenvwrapper (the mktmpenv command) particularly useful.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;function&lt;/span&gt; venv-tmp
+  &lt;span class="k"&gt;set&lt;/span&gt; venv_tmp_name &lt;span class="s2"&gt;&amp;quot;tmp-&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;random&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+  pyenv virtualenv &lt;span class="o"&gt;(&lt;/span&gt;expr substr &lt;span class="o"&gt;(&lt;/span&gt;python --version 2&amp;gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;1&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="m"&gt;8&lt;/span&gt; 20&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="nv"&gt;$venv_tmp_name&lt;/span&gt;
+  venv-activate &lt;span class="nv"&gt;$venv_tmp_name&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="k"&gt;function&lt;/span&gt; venv-tmp-cleanup
+  &lt;span class="k"&gt;for&lt;/span&gt; val &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;pyenv versions &lt;span class="o"&gt;|&lt;/span&gt; grep &lt;span class="s2"&gt;&amp;quot;/envs/tmp-&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+    venv-rm &lt;span class="o"&gt;(&lt;/span&gt;basename &lt;span class="nv"&gt;$val&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Generally it doesn't give me much over what virtualenvwrapper did (other than 
+fish support) but I do like that it is managed by pyenv and integrates well.&lt;/p&gt;
+&lt;h2&gt;pipsi&lt;/h2&gt;
+&lt;p&gt;pipsi is a more recent addition to my setup. It is a fairy simple tool which
+allows you to install Python CLI tools in their own virtualenv and then the 
+command is added to your path. The main advantage here is that they are all 
+isolated and don't need to have compatible requirements. Uninstalling is also
+much cleaner and easier - you just delete the virtualenv.&lt;/p&gt;
+&lt;p&gt;I install a bunch of Python projects this way, here are some of the most 
+useful.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://pypi.python.org/pypi/tox"&gt;tox&lt;/a&gt;: My defacto way of running tests. &lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.mkdocs.org"&gt;mkdocs&lt;/a&gt;: A beautifully simple documentation tool (I might be &lt;a href="http://www.mkdocs.org/about/release-notes/#maintenance-team"&gt;biased&lt;/a&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://pypi.python.org/pypi/git-review"&gt;git-review&lt;/a&gt;: The &lt;code&gt;git review&lt;/code&gt; command for gerrit integration.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://pypi.python.org/pypi/flake8"&gt;flake8&lt;/a&gt;: Python linting, mostly installs like this for vim.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;Putting it all together&lt;/h1&gt;
+&lt;p&gt;So, overall I don't actually use that many projects, but I have very happy with 
+how it works. I have the setup automated, and it looks like this.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# pyenv
+if [ ! -d ~.pyenv ]; then
+    curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
+    git clone https://github.com/yyuu/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
+else
+    pyenv update
+fi;
+
+pyenv install -s 2.7.12;
+pyenv install -s 3.5.2;
+pyenv install -s 3.4.5;
+pyenv install -s pypy-5.4.1;
+pyenv global 2.7.12 3.5.2 3.4.5 pypy-5.4.1;
+~/.pyenv/shims/pip install -U pip pipsi
+rm -rf ~/.local/venvs
+~/.pyenv/shims/pipsi install tox
+~/.pyenv/shims/pipsi install mkdocs
+~/.pyenv/shims/pipsi install git-review
+~/.pyenv/shims/pipsi install 1pass
+~/.pyenv/shims/pipsi install flake8
+~/.pyenv/shims/pipsi install yaql
+~/.pyenv/shims/pipsi install livereload
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The summary is, first install pyenv and setup the Python versions you need.
+Then install pipsi into the default pyenv environment and use that to install
+the other tools. The system Python should never be touched.&lt;/p&gt;
+&lt;p&gt;A couple of things are missing as you'll need to setup paths and so on, so 
+please do look at the install guides for each.&lt;/p&gt;</summary><category term="pyenv"></category><category term="virtualenv"></category><category term="pipsi"></category></entry></feed>
