@@ -35,12 +35,11 @@ AUTHOR_SAVE_AS = 'author/{slug}/index.html'
 TAG_URL = 'tag/{slug}/'
 TAG_SAVE_AS = 'tag/{slug}/index.html'
 
-NOTES_SAVE_AS = 'notes/index.html'
 TAGS_SAVE_AS = 'tags/index.html'
 CATEGORIES_SAVE_AS = 'categories/index.html'
 ARCHIVES_SAVE_AS = 'archives/index.html'
 
-DIRECT_TEMPLATES = ('index', 'tags', 'categories', 'archives', 'notes')
+DIRECT_TEMPLATES = ('index', 'tags', 'categories', 'archives', )
 
 JINJA_EXTENSIONS = ('jinja2.ext.loopcontrols', )
 

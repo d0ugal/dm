@@ -2,7 +2,7 @@ PostgreSQL, The cool stuff.
 ###########################
 :date: 2013-11-09 18:23
 :author: Dougal Matthews
-:category: notes
+:category: postgres
 :url: /notes/postgres-the-cool-stuff/
 :save_as: notes/postgres-the-cool-stuff/index.html
 :short_summary: Neat, fun and interesting features in Postgres.

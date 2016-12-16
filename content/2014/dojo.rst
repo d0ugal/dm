@@ -3,7 +3,7 @@ Running a Code Dojo
 
 :date: 2014-03-02 10:09
 :author: Dougal Matthews
-:category: notes
+:category: python
 :tags: python, usergroup, dojo, pythonglasgow
 :url: /notes/running-a-code-dojo/
 :save_as: notes/running-a-code-dojo/index.html

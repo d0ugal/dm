@@ -2,7 +2,7 @@ SublimeText
 ###########
 :date: 2013-08-04 21:56
 :author: Dougal Matthews
-:category: notes
+:category: sublime
 :url: /notes/sublimetext/
 :save_as: notes/sublimetext/index.html
 :short_summary: Plugins, settings and a few other tricks.
