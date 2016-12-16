@@ -12,6 +12,9 @@ DEFAULT_PAGINATION = 100
 
 FEED_RSS = 'feeds/all.rss.xml'
 CATEGORY_FEED_RSS = 'feeds/%s.rss.xml'
+CATEGORY_FEED_ATOM = 'feeds/%s.atom.xml'
+TAG_FEED_RSS = 'feeds/tag/%s.rss.xml'
+TAG_FEED_ATOM = 'feeds/tag/%s.atom.xml'
 
 SOCIAL = (('twitter', 'http://twitter.com/d0ugal'),
           ('github', 'http://github.com/d0ugal'),)
