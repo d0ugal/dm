@@ -154,9 +154,9 @@ shatteringly huge, but it certainly greases the wheels a bit and makes things
 easier.
 
 [^1]: And quite possibly every OpenStack project, but there are [quite a
-few](http://git.openstack.org/cgit), so I don't plan on checking! [^2]: I have
-a dedicated user for automated deploys because I am paranoid about including
-my encrypted password.
+few](http://git.openstack.org/cgit), so I don't plan on checking!
+[^2]: I have a dedicated user for automated deploys because I am paranoid 
+about including my encrypted password.
 
 
 [MkDocs]: http://www.mkdocs.org/
