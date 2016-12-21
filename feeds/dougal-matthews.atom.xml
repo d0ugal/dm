@@ -827,7 +827,7 @@ the most interesting section.&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;First we specify the provider as PyPI, then the PyPI user is set[^2]. We
+&lt;p&gt;First we specify the provider as PyPI, then the PyPI user is set&lt;sup id="fnref:2"&gt;&lt;a class="footnote-ref" href="#fn:2" rel="footnote"&gt;2&lt;/a&gt;&lt;/sup&gt;. We
 specify both source and wheel distributions. The password is encrypted and
 added with &lt;code&gt;travis encrypt --add deploy.password&lt;/code&gt; and then some conditions are
 set. We only want to deploy tags, the source repository and for a specific
@@ -862,9 +862,11 @@ easier.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li id="fn:1"&gt;
 &lt;p&gt;And quite possibly every OpenStack project, but there are &lt;a href="http://git.openstack.org/cgit"&gt;quite a
-few&lt;/a&gt;, so I don't plan on checking! [^2]: I have
-a dedicated user for automated deploys because I am paranoid about including
-my encrypted password.&amp;#160;&lt;a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+few&lt;/a&gt;, so I don't plan on checking!&amp;#160;&lt;a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id="fn:2"&gt;
+&lt;p&gt;I have a dedicated user for automated deploys because I am paranoid 
+about including my encrypted password.&amp;#160;&lt;a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 2 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;</summary><category term="python"></category><category term="pypi"></category><category term="pbr"></category><category term="travis"></category><category term="twine"></category><category term="mkdocs"></category></entry><entry><title>MkDocs Making Strides</title><link href="http://www.dougalmatthews.com/2015/Jun/27/mkdocs-making-strides/" rel="alternate"></link><published>2015-06-27T12:24:00+01:00</published><updated>2015-06-27T12:24:00+01:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2015-06-27:2015/Jun/27/mkdocs-making-strides/</id><summary type="html">&lt;p&gt;When I &lt;a href="http://www.dougalmatthews.com/2015/May/09/mkdocs-docs-with-markdown/"&gt;last wrote about MkDocs&lt;/a&gt;, the most recent version was &lt;a href="http://www.mkdocs.org/about/release-notes/#version-0120-2015-04-14"&gt;0.12&lt;/a&gt;, but
