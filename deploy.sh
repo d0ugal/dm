@@ -1,5 +1,6 @@
 #!/bin/sh -xe
 
+rm -r ./output/*;
 ./build.sh;
 
 git push origin master;
