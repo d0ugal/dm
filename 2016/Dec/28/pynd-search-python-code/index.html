@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <link rel="icon" href="/theme/img/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="/theme/css/bootstrap.css" type="text/css" media="screen, projection" />
+  <link rel="stylesheet" href="/theme/css/bootstrap-responsive.css" type="text/css" media="screen, projection" />
+  <link href='http://fonts.googleapis.com/css?family=Lato:regular|PT+Serif+Caption|PT+Serif|Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+  <link href="/theme/css/monokai.css" rel="stylesheet" type="text/css" />
+  <link href="/theme/css/style.css" rel="stylesheet" type="text/css" />
+
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="57x57" href="/theme/img/iconified/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="60x60" href="/theme/img/iconified/apple-touch-icon-60x60.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/theme/img/iconified/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="76x76" href="/theme/img/iconified/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/theme/img/iconified/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="120x120" href="/theme/img/iconified/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/theme/img/iconified/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="/theme/img/iconified/apple-touch-icon-152x152.png" />
+
+  <title>pynd - search Python code - Dougal Matthews</title>
+  <meta charset="utf-8" />
+  <link href="http://www.dougalmatthews.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Dougal Matthews Full Atom Feed" />
+  <link href="http://www.dougalmatthews.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Dougal Matthews RSS Feed" />
+  <link href="http://www.dougalmatthews.com/feeds/python.atom.xml" type="application/atom+xml" rel="alternate" title="Dougal Matthews Categories Atom Feed" />
+  <link href="http://www.dougalmatthews.com/feeds/python.rss.xml" type="application/rss+xml" rel="alternate" title="Dougal Matthews Categories RSS Feed" />
+
+  <meta name="google-site-verification" content="GNt31_M2DlGd--mcA_1JjGH46qPSDdpnSiWi7Y_9Ltk" />
+  <meta name="verify-v1" content="d4ZT12Eg5dza8IxtDZlqiZoC0EzBnLxeYeK2PTiaIrU=" />
+  <meta name="msvalidate.01" content="08FE3976E4596314289973311F691DC2" />
+  <meta name="y_key" content="ef34f6756bc76371" />
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="navbar-centre">
+        <a class="brand" href="/"><span class="red">Dougal</span> <span class="white">Matthews</span></a>
+        <ul class="nav">
+            <li ><a href="/code/">Code</a></li>
+            <!--<li ><a href="/projects/">Projects</a></li>-->
+            <li ><a href="/work/">Work</a></li>
+            <li ><a href="/talks/">Talks</a></li>
+            <li ><a href="/about/">About</a></li>
+        <ul class="nav">
+      </div>
+    </div>
+  </div>
+
+  <div id="content_wrapper">
+
+    <div id="content" class="container prepent-top">
+
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="http://www.dougalmatthews.com/2016/Dec/28/pynd-search-python-code/" rel="bookmark"
+         title="Permalink to pynd - search Python code">pynd - search Python code</a></h2>
+ 
+  </header>
+    <footer class="post-info">
+      <time datetime="2016-12-28T11:11:10+00:00">
+        Wed 28 December 2016
+      </time>
+    </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <p>For a while I have wanted a smarter grep<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup>. A grep that understands Python
+syntax and idioms. </p>
+<p>Over the last week or two I had a go at writing this and called it <a href="https://d0ugal.github.io/pynd/">pynd</a>
+(<strong>py</strong>thon <strong>fi</strong>nd). As a very young project it is likely to change and
+evolve but I would love some feedback. Is this something you think you would
+use? What features would you like to see? <a href="https://github.com/d0ugal/pynd/issues/new">Please send me your feedback</a>.</p>
+<p>I have spent lots of time grepping <a href="http://git.openstack.org/cgit">huge Python projects</a>, pynd is starting to 
+make that easier for me.</p>
+<h2>What can it do?</h2>
+<p>pynd is best demonstrated with some simple examples from <a href="https://d0ugal.github.io/pynd/">the docs</a>, ran
+against <a href="http://d0ugal.github.io/retrace/">another project</a> of mine.</p>
+<h3>Find and list all public functions</h3>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">pynd</span> <span class="o">--</span><span class="k">def</span> <span class="err">--</span><span class="nf">public</span>
+<span class="o">./</span><span class="n">retrace</span><span class="o">.</span><span class="n">py</span>
+<span class="mi">181</span><span class="p">:</span><span class="k">def</span> <span class="nf">retry</span><span class="p">(</span><span class="o">*</span><span class="n">dargs</span><span class="p">,</span> <span class="o">**</span><span class="n">dkwargs</span><span class="p">):</span>
+<span class="mi">105</span><span class="p">:</span>    <span class="k">def</span> <span class="nf">delay</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attempt_number</span><span class="p">):</span>
+<span class="mi">117</span><span class="p">:</span>    <span class="k">def</span> <span class="nf">delay</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attempt_number</span><span class="p">):</span>
+<span class="mi">128</span><span class="p">:</span>    <span class="k">def</span> <span class="nf">attempt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attempt</span><span class="p">):</span>
+<span class="mi">140</span><span class="p">:</span>    <span class="k">def</span> <span class="nf">attempt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attempt_number</span><span class="p">):</span>
+<span class="mi">150</span><span class="p">:</span>    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">result</span><span class="p">):</span>
+<span class="mi">159</span><span class="p">:</span>    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">result</span><span class="p">):</span>
+<span class="mi">171</span><span class="p">:</span>    <span class="k">def</span> <span class="nf">delay</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attempt_number</span><span class="p">):</span>
+<span class="mi">174</span><span class="p">:</span>    <span class="k">def</span> <span class="nf">attempt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attempt_number</span><span class="p">):</span>
+<span class="mi">177</span><span class="p">:</span>    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">result</span><span class="p">):</span>
+</pre></div>
+
+
+<p>or, with the --private flag.</p>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">pynd</span> <span class="o">--</span><span class="n">private</span> <span class="o">--</span><span class="k">def</span>
+<span class="err">./</span><span class="nf">retrace</span><span class="o">.</span><span class="n">py</span>
+<span class="mi">49</span><span class="p">:</span>    <span class="k">def</span> <span class="nf">_update_wrapper</span><span class="p">(</span><span class="n">wrapper</span><span class="p">,</span> <span class="n">wrapped</span><span class="p">,</span>
+<span class="mi">67</span><span class="p">:</span>    <span class="k">def</span> <span class="nf">_wraps</span><span class="p">(</span><span class="n">wrapped</span><span class="p">,</span> <span class="n">assigned</span><span class="o">=</span><span class="n">functools</span><span class="o">.</span><span class="n">WRAPPER_ASSIGNMENTS</span><span class="p">,</span>
+<span class="mi">233</span><span class="p">:</span>    <span class="k">def</span> <span class="nf">_setup_limit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">limit</span><span class="p">):</span>
+<span class="mi">248</span><span class="p">:</span>    <span class="k">def</span> <span class="nf">_setup_interval</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">interval</span><span class="p">):</span>
+<span class="mi">263</span><span class="p">:</span>    <span class="k">def</span> <span class="nf">_setup_validator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">validator</span><span class="p">):</span>
+<span class="mi">276</span><span class="p">:</span>    <span class="k">def</span> <span class="nf">_nice_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">thing</span><span class="p">):</span>
+</pre></div>
+
+
+<h3>Look for each time a class instance was created</h3>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">pynd</span> <span class="o">--</span><span class="k">class</span> <span class="nc">Interval</span> <span class="o">--</span><span class="n">call</span>
+<span class="o">./</span><span class="n">retrace</span><span class="o">.</span><span class="n">py</span>
+<span class="mi">100</span><span class="p">:</span><span class="k">class</span> <span class="nc">Interval</span><span class="p">(</span><span class="n">_BaseAction</span><span class="p">):</span>
+<span class="mi">251</span><span class="p">:</span>            <span class="bp">self</span><span class="o">.</span><span class="n">_interval</span> <span class="o">=</span> <span class="n">Interval</span><span class="p">()</span>
+</pre></div>
+
+
+<h3>Search only within docstrings</h3>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">pynd</span> <span class="o">--</span><span class="n">doc</span> <span class="s2">&quot;decorator&quot;</span> <span class="o">--</span><span class="n">ignore</span><span class="o">-</span><span class="n">case</span>
+<span class="o">./</span><span class="n">retrace</span><span class="o">.</span><span class="n">py</span>
+<span class="mi">181</span><span class="p">:</span><span class="k">def</span> <span class="nf">retry</span><span class="p">(</span><span class="o">*</span><span class="n">dargs</span><span class="p">,</span> <span class="o">**</span><span class="n">dkwargs</span><span class="p">):</span>
+<span class="n">The</span> <span class="n">retry</span> <span class="n">decorator</span><span class="o">.</span> <span class="n">Can</span> <span class="n">be</span> <span class="n">passed</span> <span class="nb">all</span> <span class="n">the</span> <span class="n">arguments</span> <span class="n">that</span> <span class="n">are</span> <span class="n">accepted</span> <span class="n">by</span>
+<span class="n">Retry</span><span class="o">.</span><span class="n">__init__</span><span class="o">.</span>
+<span class="mi">210</span><span class="p">:</span><span class="k">class</span> <span class="nc">Retry</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="n">The</span> <span class="n">Retry</span> <span class="n">decorator</span> <span class="n">class</span><span class="o">.</span>
+
+<span class="n">This</span> <span class="k">class</span> <span class="nc">handles</span> <span class="n">the</span> <span class="n">retry</span> <span class="n">process</span><span class="p">,</span> <span class="n">calling</span> <span class="n">wither</span> <span class="n">limiters</span> <span class="ow">or</span> <span class="n">interval</span>
+<span class="n">objects</span> <span class="n">which</span> <span class="n">control</span> <span class="n">the</span> <span class="n">retry</span> <span class="n">flow</span><span class="o">.</span>
+</pre></div>
+
+
+<h3>Everything else</h3>
+<p>Check out <code>pynd --help</code></p>
+<div class="highlight"><pre><span></span>$ pynd --help
+usage: pynd [-h] [--version] [--ignore-dir [IGNORE_DIR [IGNORE_DIR ...]]]
+            [--ignore-case] [--files-with-matches] [--show-stats]
+            [--public | --private] [--verbose | --debug] [-d] [-c] [-f] [-i]
+            [-C] [-a]
+            [PATTERN] [FILES OR DIRECTORIES [FILES OR DIRECTORIES ...]]
+
+Search for PATTERN in each Python file in filesystem from the current
+directory down. If any files or directories are specified then only those are
+checked.
+
+positional arguments:
+  PATTERN               The pattern to match against. This must be a valid
+                        Python regular expression.
+  FILES OR DIRECTORIES  A file or directory to limit the search scope. This
+                        can be provided multiple times.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --version             show program&#39;s version number and exit
+  --ignore-dir [IGNORE_DIR [IGNORE_DIR ...]]
+                        A pattern to exclude directories. This must be a valid
+                        Python regular expression. It can be provided multiple
+                        times.
+  --ignore-case         Make all the regular expression matching case
+                        insesitive.
+  --files-with-matches  Don&#39;t output all the results, just the paths to files
+                        that contain a result.
+  --show-stats          At the end, show some stats.
+  --public              Only show results considered to be public in Python.
+                        They don&#39;t start with an underscore.
+  --private             Only show results considered to be private in Python.
+                        They start with an underscore.
+  --verbose             Explain what is happening.
+  --debug               Output excessively to make debugging easier
+  -d, --doc             Match class and function docstrings.
+  -c, --class           Match class names.
+  -f, --def             Match function names.
+  -i, --import          Match imported package names.
+  -C, --call            Match call statements.
+  -a, --attr            Match attributes on objects
+</pre></div>
+
+
+<h2>What next?</h2>
+<p>That was just a super quick tour of some of the features. Now I just need
+to settle in and use the project for a while and hopefully find a few others 
+to do the same. Then we can see <a href="https://github.com/d0ugal/pynd/issues/new">what to do next</a>.</p>
+<h2>Get involved.</h2>
+<p>See the <a href="https://d0ugal.github.io/pynd/contributing/">contributing docs</a> and <a href="https://d0ugal.github.io/pynd/roadmap/">the roadmap</a> or just join 
+in on <a href="https://github.com/d0ugal/pynd/issues/new">Github</a>.</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>I actually use <a href="http://beyondgrep.com/">ack</a>, but grep is a better 
+  catch-all term.&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+  </div><!-- /.entry-content -->
+</section>
+
+    </div>
+
+  </div>
+
+  <script src="/theme/js/bootstrap.min.js"></script>
+
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-947562-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script');
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      ga.setAttribute('async', 'true');
+      document.documentElement.firstChild.appendChild(ga);
+    })();
+
+  </script>
+  <script src="/theme/js/anti-butt.js"></script>
+
+</body>
+</html>
