@@ -1,5 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/tag/openstack.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2016-12-28T11:11:10+00:00</updated><entry><title>pynd - search Python code</title><link href="http://www.dougalmatthews.com/2016/Dec/28/pynd-search-python-code/" rel="alternate"></link><published>2016-12-28T11:11:10+00:00</published><updated>2016-12-28T11:11:10+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2016-12-28:2016/Dec/28/pynd-search-python-code/</id><summary type="html">&lt;p&gt;For a while I have wanted a smarter grep&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt;. A grep that understands Python
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/tag/openstack.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2017-01-09T14:20:18+00:00</updated><entry><title>Mistral Flow Control</title><link href="http://www.dougalmatthews.com/2017/Jan/09/mistral-flow-control/" rel="alternate"></link><published>2017-01-09T14:20:18+00:00</published><updated>2017-01-09T14:20:18+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2017-01-09:2017/Jan/09/mistral-flow-control/</id><summary type="html">&lt;p&gt;When writing a Mistral &lt;a href="http://docs.openstack.org/developer/mistral/terminology/workflows.html"&gt;workflow&lt;/a&gt; it is common that you want to add a condition
+to a specific task. For example, you only want to run a task if the user
+provided a specific input to the workflow. I found this counter intuitive at 
+first and have since explained it to a few people, so I wanted to document it 
+for the future.&lt;/p&gt;
+&lt;p&gt;As a contrived example, we want a workflow that returns "x is true" if we
+pass the x input or "x is not true" if it isn't passed (or false is passed).&lt;/p&gt;
+&lt;p&gt;As a Pythonista, I wanted to solve the problem with something equivalent to 
+this short Python code. It's just a simple if/else after all.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;workflow&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;x is true&amp;quot;&lt;/span&gt;
+    &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;x is not true&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;In Mistral's &lt;a href="http://docs.openstack.org/developer/mistral/dsl/dsl_v2.html"&gt;Workflow DSL&lt;/a&gt; you need to think about it a little differently. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;my_workflow&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+  &lt;span class="l l-Scalar l-Scalar-Plain"&gt;input&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+    &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;x&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;false&lt;/span&gt;
+
+  &lt;span class="l l-Scalar l-Scalar-Plain"&gt;tasks&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+    &lt;span class="l l-Scalar l-Scalar-Plain"&gt;task_switch&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+      &lt;span class="l l-Scalar l-Scalar-Plain"&gt;on-success&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+        &lt;span class="l l-Scalar l-Scalar-Plain"&gt;task_a&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;&amp;lt;% $.x = true %&amp;gt;&lt;/span&gt;
+        &lt;span class="l l-Scalar l-Scalar-Plain"&gt;task_b&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;&amp;lt;% $.x != true %&amp;gt;&lt;/span&gt;
+    &lt;span class="l l-Scalar l-Scalar-Plain"&gt;task_a&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+      &lt;span class="l l-Scalar l-Scalar-Plain"&gt;action&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;std.echo output=&amp;quot;x is true&amp;quot;&lt;/span&gt;
+    &lt;span class="l l-Scalar l-Scalar-Plain"&gt;task_b&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+      &lt;span class="l l-Scalar l-Scalar-Plain"&gt;action&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;std.echo output=&amp;quot;x is not true&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;In this workflow we have two tasks, &lt;code&gt;task_a&lt;/code&gt; and &lt;code&gt;task_b&lt;/code&gt;, they perform the
+different outcomes we want. The logic that switches between them becomes a task
+of it's own. The task &lt;code&gt;task_switch&lt;/code&gt; doesn't specify an action or workflow to
+run, this means that it performs a &lt;code&gt;std.noop&lt;/code&gt;. On the success of this, which
+should always happen, we then use a mapping of tasks and conditions (in the
+&lt;code&gt;on-success&lt;/code&gt; attribute) to specify what happens next. &lt;code&gt;task_a&lt;/code&gt; and &lt;code&gt;task_b&lt;/code&gt; are
+the tasks and on the right of these we have the YAQL expression which is
+evaluated to determine if they run. If their result is truthy, that task will
+be scheduled for execution.&lt;/p&gt;
+&lt;p&gt;In our case, if I run the workflow with x=true, then it will evaluate to the 
+following and only &lt;code&gt;task_a&lt;/code&gt; will be executed.:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;on-success&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+  &lt;span class="l l-Scalar l-Scalar-Plain"&gt;task_a&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;true&lt;/span&gt;
+  &lt;span class="l l-Scalar l-Scalar-Plain"&gt;task_b&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;false&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This then becomes something like a switch statement, however, unlike a switch
+statement in most languages, multiple tasks and workflow paths can be followed
+rather than the first that turns out to be true.&lt;/p&gt;
+&lt;p&gt;Here is a slightly more complicated workflow that shows multiple tasks being
+called depending on the input.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;my_workflow&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+  &lt;span class="l l-Scalar l-Scalar-Plain"&gt;input&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+    &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;letter&lt;/span&gt;
+
+  &lt;span class="l l-Scalar l-Scalar-Plain"&gt;tasks&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+    &lt;span class="l l-Scalar l-Scalar-Plain"&gt;task_switch&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+      &lt;span class="l l-Scalar l-Scalar-Plain"&gt;on-success&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+        &lt;span class="l l-Scalar l-Scalar-Plain"&gt;letter_a&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;&amp;lt;% $.letter = &amp;#39;a&amp;#39; %&amp;gt;&lt;/span&gt;
+        &lt;span class="l l-Scalar l-Scalar-Plain"&gt;letter_a_or_b&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;&amp;lt;% $.letter in [&amp;#39;a&amp;#39;, &amp;#39;b&amp;#39;]  %&amp;gt;&lt;/span&gt;
+        &lt;span class="l l-Scalar l-Scalar-Plain"&gt;letter_other&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;&amp;lt;% not $.letter in [&amp;#39;a&amp;#39;, &amp;#39;b&amp;#39;] %&amp;gt;&lt;/span&gt;
+    &lt;span class="l l-Scalar l-Scalar-Plain"&gt;letter_a&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+      &lt;span class="l l-Scalar l-Scalar-Plain"&gt;action&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;std.echo output=&amp;quot;letter is a&amp;quot;&lt;/span&gt;
+    &lt;span class="l l-Scalar l-Scalar-Plain"&gt;letter_a_or_b&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+      &lt;span class="l l-Scalar l-Scalar-Plain"&gt;action&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;std.echo output=&amp;quot;letter a or b&amp;quot;&lt;/span&gt;
+    &lt;span class="l l-Scalar l-Scalar-Plain"&gt;letter_other&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+      &lt;span class="l l-Scalar l-Scalar-Plain"&gt;action&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;std.echo output=&amp;quot;letter is not a or b&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Input 'a' means tasks &lt;code&gt;letter_a&lt;/code&gt; and &lt;code&gt;letter_a_or_b&lt;/code&gt; are executed. Input 'b'
+means that only &lt;code&gt;letter_a_or_b&lt;/code&gt; is executed and any other input would execute
+the &lt;code&gt;letter_other&lt;/code&gt; command.&lt;/p&gt;
+&lt;p&gt;As mentioned before, these examples are contrived, but they can be quite useful
+when used in larger workflows to control the flow or provide some simple
+validation.&lt;/p&gt;</summary><category term="python"></category><category term="openstack"></category><category term="tripleo"></category><category term="mistral"></category></entry><entry><title>pynd - search Python code</title><link href="http://www.dougalmatthews.com/2016/Dec/28/pynd-search-python-code/" rel="alternate"></link><published>2016-12-28T11:11:10+00:00</published><updated>2016-12-28T11:11:10+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2016-12-28:2016/Dec/28/pynd-search-python-code/</id><summary type="html">&lt;p&gt;For a while I have wanted a smarter grep&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt;. A grep that understands Python
 syntax and idioms. &lt;/p&gt;
 &lt;p&gt;Over the last week or two I had a go at writing this and called it &lt;a href="https://d0ugal.github.io/pynd/"&gt;pynd&lt;/a&gt;
 (&lt;strong&gt;py&lt;/strong&gt;thon &lt;strong&gt;fi&lt;/strong&gt;nd). As a very young project it is likely to change and

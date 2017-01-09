@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <link rel="icon" href="/theme/img/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="/theme/css/bootstrap.css" type="text/css" media="screen, projection" />
+  <link rel="stylesheet" href="/theme/css/bootstrap-responsive.css" type="text/css" media="screen, projection" />
+  <link href='http://fonts.googleapis.com/css?family=Lato:regular|PT+Serif+Caption|PT+Serif|Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+  <link href="/theme/css/monokai.css" rel="stylesheet" type="text/css" />
+  <link href="/theme/css/style.css" rel="stylesheet" type="text/css" />
+
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="57x57" href="/theme/img/iconified/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="60x60" href="/theme/img/iconified/apple-touch-icon-60x60.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/theme/img/iconified/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="76x76" href="/theme/img/iconified/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/theme/img/iconified/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="120x120" href="/theme/img/iconified/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/theme/img/iconified/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="/theme/img/iconified/apple-touch-icon-152x152.png" />
+
+  <title>Mistral Flow Control - Dougal Matthews</title>
+  <meta charset="utf-8" />
+  <link href="http://www.dougalmatthews.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Dougal Matthews Full Atom Feed" />
+  <link href="http://www.dougalmatthews.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Dougal Matthews RSS Feed" />
+  <link href="http://www.dougalmatthews.com/feeds/openstack.atom.xml" type="application/atom+xml" rel="alternate" title="Dougal Matthews Categories Atom Feed" />
+  <link href="http://www.dougalmatthews.com/feeds/openstack.rss.xml" type="application/rss+xml" rel="alternate" title="Dougal Matthews Categories RSS Feed" />
+
+  <meta name="google-site-verification" content="GNt31_M2DlGd--mcA_1JjGH46qPSDdpnSiWi7Y_9Ltk" />
+  <meta name="verify-v1" content="d4ZT12Eg5dza8IxtDZlqiZoC0EzBnLxeYeK2PTiaIrU=" />
+  <meta name="msvalidate.01" content="08FE3976E4596314289973311F691DC2" />
+  <meta name="y_key" content="ef34f6756bc76371" />
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="navbar-centre">
+        <a class="brand" href="/"><span class="red">Dougal</span> <span class="white">Matthews</span></a>
+        <ul class="nav">
+            <li ><a href="/code/">Code</a></li>
+            <!--<li ><a href="/projects/">Projects</a></li>-->
+            <li ><a href="/work/">Work</a></li>
+            <li ><a href="/talks/">Talks</a></li>
+            <li ><a href="/about/">About</a></li>
+        <ul class="nav">
+      </div>
+    </div>
+  </div>
+
+  <div id="content_wrapper">
+
+    <div id="content" class="container prepent-top">
+
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="http://www.dougalmatthews.com/2017/Jan/09/mistral-flow-control/" rel="bookmark"
+         title="Permalink to Mistral Flow Control">Mistral Flow Control</a></h2>
+ 
+  </header>
+    <footer class="post-info">
+      <time datetime="2017-01-09T14:20:18+00:00">
+        Mon 09 January 2017
+      </time>
+    </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <p>When writing a Mistral <a href="http://docs.openstack.org/developer/mistral/terminology/workflows.html">workflow</a> it is common that you want to add a condition
+to a specific task. For example, you only want to run a task if the user
+provided a specific input to the workflow. I found this counter intuitive at 
+first and have since explained it to a few people, so I wanted to document it 
+for the future.</p>
+<p>As a contrived example, we want a workflow that returns "x is true" if we
+pass the x input or "x is not true" if it isn't passed (or false is passed).</p>
+<p>As a Pythonista, I wanted to solve the problem with something equivalent to 
+this short Python code. It's just a simple if/else after all.</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">workflow</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;x is true&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;x is not true&quot;</span>
+</pre></div>
+
+
+<p>In Mistral's <a href="http://docs.openstack.org/developer/mistral/dsl/dsl_v2.html">Workflow DSL</a> you need to think about it a little differently. </p>
+<div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">my_workflow</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">input</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">x</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+
+  <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">task_switch</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">on-success</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">task_a</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;% $.x = true %&gt;</span>
+        <span class="l l-Scalar l-Scalar-Plain">task_b</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;% $.x != true %&gt;</span>
+    <span class="l l-Scalar l-Scalar-Plain">task_a</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">action</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">std.echo output=&quot;x is true&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">task_b</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">action</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">std.echo output=&quot;x is not true&quot;</span>
+</pre></div>
+
+
+<p>In this workflow we have two tasks, <code>task_a</code> and <code>task_b</code>, they perform the
+different outcomes we want. The logic that switches between them becomes a task
+of it's own. The task <code>task_switch</code> doesn't specify an action or workflow to
+run, this means that it performs a <code>std.noop</code>. On the success of this, which
+should always happen, we then use a mapping of tasks and conditions (in the
+<code>on-success</code> attribute) to specify what happens next. <code>task_a</code> and <code>task_b</code> are
+the tasks and on the right of these we have the YAQL expression which is
+evaluated to determine if they run. If their result is truthy, that task will
+be scheduled for execution.</p>
+<p>In our case, if I run the workflow with x=true, then it will evaluate to the 
+following and only <code>task_a</code> will be executed.:</p>
+<div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">on-success</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">task_a</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="l l-Scalar l-Scalar-Plain">task_b</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+</pre></div>
+
+
+<p>This then becomes something like a switch statement, however, unlike a switch
+statement in most languages, multiple tasks and workflow paths can be followed
+rather than the first that turns out to be true.</p>
+<p>Here is a slightly more complicated workflow that shows multiple tasks being
+called depending on the input.</p>
+<div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">my_workflow</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">input</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">letter</span>
+
+  <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">task_switch</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">on-success</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">letter_a</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;% $.letter = &#39;a&#39; %&gt;</span>
+        <span class="l l-Scalar l-Scalar-Plain">letter_a_or_b</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;% $.letter in [&#39;a&#39;, &#39;b&#39;]  %&gt;</span>
+        <span class="l l-Scalar l-Scalar-Plain">letter_other</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;% not $.letter in [&#39;a&#39;, &#39;b&#39;] %&gt;</span>
+    <span class="l l-Scalar l-Scalar-Plain">letter_a</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">action</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">std.echo output=&quot;letter is a&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">letter_a_or_b</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">action</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">std.echo output=&quot;letter a or b&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">letter_other</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">action</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">std.echo output=&quot;letter is not a or b&quot;</span>
+</pre></div>
+
+
+<p>Input 'a' means tasks <code>letter_a</code> and <code>letter_a_or_b</code> are executed. Input 'b'
+means that only <code>letter_a_or_b</code> is executed and any other input would execute
+the <code>letter_other</code> command.</p>
+<p>As mentioned before, these examples are contrived, but they can be quite useful
+when used in larger workflows to control the flow or provide some simple
+validation.</p>
+  </div><!-- /.entry-content -->
+
+    <hr />
+
+    <p>
+      Thanks for reading. You should follow me on 
+      <a href="https://twitter.com/d0ugal">Twitter</a>. 
+    </p>
+
+    <p>
+      Do you have any feedback or comments? The best place for discussion is on
+      <a href="//www.reddit.com/submit" onclick="window.location =
+          '//www.reddit.com/submit?url=' + encodeURIComponent(window.location);
+          return false">Reddit</a> 
+      or <a href="https://news.ycombinator.com/submit">Hacker News</a>.
+      Otherwise, <a
+          href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#100;&#111;&#117;&#103;&#97;&#108;&#64;&#100;&#111;&#117;&#103;&#97;&#108;&#109;&#97;&#116;&#116;&#104;&#101;&#119;&#115;&#46;&#99;&#111;&#109;">email
+      me</a>.
+    </p>
+
+</section>
+
+    </div>
+
+  </div>
+
+  <script src="/theme/js/bootstrap.min.js"></script>
+
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-947562-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script');
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      ga.setAttribute('async', 'true');
+      document.documentElement.firstChild.appendChild(ga);
+    })();
+
+  </script>
+  <script src="/theme/js/anti-butt.js"></script>
+
+</body>
+</html>
