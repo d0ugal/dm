@@ -1,7 +1,7 @@
 title: Mistral Flow Control
 category: openstack
 tags: python, openstack, tripleo, mistral
-date: 2017-01-09 14:2018
+date: 2017-01-09 14:20:18
 author: Dougal Matthews
 
 When writing a Mistral [workflow] it is common that you want to add a condition
