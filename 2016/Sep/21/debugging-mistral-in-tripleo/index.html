@@ -143,8 +143,8 @@ logic.</p>
 <p>Hopefully this gives you some idea what is going on, but you may need to look into the Logs fo the full traceback...</p>
 <h2>Logs</h2>
 <p>The Mistral log is very detailed and useful for in depth debugging. To follow
-it and look for messages from the TripleO actions, or ERROR's I find this very
-useful.</p>
+it and <a href="http://manpage.io/p/grep/">grep</a> for messages from the TripleO actions,
+or ERROR's I find this very useful.</p>
 <div class="highlight"><pre><span></span>tail -f /var/log/mistral/mistral-server.log <span class="p">|</span> grep <span class="s2">&quot;ERROR\|tripleo_common&quot;</span><span class="p">;</span>
 </pre></div>
 

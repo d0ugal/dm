@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/tag/pynd.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2016-12-28T11:11:10+00:00</updated><entry><title>pynd - search Python code</title><link href="http://www.dougalmatthews.com/2016/Dec/28/pynd-search-python-code/" rel="alternate"></link><published>2016-12-28T11:11:10+00:00</published><updated>2016-12-28T11:11:10+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2016-12-28:2016/Dec/28/pynd-search-python-code/</id><summary type="html">&lt;p&gt;For a while I have wanted a smarter grep&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt;. A grep that understands Python
-syntax and idioms. &lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/tag/pynd.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2016-12-28T11:11:10+00:00</updated><entry><title>pynd - search Python code</title><link href="http://www.dougalmatthews.com/2016/Dec/28/pynd-search-python-code/" rel="alternate"></link><published>2016-12-28T11:11:10+00:00</published><updated>2016-12-28T11:11:10+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2016-12-28:2016/Dec/28/pynd-search-python-code/</id><summary type="html">&lt;p&gt;For a while I have wanted a smarter grep&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt;. A
+i&lt;a href="http://manpage.io/p/grep/"&gt;grep&lt;/a&gt; that understands Python syntax and idioms. &lt;/p&gt;
 &lt;p&gt;Over the last week or two I had a go at writing this and called it &lt;a href="https://d0ugal.github.io/pynd/"&gt;pynd&lt;/a&gt;
 (&lt;strong&gt;py&lt;/strong&gt;thon &lt;strong&gt;fi&lt;/strong&gt;nd). As a very young project it is likely to change and
 evolve but I would love some feedback. Is this something you think you would
@@ -117,8 +117,8 @@ in on &lt;a href="https://github.com/d0ugal/pynd/issues/new"&gt;Github&lt;/a&gt;
 &lt;hr /&gt;
 &lt;ol&gt;
 &lt;li id="fn:1"&gt;
-&lt;p&gt;I actually use &lt;a href="http://beyondgrep.com/"&gt;ack&lt;/a&gt;, but grep is a better 
-  catch-all term.&amp;#160;&lt;a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;I actually use &lt;a href="http://beyondgrep.com/"&gt;ack&lt;/a&gt;, but
+  &lt;a href="http://manpage.io/p/grep/"&gt;grep&lt;/a&gt; is a better catch-all term.&amp;#160;&lt;a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;</summary><category term="openstack"></category><category term="python"></category><category term="pynd"></category></entry></feed>

@@ -293,9 +293,9 @@ you have it in a different location.&lt;/p&gt;
 
 &lt;p&gt;By default, this will clone the git repo for the project and store it in
 &lt;code&gt;~/tripleo/tripleo-common&lt;/code&gt;. After that it will build the package and the rpm
-can be found nested under &lt;code&gt;~/tripleo/delorean/data/repos&lt;/code&gt; - find and grep
-locates it easily enough (but there may be an easier way?). After that a
-simple yum install and you are sorted.&lt;/p&gt;
+can be found nested under &lt;code&gt;~/tripleo/delorean/data/repos&lt;/code&gt; - find and 
+&lt;a href="http://manpage.io/p/grep/"&gt;grep&lt;/a&gt; locates it easily enough (but there may be an
+easier way?). After that a simple yum install and you are sorted.&lt;/p&gt;
 &lt;p&gt;You can then checkout a review from gerrit, or update the git repo in
 &lt;code&gt;,~/tripleo/&lt;/code&gt; and tripleo.sh will install that version, making it easy to
 build and install projects. If you manually clone the repo and store it there
@@ -479,8 +479,8 @@ logic.&lt;/p&gt;
 &lt;p&gt;Hopefully this gives you some idea what is going on, but you may need to look into the Logs fo the full traceback...&lt;/p&gt;
 &lt;h2&gt;Logs&lt;/h2&gt;
 &lt;p&gt;The Mistral log is very detailed and useful for in depth debugging. To follow
-it and look for messages from the TripleO actions, or ERROR's I find this very
-useful.&lt;/p&gt;
+it and &lt;a href="http://manpage.io/p/grep/"&gt;grep&lt;/a&gt; for messages from the TripleO actions,
+or ERROR's I find this very useful.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;tail -f /var/log/mistral/mistral-server.log &lt;span class="p"&gt;|&lt;/span&gt; grep &lt;span class="s2"&gt;&amp;quot;ERROR\|tripleo_common&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
