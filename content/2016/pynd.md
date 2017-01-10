@@ -4,8 +4,8 @@ tags: openstack, python, pynd
 date: 2016-12-28 11:11:10
 author: Dougal Matthews
 
-For a while I have wanted a smarter grep[^1]. A grep that understands Python
-syntax and idioms. 
+For a while I have wanted a smarter grep[^1]. A
+i[grep](http://manpage.io/p/grep/) that understands Python syntax and idioms. 
 
 Over the last week or two I had a go at writing this and called it [pynd]
 (**py**thon **fi**nd). As a very young project it is likely to change and
@@ -133,8 +133,8 @@ to do the same. Then we can see [what to do next][ghi].
 See the [contributing docs][contrib] and [the roadmap][roadmap] or just join 
 in on [Github][ghi].
 
-[^1]: I actually use [ack](http://beyondgrep.com/), but grep is a better 
-      catch-all term.
+[^1]: I actually use [ack](http://beyondgrep.com/), but
+      [grep](http://manpage.io/p/grep/) is a better catch-all term.
 
 [retrace]: http://d0ugal.github.io/retrace/
 [pynd]: https://d0ugal.github.io/pynd/

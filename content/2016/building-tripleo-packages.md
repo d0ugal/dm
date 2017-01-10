@@ -26,9 +26,9 @@ After this completes, you can use the following command to build a project.
 
 By default, this will clone the git repo for the project and store it in
 `~/tripleo/tripleo-common`. After that it will build the package and the rpm
-can be found nested under `~/tripleo/delorean/data/repos` - find and grep
-locates it easily enough (but there may be an easier way?). After that a
-simple yum install and you are sorted.
+can be found nested under `~/tripleo/delorean/data/repos` - find and 
+[grep](http://manpage.io/p/grep/) locates it easily enough (but there may be an
+easier way?). After that a simple yum install and you are sorted.
 
 You can then checkout a review from gerrit, or update the git repo in
 `,~/tripleo/` and tripleo.sh will install that version, making it easy to

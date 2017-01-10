@@ -86,8 +86,8 @@ Hopefully this gives you some idea what is going on, but you may need to look in
 ## Logs
 
 The Mistral log is very detailed and useful for in depth debugging. To follow
-it and look for messages from the TripleO actions, or ERROR's I find this very
-useful.
+it and [grep](http://manpage.io/p/grep/) for messages from the TripleO actions,
+or ERROR's I find this very useful.
 
 ```bash
 tail -f /var/log/mistral/mistral-server.log | grep "ERROR\|tripleo_common";
