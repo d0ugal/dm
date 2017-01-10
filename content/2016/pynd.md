@@ -5,7 +5,7 @@ date: 2016-12-28 11:11:10
 author: Dougal Matthews
 
 For a while I have wanted a smarter grep[^1]. A
-i[grep](http://manpage.io/p/grep/) that understands Python syntax and idioms. 
+[grep](http://manpage.io/p/grep/) that understands Python syntax and idioms. 
 
 Over the last week or two I had a go at writing this and called it [pynd]
 (**py**thon **fi**nd). As a very young project it is likely to change and
