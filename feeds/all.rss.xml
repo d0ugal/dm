@@ -80,7 +80,7 @@ the &lt;code&gt;letter_other&lt;/code&gt; command.&lt;/p&gt;
 &lt;p&gt;As mentioned before, these examples are contrived, but they can be quite useful
 when used in larger workflows to control the flow or provide some simple
 validation.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Dougal Matthews</dc:creator><pubDate>Mon, 09 Jan 2017 14:20:18 +0000</pubDate><guid isPermaLink="false">tag:www.dougalmatthews.com,2017-01-09:2017/Jan/09/mistral-flow-control/</guid><category>python</category><category>openstack</category><category>tripleo</category><category>mistral</category></item><item><title>pynd - search Python code</title><link>http://www.dougalmatthews.com/2016/Dec/28/pynd-search-python-code/</link><description>&lt;p&gt;For a while I have wanted a smarter grep&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt;. A
-i&lt;a href="http://manpage.io/p/grep/"&gt;grep&lt;/a&gt; that understands Python syntax and idioms. &lt;/p&gt;
+&lt;a href="http://manpage.io/p/grep/"&gt;grep&lt;/a&gt; that understands Python syntax and idioms. &lt;/p&gt;
 &lt;p&gt;Over the last week or two I had a go at writing this and called it &lt;a href="https://d0ugal.github.io/pynd/"&gt;pynd&lt;/a&gt;
 (&lt;strong&gt;py&lt;/strong&gt;thon &lt;strong&gt;fi&lt;/strong&gt;nd). As a very young project it is likely to change and
 evolve but I would love some feedback. Is this something you think you would
