@@ -27,8 +27,8 @@ this short Python code. It's just a simple if/else after all.&lt;/p&gt;
   &lt;span class="l l-Scalar l-Scalar-Plain"&gt;tasks&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
     &lt;span class="l l-Scalar l-Scalar-Plain"&gt;task_switch&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
       &lt;span class="l l-Scalar l-Scalar-Plain"&gt;on-success&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
-        &lt;span class="l l-Scalar l-Scalar-Plain"&gt;task_a&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;&amp;lt;% $.x = true %&amp;gt;&lt;/span&gt;
-        &lt;span class="l l-Scalar l-Scalar-Plain"&gt;task_b&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;&amp;lt;% $.x != true %&amp;gt;&lt;/span&gt;
+        &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;task_a&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;&amp;lt;% $.x = true %&amp;gt;&lt;/span&gt;
+        &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;task_b&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;&amp;lt;% $.x != true %&amp;gt;&lt;/span&gt;
     &lt;span class="l l-Scalar l-Scalar-Plain"&gt;task_a&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
       &lt;span class="l l-Scalar l-Scalar-Plain"&gt;action&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;std.echo output=&amp;quot;x is true&amp;quot;&lt;/span&gt;
     &lt;span class="l l-Scalar l-Scalar-Plain"&gt;task_b&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
@@ -48,8 +48,8 @@ be scheduled for execution.&lt;/p&gt;
 &lt;p&gt;In our case, if I run the workflow with x=true, then it will evaluate to the 
 following and only &lt;code&gt;task_a&lt;/code&gt; will be executed.:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;on-success&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
-  &lt;span class="l l-Scalar l-Scalar-Plain"&gt;task_a&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;true&lt;/span&gt;
-  &lt;span class="l l-Scalar l-Scalar-Plain"&gt;task_b&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;false&lt;/span&gt;
+  &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;task_a&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;true&lt;/span&gt;
+  &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;task_b&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;false&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -65,9 +65,9 @@ called depending on the input.&lt;/p&gt;
   &lt;span class="l l-Scalar l-Scalar-Plain"&gt;tasks&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
     &lt;span class="l l-Scalar l-Scalar-Plain"&gt;task_switch&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
       &lt;span class="l l-Scalar l-Scalar-Plain"&gt;on-success&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
-        &lt;span class="l l-Scalar l-Scalar-Plain"&gt;letter_a&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;&amp;lt;% $.letter = &amp;#39;a&amp;#39; %&amp;gt;&lt;/span&gt;
-        &lt;span class="l l-Scalar l-Scalar-Plain"&gt;letter_a_or_b&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;&amp;lt;% $.letter in [&amp;#39;a&amp;#39;, &amp;#39;b&amp;#39;]  %&amp;gt;&lt;/span&gt;
-        &lt;span class="l l-Scalar l-Scalar-Plain"&gt;letter_other&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;&amp;lt;% not $.letter in [&amp;#39;a&amp;#39;, &amp;#39;b&amp;#39;] %&amp;gt;&lt;/span&gt;
+        &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;letter_a&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;&amp;lt;% $.letter = &amp;#39;a&amp;#39; %&amp;gt;&lt;/span&gt;
+        &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;letter_a_or_b&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;&amp;lt;% $.letter in [&amp;#39;a&amp;#39;, &amp;#39;b&amp;#39;]  %&amp;gt;&lt;/span&gt;
+        &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;letter_other&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;&amp;lt;% not $.letter in [&amp;#39;a&amp;#39;, &amp;#39;b&amp;#39;] %&amp;gt;&lt;/span&gt;
     &lt;span class="l l-Scalar l-Scalar-Plain"&gt;letter_a&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
       &lt;span class="l l-Scalar l-Scalar-Plain"&gt;action&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;std.echo output=&amp;quot;letter is a&amp;quot;&lt;/span&gt;
     &lt;span class="l l-Scalar l-Scalar-Plain"&gt;letter_a_or_b&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;

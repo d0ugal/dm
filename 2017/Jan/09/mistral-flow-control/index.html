@@ -98,8 +98,8 @@ this short Python code. It's just a simple if/else after all.</p>
   <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
     <span class="l l-Scalar l-Scalar-Plain">task_switch</span><span class="p p-Indicator">:</span>
       <span class="l l-Scalar l-Scalar-Plain">on-success</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">task_a</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;% $.x = true %&gt;</span>
-        <span class="l l-Scalar l-Scalar-Plain">task_b</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;% $.x != true %&gt;</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">task_a</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;% $.x = true %&gt;</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">task_b</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;% $.x != true %&gt;</span>
     <span class="l l-Scalar l-Scalar-Plain">task_a</span><span class="p p-Indicator">:</span>
       <span class="l l-Scalar l-Scalar-Plain">action</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">std.echo output=&quot;x is true&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">task_b</span><span class="p p-Indicator">:</span>
@@ -119,8 +119,8 @@ be scheduled for execution.</p>
 <p>In our case, if I run the workflow with x=true, then it will evaluate to the 
 following and only <code>task_a</code> will be executed.:</p>
 <div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">on-success</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">task_a</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-  <span class="l l-Scalar l-Scalar-Plain">task_b</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">task_a</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">task_b</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
 </pre></div>
 
 
@@ -136,9 +136,9 @@ called depending on the input.</p>
   <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
     <span class="l l-Scalar l-Scalar-Plain">task_switch</span><span class="p p-Indicator">:</span>
       <span class="l l-Scalar l-Scalar-Plain">on-success</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">letter_a</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;% $.letter = &#39;a&#39; %&gt;</span>
-        <span class="l l-Scalar l-Scalar-Plain">letter_a_or_b</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;% $.letter in [&#39;a&#39;, &#39;b&#39;]  %&gt;</span>
-        <span class="l l-Scalar l-Scalar-Plain">letter_other</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;% not $.letter in [&#39;a&#39;, &#39;b&#39;] %&gt;</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">letter_a</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;% $.letter = &#39;a&#39; %&gt;</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">letter_a_or_b</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;% $.letter in [&#39;a&#39;, &#39;b&#39;]  %&gt;</span>
+        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">letter_other</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;% not $.letter in [&#39;a&#39;, &#39;b&#39;] %&gt;</span>
     <span class="l l-Scalar l-Scalar-Plain">letter_a</span><span class="p p-Indicator">:</span>
       <span class="l l-Scalar l-Scalar-Plain">action</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">std.echo output=&quot;letter is a&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">letter_a_or_b</span><span class="p p-Indicator">:</span>
