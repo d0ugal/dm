@@ -34,8 +34,8 @@ my_workflow:
   tasks:
     task_switch:
       on-success:
-        task_a: <% $.x = true %>
-        task_b: <% $.x != true %>
+        - task_a: <% $.x = true %>
+        - task_b: <% $.x != true %>
     task_a:
       action: std.echo output="x is true"
     task_b:
@@ -57,8 +57,8 @@ following and only `task_a` will be executed.:
 
 ```yaml
 on-success:
-  task_a: true
-  task_b: false
+  - task_a: true
+  - task_b: false
 ```
 
 This then becomes something like a switch statement, however, unlike a switch
@@ -76,9 +76,9 @@ my_workflow:
   tasks:
     task_switch:
       on-success:
-        letter_a: <% $.letter = 'a' %>
-        letter_a_or_b: <% $.letter in ['a', 'b']  %>
-        letter_other: <% not $.letter in ['a', 'b'] %>
+        - letter_a: <% $.letter = 'a' %>
+        - letter_a_or_b: <% $.letter in ['a', 'b']  %>
+        - letter_other: <% not $.letter in ['a', 'b'] %>
     letter_a:
       action: std.echo output="letter is a"
     letter_a_or_b:
