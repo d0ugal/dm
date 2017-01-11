@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/tag/canvas.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2010-01-08T19:25:00+00:00</updated><entry><title>Fun with Balls</title><link href="http://www.dougalmatthews.com/2010/Jan/08/fun-with-balls/" rel="alternate"></link><published>2010-01-08T19:25:00+00:00</published><updated>2010-01-08T19:25:00+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2010-01-08:2010/Jan/08/fun-with-balls/</id><summary type="html">&lt;p&gt;As a simple for-fun ritual when I learn a new language I like to create
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews - canvas</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/tag/canvas.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2010-01-08T19:25:00+00:00</updated><entry><title>Fun with Balls</title><link href="http://www.dougalmatthews.com/2010/Jan/08/fun-with-balls/" rel="alternate"></link><published>2010-01-08T19:25:00+00:00</published><updated>2010-01-08T19:25:00+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2010-01-08:/2010/Jan/08/fun-with-balls/</id><summary type="html">&lt;p&gt;As a simple for-fun ritual when I learn a new language I like to create
+a simple very basic application that has some 2D balls (spheres if you
+prefer) bouncing on the screen and then I would mess with settings and
+effects, fairly basic stuff. It's not really all that …&lt;/p&gt;</summary><content type="html">&lt;p&gt;As a simple for-fun ritual when I learn a new language I like to create
 a simple very basic application that has some 2D balls (spheres if you
 prefer) bouncing on the screen and then I would mess with settings and
 effects, fairly basic stuff. It's not really all that exciting but its
@@ -51,4 +54,4 @@ learn! Given the task now I would use jQuery and might consider using some
 HTML5 or CSS3 features. That actually sounds quite fun - I sense a
 mini project coming up.&lt;/p&gt;
 &lt;/div&gt;
-</summary><category term="balls"></category><category term="canvas"></category><category term="javascript"></category></entry></feed>
+</content><category term="balls"></category><category term="canvas"></category><category term="javascript"></category></entry></feed>

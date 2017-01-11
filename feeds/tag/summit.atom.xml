@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/tag/summit.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2016-11-03T20:24:10+00:00</updated><entry><title>OpenStack Ocata Summit</title><link href="http://www.dougalmatthews.com/2016/Nov/03/openstack-ocata-summit/" rel="alternate"></link><published>2016-11-03T20:24:10+00:00</published><updated>2016-11-03T20:24:10+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2016-11-03:2016/Nov/03/openstack-ocata-summit/</id><summary type="html">&lt;p&gt;I spent last week at the Ocata design summit in Barcelona and wanted to take
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews - summit</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/tag/summit.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2016-11-03T20:24:10+00:00</updated><entry><title>OpenStack Ocata Summit</title><link href="http://www.dougalmatthews.com/2016/Nov/03/openstack-ocata-summit/" rel="alternate"></link><published>2016-11-03T20:24:10+00:00</published><updated>2016-11-03T20:24:10+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2016-11-03:/2016/Nov/03/openstack-ocata-summit/</id><summary type="html">&lt;p&gt;I spent last week at the Ocata design summit in Barcelona and wanted to take
+the opportunity to write up some notes from the week while it is still fresh.&lt;/p&gt;
+&lt;p&gt;Overall, it was an extremely interesting and well run event. Thanks to all 
+involved in making it happen.&lt;/p&gt;
+&lt;h3&gt;Tuesday&lt;/h3&gt;
+&lt;p&gt;Today …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I spent last week at the Ocata design summit in Barcelona and wanted to take
 the opportunity to write up some notes from the week while it is still fresh.&lt;/p&gt;
 &lt;p&gt;Overall, it was an extremely interesting and well run event. Thanks to all 
 involved in making it happen.&lt;/p&gt;
@@ -106,4 +111,4 @@ important to them.&lt;/p&gt;
 &lt;p&gt;In the Mistral session we covered a wide range of topics. Focusing on some
 current urgent issues and general usability by making small improvements and
 work on the documentation. Rather than repeat that, we took some good &lt;a href="https://etherpad.openstack.org/p/mistral-barcelona-summit-topics-2016"&gt;notes in
-an etherpad&lt;/a&gt;.&lt;/p&gt;</summary><category term="summit"></category><category term="mistral"></category><category term="tripleo"></category><category term="openstack"></category></entry></feed>
+an etherpad&lt;/a&gt;.&lt;/p&gt;</content><category term="summit"></category><category term="mistral"></category><category term="tripleo"></category><category term="openstack"></category></entry></feed>

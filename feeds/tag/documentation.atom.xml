@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/tag/documentation.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2015-06-27T12:24:00+01:00</updated><entry><title>MkDocs Making Strides</title><link href="http://www.dougalmatthews.com/2015/Jun/27/mkdocs-making-strides/" rel="alternate"></link><published>2015-06-27T12:24:00+01:00</published><updated>2015-06-27T12:24:00+01:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2015-06-27:2015/Jun/27/mkdocs-making-strides/</id><summary type="html">&lt;p&gt;When I &lt;a href="http://www.dougalmatthews.com/2015/May/09/mkdocs-docs-with-markdown/"&gt;last wrote about MkDocs&lt;/a&gt;, the most recent version was &lt;a href="http://www.mkdocs.org/about/release-notes/#version-0120-2015-04-14"&gt;0.12&lt;/a&gt;, but
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews - documentation</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/tag/documentation.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2015-06-27T12:24:00+01:00</updated><entry><title>MkDocs Making Strides</title><link href="http://www.dougalmatthews.com/2015/Jun/27/mkdocs-making-strides/" rel="alternate"></link><published>2015-06-27T12:24:00+01:00</published><updated>2015-06-27T12:24:00+01:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2015-06-27:/2015/Jun/27/mkdocs-making-strides/</id><summary type="html">&lt;p&gt;When I &lt;a href="http://www.dougalmatthews.com/2015/May/09/mkdocs-docs-with-markdown/"&gt;last wrote about MkDocs&lt;/a&gt;, the most recent version was &lt;a href="http://www.mkdocs.org/about/release-notes/#version-0120-2015-04-14"&gt;0.12&lt;/a&gt;, but
+&lt;a href="http://www.mkdocs.org/about/release-notes/#version-0130-2015-05-26"&gt;0.13&lt;/a&gt; was just around the corner. We are now hard at work on &lt;a href="https://github.com/mkdocs/mkdocs/blob/master/docs/about/release-notes.md#version-0150-2015--"&gt;0.15&lt;/a&gt;! So it is
+about time to do a quick update.&lt;/p&gt;
+&lt;p&gt;With over 300 commits which include a ton of bug …&lt;/p&gt;</summary><content type="html">&lt;p&gt;When I &lt;a href="http://www.dougalmatthews.com/2015/May/09/mkdocs-docs-with-markdown/"&gt;last wrote about MkDocs&lt;/a&gt;, the most recent version was &lt;a href="http://www.mkdocs.org/about/release-notes/#version-0120-2015-04-14"&gt;0.12&lt;/a&gt;, but
 &lt;a href="http://www.mkdocs.org/about/release-notes/#version-0130-2015-05-26"&gt;0.13&lt;/a&gt; was just around the corner. We are now hard at work on &lt;a href="https://github.com/mkdocs/mkdocs/blob/master/docs/about/release-notes.md#version-0150-2015--"&gt;0.15&lt;/a&gt;! So it is
 about time to do a quick update.&lt;/p&gt;
 &lt;p&gt;With over 300 commits which include a ton of bug fixes and new features since
@@ -22,7 +25,7 @@ makes this very easy to do.&lt;/p&gt;
 Below you can see a screenshot of it on use in the &lt;a href="http://www.mkdocs.org/?q=deploy"&gt;MkDocs documentation&lt;/a&gt;. The
 search results update almost instantly as you type, creating a really
 responsive search experience.&lt;/p&gt;
-&lt;p&gt;&lt;img alt="MkDocs Search" src="/images/2015/search.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="MkDocs Search" src="/images/2015/search.png"&gt;&lt;/p&gt;
 &lt;p&gt;Search works in MkDocs by generating a JSON file with the full content of the
 documentation during the build. This is then used with &lt;a href="http://lunrjs.com/"&gt;lunr.js&lt;/a&gt; to create and
 search an index.&lt;/p&gt;
@@ -59,9 +62,13 @@ distribute them&lt;/a&gt; as Python Packages on PyPI. This change also sees 13 o
 15 MkDocs themes be moved into their own repos and packages. Doing so will
 allow for faster and more flexible development outside of the code repository.&lt;/p&gt;
 &lt;p&gt;I am really excited to see what themes users come up with!&lt;/p&gt;
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;p&gt;Now, back to work on MkDocs! I'll do some updates again soon about the next
-features that I am working on.&lt;/p&gt;</summary><category term="python"></category><category term="mkdocs"></category><category term="documentation"></category></entry><entry><title>MkDocs - Docs with Markdown</title><link href="http://www.dougalmatthews.com/2015/May/09/mkdocs-docs-with-markdown/" rel="alternate"></link><published>2015-05-09T13:17:00+01:00</published><updated>2015-05-09T13:17:00+01:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2015-05-09:2015/May/09/mkdocs-docs-with-markdown/</id><summary type="html">&lt;p&gt;&lt;a href="http://www.mkdocs.org"&gt;MkDocs&lt;/a&gt; is an open source Python tool for lowering the barrier to writing
+features that I am working on.&lt;/p&gt;</content><category term="python"></category><category term="mkdocs"></category><category term="documentation"></category></entry><entry><title>MkDocs - Docs with Markdown</title><link href="http://www.dougalmatthews.com/2015/May/09/mkdocs-docs-with-markdown/" rel="alternate"></link><published>2015-05-09T13:17:00+01:00</published><updated>2015-05-09T13:17:00+01:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2015-05-09:/2015/May/09/mkdocs-docs-with-markdown/</id><summary type="html">&lt;p&gt;&lt;a href="http://www.mkdocs.org"&gt;MkDocs&lt;/a&gt; is an open source Python tool for lowering the barrier to writing
+documentation. The goal is relatively simple and focused, we want to make it
+easier to write &lt;a href="http://ericholscher.com/blog/2014/feb/27/how-i-judge-documentation-quality/"&gt;high quality&lt;/a&gt; prose based documentation.&lt;/p&gt;
+&lt;p&gt;Originally started by Tom Christie, I took over maintenance and development
+about 6 months ago. Since …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="http://www.mkdocs.org"&gt;MkDocs&lt;/a&gt; is an open source Python tool for lowering the barrier to writing
 documentation. The goal is relatively simple and focused, we want to make it
 easier to write &lt;a href="http://ericholscher.com/blog/2014/feb/27/how-i-judge-documentation-quality/"&gt;high quality&lt;/a&gt; prose based documentation.&lt;/p&gt;
 &lt;p&gt;Originally started by Tom Christie, I took over maintenance and development
@@ -89,4 +96,4 @@ started in detail. This is the super quick version.&lt;/p&gt;
 &lt;p&gt;You can &lt;a href="http://www.mkdocs.org/user-guide/styling-your-docs/"&gt;change the theme&lt;/a&gt;, create a &lt;a href="http://www.mkdocs.org/user-guide/styling-your-docs/#custom-themes"&gt;custom theme&lt;/a&gt;, tweak the &lt;a href="http://www.mkdocs.org/user-guide/styling-your-docs/#custom-themes"&gt;navigation
 configuration&lt;/a&gt; and &lt;a href="/user-guide/writing-your-docs/#configure-pages-and-navigation"&gt;page titles&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;I plan to follow up this post and share some of the changes and improvements
-coming in MkDocs. Both from a technical and users point of view.&lt;/p&gt;</summary><category term="python"></category><category term="mkdocs"></category><category term="documentation"></category></entry></feed>
+coming in MkDocs. Both from a technical and users point of view.&lt;/p&gt;</content><category term="python"></category><category term="mkdocs"></category><category term="documentation"></category></entry></feed>

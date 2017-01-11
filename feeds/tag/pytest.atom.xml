@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/tag/pytest.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2016-12-12T19:34:24+00:00</updated><entry><title>Python 3 and pytest Intro in Glasgow</title><link href="http://www.dougalmatthews.com/2016/Dec/12/python-3-and-pytest-intro-in-glasgow/" rel="alternate"></link><published>2016-12-12T19:34:24+00:00</published><updated>2016-12-12T19:34:24+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2016-12-12:2016/Dec/12/python-3-and-pytest-intro-in-glasgow/</id><summary type="html">&lt;p&gt;I recently introduced a number of people to Python and pytest at the first 
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews - pytest</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/tag/pytest.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2016-12-12T19:34:24+00:00</updated><entry><title>Python 3 and pytest Intro in Glasgow</title><link href="http://www.dougalmatthews.com/2016/Dec/12/python-3-and-pytest-intro-in-glasgow/" rel="alternate"></link><published>2016-12-12T19:34:24+00:00</published><updated>2016-12-12T19:34:24+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2016-12-12:/2016/Dec/12/python-3-and-pytest-intro-in-glasgow/</id><summary type="html">&lt;p&gt;I recently introduced a number of people to Python and pytest at the first 
+&lt;a href="https://www.meetup.com/GlasgowPairProg/"&gt;Glasgow Pair Programming&lt;/a&gt; Meetup. I think it was a success as I slowly
+took them through some simple programming problems to demonstrate the tooling
+available in Python.&lt;/p&gt;
+&lt;p&gt;This post is just a reference for everything I …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I recently introduced a number of people to Python and pytest at the first 
 &lt;a href="https://www.meetup.com/GlasgowPairProg/"&gt;Glasgow Pair Programming&lt;/a&gt; Meetup. I think it was a success as I slowly
 took them through some simple programming problems to demonstrate the tooling
 available in Python.&lt;/p&gt;
@@ -20,4 +24,4 @@ of references can find these Python tools.&lt;/p&gt;
   it. I didn't use &lt;a href="https://docs.python.org/3.6/library/itertools.html"&gt;itertools&lt;/a&gt; or &lt;a href="https://docs.python.org/3.6/library/functools.html"&gt;functools&lt;/a&gt; but they are also neat.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Outside of Python, I also used &lt;a href="https://tmux.github.io/"&gt;tmux&lt;/a&gt; to manage my sessions. &lt;a href="https://fishshell.com/"&gt;fish&lt;/a&gt; as my
-shell. &lt;a href="https://i3wm.org/"&gt;i3wm&lt;/a&gt; as my window manager in Fedora.&lt;/p&gt;</summary><category term="python"></category><category term="pytest"></category><category term="glasgow"></category></entry></feed>
+shell. &lt;a href="https://i3wm.org/"&gt;i3wm&lt;/a&gt; as my window manager in Fedora.&lt;/p&gt;</content><category term="python"></category><category term="pytest"></category><category term="glasgow"></category></entry></feed>

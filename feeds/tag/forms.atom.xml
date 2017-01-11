@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/tag/forms.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2009-12-16T19:25:00+00:00</updated><entry><title>Nicer dynamic forms in django</title><link href="http://www.dougalmatthews.com/2009/Dec/16/nicer-dynamic-forms-in-django/" rel="alternate"></link><published>2009-12-16T19:25:00+00:00</published><updated>2009-12-16T19:25:00+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2009-12-16:2009/Dec/16/nicer-dynamic-forms-in-django/</id><summary type="html">&lt;p&gt;I used to make dynamic forms for Django in very bad way, I'm happy to admit
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews - forms</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/tag/forms.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2009-12-16T19:25:00+00:00</updated><entry><title>Nicer dynamic forms in django</title><link href="http://www.dougalmatthews.com/2009/Dec/16/nicer-dynamic-forms-in-django/" rel="alternate"></link><published>2009-12-16T19:25:00+00:00</published><updated>2009-12-16T19:25:00+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2009-12-16:/2009/Dec/16/nicer-dynamic-forms-in-django/</id><summary type="html">&lt;p&gt;I used to make dynamic forms for Django in very bad way, I'm happy to admit
+that now as I've improved my process.&lt;/p&gt;
+&lt;p&gt;Basically the solution is to use &lt;cite&gt;type()&lt;/cite&gt; as I'm sure many of you know. If your
+doing that already there isn't much for you here. If your …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I used to make dynamic forms for Django in very bad way, I'm happy to admit
 that now as I've improved my process.&lt;/p&gt;
 &lt;p&gt;Basically the solution is to use &lt;cite&gt;type()&lt;/cite&gt; as I'm sure many of you know. If your
 doing that already there isn't much for you here. If your messing around with
@@ -86,4 +89,4 @@ worth mentioning that with a &lt;cite&gt;type()&lt;/cite&gt; constructed form it
 exactly like a regular form after creation where with method A the
 developer needs to pass in the question instance each time and be aware
 of this requirement and how it varies from a typical Django style form.&lt;/p&gt;
-</summary><category term="forms"></category><category term="type"></category><category term="django"></category><category term="python"></category></entry></feed>
+</content><category term="forms"></category><category term="type"></category><category term="django"></category><category term="python"></category></entry></feed>

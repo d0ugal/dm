@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/tag/travis.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2016-09-01T08:37:00+01:00</updated><entry><title>Automate publishing to PyPI with pbr and Travis</title><link href="http://www.dougalmatthews.com/2016/Sep/01/automate-publishing-to-pypi-with-pbr-and-travis/" rel="alternate"></link><published>2016-09-01T08:37:00+01:00</published><updated>2016-09-01T08:37:00+01:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2016-09-01:2016/Sep/01/automate-publishing-to-pypi-with-pbr-and-travis/</id><summary type="html">&lt;p&gt;Releasing new versions of your Open Source projects is a time demanding task.
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews - travis</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/tag/travis.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2016-09-01T08:37:00+01:00</updated><entry><title>Automate publishing to PyPI with pbr and Travis</title><link href="http://www.dougalmatthews.com/2016/Sep/01/automate-publishing-to-pypi-with-pbr-and-travis/" rel="alternate"></link><published>2016-09-01T08:37:00+01:00</published><updated>2016-09-01T08:37:00+01:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2016-09-01:/2016/Sep/01/automate-publishing-to-pypi-with-pbr-and-travis/</id><summary type="html">&lt;p&gt;Releasing new versions of your Open Source projects is a time demanding task.
+So in a &lt;a href="http://d0ugal.github.io/retrace/"&gt;recent&lt;/a&gt;, and admittedly small, project I decided to try and
+make it as easy as possible.&lt;/p&gt;
+&lt;p&gt;I started using &lt;a href="http://docs.openstack.org/developer/pbr/"&gt;pbr&lt;/a&gt; and &lt;a href="https://travis-ci.org/"&gt;Travis&lt;/a&gt; to automatically deploy to &lt;a href="https://pypi.python.org/pypi"&gt;PyPI&lt;/a&gt; each time
+I push a git tag …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Releasing new versions of your Open Source projects is a time demanding task.
 So in a &lt;a href="http://d0ugal.github.io/retrace/"&gt;recent&lt;/a&gt;, and admittedly small, project I decided to try and
 make it as easy as possible.&lt;/p&gt;
 &lt;p&gt;I started using &lt;a href="http://docs.openstack.org/developer/pbr/"&gt;pbr&lt;/a&gt; and &lt;a href="https://travis-ci.org/"&gt;Travis&lt;/a&gt; to automatically deploy to &lt;a href="https://pypi.python.org/pypi"&gt;PyPI&lt;/a&gt; each time
@@ -11,7 +15,7 @@ and confidently roll a release.&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://docs.openstack.org/developer/pbr/"&gt;Python Build Reasonableness&lt;/a&gt; is a library for making packaging easier
 and more consistent. If you are happy to use it's conventions, which are
 mostly reasonable, it works very well. The project is developed under the
-OpenStack umbrella and used on most&lt;sup id="fnref:1"&gt;&lt;a class="footnote-ref" href="#fn:1" rel="footnote"&gt;1&lt;/a&gt;&lt;/sup&gt; OpenStack project. That is how I was
+OpenStack umbrella and used on most&lt;sup id="fnref-1"&gt;&lt;a class="footnote-ref" href="#fn-1"&gt;1&lt;/a&gt;&lt;/sup&gt; OpenStack project. That is how I was
 first introduced to it, but it works well outside of this ecosystem.&lt;/p&gt;
 &lt;p&gt;To use &lt;a href="http://docs.openstack.org/developer/pbr/"&gt;pbr&lt;/a&gt;, you need to add it to your &lt;code&gt;setup.py&lt;/code&gt;, the project encourages
 using a setup.cfg, so your full setup.py should look like this.&lt;/p&gt;
@@ -98,7 +102,7 @@ the most interesting section.&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;First we specify the provider as PyPI, then the PyPI user is set&lt;sup id="fnref:2"&gt;&lt;a class="footnote-ref" href="#fn:2" rel="footnote"&gt;2&lt;/a&gt;&lt;/sup&gt;. We
+&lt;p&gt;First we specify the provider as PyPI, then the PyPI user is set&lt;sup id="fnref-2"&gt;&lt;a class="footnote-ref" href="#fn-2"&gt;2&lt;/a&gt;&lt;/sup&gt;. We
 specify both source and wheel distributions. The password is encrypted and
 added with &lt;code&gt;travis encrypt --add deploy.password&lt;/code&gt; and then some conditions are
 set. We only want to deploy tags, the source repository and for a specific
@@ -123,21 +127,21 @@ config you can easily publish your documentation on every commit.&lt;/p&gt;
 &lt;p&gt;You may want to move this to only happen on a deploy, but for a small project
 like &lt;a href="http://d0ugal.github.io/retrace/"&gt;retrace&lt;/a&gt; there is typically a release after any changes that would
 require docs updates.&lt;/p&gt;
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;p&gt;Overall, I am &lt;em&gt;very&lt;/em&gt; happy about how this came out. I would like to roll out a
 similar strategy to other projects that I maintain. The change isn't earth
 shatteringly huge, but it certainly greases the wheels a bit and makes things
 easier.&lt;/p&gt;
 &lt;div class="footnote"&gt;
-&lt;hr /&gt;
+&lt;hr&gt;
 &lt;ol&gt;
-&lt;li id="fn:1"&gt;
+&lt;li id="fn-1"&gt;
 &lt;p&gt;And quite possibly every OpenStack project, but there are &lt;a href="http://git.openstack.org/cgit"&gt;quite a
-few&lt;/a&gt;, so I don't plan on checking!&amp;#160;&lt;a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+few&lt;/a&gt;, so I don't plan on checking!&amp;#160;&lt;a class="footnote-backref" href="#fnref-1" title="Jump back to footnote 1 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
-&lt;li id="fn:2"&gt;
+&lt;li id="fn-2"&gt;
 &lt;p&gt;I have a dedicated user for automated deploys because I am paranoid 
-about including my encrypted password.&amp;#160;&lt;a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 2 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+about including my encrypted password.&amp;#160;&lt;a class="footnote-backref" href="#fnref-2" title="Jump back to footnote 2 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;/div&gt;</summary><category term="python"></category><category term="pypi"></category><category term="pbr"></category><category term="travis"></category><category term="twine"></category><category term="mkdocs"></category></entry></feed>
+&lt;/div&gt;</content><category term="python"></category><category term="pypi"></category><category term="pbr"></category><category term="travis"></category><category term="twine"></category><category term="mkdocs"></category></entry></feed>

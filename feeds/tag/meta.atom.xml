@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/tag/meta.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2011-02-22T19:25:00+00:00</updated><entry><title>Blogofile - rethinking simple websites</title><link href="http://www.dougalmatthews.com/2011/Feb/22/blogofile-rethinking-simple-websites/" rel="alternate"></link><published>2011-02-22T19:25:00+00:00</published><updated>2011-02-22T19:25:00+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2011-02-22:2011/Feb/22/blogofile-rethinking-simple-websites/</id><summary type="html">&lt;p&gt;This website has gone through a number of different solutions over the years
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews - meta</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/tag/meta.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2011-02-22T19:25:00+00:00</updated><entry><title>Blogofile - rethinking simple websites</title><link href="http://www.dougalmatthews.com/2011/Feb/22/blogofile-rethinking-simple-websites/" rel="alternate"></link><published>2011-02-22T19:25:00+00:00</published><updated>2011-02-22T19:25:00+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2011-02-22:/2011/Feb/22/blogofile-rethinking-simple-websites/</id><summary type="html">&lt;p&gt;This website has gone through a number of different solutions over the years
+but during &lt;a class="reference external" href="http://sitesprint.info/"&gt;SiteSprint&lt;/a&gt;(II) I settled on a new site built with &lt;a class="reference external" href="https://github.com/montylounge/django-mingus"&gt;Mingus&lt;/a&gt;.
+Mingus offers a great feature set and is really well made (it makes use of
+many reusable apps that already exist). However, I was …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This website has gone through a number of different solutions over the years
 but during &lt;a class="reference external" href="http://sitesprint.info/"&gt;SiteSprint&lt;/a&gt;(II) I settled on a new site built with &lt;a class="reference external" href="https://github.com/montylounge/django-mingus"&gt;Mingus&lt;/a&gt;.
 Mingus offers a great feature set and is really well made (it makes use of
 many reusable apps that already exist). However, I was tired. Tired of
@@ -36,4 +39,4 @@ usually have two tabs open, one doing the rebuild every 10 seconds and one
 serving.&lt;/p&gt;
 &lt;p&gt;Incidentally, you can see the code for my Blogofile Blog on
 &lt;a class="reference external" href="https://github.com/d0ugal/dm"&gt;github&lt;/a&gt;.&lt;/p&gt;
-</summary><category term="python"></category><category term="blogofile"></category><category term="meta"></category></entry></feed>
+</content><category term="python"></category><category term="blogofile"></category><category term="meta"></category></entry></feed>

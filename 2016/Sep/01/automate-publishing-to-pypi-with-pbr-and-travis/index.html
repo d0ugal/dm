@@ -85,7 +85,7 @@ and confidently roll a release.</p>
 <p><a href="http://docs.openstack.org/developer/pbr/">Python Build Reasonableness</a> is a library for making packaging easier
 and more consistent. If you are happy to use it's conventions, which are
 mostly reasonable, it works very well. The project is developed under the
-OpenStack umbrella and used on most<sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup> OpenStack project. That is how I was
+OpenStack umbrella and used on most<sup id="fnref-1"><a class="footnote-ref" href="#fn-1">1</a></sup> OpenStack project. That is how I was
 first introduced to it, but it works well outside of this ecosystem.</p>
 <p>To use <a href="http://docs.openstack.org/developer/pbr/">pbr</a>, you need to add it to your <code>setup.py</code>, the project encourages
 using a setup.cfg, so your full setup.py should look like this.</p>
@@ -172,7 +172,7 @@ the most interesting section.</p>
 </pre></div>
 
 
-<p>First we specify the provider as PyPI, then the PyPI user is set<sup id="fnref:2"><a class="footnote-ref" href="#fn:2" rel="footnote">2</a></sup>. We
+<p>First we specify the provider as PyPI, then the PyPI user is set<sup id="fnref-2"><a class="footnote-ref" href="#fn-2">2</a></sup>. We
 specify both source and wheel distributions. The password is encrypted and
 added with <code>travis encrypt --add deploy.password</code> and then some conditions are
 set. We only want to deploy tags, the source repository and for a specific
@@ -197,21 +197,21 @@ config you can easily publish your documentation on every commit.</p>
 <p>You may want to move this to only happen on a deploy, but for a small project
 like <a href="http://d0ugal.github.io/retrace/">retrace</a> there is typically a release after any changes that would
 require docs updates.</p>
-<hr />
+<hr>
 <p>Overall, I am <em>very</em> happy about how this came out. I would like to roll out a
 similar strategy to other projects that I maintain. The change isn't earth
 shatteringly huge, but it certainly greases the wheels a bit and makes things
 easier.</p>
 <div class="footnote">
-<hr />
+<hr>
 <ol>
-<li id="fn:1">
+<li id="fn-1">
 <p>And quite possibly every OpenStack project, but there are <a href="http://git.openstack.org/cgit">quite a
-few</a>, so I don't plan on checking!&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+few</a>, so I don't plan on checking!&#160;<a class="footnote-backref" href="#fnref-1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
-<li id="fn:2">
+<li id="fn-2">
 <p>I have a dedicated user for automated deploys because I am paranoid 
-about including my encrypted password.&#160;<a class="footnote-backref" href="#fnref:2" rev="footnote" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+about including my encrypted password.&#160;<a class="footnote-backref" href="#fnref-2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>

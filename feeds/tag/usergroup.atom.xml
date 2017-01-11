@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/tag/usergroup.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2014-03-02T10:09:00+00:00</updated><entry><title>Running a Code Dojo</title><link href="http://www.dougalmatthews.com//notes/running-a-code-dojo/" rel="alternate"></link><published>2014-03-02T10:09:00+00:00</published><updated>2014-03-02T10:09:00+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2014-03-02:notes/running-a-code-dojo/</id><summary type="html">&lt;p&gt;At &lt;a class="reference external" href="http://www.pythonglasgow.org/"&gt;Python Glasgow&lt;/a&gt; we organise Python Coding Dojos. The format we follow is
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews - usergroup</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/tag/usergroup.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2014-03-02T10:09:00+00:00</updated><entry><title>Running a Code Dojo</title><link href="http://www.dougalmatthews.com//notes/running-a-code-dojo/" rel="alternate"></link><published>2014-03-02T10:09:00+00:00</published><updated>2014-03-02T10:09:00+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2014-03-02://notes/running-a-code-dojo/</id><summary type="html">&lt;p&gt;At &lt;a class="reference external" href="http://www.pythonglasgow.org/"&gt;Python Glasgow&lt;/a&gt; we organise Python Coding Dojos. The format we follow is
+based on the &lt;a class="reference external" href="https://twitter.com/ldnpydojo"&gt;London Python Dojo&lt;/a&gt;. This document is an attempt to outline
+that process so we can follow it each time and evolve it as required.&lt;/p&gt;
+&lt;div class="contents topic" id="contents"&gt;
+&lt;p class="topic-title first"&gt;Contents&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#the-venue" id="id1"&gt;The Venue&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#before-the-dojo" id="id2"&gt;Before the Dojo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#at-the-dojo" id="id3"&gt;At the Dojo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#after-the-dojo" id="id4"&gt;After …&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;At &lt;a class="reference external" href="http://www.pythonglasgow.org/"&gt;Python Glasgow&lt;/a&gt; we organise Python Coding Dojos. The format we follow is
 based on the &lt;a class="reference external" href="https://twitter.com/ldnpydojo"&gt;London Python Dojo&lt;/a&gt;. This document is an attempt to outline
 that process so we can follow it each time and evolve it as required.&lt;/p&gt;
 &lt;div class="contents topic" id="contents"&gt;
@@ -111,4 +120,4 @@ familiar with the data.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</summary><category term="python"></category><category term="usergroup"></category><category term="dojo"></category><category term="pythonglasgow"></category></entry></feed>
+</content><category term="python"></category><category term="usergroup"></category><category term="dojo"></category><category term="pythonglasgow"></category></entry></feed>

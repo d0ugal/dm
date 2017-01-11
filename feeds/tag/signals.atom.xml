@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/tag/signals.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2011-10-10T17:21:00+01:00</updated><entry><title>Making Django's Signals Async with Celery</title><link href="http://www.dougalmatthews.com/2011/Oct/10/making-djangos-signals-async-with-celery/" rel="alternate"></link><published>2011-10-10T17:21:00+01:00</published><updated>2011-10-10T17:21:00+01:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2011-10-10:2011/Oct/10/making-djangos-signals-async-with-celery/</id><summary type="html">&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; A comment on &lt;a class="reference external" href="https://code.djangoproject.com/ticket/17029"&gt;the ticket&lt;/a&gt; I opened by Alex Gaynor brought up a
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews - signals</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/tag/signals.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2011-10-10T17:21:00+01:00</updated><entry><title>Making Django's Signals Async with Celery</title><link href="http://www.dougalmatthews.com/2011/Oct/10/making-djangos-signals-async-with-celery/" rel="alternate"></link><published>2011-10-10T17:21:00+01:00</published><updated>2011-10-10T17:21:00+01:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2011-10-10:/2011/Oct/10/making-djangos-signals-async-with-celery/</id><summary type="html">&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; A comment on &lt;a class="reference external" href="https://code.djangoproject.com/ticket/17029"&gt;the ticket&lt;/a&gt; I opened by Alex Gaynor brought up a
+point that I hadn't fully considered. It's worth noticing before going
+further in this post and also worth pointing out my monkey patch doesn't
+answer this question.&lt;/p&gt;
+&lt;blockquote&gt;
+After speaking with Carl, I'm marking this as wontfix …&lt;/blockquote&gt;</summary><content type="html">&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; A comment on &lt;a class="reference external" href="https://code.djangoproject.com/ticket/17029"&gt;the ticket&lt;/a&gt; I opened by Alex Gaynor brought up a
 point that I hadn't fully considered. It's worth noticing before going
 further in this post and also worth pointing out my monkey patch doesn't
 answer this question.&lt;/p&gt;
@@ -67,4 +72,4 @@ only pickles the provided_args property of the Signal instance.&lt;/p&gt;
 While this isn't required, its not generally standard practice for signals
 recievers to return anything, so you will probably want to do this too.&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference external" href="https://code.djangoproject.com/ticket/17029)"&gt;View the ticket I opened a ticket to track this idea This link&lt;/a&gt;&lt;/p&gt;
-</summary><category term="python"></category><category term="django"></category><category term="signals"></category><category term="celery"></category></entry></feed>
+</content><category term="python"></category><category term="django"></category><category term="signals"></category><category term="celery"></category></entry></feed>

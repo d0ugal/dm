@@ -1,19 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Dougal Matthews</title><link>http://www.dougalmatthews.com/</link><description></description><lastBuildDate>Wed, 03 Sep 2008 19:25:00 +0100</lastBuildDate><item><title>Changing default storage engine in MySQL</title><link>http://www.dougalmatthews.com/2008/Sep/03/changing-default-storage-engine-in-mysql/</link><description>&lt;p&gt;It took me a while to find the answer to this, so I thought I'd share it to
+<rss version="2.0"><channel><title>Dougal Matthews - mysql</title><link>http://www.dougalmatthews.com/</link><description></description><lastBuildDate>Wed, 03 Sep 2008 19:25:00 +0100</lastBuildDate><item><title>Changing default storage engine in MySQL</title><link>http://www.dougalmatthews.com/2008/Sep/03/changing-default-storage-engine-in-mysql/</link><description>&lt;p&gt;It took me a while to find the answer to this, so I thought I'd share it to
 avoid anybody else wasting time with this. I needed to change the default
 storage engine so Django would use innoDB rather than MyISAM. Otherwise, it
 seemed to take the default.&lt;/p&gt;
-&lt;p&gt;You first need to locate the MySQL config file named my.cnf. On CentOS 5.2 it
-is located at /etc/my.cnf but this will probably vary across platforms.&lt;/p&gt;
-&lt;p&gt;Then in that file find the [mysqld] and add add the following line below it
-as shown below.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;[mysqld]
-default-storage-engine = innodb
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Finally, make sure you restart MySQL.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;service mysqld restart
-&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;It's pretty easy when you know how, and you'll now had transactional tables by
-default.&lt;/p&gt;
-&lt;p&gt;Alterantivaley though, you could use a &lt;a class="reference external" href="http://www.postgresql.org/"&gt;much better database&lt;/a&gt;.&lt;/p&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Dougal Matthews</dc:creator><pubDate>Wed, 03 Sep 2008 19:25:00 +0100</pubDate><guid isPermaLink="false">tag:www.dougalmatthews.com,2008-09-03:2008/Sep/03/changing-default-storage-engine-in-mysql/</guid><category>centos</category><category>django</category><category>innodb</category><category>mysql</category></item></channel></rss>
+&lt;p&gt;You first …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Dougal Matthews</dc:creator><pubDate>Wed, 03 Sep 2008 19:25:00 +0100</pubDate><guid isPermaLink="false">tag:www.dougalmatthews.com,2008-09-03:/2008/Sep/03/changing-default-storage-engine-in-mysql/</guid><category>centos</category><category>django</category><category>innodb</category><category>mysql</category></item></channel></rss>

@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/postgres.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2013-11-09T18:23:00+00:00</updated><entry><title>PostgreSQL, The cool stuff.</title><link href="http://www.dougalmatthews.com//notes/postgres-the-cool-stuff/" rel="alternate"></link><published>2013-11-09T18:23:00+00:00</published><updated>2013-11-09T18:23:00+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2013-11-09:notes/postgres-the-cool-stuff/</id><summary type="html">&lt;p&gt;A collection of my favourite Postgres features. Rather than going into much
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews - postgres</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/postgres.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2013-11-09T18:23:00+00:00</updated><entry><title>PostgreSQL, The cool stuff.</title><link href="http://www.dougalmatthews.com//notes/postgres-the-cool-stuff/" rel="alternate"></link><published>2013-11-09T18:23:00+00:00</published><updated>2013-11-09T18:23:00+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2013-11-09://notes/postgres-the-cool-stuff/</id><summary type="html">&lt;p&gt;A collection of my favourite Postgres features. Rather than going into much
+detail I will link you to the relevant documentation (for now).&lt;/p&gt;
+&lt;div class="section" id="hstore"&gt;
+&lt;h2&gt;hstore&lt;/h2&gt;
+&lt;p&gt;Create a column which can store key value data in it. This can then be queried
+by keys and values. As a data type this maps …&lt;/p&gt;&lt;/div&gt;</summary><content type="html">&lt;p&gt;A collection of my favourite Postgres features. Rather than going into much
 detail I will link you to the relevant documentation (for now).&lt;/p&gt;
 &lt;div class="section" id="hstore"&gt;
 &lt;h2&gt;hstore&lt;/h2&gt;
@@ -112,4 +117,4 @@ to that point (rather than all or nothing.)&lt;/p&gt;
 &lt;li&gt;&lt;a class="reference external" href="http://www.postgresql.org/docs/9.3/static/tutorial-transactions.html"&gt;http://www.postgresql.org/docs/9.3/static/tutorial-transactions.html&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-</summary></entry></feed>
+</content></entry></feed>

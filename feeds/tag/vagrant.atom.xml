@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/tag/vagrant.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2011-02-27T19:25:00+00:00</updated><entry><title>My Vagrant Workflow</title><link href="http://www.dougalmatthews.com/2011/Feb/27/my-vagrant-workflow/" rel="alternate"></link><published>2011-02-27T19:25:00+00:00</published><updated>2011-02-27T19:25:00+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2011-02-27:2011/Feb/27/my-vagrant-workflow/</id><summary type="html">&lt;p&gt;&lt;a class="reference external" href="http://vagrantup.com"&gt;Vagrant&lt;/a&gt; is a command line tool for managing virtual machines aimed at
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews - vagrant</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/tag/vagrant.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2011-02-27T19:25:00+00:00</updated><entry><title>My Vagrant Workflow</title><link href="http://www.dougalmatthews.com/2011/Feb/27/my-vagrant-workflow/" rel="alternate"></link><published>2011-02-27T19:25:00+00:00</published><updated>2011-02-27T19:25:00+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2011-02-27:/2011/Feb/27/my-vagrant-workflow/</id><summary type="html">&lt;p&gt;&lt;a class="reference external" href="http://vagrantup.com"&gt;Vagrant&lt;/a&gt; is a command line tool for managing virtual machines aimed at
+virtualising your development environment. It is essentially a wrapper around
+Oracle's &lt;a class="reference external" href="http://www.virtualbox.org"&gt;VirtualBox&lt;/a&gt; but a very good one.&lt;/p&gt;
+&lt;p&gt;Getting started is really easy, there is a good quick start on the Vagrant
+website, or you can try my version …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a class="reference external" href="http://vagrantup.com"&gt;Vagrant&lt;/a&gt; is a command line tool for managing virtual machines aimed at
 virtualising your development environment. It is essentially a wrapper around
 Oracle's &lt;a class="reference external" href="http://www.virtualbox.org"&gt;VirtualBox&lt;/a&gt; but a very good one.&lt;/p&gt;
 &lt;p&gt;Getting started is really easy, there is a good quick start on the Vagrant
@@ -115,4 +119,4 @@ an older project. My main problem at the moment is the effort required to
 make big changes (new configs, new recipes etc.) but this should get easier
 as I make more.&lt;/p&gt;
 &lt;p&gt;If you have any idea's or suggestions please let me know.&lt;/p&gt;
-</summary><category term="vagrant"></category><category term="chef"></category><category term="python"></category><category term="django"></category><category term="ruby"></category></entry></feed>
+</content><category term="vagrant"></category><category term="chef"></category><category term="python"></category><category term="django"></category><category term="ruby"></category></entry></feed>
