@@ -23,12 +23,12 @@
   <link rel="apple-touch-icon" sizes="144x144" href="/theme/img/iconified/apple-touch-icon-144x144.png" />
   <link rel="apple-touch-icon" sizes="152x152" href="/theme/img/iconified/apple-touch-icon-152x152.png" />
 
-  <title>Static Websites with Flask - Dougal Matthews</title>
+  <title>Calling Ansible from Mistral Workflows - Dougal Matthews</title>
   <meta charset="utf-8" />
   <link href="http://www.dougalmatthews.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Dougal Matthews Full Atom Feed" />
   <link href="http://www.dougalmatthews.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Dougal Matthews RSS Feed" />
-  <link href="http://www.dougalmatthews.com/feeds/python.atom.xml" type="application/atom+xml" rel="alternate" title="Dougal Matthews Categories Atom Feed" />
-  <link href="http://www.dougalmatthews.com/feeds/python.rss.xml" type="application/rss+xml" rel="alternate" title="Dougal Matthews Categories RSS Feed" />
+  <link href="http://www.dougalmatthews.com/feeds/openstack.atom.xml" type="application/atom+xml" rel="alternate" title="Dougal Matthews Categories Atom Feed" />
+  <link href="http://www.dougalmatthews.com/feeds/openstack.rss.xml" type="application/rss+xml" rel="alternate" title="Dougal Matthews Categories RSS Feed" />
 
   <meta name="google-site-verification" content="IcOvKAxyUFNerZzvGS3tYBfHaQUhutWsnQrNZ8SDHrE" />
   <meta name="verify-v1" content="d4ZT12Eg5dza8IxtDZlqiZoC0EzBnLxeYeK2PTiaIrU=" />
@@ -63,17 +63,61 @@
 <section id="content" class="body">
   <header>
     <h2 class="entry-title">
-      <a href="http://www.dougalmatthews.com/drafts/static-websites-with-flask.html" rel="bookmark"
-         title="Permalink to Static Websites with Flask">Static Websites with Flask</a></h2>
+      <a href="http://www.dougalmatthews.com/2017/Jan/12/calling-ansible-from-mistral-workflows/" rel="bookmark"
+         title="Permalink to Calling Ansible from Mistral Workflows">Calling Ansible from Mistral Workflows</a></h2>
  
   </header>
     <footer class="post-info">
-      <time datetime="2017-01-12T07:40:18+00:00">
+      <time datetime="2017-01-12T14:20:18+00:00">
         Thu 12 January 2017
       </time>
     </footer><!-- /.post-info -->
   <div class="entry-content">
-    <p>As a quick weekend hack I recently </p>
+    <p>I have spoken with a few people that were interested in calling <a href="https://www.ansible.com/">Ansible</a> from
+<a href="http://docs.openstack.org/developer/mistral/index.html">Mistral</a> Workflows.</p>
+<p>I finally got around to trying to make this happen. All that was needed was a
+very small and simple <a href="https://github.com/d0ugal/mistral-ansible-actions/blob/master/mistral_ansible_actions.py">custom action</a> that I put together, uploaded <a href="https://github.com/d0ugal/mistral-ansible-actions">to github</a>
+and also published to <a href="https://pypi.python.org/pypi/mistral-ansible-actions">pypi</a>.</p>
+<p>Here is an example of a simple Mistral Workflow that makes use of these new
+actions.</p>
+<div class="highlight"><pre><span></span>---
+version: 2.0
+
+run_ansible_playbook:
+  type: direct
+  tasks:
+    run_playbook:
+      action: ansible-playbook
+      input:
+        playbook: path/to/playbook.yaml
+</pre></div>
+
+
+<p>Installing and getting started with this action is fairly simple. This is how
+I done it in my <a href="http://docs.openstack.org/developer/tripleo-docs/">TripleO</a> undercloud.</p>
+<div class="highlight"><pre><span></span>sudo pip install mistral-ansible-actions;
+sudo mistral-db-manage populate;
+sudo systemctrl restart openstack-mistral*;
+</pre></div>
+
+
+<p>There is one <strong>gotcha</strong> that might be confusing. The Mistral Workflow runs as
+the mistral user, this means that the user needs permission to access the 
+Ansible playbook files.</p>
+<p>After you have installed the custom actions, you can test it with the Mistral
+CLI. The first command should work without anything extra setup, the second
+requires you to create a playbook somewhere and provide access.</p>
+<div class="highlight"><pre><span></span>mistral run-action ansible &#39;{&quot;hosts&quot;: &quot;localhost&quot;, &quot;module&quot;: &quot;setup&quot;}&#39;
+mistral run-action ansible-playbook &#39;{&quot;playbook&quot;: &quot;path/to/playbook.yaml&quot;}&#39;
+</pre></div>
+
+
+<p>The action supports a few other input parameters, they are all listed for now
+in the README in the <a href="https://github.com/d0ugal/mistral-ansible-actions">git repo</a>. This is a very young project, but I 
+am curious to know if people find it useful and what other features it would 
+need.</p>
+<p>If you want to write custom actions, check out the <a href="http://docs.openstack.org/developer/mistral/developer/creating_custom_action.html">Mistral
+documentation</a>.</p>
   </div><!-- /.entry-content -->
 
     <hr />

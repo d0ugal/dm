@@ -1,5 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews - openstack</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/tag/openstack.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2017-01-09T14:20:18+00:00</updated><entry><title>Mistral Flow Control</title><link href="http://www.dougalmatthews.com/2017/Jan/09/mistral-flow-control/" rel="alternate"></link><published>2017-01-09T14:20:18+00:00</published><updated>2017-01-09T14:20:18+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2017-01-09:/2017/Jan/09/mistral-flow-control/</id><summary type="html">&lt;p&gt;When writing a Mistral &lt;a href="http://docs.openstack.org/developer/mistral/terminology/workflows.html"&gt;workflow&lt;/a&gt; it is common that you want to add a condition
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews - openstack</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/tag/openstack.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2017-01-12T14:20:18+00:00</updated><entry><title>Calling Ansible from Mistral Workflows</title><link href="http://www.dougalmatthews.com/2017/Jan/12/calling-ansible-from-mistral-workflows/" rel="alternate"></link><published>2017-01-12T14:20:18+00:00</published><updated>2017-01-12T14:20:18+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2017-01-12:/2017/Jan/12/calling-ansible-from-mistral-workflows/</id><summary type="html">&lt;p&gt;I have spoken with a few people that were interested in calling &lt;a href="https://www.ansible.com/"&gt;Ansible&lt;/a&gt; from
+&lt;a href="http://docs.openstack.org/developer/mistral/index.html"&gt;Mistral&lt;/a&gt; Workflows.&lt;/p&gt;
+&lt;p&gt;I finally got around to trying to make this happen. All that was needed was a
+very small and simple &lt;a href="https://github.com/d0ugal/mistral-ansible-actions/blob/master/mistral_ansible_actions.py"&gt;custom action&lt;/a&gt; that I put together, uploaded &lt;a href="https://github.com/d0ugal/mistral-ansible-actions"&gt;to github&lt;/a&gt;
+and also published to &lt;a href="https://pypi.python.org/pypi/mistral-ansible-actions"&gt;pypi …&lt;/a&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;I have spoken with a few people that were interested in calling &lt;a href="https://www.ansible.com/"&gt;Ansible&lt;/a&gt; from
+&lt;a href="http://docs.openstack.org/developer/mistral/index.html"&gt;Mistral&lt;/a&gt; Workflows.&lt;/p&gt;
+&lt;p&gt;I finally got around to trying to make this happen. All that was needed was a
+very small and simple &lt;a href="https://github.com/d0ugal/mistral-ansible-actions/blob/master/mistral_ansible_actions.py"&gt;custom action&lt;/a&gt; that I put together, uploaded &lt;a href="https://github.com/d0ugal/mistral-ansible-actions"&gt;to github&lt;/a&gt;
+and also published to &lt;a href="https://pypi.python.org/pypi/mistral-ansible-actions"&gt;pypi&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Here is an example of a simple Mistral Workflow that makes use of these new
+actions.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;---
+version: 2.0
+
+run_ansible_playbook:
+  type: direct
+  tasks:
+    run_playbook:
+      action: ansible-playbook
+      input:
+        playbook: path/to/playbook.yaml
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Installing and getting started with this action is fairly simple. This is how
+I done it in my &lt;a href="http://docs.openstack.org/developer/tripleo-docs/"&gt;TripleO&lt;/a&gt; undercloud.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo pip install mistral-ansible-actions;
+sudo mistral-db-manage populate;
+sudo systemctrl restart openstack-mistral*;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;There is one &lt;strong&gt;gotcha&lt;/strong&gt; that might be confusing. The Mistral Workflow runs as
+the mistral user, this means that the user needs permission to access the 
+Ansible playbook files.&lt;/p&gt;
+&lt;p&gt;After you have installed the custom actions, you can test it with the Mistral
+CLI. The first command should work without anything extra setup, the second
+requires you to create a playbook somewhere and provide access.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mistral run-action ansible &amp;#39;{&amp;quot;hosts&amp;quot;: &amp;quot;localhost&amp;quot;, &amp;quot;module&amp;quot;: &amp;quot;setup&amp;quot;}&amp;#39;
+mistral run-action ansible-playbook &amp;#39;{&amp;quot;playbook&amp;quot;: &amp;quot;path/to/playbook.yaml&amp;quot;}&amp;#39;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The action supports a few other input parameters, they are all listed for now
+in the README in the &lt;a href="https://github.com/d0ugal/mistral-ansible-actions"&gt;git repo&lt;/a&gt;. This is a very young project, but I 
+am curious to know if people find it useful and what other features it would 
+need.&lt;/p&gt;
+&lt;p&gt;If you want to write custom actions, check out the &lt;a href="http://docs.openstack.org/developer/mistral/developer/creating_custom_action.html"&gt;Mistral
+documentation&lt;/a&gt;.&lt;/p&gt;</content><category term="openstack"></category><category term="tripleo"></category><category term="ansible"></category><category term="python"></category><category term="mistral"></category></entry><entry><title>Mistral Flow Control</title><link href="http://www.dougalmatthews.com/2017/Jan/09/mistral-flow-control/" rel="alternate"></link><published>2017-01-09T14:20:18+00:00</published><updated>2017-01-09T14:20:18+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2017-01-09:/2017/Jan/09/mistral-flow-control/</id><summary type="html">&lt;p&gt;When writing a Mistral &lt;a href="http://docs.openstack.org/developer/mistral/terminology/workflows.html"&gt;workflow&lt;/a&gt; it is common that you want to add a condition
 to a specific task. For example, you only want to run a task if the user
 provided a specific input to the workflow. I found this counter intuitive at 
 first and have since explained it …&lt;/p&gt;</summary><content type="html">&lt;p&gt;When writing a Mistral &lt;a href="http://docs.openstack.org/developer/mistral/terminology/workflows.html"&gt;workflow&lt;/a&gt; it is common that you want to add a condition
