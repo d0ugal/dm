@@ -5,7 +5,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.dougalmatthews.com/</loc>
-<lastmod>2017-01-12T15:21:37-00:00</lastmod>
+<lastmod>2017-01-13T08:49:59-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -41,6 +41,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://www.dougalmatthews.com/about/</loc>
 <lastmod>2013-07-28T16:51:00+01:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://www.dougalmatthews.com/2017/Jan/13/static-websites-with-flask/</loc>
+<lastmod>2017-01-13T07:40:18+00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -278,7 +285,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.dougalmatthews.com/category/python.html</loc>
-<lastmod>2016-12-28T11:11:10-00:01</lastmod>
+<lastmod>2017-01-13T07:40:18-00:01</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -319,6 +326,34 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://www.dougalmatthews.com/tag/python/</loc>
+<lastmod>2017-01-13T07:40:18-00:01</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://www.dougalmatthews.com/tag/flask/</loc>
+<lastmod>2017-01-13T07:40:18-00:01</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://www.dougalmatthews.com/tag/frozen/</loc>
+<lastmod>2017-01-13T07:40:18-00:01</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://www.dougalmatthews.com/tag/static/</loc>
+<lastmod>2017-01-13T07:40:18-00:01</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://www.dougalmatthews.com/tag/openstack/</loc>
 <lastmod>2017-01-12T14:20:18-00:01</lastmod>
 <changefreq>daily</changefreq>
@@ -334,13 +369,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.dougalmatthews.com/tag/ansible/</loc>
-<lastmod>2017-01-12T14:20:18-00:01</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://www.dougalmatthews.com/tag/python/</loc>
 <lastmod>2017-01-12T14:20:18-00:01</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
@@ -656,7 +684,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.dougalmatthews.com/author/dougal-matthews/</loc>
-<lastmod>2017-01-12T14:20:18-00:01</lastmod>
+<lastmod>2017-01-13T07:40:18-00:01</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

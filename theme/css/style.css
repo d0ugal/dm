@@ -3,6 +3,10 @@ body {
   text-align: justify;
 }
 
+code {
+  font-family: monospace;
+}
+
 blockquote p {
     font-size: 16.5px;
 }
