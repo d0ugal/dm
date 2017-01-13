@@ -66,6 +66,29 @@ pre {
   margin-bottom: 1em;
 }
 
+.readinglist {
+    font-size: .9em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.readinglist ul {
+    list-style: none;
+    margin: 0;
+}
+
+.readinglist li {
+    margin: 5px 0 5px 0;
+}
+
+.narrow {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /* -- */
 
 .navbar .brand {
@@ -109,15 +132,6 @@ pre {
   box-shadow: none;
   border-radius: 0;
 }
-
-.container,
-.navbar-static-top .container,
-.navbar-fixed-top .container,
-.navbar-fixed-bottom .container {
-  max-width: 800px;
-}
-
-/* -- */
 
 .intro {
   text-align: center;

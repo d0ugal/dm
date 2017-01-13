@@ -4,20 +4,36 @@
 
 {% block content %}
 <section id="content" class="body">
-  <header>
-    <h2 class="entry-title">
-      <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"
-         title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a></h2>
- {% import 'translations.html' as translations with context %}
- {{ translations.translations_for(article) }}
-  </header>
-    <footer class="post-info">
-      <time datetime="{{ article.date.isoformat() }}">
-        {{ article.locale_date }}
-      </time>
-    </footer><!-- /.post-info -->
   <div class="entry-content">
-    {{ article.content }}
+    <div class="row">
+      <div class="span8">
+        <header>
+          <h2 class="entry-title">
+            <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"
+              title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a></h2>
+              {% import 'translations.html' as translations with context %}
+              {{ translations.translations_for(article) }}
+        </header>
+        <footer class="post-info">
+          <time datetime="{{ article.date.isoformat() }}">
+            {{ article.locale_date }}
+          </time>
+        </footer><!-- /.post-info -->
+        {{ article.content }}
+      </div>
+      <div class="span4 hidden-phone readinglist">
+        <h4>Other recent posts ... </h4>
+        <ul>
+        {% for a in articles|slice(4)|first %}
+          {% if a.title != article.title %}
+          <li><a href="/{{ a.url }}" rel="bookmark" title="Permanent Link to {{ a.title }}">
+            {{ a.title }}
+          </a></li>
+          {% endif %}
+        {% endfor %}
+        </ul>
+      </div>
+    </div>
   </div><!-- /.entry-content -->
 
     <hr />
