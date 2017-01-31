@@ -1,5 +1,167 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews - Dougal Matthews</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/dougal-matthews.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2017-01-13T07:40:18+00:00</updated><entry><title>Static Websites with Flask</title><link href="http://www.dougalmatthews.com/2017/Jan/13/static-websites-with-flask/" rel="alternate"></link><published>2017-01-13T07:40:18+00:00</published><updated>2017-01-13T07:40:18+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2017-01-13:/2017/Jan/13/static-websites-with-flask/</id><summary type="html">&lt;p&gt;I was investigating static site generators last week, I have used a couple of
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews - Dougal Matthews</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/dougal-matthews.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2017-01-31T07:40:41+00:00</updated><entry><title>Interactive Mistral Workflows over Zaqar</title><link href="http://www.dougalmatthews.com/2017/Jan/31/interactive-mistral-workflows-over-zaqar/" rel="alternate"></link><published>2017-01-31T07:40:41+00:00</published><updated>2017-01-31T07:40:41+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2017-01-31:/2017/Jan/31/interactive-mistral-workflows-over-zaqar/</id><summary type="html">&lt;p&gt;It is possible to do some really nice automation with the Mistral Workflow
+engine. However, sometimes user input is required or desirable. I set about to
+write an interactive Mistral Workflow, one that could communicate with a user
+over Zaqar.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;If you are not familiar with Mistral Workflows you may …&lt;/b&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;It is possible to do some really nice automation with the Mistral Workflow
+engine. However, sometimes user input is required or desirable. I set about to
+write an interactive Mistral Workflow, one that could communicate with a user
+over Zaqar.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;If you are not familiar with Mistral Workflows you may want to start
+&lt;a href="http://www.dougalmatthews.com/2016/Nov/18/mistral-workflow-engine/"&gt;here&lt;/a&gt;,
+&lt;a href="http://www.dougalmatthews.com/2017/Jan/09/mistral-flow-control/"&gt;here&lt;/a&gt; or
+&lt;a href="http://docs.openstack.org/developer/mistral/"&gt;here&lt;/a&gt;.&lt;/b&gt;&lt;/p&gt;
+&lt;h3&gt;The Workflow&lt;/h3&gt;
+&lt;p&gt;Okay, this is what I came up with.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nn"&gt;---&lt;/span&gt;
+&lt;span class="l l-Scalar l-Scalar-Plain"&gt;version&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;2.0&amp;#39;&lt;/span&gt;
+
+&lt;span class="l l-Scalar l-Scalar-Plain"&gt;interactive-workflow&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+
+  &lt;span class="l l-Scalar l-Scalar-Plain"&gt;input&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+    &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;input_queue&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;workflow-input&amp;quot;&lt;/span&gt;
+    &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;output_queue&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;workflow-output&amp;quot;&lt;/span&gt;
+
+  &lt;span class="l l-Scalar l-Scalar-Plain"&gt;tasks&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+
+    &lt;span class="l l-Scalar l-Scalar-Plain"&gt;request_user_input&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+      &lt;span class="l l-Scalar l-Scalar-Plain"&gt;action&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;zaqar.queue_post&lt;/span&gt;
+      &lt;span class="l l-Scalar l-Scalar-Plain"&gt;retry&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;count=5 delay=1&lt;/span&gt;
+      &lt;span class="l l-Scalar l-Scalar-Plain"&gt;input&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+        &lt;span class="l l-Scalar l-Scalar-Plain"&gt;queue_name&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;&amp;lt;% $.output_queue %&amp;gt;&lt;/span&gt;
+        &lt;span class="l l-Scalar l-Scalar-Plain"&gt;messages&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+          &lt;span class="l l-Scalar l-Scalar-Plain"&gt;body&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Send&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;some&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;input&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;to&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&amp;lt;%&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;$.input_queue&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;%&amp;gt;&amp;#39;&amp;quot;&lt;/span&gt;
+      &lt;span class="l l-Scalar l-Scalar-Plain"&gt;on-success&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;read_user_input&lt;/span&gt;
+
+    &lt;span class="l l-Scalar l-Scalar-Plain"&gt;read_user_input&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+      &lt;span class="l l-Scalar l-Scalar-Plain"&gt;pause-before&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;true&lt;/span&gt;
+      &lt;span class="l l-Scalar l-Scalar-Plain"&gt;action&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;zaqar.queue_pop&lt;/span&gt;
+      &lt;span class="l l-Scalar l-Scalar-Plain"&gt;input&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+        &lt;span class="l l-Scalar l-Scalar-Plain"&gt;queue_name&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;&amp;lt;% $.input_queue %&amp;gt;&lt;/span&gt;
+      &lt;span class="l l-Scalar l-Scalar-Plain"&gt;publish&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+        &lt;span class="l l-Scalar l-Scalar-Plain"&gt;user_input&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;&amp;lt;% task(read_user_input).result[0].body %&amp;gt;&lt;/span&gt;
+      &lt;span class="l l-Scalar l-Scalar-Plain"&gt;on-success&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;done&lt;/span&gt;
+
+    &lt;span class="l l-Scalar l-Scalar-Plain"&gt;done&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+      &lt;span class="l l-Scalar l-Scalar-Plain"&gt;action&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;std.echo output=&amp;lt;% $.user_input %&amp;gt;&lt;/span&gt;
+      &lt;span class="l l-Scalar l-Scalar-Plain"&gt;action&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;zaqar.queue_post&lt;/span&gt;
+      &lt;span class="l l-Scalar l-Scalar-Plain"&gt;retry&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;count=5 delay=1&lt;/span&gt;
+      &lt;span class="l l-Scalar l-Scalar-Plain"&gt;input&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+        &lt;span class="l l-Scalar l-Scalar-Plain"&gt;queue_name&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;&amp;lt;% $.output_queue %&amp;gt;&lt;/span&gt;
+        &lt;span class="l l-Scalar l-Scalar-Plain"&gt;messages&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+          &lt;span class="l l-Scalar l-Scalar-Plain"&gt;body&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;You&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;sent:&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&amp;lt;%&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;$.user_input&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;%&amp;gt;&amp;#39;&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Breaking it down...&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;The Workflow uses two queues one for input and one for output - it would be
+   possible to use the same for both but this seemed simpler.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;On the first task, &lt;code&gt;request_user_input&lt;/code&gt;, the Workflow sends a Zaqar message
+   to the user requesting a message be sent to the &lt;code&gt;input_queue&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The &lt;code&gt;read_user_input&lt;/code&gt; task pauses before it starts, see the &lt;code&gt;pause-before:
+   true&lt;/code&gt;. This means we can unpause the Workflow after we send a message. It
+   would be possible to create a loop here that polls for messages, see below
+   for more on this.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;After the input is provided, the Workflow must be un-paused manually. It
+   then reads from the queue and sends the message back to the user via the
+   output Zaqar queue.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;See it in Action&lt;/h3&gt;
+&lt;p&gt;We can demonstrate the Workflow with just the Mistral client. First you need to
+save it to a file and use the &lt;code&gt;mistral workflow-create&lt;/code&gt; command to upload it.&lt;/p&gt;
+&lt;p&gt;First we trigger the Workflow execution.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ mistral execution-create interactive-workflow
++-------------------+--------------------------------------+
+&lt;span class="p"&gt;|&lt;/span&gt; Field             &lt;span class="p"&gt;|&lt;/span&gt; Value                                &lt;span class="p"&gt;|&lt;/span&gt;
++-------------------+--------------------------------------+
+&lt;span class="p"&gt;|&lt;/span&gt; ID                &lt;span class="p"&gt;|&lt;/span&gt; e8e2bfd5-3ae4-46db-9230-ada00a2c0c8c &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; Workflow ID       &lt;span class="p"&gt;|&lt;/span&gt; bdd1253e-68f8-4cf3-9af0-0957e4a31631 &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; Workflow name     &lt;span class="p"&gt;|&lt;/span&gt; interactive-workflow                 &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; Description       &lt;span class="p"&gt;|&lt;/span&gt;                                      &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; Task Execution ID &lt;span class="p"&gt;|&lt;/span&gt; &amp;lt;none&amp;gt;                               &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; State             &lt;span class="p"&gt;|&lt;/span&gt; RUNNING                              &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; State info        &lt;span class="p"&gt;|&lt;/span&gt; None                                 &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; Created at        &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="m"&gt;2017&lt;/span&gt;-01-31 &lt;span class="m"&gt;08&lt;/span&gt;:22:17                  &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; Updated at        &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="m"&gt;2017&lt;/span&gt;-01-31 &lt;span class="m"&gt;08&lt;/span&gt;:22:17                  &lt;span class="p"&gt;|&lt;/span&gt;
++-------------------+--------------------------------------+
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The Workflow will complete the first task and then move to the &lt;code&gt;PAUSED&lt;/code&gt; state
+before &lt;code&gt;read_user_input&lt;/code&gt;. This can be seen with the &lt;code&gt;mistral execution-list&lt;/code&gt;
+command.&lt;/p&gt;
+&lt;p&gt;In this Workflow we know there will now be a message in Zaqar now. The Mistral
+action &lt;code&gt;zaqar.queue_pop&lt;/code&gt; can be used to receive it...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ mistral run-action zaqar.queue_pop &lt;span class="s1"&gt;&amp;#39;{&amp;quot;queue_name&amp;quot;: &amp;quot;workflow-output&amp;quot;}&amp;#39;&lt;/span&gt;
+&lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;result&amp;quot;&lt;/span&gt;: &lt;span class="o"&gt;[{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;body&amp;quot;&lt;/span&gt;: &lt;span class="s2"&gt;&amp;quot;Send some input to &amp;#39;workflow-input&amp;#39;&amp;quot;&lt;/span&gt;, &lt;span class="s2"&gt;&amp;quot;age&amp;quot;&lt;/span&gt;: &lt;span class="m"&gt;4&lt;/span&gt;, &lt;span class="s2"&gt;&amp;quot;queue&amp;quot;&lt;/span&gt;: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;_metadata&amp;quot;&lt;/span&gt;: null, &lt;span class="s2"&gt;&amp;quot;client&amp;quot;&lt;/span&gt;: null, &lt;span class="s2"&gt;&amp;quot;_name&amp;quot;&lt;/span&gt;: &lt;span class="s2"&gt;&amp;quot;workflow-output&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;, &lt;span class="s2"&gt;&amp;quot;href&amp;quot;&lt;/span&gt;: null, &lt;span class="s2"&gt;&amp;quot;ttl&amp;quot;&lt;/span&gt;: &lt;span class="m"&gt;3600&lt;/span&gt;, &lt;span class="s2"&gt;&amp;quot;_id&amp;quot;&lt;/span&gt;: &lt;span class="s2"&gt;&amp;quot;589049397dcad341ecfb72cf&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;}]}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The JSON is a bit hard to read, but you can see the message body &lt;code&gt;Send some input to 'workflow-input'&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Great. We can do that with another Mistral action...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ mistral run-action zaqar.queue_post &lt;span class="s1"&gt;&amp;#39;{&amp;quot;queue_name&amp;quot;: &amp;quot;workflow-input&amp;quot;, &amp;quot;messages&amp;quot;:{&amp;quot;body&amp;quot;: {&amp;quot;testing&amp;quot;: 123}}}&amp;#39;&lt;/span&gt;
+&lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;result&amp;quot;&lt;/span&gt;: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;resources&amp;quot;&lt;/span&gt;: &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/v2/queues/workflow-input/messages/589049447dcad341ecfb72d0&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;]}}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;After sending the message back to the requested Workflow we can unpause it.
+This can be done like this...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ mistral execution-update -s RUNNING e8e2bfd5-3ae4-46db-9230-ada00a2c0c8c
++-------------------+--------------------------------------+
+&lt;span class="p"&gt;|&lt;/span&gt; Field             &lt;span class="p"&gt;|&lt;/span&gt; Value                                &lt;span class="p"&gt;|&lt;/span&gt;
++-------------------+--------------------------------------+
+&lt;span class="p"&gt;|&lt;/span&gt; ID                &lt;span class="p"&gt;|&lt;/span&gt; e8e2bfd5-3ae4-46db-9230-ada00a2c0c8c &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; Workflow ID       &lt;span class="p"&gt;|&lt;/span&gt; bdd1253e-68f8-4cf3-9af0-0957e4a31631 &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; Workflow name     &lt;span class="p"&gt;|&lt;/span&gt; interactive-workflow                 &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; Description       &lt;span class="p"&gt;|&lt;/span&gt;                                      &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; Task Execution ID &lt;span class="p"&gt;|&lt;/span&gt; &amp;lt;none&amp;gt;                               &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; State             &lt;span class="p"&gt;|&lt;/span&gt; RUNNING                              &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; State info        &lt;span class="p"&gt;|&lt;/span&gt; None                                 &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; Created at        &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="m"&gt;2017&lt;/span&gt;-01-31 &lt;span class="m"&gt;08&lt;/span&gt;:22:17                  &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; Updated at        &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="m"&gt;2017&lt;/span&gt;-01-31 &lt;span class="m"&gt;08&lt;/span&gt;:22:38                  &lt;span class="p"&gt;|&lt;/span&gt;
++-------------------+--------------------------------------+
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Finally we can confirm it worked by getting a message back from the Workflow...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ mistral run-action zaqar.queue_pop &lt;span class="s1"&gt;&amp;#39;{&amp;quot;queue_name&amp;quot;: &amp;quot;workflow-output&amp;quot;}&amp;#39;&lt;/span&gt;
+&lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;result&amp;quot;&lt;/span&gt;: &lt;span class="o"&gt;[{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;body&amp;quot;&lt;/span&gt;: &lt;span class="s2"&gt;&amp;quot;You sent: &amp;#39;{u&amp;#39;testing&amp;#39;: 123}&amp;#39;&amp;quot;&lt;/span&gt;, &lt;span class="s2"&gt;&amp;quot;age&amp;quot;&lt;/span&gt;: &lt;span class="m"&gt;6&lt;/span&gt;, &lt;span class="s2"&gt;&amp;quot;queue&amp;quot;&lt;/span&gt;: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;_metadata&amp;quot;&lt;/span&gt;: null, &lt;span class="s2"&gt;&amp;quot;client&amp;quot;&lt;/span&gt;: null, &lt;span class="s2"&gt;&amp;quot;_name&amp;quot;&lt;/span&gt;: &lt;span class="s2"&gt;&amp;quot;workflow-output&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;, &lt;span class="s2"&gt;&amp;quot;href&amp;quot;&lt;/span&gt;: null, &lt;span class="s2"&gt;&amp;quot;ttl&amp;quot;&lt;/span&gt;: &lt;span class="m"&gt;3600&lt;/span&gt;, &lt;span class="s2"&gt;&amp;quot;_id&amp;quot;&lt;/span&gt;: &lt;span class="s2"&gt;&amp;quot;5890494f7dcad341ecfb72d1&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;}]}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You can see a new message is returned which shows the input we sent.&lt;/p&gt;
+&lt;h3&gt;Caveats&lt;/h3&gt;
+&lt;p&gt;As mentioned above, the main limitation here is that you need to manually
+unpause the Workflow. It would be nice if there was a way for the Zaqar message
+to automatically do this.&lt;/p&gt;
+&lt;p&gt;Polling for messages in the Workflow would be quite easy, with a &lt;code&gt;retry&lt;/code&gt; loop
+and Mistral's &lt;code&gt;continue-on&lt;/code&gt;. However, that would be quite resource intensive.
+If you wanted to do this, a Workflow task like this would probably do the
+trick.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  &lt;span class="l l-Scalar l-Scalar-Plain"&gt;wait_for_message&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+    &lt;span class="l l-Scalar l-Scalar-Plain"&gt;action&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;zaqar.queue_pop&lt;/span&gt;
+    &lt;span class="l l-Scalar l-Scalar-Plain"&gt;input&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+      &lt;span class="l l-Scalar l-Scalar-Plain"&gt;queue_name&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;&amp;lt;% $.input_queue %&amp;gt;&lt;/span&gt;
+    &lt;span class="l l-Scalar l-Scalar-Plain"&gt;timeout&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;14400&lt;/span&gt;
+    &lt;span class="l l-Scalar l-Scalar-Plain"&gt;retry&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+      &lt;span class="l l-Scalar l-Scalar-Plain"&gt;delay&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;15&lt;/span&gt;
+      &lt;span class="l l-Scalar l-Scalar-Plain"&gt;count&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;&amp;lt;% $.timeout / 15 %&amp;gt;&lt;/span&gt;
+      &lt;span class="l l-Scalar l-Scalar-Plain"&gt;continue-on&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;&amp;lt;% len(task(wait_for_message).result) &amp;gt; 0 %&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The other limitation is that this Workflow now requires a specific interaction
+pattern that isn't obvious and documenting it might be a little tricky. However,
+I think the flexible execution it provides might be worthwhile in some cases.&lt;/p&gt;</content><category term="openstack"></category><category term="tripleo"></category><category term="ansible"></category><category term="python"></category><category term="mistral"></category><category term="zaqar"></category></entry><entry><title>Static Websites with Flask</title><link href="http://www.dougalmatthews.com/2017/Jan/13/static-websites-with-flask/" rel="alternate"></link><published>2017-01-13T07:40:18+00:00</published><updated>2017-01-13T07:40:18+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2017-01-13:/2017/Jan/13/static-websites-with-flask/</id><summary type="html">&lt;p&gt;I was investigating static site generators last week, I have used a couple of
 them before; this website is generated by &lt;a href="http://docs.getpelican.com/en/stable/"&gt;Pelican&lt;/a&gt;, I am one of the
 maintainers of &lt;a href="http://www.mkdocs.org/"&gt;MkDocs&lt;/a&gt;, I use &lt;a href="http://www.sphinx-doc.org/"&gt;Sphinx&lt;/a&gt; regularly and I have written my own
 before&lt;sup id="fnref-1"&gt;&lt;a class="footnote-ref" href="#fn-1"&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
@@ -22,21 +184,21 @@ recommended &lt;a href="http://pythonhosted.org/Frozen-Flask/"&gt;Frozen-Flask&l
 and the Flask ecosystem&lt;/em&gt; was hard to turn down.&lt;/p&gt;
 &lt;h2&gt;Getting stated&lt;/h2&gt;
 &lt;p&gt;Spoiler: &lt;strong&gt;It couldn't be any easier.&lt;/strong&gt; I am impressed.&lt;/p&gt;
-&lt;p&gt;This is the example in the documentation, and in many cases I'm sure it is all 
+&lt;p&gt;This is the example in the documentation, and in many cases I'm sure it is all
 you need (after a pip install). I didn't do anything extra.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask_frozen&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Freezer&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;myapplication&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt;
 
 &lt;span class="n"&gt;freezer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Freezer&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
-&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="n"&gt;freezer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;freeze&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;It is easy to see how Frozen-Flask would find and generate URLs without
 parameters. However, I have some pages that are generated with code similar
-to the following. Will this work? How can it determine the possible values 
+to the following. Will this work? How can it determine the possible values
 for &lt;code&gt;page&lt;/code&gt;?&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nd"&gt;@pages.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/&amp;lt;page&amp;gt;/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;page&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;page&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -55,7 +217,7 @@ automatically&lt;sup id="fnref-2"&gt;&lt;a class="footnote-ref" href="#fn-2"&gt;
 &lt;h2&gt;Moving Beyond Static&lt;/h2&gt;
 &lt;p&gt;I only thought of this advantage after the fact, but it occurs to me, that if
 I ever want to make this website dynamic, it would be very easy - I just need
-to remove Frozen-Flask and host it like any other site, the transition would 
+to remove Frozen-Flask and host it like any other site, the transition would
 be seamless.&lt;/p&gt;
 &lt;div class="footnote"&gt;
 &lt;hr&gt;
@@ -71,8 +233,8 @@ be seamless.&lt;/p&gt;
 &lt;li id="fn-2"&gt;
 &lt;p&gt;Any endpoints that are not called with display a warning, so you don't
   need to worry about pages being missed. Of course, if you don't link to
-  every possible input, some will be. You can provide a 
-  &lt;a href="http://pythonhosted.org/Frozen-Flask/#url-generators"&gt;URL generator&lt;/a&gt; to be 
+  every possible input, some will be. You can provide a
+  &lt;a href="http://pythonhosted.org/Frozen-Flask/#url-generators"&gt;URL generator&lt;/a&gt; to be
   safe.&amp;#160;&lt;a class="footnote-backref" href="#fnref-2" title="Jump back to footnote 2 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
@@ -222,7 +384,7 @@ make that easier for me.&lt;/p&gt;
 &lt;p&gt;pynd is best demonstrated with some simple examples from &lt;a href="https://d0ugal.github.io/pynd/"&gt;the docs&lt;/a&gt;, ran
 against &lt;a href="http://d0ugal.github.io/retrace/"&gt;another project&lt;/a&gt; of mine.&lt;/p&gt;
 &lt;h3&gt;Find and list all public functions&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;pynd&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="err"&gt;--&lt;/span&gt;&lt;span class="nf"&gt;public&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;pynd&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;public&lt;/span&gt;
 &lt;span class="o"&gt;./&lt;/span&gt;&lt;span class="n"&gt;retrace&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
 &lt;span class="mi"&gt;181&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;retry&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;dargs&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;dkwargs&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
 &lt;span class="mi"&gt;105&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;delay&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;attempt_number&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -239,7 +401,7 @@ against &lt;a href="http://d0ugal.github.io/retrace/"&gt;another project&lt;/a&g
 
 &lt;p&gt;or, with the --private flag.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;pynd&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;private&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt;
-&lt;span class="err"&gt;./&lt;/span&gt;&lt;span class="nf"&gt;retrace&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;span class="o"&gt;./&lt;/span&gt;&lt;span class="n"&gt;retrace&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
 &lt;span class="mi"&gt;49&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;_update_wrapper&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;wrapper&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;wrapped&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
 &lt;span class="mi"&gt;67&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;_wraps&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;wrapped&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;assigned&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;functools&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;WRAPPER_ASSIGNMENTS&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
 &lt;span class="mi"&gt;233&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;_setup_limit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;limit&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -262,7 +424,7 @@ against &lt;a href="http://d0ugal.github.io/retrace/"&gt;another project&lt;/a&g
 &lt;span class="o"&gt;./&lt;/span&gt;&lt;span class="n"&gt;retrace&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
 &lt;span class="mi"&gt;181&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;retry&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;dargs&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;dkwargs&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
 &lt;span class="n"&gt;The&lt;/span&gt; &lt;span class="n"&gt;retry&lt;/span&gt; &lt;span class="n"&gt;decorator&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="n"&gt;Can&lt;/span&gt; &lt;span class="n"&gt;be&lt;/span&gt; &lt;span class="n"&gt;passed&lt;/span&gt; &lt;span class="nb"&gt;all&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;arguments&lt;/span&gt; &lt;span class="n"&gt;that&lt;/span&gt; &lt;span class="n"&gt;are&lt;/span&gt; &lt;span class="n"&gt;accepted&lt;/span&gt; &lt;span class="n"&gt;by&lt;/span&gt;
-&lt;span class="n"&gt;Retry&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;__init__&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;Retry&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
 &lt;span class="mi"&gt;210&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Retry&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
 &lt;span class="n"&gt;The&lt;/span&gt; &lt;span class="n"&gt;Retry&lt;/span&gt; &lt;span class="n"&gt;decorator&lt;/span&gt; &lt;span class="n"&gt;class&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;
 
@@ -538,11 +700,11 @@ to install a &lt;em&gt;whopping&lt;/em&gt; 271 different Python versions at the 
 2.1.3 up to 3.7-dev and pypy and stackless.&lt;/p&gt;
 &lt;p&gt;The &lt;a href="https://github.com/yyuu/pyenv#installation"&gt;install process&lt;/a&gt; is a bit manual, but there is an &lt;a href="https://github.com/yyuu/pyenv-installer"&gt;install tool&lt;/a&gt;
 that makes it easier. After installing, I do something like this:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pyenv install -s 2.7.12&lt;span class="p"&gt;;&lt;/span&gt;
-pyenv install -s 3.5.2&lt;span class="p"&gt;;&lt;/span&gt;
-pyenv install -s 3.4.5&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pyenv install -s &lt;span class="m"&gt;2&lt;/span&gt;.7.12&lt;span class="p"&gt;;&lt;/span&gt;
+pyenv install -s &lt;span class="m"&gt;3&lt;/span&gt;.5.2&lt;span class="p"&gt;;&lt;/span&gt;
+pyenv install -s &lt;span class="m"&gt;3&lt;/span&gt;.4.5&lt;span class="p"&gt;;&lt;/span&gt;
 pyenv install -s pypy-5.4.1&lt;span class="p"&gt;;&lt;/span&gt;
-pyenv global 2.7.12 3.5.2 3.4.5 pypy-5.4.1&lt;span class="p"&gt;;&lt;/span&gt;
+pyenv global &lt;span class="m"&gt;2&lt;/span&gt;.7.12 &lt;span class="m"&gt;3&lt;/span&gt;.5.2 &lt;span class="m"&gt;3&lt;/span&gt;.4.5 pypy-5.4.1&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -768,7 +930,7 @@ build and install projects. If you manually clone the repo and store it there
 it wont do the initial checkout.&lt;/p&gt;
 &lt;p&gt;However, to make things even easier I put a script together. I can now do
 this to install a specific gerrit review for a project.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;~/tripleo-util/install-project.sh tripleo-common 385323&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;~/tripleo-util/install-project.sh tripleo-common &lt;span class="m"&gt;385323&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1273,23 +1435,23 @@ search an index.&lt;/p&gt;
 &lt;p&gt;MkDocs also received a new CLI thanks to the excellent &lt;a href="http://click.pocoo.org/"&gt;Click&lt;/a&gt; library. On the
 surface this doesn't seem like a huge feature, but it is now far easier to
 discover usage from the command line with &lt;code&gt;mkdocs --help&lt;/code&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;mkdocs&lt;/span&gt;&lt;span class="x"&gt; --help&lt;/span&gt;
-&lt;span class="x"&gt;Usage: mkdocs [OPTIONS] COMMAND [ARGS]...&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$mkdocs --help
+Usage: mkdocs [OPTIONS] COMMAND [ARGS]...
 
-&lt;span class="x"&gt;  MkDocs - Project documentation with Markdown.&lt;/span&gt;
+  MkDocs - Project documentation with Markdown.
 
-&lt;span class="x"&gt;Options:&lt;/span&gt;
-&lt;span class="x"&gt;  -V, --version  Show the version and exit.&lt;/span&gt;
-&lt;span class="x"&gt;  -q, --quiet    Silence warnings&lt;/span&gt;
-&lt;span class="x"&gt;  -v, --verbose  Enable verbose output&lt;/span&gt;
-&lt;span class="x"&gt;  -h, --help     Show this message and exit.&lt;/span&gt;
+Options:
+  -V, --version  Show the version and exit.
+  -q, --quiet    Silence warnings
+  -v, --verbose  Enable verbose output
+  -h, --help     Show this message and exit.
 
-&lt;span class="x"&gt;Commands:&lt;/span&gt;
-&lt;span class="x"&gt;  build      Build the MkDocs documentation&lt;/span&gt;
-&lt;span class="x"&gt;  gh-deploy  Deply your documentation to GitHub Pages&lt;/span&gt;
-&lt;span class="x"&gt;  json       Build the MkDocs documentation to JSON files...&lt;/span&gt;
-&lt;span class="x"&gt;  new        Create a new MkDocs project&lt;/span&gt;
-&lt;span class="x"&gt;  serve      Run the builtin development server&lt;/span&gt;
+Commands:
+  build      Build the MkDocs documentation
+  gh-deploy  Deply your documentation to GitHub Pages
+  json       Build the MkDocs documentation to JSON files...
+  new        Create a new MkDocs project
+  serve      Run the builtin development server
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -2356,8 +2518,8 @@ answers and checks the answer is a valid choice. You could do it this way.&lt;/p
 
 &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;QuizForm&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;forms&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Form&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
 
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;question&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="nb"&gt;super&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;QuizForm&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;question&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="nb"&gt;super&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;QuizForm&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="fm"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
         &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fields&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;question&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;forms&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IntegerField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;widget&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt; \
             &lt;span class="n"&gt;forms&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;HiddenInput&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;initial&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;question&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;

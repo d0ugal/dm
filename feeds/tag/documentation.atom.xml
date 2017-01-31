@@ -33,23 +33,23 @@ search an index.&lt;/p&gt;
 &lt;p&gt;MkDocs also received a new CLI thanks to the excellent &lt;a href="http://click.pocoo.org/"&gt;Click&lt;/a&gt; library. On the
 surface this doesn't seem like a huge feature, but it is now far easier to
 discover usage from the command line with &lt;code&gt;mkdocs --help&lt;/code&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;mkdocs&lt;/span&gt;&lt;span class="x"&gt; --help&lt;/span&gt;
-&lt;span class="x"&gt;Usage: mkdocs [OPTIONS] COMMAND [ARGS]...&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$mkdocs --help
+Usage: mkdocs [OPTIONS] COMMAND [ARGS]...
 
-&lt;span class="x"&gt;  MkDocs - Project documentation with Markdown.&lt;/span&gt;
+  MkDocs - Project documentation with Markdown.
 
-&lt;span class="x"&gt;Options:&lt;/span&gt;
-&lt;span class="x"&gt;  -V, --version  Show the version and exit.&lt;/span&gt;
-&lt;span class="x"&gt;  -q, --quiet    Silence warnings&lt;/span&gt;
-&lt;span class="x"&gt;  -v, --verbose  Enable verbose output&lt;/span&gt;
-&lt;span class="x"&gt;  -h, --help     Show this message and exit.&lt;/span&gt;
+Options:
+  -V, --version  Show the version and exit.
+  -q, --quiet    Silence warnings
+  -v, --verbose  Enable verbose output
+  -h, --help     Show this message and exit.
 
-&lt;span class="x"&gt;Commands:&lt;/span&gt;
-&lt;span class="x"&gt;  build      Build the MkDocs documentation&lt;/span&gt;
-&lt;span class="x"&gt;  gh-deploy  Deply your documentation to GitHub Pages&lt;/span&gt;
-&lt;span class="x"&gt;  json       Build the MkDocs documentation to JSON files...&lt;/span&gt;
-&lt;span class="x"&gt;  new        Create a new MkDocs project&lt;/span&gt;
-&lt;span class="x"&gt;  serve      Run the builtin development server&lt;/span&gt;
+Commands:
+  build      Build the MkDocs documentation
+  gh-deploy  Deply your documentation to GitHub Pages
+  json       Build the MkDocs documentation to JSON files...
+  new        Create a new MkDocs project
+  serve      Run the builtin development server
 &lt;/pre&gt;&lt;/div&gt;
 
 

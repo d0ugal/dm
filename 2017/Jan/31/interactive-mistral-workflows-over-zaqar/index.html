@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <link rel="icon" href="/theme/img/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="/theme/css/bootstrap.css" type="text/css" media="screen, projection" />
+  <link rel="stylesheet" href="/theme/css/bootstrap-responsive.css" type="text/css" media="screen, projection" />
+  <link href='http://fonts.googleapis.com/css?family=Lato:regular|PT+Serif+Caption|PT+Serif|Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+  <link href="/theme/css/monokai.css" rel="stylesheet" type="text/css" />
+  <link href="/theme/css/style.css" rel="stylesheet" type="text/css" />
+
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="57x57" href="/theme/img/iconified/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="60x60" href="/theme/img/iconified/apple-touch-icon-60x60.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/theme/img/iconified/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="76x76" href="/theme/img/iconified/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/theme/img/iconified/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="120x120" href="/theme/img/iconified/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/theme/img/iconified/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="/theme/img/iconified/apple-touch-icon-152x152.png" />
+
+  <title>Interactive Mistral Workflows over Zaqar - Dougal Matthews</title>
+  <meta charset="utf-8" />
+  <link href="http://www.dougalmatthews.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Dougal Matthews Full Atom Feed" />
+  <link href="http://www.dougalmatthews.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Dougal Matthews RSS Feed" />
+  <link href="http://www.dougalmatthews.com/feeds/openstack.atom.xml" type="application/atom+xml" rel="alternate" title="Dougal Matthews Categories Atom Feed" />
+  <link href="http://www.dougalmatthews.com/feeds/openstack.rss.xml" type="application/rss+xml" rel="alternate" title="Dougal Matthews Categories RSS Feed" />
+
+  <meta name="google-site-verification" content="IcOvKAxyUFNerZzvGS3tYBfHaQUhutWsnQrNZ8SDHrE" />
+  <meta name="verify-v1" content="d4ZT12Eg5dza8IxtDZlqiZoC0EzBnLxeYeK2PTiaIrU=" />
+  <meta name="msvalidate.01" content="08FE3976E4596314289973311F691DC2" />
+  <meta name="y_key" content="ef34f6756bc76371" />
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="navbar-centre">
+        <a class="brand" href="/"><span class="red">Dougal</span> <span class="white">Matthews</span></a>
+        <ul class="nav">
+            <li ><a href="/code/">Code</a></li>
+            <!--<li ><a href="/projects/">Projects</a></li>-->
+            <li ><a href="/work/">Work</a></li>
+            <li ><a href="/talks/">Talks</a></li>
+            <li ><a href="/about/">About</a></li>
+        <ul class="nav">
+      </div>
+    </div>
+  </div>
+
+  <div id="content_wrapper">
+
+    <div id="content" class="container prepent-top">
+
+<section id="content" class="body">
+  <div class="entry-content">
+    <div class="row">
+      <div class="span8">
+        <header>
+          <h2 class="entry-title">
+            <a href="http://www.dougalmatthews.com/2017/Jan/31/interactive-mistral-workflows-over-zaqar/" rel="bookmark"
+              title="Permalink to Interactive Mistral Workflows over Zaqar">Interactive Mistral Workflows over Zaqar</a></h2>
+        </header>
+        <footer class="post-info">
+          <time datetime="2017-01-31T07:40:41+00:00">
+            Tue 31 January 2017
+          </time>
+        </footer><!-- /.post-info -->
+        <p>It is possible to do some really nice automation with the Mistral Workflow
+engine. However, sometimes user input is required or desirable. I set about to
+write an interactive Mistral Workflow, one that could communicate with a user
+over Zaqar.</p>
+<p><b>If you are not familiar with Mistral Workflows you may want to start
+<a href="http://www.dougalmatthews.com/2016/Nov/18/mistral-workflow-engine/">here</a>,
+<a href="http://www.dougalmatthews.com/2017/Jan/09/mistral-flow-control/">here</a> or
+<a href="http://docs.openstack.org/developer/mistral/">here</a>.</b></p>
+<h3>The Workflow</h3>
+<p>Okay, this is what I came up with.</p>
+<div class="highlight"><pre><span></span><span class="nn">---</span>
+<span class="l l-Scalar l-Scalar-Plain">version</span><span class="p p-Indicator">:</span> <span class="s">&#39;2.0&#39;</span>
+
+<span class="l l-Scalar l-Scalar-Plain">interactive-workflow</span><span class="p p-Indicator">:</span>
+
+  <span class="l l-Scalar l-Scalar-Plain">input</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">input_queue</span><span class="p p-Indicator">:</span> <span class="s">&quot;workflow-input&quot;</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">output_queue</span><span class="p p-Indicator">:</span> <span class="s">&quot;workflow-output&quot;</span>
+
+  <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
+
+    <span class="l l-Scalar l-Scalar-Plain">request_user_input</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">action</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">zaqar.queue_post</span>
+      <span class="l l-Scalar l-Scalar-Plain">retry</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">count=5 delay=1</span>
+      <span class="l l-Scalar l-Scalar-Plain">input</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">queue_name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;% $.output_queue %&gt;</span>
+        <span class="l l-Scalar l-Scalar-Plain">messages</span><span class="p p-Indicator">:</span>
+          <span class="l l-Scalar l-Scalar-Plain">body</span><span class="p p-Indicator">:</span> <span class="s">&quot;Send</span><span class="nv"> </span><span class="s">some</span><span class="nv"> </span><span class="s">input</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">&#39;&lt;%</span><span class="nv"> </span><span class="s">$.input_queue</span><span class="nv"> </span><span class="s">%&gt;&#39;&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">on-success</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">read_user_input</span>
+
+    <span class="l l-Scalar l-Scalar-Plain">read_user_input</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">pause-before</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+      <span class="l l-Scalar l-Scalar-Plain">action</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">zaqar.queue_pop</span>
+      <span class="l l-Scalar l-Scalar-Plain">input</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">queue_name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;% $.input_queue %&gt;</span>
+      <span class="l l-Scalar l-Scalar-Plain">publish</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">user_input</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;% task(read_user_input).result[0].body %&gt;</span>
+      <span class="l l-Scalar l-Scalar-Plain">on-success</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">done</span>
+
+    <span class="l l-Scalar l-Scalar-Plain">done</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">action</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">std.echo output=&lt;% $.user_input %&gt;</span>
+      <span class="l l-Scalar l-Scalar-Plain">action</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">zaqar.queue_post</span>
+      <span class="l l-Scalar l-Scalar-Plain">retry</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">count=5 delay=1</span>
+      <span class="l l-Scalar l-Scalar-Plain">input</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">queue_name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;% $.output_queue %&gt;</span>
+        <span class="l l-Scalar l-Scalar-Plain">messages</span><span class="p p-Indicator">:</span>
+          <span class="l l-Scalar l-Scalar-Plain">body</span><span class="p p-Indicator">:</span> <span class="s">&quot;You</span><span class="nv"> </span><span class="s">sent:</span><span class="nv"> </span><span class="s">&#39;&lt;%</span><span class="nv"> </span><span class="s">$.user_input</span><span class="nv"> </span><span class="s">%&gt;&#39;&quot;</span>
+</pre></div>
+
+
+<p>Breaking it down...</p>
+<ol>
+<li>
+<p>The Workflow uses two queues one for input and one for output - it would be
+   possible to use the same for both but this seemed simpler.</p>
+</li>
+<li>
+<p>On the first task, <code>request_user_input</code>, the Workflow sends a Zaqar message
+   to the user requesting a message be sent to the <code>input_queue</code>.</p>
+</li>
+<li>
+<p>The <code>read_user_input</code> task pauses before it starts, see the <code>pause-before:
+   true</code>. This means we can unpause the Workflow after we send a message. It
+   would be possible to create a loop here that polls for messages, see below
+   for more on this.</p>
+</li>
+<li>
+<p>After the input is provided, the Workflow must be un-paused manually. It
+   then reads from the queue and sends the message back to the user via the
+   output Zaqar queue.</p>
+</li>
+</ol>
+<h3>See it in Action</h3>
+<p>We can demonstrate the Workflow with just the Mistral client. First you need to
+save it to a file and use the <code>mistral workflow-create</code> command to upload it.</p>
+<p>First we trigger the Workflow execution.</p>
+<div class="highlight"><pre><span></span>$ mistral execution-create interactive-workflow
++-------------------+--------------------------------------+
+<span class="p">|</span> Field             <span class="p">|</span> Value                                <span class="p">|</span>
++-------------------+--------------------------------------+
+<span class="p">|</span> ID                <span class="p">|</span> e8e2bfd5-3ae4-46db-9230-ada00a2c0c8c <span class="p">|</span>
+<span class="p">|</span> Workflow ID       <span class="p">|</span> bdd1253e-68f8-4cf3-9af0-0957e4a31631 <span class="p">|</span>
+<span class="p">|</span> Workflow name     <span class="p">|</span> interactive-workflow                 <span class="p">|</span>
+<span class="p">|</span> Description       <span class="p">|</span>                                      <span class="p">|</span>
+<span class="p">|</span> Task Execution ID <span class="p">|</span> &lt;none&gt;                               <span class="p">|</span>
+<span class="p">|</span> State             <span class="p">|</span> RUNNING                              <span class="p">|</span>
+<span class="p">|</span> State info        <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> Created at        <span class="p">|</span> <span class="m">2017</span>-01-31 <span class="m">08</span>:22:17                  <span class="p">|</span>
+<span class="p">|</span> Updated at        <span class="p">|</span> <span class="m">2017</span>-01-31 <span class="m">08</span>:22:17                  <span class="p">|</span>
++-------------------+--------------------------------------+
+</pre></div>
+
+
+<p>The Workflow will complete the first task and then move to the <code>PAUSED</code> state
+before <code>read_user_input</code>. This can be seen with the <code>mistral execution-list</code>
+command.</p>
+<p>In this Workflow we know there will now be a message in Zaqar now. The Mistral
+action <code>zaqar.queue_pop</code> can be used to receive it...</p>
+<div class="highlight"><pre><span></span>$ mistral run-action zaqar.queue_pop <span class="s1">&#39;{&quot;queue_name&quot;: &quot;workflow-output&quot;}&#39;</span>
+<span class="o">{</span><span class="s2">&quot;result&quot;</span>: <span class="o">[{</span><span class="s2">&quot;body&quot;</span>: <span class="s2">&quot;Send some input to &#39;workflow-input&#39;&quot;</span>, <span class="s2">&quot;age&quot;</span>: <span class="m">4</span>, <span class="s2">&quot;queue&quot;</span>: <span class="o">{</span><span class="s2">&quot;_metadata&quot;</span>: null, <span class="s2">&quot;client&quot;</span>: null, <span class="s2">&quot;_name&quot;</span>: <span class="s2">&quot;workflow-output&quot;</span><span class="o">}</span>, <span class="s2">&quot;href&quot;</span>: null, <span class="s2">&quot;ttl&quot;</span>: <span class="m">3600</span>, <span class="s2">&quot;_id&quot;</span>: <span class="s2">&quot;589049397dcad341ecfb72cf&quot;</span><span class="o">}]}</span>
+</pre></div>
+
+
+<p>The JSON is a bit hard to read, but you can see the message body <code>Send some input to 'workflow-input'</code>.</p>
+<p>Great. We can do that with another Mistral action...</p>
+<div class="highlight"><pre><span></span>$ mistral run-action zaqar.queue_post <span class="s1">&#39;{&quot;queue_name&quot;: &quot;workflow-input&quot;, &quot;messages&quot;:{&quot;body&quot;: {&quot;testing&quot;: 123}}}&#39;</span>
+<span class="o">{</span><span class="s2">&quot;result&quot;</span>: <span class="o">{</span><span class="s2">&quot;resources&quot;</span>: <span class="o">[</span><span class="s2">&quot;/v2/queues/workflow-input/messages/589049447dcad341ecfb72d0&quot;</span><span class="o">]}}</span>
+</pre></div>
+
+
+<p>After sending the message back to the requested Workflow we can unpause it.
+This can be done like this...</p>
+<div class="highlight"><pre><span></span>$ mistral execution-update -s RUNNING e8e2bfd5-3ae4-46db-9230-ada00a2c0c8c
++-------------------+--------------------------------------+
+<span class="p">|</span> Field             <span class="p">|</span> Value                                <span class="p">|</span>
++-------------------+--------------------------------------+
+<span class="p">|</span> ID                <span class="p">|</span> e8e2bfd5-3ae4-46db-9230-ada00a2c0c8c <span class="p">|</span>
+<span class="p">|</span> Workflow ID       <span class="p">|</span> bdd1253e-68f8-4cf3-9af0-0957e4a31631 <span class="p">|</span>
+<span class="p">|</span> Workflow name     <span class="p">|</span> interactive-workflow                 <span class="p">|</span>
+<span class="p">|</span> Description       <span class="p">|</span>                                      <span class="p">|</span>
+<span class="p">|</span> Task Execution ID <span class="p">|</span> &lt;none&gt;                               <span class="p">|</span>
+<span class="p">|</span> State             <span class="p">|</span> RUNNING                              <span class="p">|</span>
+<span class="p">|</span> State info        <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> Created at        <span class="p">|</span> <span class="m">2017</span>-01-31 <span class="m">08</span>:22:17                  <span class="p">|</span>
+<span class="p">|</span> Updated at        <span class="p">|</span> <span class="m">2017</span>-01-31 <span class="m">08</span>:22:38                  <span class="p">|</span>
++-------------------+--------------------------------------+
+</pre></div>
+
+
+<p>Finally we can confirm it worked by getting a message back from the Workflow...</p>
+<div class="highlight"><pre><span></span>$ mistral run-action zaqar.queue_pop <span class="s1">&#39;{&quot;queue_name&quot;: &quot;workflow-output&quot;}&#39;</span>
+<span class="o">{</span><span class="s2">&quot;result&quot;</span>: <span class="o">[{</span><span class="s2">&quot;body&quot;</span>: <span class="s2">&quot;You sent: &#39;{u&#39;testing&#39;: 123}&#39;&quot;</span>, <span class="s2">&quot;age&quot;</span>: <span class="m">6</span>, <span class="s2">&quot;queue&quot;</span>: <span class="o">{</span><span class="s2">&quot;_metadata&quot;</span>: null, <span class="s2">&quot;client&quot;</span>: null, <span class="s2">&quot;_name&quot;</span>: <span class="s2">&quot;workflow-output&quot;</span><span class="o">}</span>, <span class="s2">&quot;href&quot;</span>: null, <span class="s2">&quot;ttl&quot;</span>: <span class="m">3600</span>, <span class="s2">&quot;_id&quot;</span>: <span class="s2">&quot;5890494f7dcad341ecfb72d1&quot;</span><span class="o">}]}</span>
+</pre></div>
+
+
+<p>You can see a new message is returned which shows the input we sent.</p>
+<h3>Caveats</h3>
+<p>As mentioned above, the main limitation here is that you need to manually
+unpause the Workflow. It would be nice if there was a way for the Zaqar message
+to automatically do this.</p>
+<p>Polling for messages in the Workflow would be quite easy, with a <code>retry</code> loop
+and Mistral's <code>continue-on</code>. However, that would be quite resource intensive.
+If you wanted to do this, a Workflow task like this would probably do the
+trick.</p>
+<div class="highlight"><pre><span></span>  <span class="l l-Scalar l-Scalar-Plain">wait_for_message</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">action</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">zaqar.queue_pop</span>
+    <span class="l l-Scalar l-Scalar-Plain">input</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">queue_name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;% $.input_queue %&gt;</span>
+    <span class="l l-Scalar l-Scalar-Plain">timeout</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">14400</span>
+    <span class="l l-Scalar l-Scalar-Plain">retry</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">delay</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">15</span>
+      <span class="l l-Scalar l-Scalar-Plain">count</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;% $.timeout / 15 %&gt;</span>
+      <span class="l l-Scalar l-Scalar-Plain">continue-on</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;% len(task(wait_for_message).result) &gt; 0 %&gt;</span>
+</pre></div>
+
+
+<p>The other limitation is that this Workflow now requires a specific interaction
+pattern that isn't obvious and documenting it might be a little tricky. However,
+I think the flexible execution it provides might be worthwhile in some cases.</p>
+      </div>
+      <div class="span4 hidden-phone readinglist">
+        <h4>Other recent posts ... </h4>
+        <ul>
+          <li><a href="/2017/Jan/13/static-websites-with-flask/" rel="bookmark" title="Permanent Link to Static Websites with Flask">
+            Static Websites with Flask
+          </a></li>
+          <li><a href="/2017/Jan/12/calling-ansible-from-mistral-workflows/" rel="bookmark" title="Permanent Link to Calling Ansible from Mistral Workflows">
+            Calling Ansible from Mistral Workflows
+          </a></li>
+          <li><a href="/2017/Jan/09/mistral-flow-control/" rel="bookmark" title="Permanent Link to Mistral Flow Control">
+            Mistral Flow Control
+          </a></li>
+          <li><a href="/2016/Dec/28/pynd-search-python-code/" rel="bookmark" title="Permanent Link to pynd - search Python code">
+            pynd - search Python code
+          </a></li>
+          <li><a href="/2016/Dec/16/finding-dead-code-with-vulture/" rel="bookmark" title="Permanent Link to Finding dead code with Vulture">
+            Finding dead code with Vulture
+          </a></li>
+          <li><a href="/2016/Dec/12/python-3-and-pytest-intro-in-glasgow/" rel="bookmark" title="Permanent Link to Python 3 and pytest Intro in Glasgow">
+            Python 3 and pytest Intro in Glasgow
+          </a></li>
+          <li><a href="/2016/Nov/18/mistral-workflow-engine/" rel="bookmark" title="Permanent Link to Mistral Workflow Engine">
+            Mistral Workflow Engine
+          </a></li>
+          <li><a href="/2016/Nov/12/create-an-excellent-python-dev-env/" rel="bookmark" title="Permanent Link to Create an Excellent Python Dev Env">
+            Create an Excellent Python Dev Env
+          </a></li>
+        </ul>
+      </div>
+    </div>
+  </div><!-- /.entry-content -->
+
+    <hr />
+
+    <p>
+      Thanks for reading. You should follow me on
+      <a href="https://twitter.com/d0ugal">Twitter</a>.
+    </p>
+
+    <p>
+      Do you have any feedback or comments? The best place for discussion is on
+      <a href="//www.reddit.com/submit" onclick="window.location =
+          '//www.reddit.com/submit?url=' + encodeURIComponent(window.location);
+          return false">Reddit</a>
+      or <a href="https://news.ycombinator.com/submit">Hacker News</a>.
+      Otherwise, <a
+          href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#100;&#111;&#117;&#103;&#97;&#108;&#64;&#100;&#111;&#117;&#103;&#97;&#108;&#109;&#97;&#116;&#116;&#104;&#101;&#119;&#115;&#46;&#99;&#111;&#109;">email
+      me</a>.
+    </p>
+
+</section>
+
+    </div>
+
+  </div>
+
+  <script src="/theme/js/bootstrap.min.js"></script>
+
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-947562-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script');
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      ga.setAttribute('async', 'true');
+      document.documentElement.firstChild.appendChild(ga);
+    })();
+
+  </script>
+  <script src="/theme/js/anti-butt.js"></script>
+
+</body>
+</html>

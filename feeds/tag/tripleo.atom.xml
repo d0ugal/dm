@@ -1,5 +1,167 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews - tripleo</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/tag/tripleo.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2017-01-12T14:20:18+00:00</updated><entry><title>Calling Ansible from Mistral Workflows</title><link href="http://www.dougalmatthews.com/2017/Jan/12/calling-ansible-from-mistral-workflows/" rel="alternate"></link><published>2017-01-12T14:20:18+00:00</published><updated>2017-01-12T14:20:18+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2017-01-12:/2017/Jan/12/calling-ansible-from-mistral-workflows/</id><summary type="html">&lt;p&gt;I have spoken with a few people that were interested in calling &lt;a href="https://www.ansible.com/"&gt;Ansible&lt;/a&gt; from
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews - tripleo</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/tag/tripleo.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2017-01-31T07:40:41+00:00</updated><entry><title>Interactive Mistral Workflows over Zaqar</title><link href="http://www.dougalmatthews.com/2017/Jan/31/interactive-mistral-workflows-over-zaqar/" rel="alternate"></link><published>2017-01-31T07:40:41+00:00</published><updated>2017-01-31T07:40:41+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2017-01-31:/2017/Jan/31/interactive-mistral-workflows-over-zaqar/</id><summary type="html">&lt;p&gt;It is possible to do some really nice automation with the Mistral Workflow
+engine. However, sometimes user input is required or desirable. I set about to
+write an interactive Mistral Workflow, one that could communicate with a user
+over Zaqar.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;If you are not familiar with Mistral Workflows you may …&lt;/b&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;It is possible to do some really nice automation with the Mistral Workflow
+engine. However, sometimes user input is required or desirable. I set about to
+write an interactive Mistral Workflow, one that could communicate with a user
+over Zaqar.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;If you are not familiar with Mistral Workflows you may want to start
+&lt;a href="http://www.dougalmatthews.com/2016/Nov/18/mistral-workflow-engine/"&gt;here&lt;/a&gt;,
+&lt;a href="http://www.dougalmatthews.com/2017/Jan/09/mistral-flow-control/"&gt;here&lt;/a&gt; or
+&lt;a href="http://docs.openstack.org/developer/mistral/"&gt;here&lt;/a&gt;.&lt;/b&gt;&lt;/p&gt;
+&lt;h3&gt;The Workflow&lt;/h3&gt;
+&lt;p&gt;Okay, this is what I came up with.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nn"&gt;---&lt;/span&gt;
+&lt;span class="l l-Scalar l-Scalar-Plain"&gt;version&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;2.0&amp;#39;&lt;/span&gt;
+
+&lt;span class="l l-Scalar l-Scalar-Plain"&gt;interactive-workflow&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+
+  &lt;span class="l l-Scalar l-Scalar-Plain"&gt;input&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+    &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;input_queue&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;workflow-input&amp;quot;&lt;/span&gt;
+    &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;output_queue&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;workflow-output&amp;quot;&lt;/span&gt;
+
+  &lt;span class="l l-Scalar l-Scalar-Plain"&gt;tasks&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+
+    &lt;span class="l l-Scalar l-Scalar-Plain"&gt;request_user_input&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+      &lt;span class="l l-Scalar l-Scalar-Plain"&gt;action&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;zaqar.queue_post&lt;/span&gt;
+      &lt;span class="l l-Scalar l-Scalar-Plain"&gt;retry&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;count=5 delay=1&lt;/span&gt;
+      &lt;span class="l l-Scalar l-Scalar-Plain"&gt;input&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+        &lt;span class="l l-Scalar l-Scalar-Plain"&gt;queue_name&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;&amp;lt;% $.output_queue %&amp;gt;&lt;/span&gt;
+        &lt;span class="l l-Scalar l-Scalar-Plain"&gt;messages&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+          &lt;span class="l l-Scalar l-Scalar-Plain"&gt;body&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Send&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;some&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;input&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;to&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&amp;lt;%&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;$.input_queue&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;%&amp;gt;&amp;#39;&amp;quot;&lt;/span&gt;
+      &lt;span class="l l-Scalar l-Scalar-Plain"&gt;on-success&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;read_user_input&lt;/span&gt;
+
+    &lt;span class="l l-Scalar l-Scalar-Plain"&gt;read_user_input&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+      &lt;span class="l l-Scalar l-Scalar-Plain"&gt;pause-before&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;true&lt;/span&gt;
+      &lt;span class="l l-Scalar l-Scalar-Plain"&gt;action&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;zaqar.queue_pop&lt;/span&gt;
+      &lt;span class="l l-Scalar l-Scalar-Plain"&gt;input&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+        &lt;span class="l l-Scalar l-Scalar-Plain"&gt;queue_name&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;&amp;lt;% $.input_queue %&amp;gt;&lt;/span&gt;
+      &lt;span class="l l-Scalar l-Scalar-Plain"&gt;publish&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+        &lt;span class="l l-Scalar l-Scalar-Plain"&gt;user_input&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;&amp;lt;% task(read_user_input).result[0].body %&amp;gt;&lt;/span&gt;
+      &lt;span class="l l-Scalar l-Scalar-Plain"&gt;on-success&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;done&lt;/span&gt;
+
+    &lt;span class="l l-Scalar l-Scalar-Plain"&gt;done&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+      &lt;span class="l l-Scalar l-Scalar-Plain"&gt;action&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;std.echo output=&amp;lt;% $.user_input %&amp;gt;&lt;/span&gt;
+      &lt;span class="l l-Scalar l-Scalar-Plain"&gt;action&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;zaqar.queue_post&lt;/span&gt;
+      &lt;span class="l l-Scalar l-Scalar-Plain"&gt;retry&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;count=5 delay=1&lt;/span&gt;
+      &lt;span class="l l-Scalar l-Scalar-Plain"&gt;input&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+        &lt;span class="l l-Scalar l-Scalar-Plain"&gt;queue_name&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;&amp;lt;% $.output_queue %&amp;gt;&lt;/span&gt;
+        &lt;span class="l l-Scalar l-Scalar-Plain"&gt;messages&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+          &lt;span class="l l-Scalar l-Scalar-Plain"&gt;body&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;You&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;sent:&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&amp;lt;%&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;$.user_input&lt;/span&gt;&lt;span class="nv"&gt; &lt;/span&gt;&lt;span class="s"&gt;%&amp;gt;&amp;#39;&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Breaking it down...&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;The Workflow uses two queues one for input and one for output - it would be
+   possible to use the same for both but this seemed simpler.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;On the first task, &lt;code&gt;request_user_input&lt;/code&gt;, the Workflow sends a Zaqar message
+   to the user requesting a message be sent to the &lt;code&gt;input_queue&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The &lt;code&gt;read_user_input&lt;/code&gt; task pauses before it starts, see the &lt;code&gt;pause-before:
+   true&lt;/code&gt;. This means we can unpause the Workflow after we send a message. It
+   would be possible to create a loop here that polls for messages, see below
+   for more on this.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;After the input is provided, the Workflow must be un-paused manually. It
+   then reads from the queue and sends the message back to the user via the
+   output Zaqar queue.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;See it in Action&lt;/h3&gt;
+&lt;p&gt;We can demonstrate the Workflow with just the Mistral client. First you need to
+save it to a file and use the &lt;code&gt;mistral workflow-create&lt;/code&gt; command to upload it.&lt;/p&gt;
+&lt;p&gt;First we trigger the Workflow execution.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ mistral execution-create interactive-workflow
++-------------------+--------------------------------------+
+&lt;span class="p"&gt;|&lt;/span&gt; Field             &lt;span class="p"&gt;|&lt;/span&gt; Value                                &lt;span class="p"&gt;|&lt;/span&gt;
++-------------------+--------------------------------------+
+&lt;span class="p"&gt;|&lt;/span&gt; ID                &lt;span class="p"&gt;|&lt;/span&gt; e8e2bfd5-3ae4-46db-9230-ada00a2c0c8c &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; Workflow ID       &lt;span class="p"&gt;|&lt;/span&gt; bdd1253e-68f8-4cf3-9af0-0957e4a31631 &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; Workflow name     &lt;span class="p"&gt;|&lt;/span&gt; interactive-workflow                 &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; Description       &lt;span class="p"&gt;|&lt;/span&gt;                                      &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; Task Execution ID &lt;span class="p"&gt;|&lt;/span&gt; &amp;lt;none&amp;gt;                               &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; State             &lt;span class="p"&gt;|&lt;/span&gt; RUNNING                              &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; State info        &lt;span class="p"&gt;|&lt;/span&gt; None                                 &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; Created at        &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="m"&gt;2017&lt;/span&gt;-01-31 &lt;span class="m"&gt;08&lt;/span&gt;:22:17                  &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; Updated at        &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="m"&gt;2017&lt;/span&gt;-01-31 &lt;span class="m"&gt;08&lt;/span&gt;:22:17                  &lt;span class="p"&gt;|&lt;/span&gt;
++-------------------+--------------------------------------+
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The Workflow will complete the first task and then move to the &lt;code&gt;PAUSED&lt;/code&gt; state
+before &lt;code&gt;read_user_input&lt;/code&gt;. This can be seen with the &lt;code&gt;mistral execution-list&lt;/code&gt;
+command.&lt;/p&gt;
+&lt;p&gt;In this Workflow we know there will now be a message in Zaqar now. The Mistral
+action &lt;code&gt;zaqar.queue_pop&lt;/code&gt; can be used to receive it...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ mistral run-action zaqar.queue_pop &lt;span class="s1"&gt;&amp;#39;{&amp;quot;queue_name&amp;quot;: &amp;quot;workflow-output&amp;quot;}&amp;#39;&lt;/span&gt;
+&lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;result&amp;quot;&lt;/span&gt;: &lt;span class="o"&gt;[{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;body&amp;quot;&lt;/span&gt;: &lt;span class="s2"&gt;&amp;quot;Send some input to &amp;#39;workflow-input&amp;#39;&amp;quot;&lt;/span&gt;, &lt;span class="s2"&gt;&amp;quot;age&amp;quot;&lt;/span&gt;: &lt;span class="m"&gt;4&lt;/span&gt;, &lt;span class="s2"&gt;&amp;quot;queue&amp;quot;&lt;/span&gt;: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;_metadata&amp;quot;&lt;/span&gt;: null, &lt;span class="s2"&gt;&amp;quot;client&amp;quot;&lt;/span&gt;: null, &lt;span class="s2"&gt;&amp;quot;_name&amp;quot;&lt;/span&gt;: &lt;span class="s2"&gt;&amp;quot;workflow-output&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;, &lt;span class="s2"&gt;&amp;quot;href&amp;quot;&lt;/span&gt;: null, &lt;span class="s2"&gt;&amp;quot;ttl&amp;quot;&lt;/span&gt;: &lt;span class="m"&gt;3600&lt;/span&gt;, &lt;span class="s2"&gt;&amp;quot;_id&amp;quot;&lt;/span&gt;: &lt;span class="s2"&gt;&amp;quot;589049397dcad341ecfb72cf&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;}]}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The JSON is a bit hard to read, but you can see the message body &lt;code&gt;Send some input to 'workflow-input'&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Great. We can do that with another Mistral action...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ mistral run-action zaqar.queue_post &lt;span class="s1"&gt;&amp;#39;{&amp;quot;queue_name&amp;quot;: &amp;quot;workflow-input&amp;quot;, &amp;quot;messages&amp;quot;:{&amp;quot;body&amp;quot;: {&amp;quot;testing&amp;quot;: 123}}}&amp;#39;&lt;/span&gt;
+&lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;result&amp;quot;&lt;/span&gt;: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;resources&amp;quot;&lt;/span&gt;: &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/v2/queues/workflow-input/messages/589049447dcad341ecfb72d0&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;]}}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;After sending the message back to the requested Workflow we can unpause it.
+This can be done like this...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ mistral execution-update -s RUNNING e8e2bfd5-3ae4-46db-9230-ada00a2c0c8c
++-------------------+--------------------------------------+
+&lt;span class="p"&gt;|&lt;/span&gt; Field             &lt;span class="p"&gt;|&lt;/span&gt; Value                                &lt;span class="p"&gt;|&lt;/span&gt;
++-------------------+--------------------------------------+
+&lt;span class="p"&gt;|&lt;/span&gt; ID                &lt;span class="p"&gt;|&lt;/span&gt; e8e2bfd5-3ae4-46db-9230-ada00a2c0c8c &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; Workflow ID       &lt;span class="p"&gt;|&lt;/span&gt; bdd1253e-68f8-4cf3-9af0-0957e4a31631 &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; Workflow name     &lt;span class="p"&gt;|&lt;/span&gt; interactive-workflow                 &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; Description       &lt;span class="p"&gt;|&lt;/span&gt;                                      &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; Task Execution ID &lt;span class="p"&gt;|&lt;/span&gt; &amp;lt;none&amp;gt;                               &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; State             &lt;span class="p"&gt;|&lt;/span&gt; RUNNING                              &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; State info        &lt;span class="p"&gt;|&lt;/span&gt; None                                 &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; Created at        &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="m"&gt;2017&lt;/span&gt;-01-31 &lt;span class="m"&gt;08&lt;/span&gt;:22:17                  &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; Updated at        &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="m"&gt;2017&lt;/span&gt;-01-31 &lt;span class="m"&gt;08&lt;/span&gt;:22:38                  &lt;span class="p"&gt;|&lt;/span&gt;
++-------------------+--------------------------------------+
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Finally we can confirm it worked by getting a message back from the Workflow...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ mistral run-action zaqar.queue_pop &lt;span class="s1"&gt;&amp;#39;{&amp;quot;queue_name&amp;quot;: &amp;quot;workflow-output&amp;quot;}&amp;#39;&lt;/span&gt;
+&lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;result&amp;quot;&lt;/span&gt;: &lt;span class="o"&gt;[{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;body&amp;quot;&lt;/span&gt;: &lt;span class="s2"&gt;&amp;quot;You sent: &amp;#39;{u&amp;#39;testing&amp;#39;: 123}&amp;#39;&amp;quot;&lt;/span&gt;, &lt;span class="s2"&gt;&amp;quot;age&amp;quot;&lt;/span&gt;: &lt;span class="m"&gt;6&lt;/span&gt;, &lt;span class="s2"&gt;&amp;quot;queue&amp;quot;&lt;/span&gt;: &lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;_metadata&amp;quot;&lt;/span&gt;: null, &lt;span class="s2"&gt;&amp;quot;client&amp;quot;&lt;/span&gt;: null, &lt;span class="s2"&gt;&amp;quot;_name&amp;quot;&lt;/span&gt;: &lt;span class="s2"&gt;&amp;quot;workflow-output&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;, &lt;span class="s2"&gt;&amp;quot;href&amp;quot;&lt;/span&gt;: null, &lt;span class="s2"&gt;&amp;quot;ttl&amp;quot;&lt;/span&gt;: &lt;span class="m"&gt;3600&lt;/span&gt;, &lt;span class="s2"&gt;&amp;quot;_id&amp;quot;&lt;/span&gt;: &lt;span class="s2"&gt;&amp;quot;5890494f7dcad341ecfb72d1&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;}]}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You can see a new message is returned which shows the input we sent.&lt;/p&gt;
+&lt;h3&gt;Caveats&lt;/h3&gt;
+&lt;p&gt;As mentioned above, the main limitation here is that you need to manually
+unpause the Workflow. It would be nice if there was a way for the Zaqar message
+to automatically do this.&lt;/p&gt;
+&lt;p&gt;Polling for messages in the Workflow would be quite easy, with a &lt;code&gt;retry&lt;/code&gt; loop
+and Mistral's &lt;code&gt;continue-on&lt;/code&gt;. However, that would be quite resource intensive.
+If you wanted to do this, a Workflow task like this would probably do the
+trick.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;  &lt;span class="l l-Scalar l-Scalar-Plain"&gt;wait_for_message&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+    &lt;span class="l l-Scalar l-Scalar-Plain"&gt;action&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;zaqar.queue_pop&lt;/span&gt;
+    &lt;span class="l l-Scalar l-Scalar-Plain"&gt;input&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+      &lt;span class="l l-Scalar l-Scalar-Plain"&gt;queue_name&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;&amp;lt;% $.input_queue %&amp;gt;&lt;/span&gt;
+    &lt;span class="l l-Scalar l-Scalar-Plain"&gt;timeout&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;14400&lt;/span&gt;
+    &lt;span class="l l-Scalar l-Scalar-Plain"&gt;retry&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+      &lt;span class="l l-Scalar l-Scalar-Plain"&gt;delay&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;15&lt;/span&gt;
+      &lt;span class="l l-Scalar l-Scalar-Plain"&gt;count&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;&amp;lt;% $.timeout / 15 %&amp;gt;&lt;/span&gt;
+      &lt;span class="l l-Scalar l-Scalar-Plain"&gt;continue-on&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;&amp;lt;% len(task(wait_for_message).result) &amp;gt; 0 %&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The other limitation is that this Workflow now requires a specific interaction
+pattern that isn't obvious and documenting it might be a little tricky. However,
+I think the flexible execution it provides might be worthwhile in some cases.&lt;/p&gt;</content><category term="openstack"></category><category term="tripleo"></category><category term="ansible"></category><category term="python"></category><category term="mistral"></category><category term="zaqar"></category></entry><entry><title>Calling Ansible from Mistral Workflows</title><link href="http://www.dougalmatthews.com/2017/Jan/12/calling-ansible-from-mistral-workflows/" rel="alternate"></link><published>2017-01-12T14:20:18+00:00</published><updated>2017-01-12T14:20:18+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2017-01-12:/2017/Jan/12/calling-ansible-from-mistral-workflows/</id><summary type="html">&lt;p&gt;I have spoken with a few people that were interested in calling &lt;a href="https://www.ansible.com/"&gt;Ansible&lt;/a&gt; from
 &lt;a href="http://docs.openstack.org/developer/mistral/index.html"&gt;Mistral&lt;/a&gt; Workflows.&lt;/p&gt;
 &lt;p&gt;I finally got around to trying to make this happen. All that was needed was a
 very small and simple &lt;a href="https://github.com/d0ugal/mistral-ansible-actions/blob/master/mistral_ansible_actions.py"&gt;custom action&lt;/a&gt; that I put together, uploaded &lt;a href="https://github.com/d0ugal/mistral-ansible-actions"&gt;to github&lt;/a&gt;
@@ -364,7 +526,7 @@ build and install projects. If you manually clone the repo and store it there
 it wont do the initial checkout.&lt;/p&gt;
 &lt;p&gt;However, to make things even easier I put a script together. I can now do
 this to install a specific gerrit review for a project.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;~/tripleo-util/install-project.sh tripleo-common 385323&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;~/tripleo-util/install-project.sh tripleo-common &lt;span class="m"&gt;385323&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 

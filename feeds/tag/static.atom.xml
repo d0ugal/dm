@@ -22,21 +22,21 @@ recommended &lt;a href="http://pythonhosted.org/Frozen-Flask/"&gt;Frozen-Flask&l
 and the Flask ecosystem&lt;/em&gt; was hard to turn down.&lt;/p&gt;
 &lt;h2&gt;Getting stated&lt;/h2&gt;
 &lt;p&gt;Spoiler: &lt;strong&gt;It couldn't be any easier.&lt;/strong&gt; I am impressed.&lt;/p&gt;
-&lt;p&gt;This is the example in the documentation, and in many cases I'm sure it is all 
+&lt;p&gt;This is the example in the documentation, and in many cases I'm sure it is all
 you need (after a pip install). I didn't do anything extra.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask_frozen&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Freezer&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;myapplication&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt;
 
 &lt;span class="n"&gt;freezer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Freezer&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
-&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="vm"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="n"&gt;freezer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;freeze&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;It is easy to see how Frozen-Flask would find and generate URLs without
 parameters. However, I have some pages that are generated with code similar
-to the following. Will this work? How can it determine the possible values 
+to the following. Will this work? How can it determine the possible values
 for &lt;code&gt;page&lt;/code&gt;?&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nd"&gt;@pages.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/&amp;lt;page&amp;gt;/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;page&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;page&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -55,7 +55,7 @@ automatically&lt;sup id="fnref-2"&gt;&lt;a class="footnote-ref" href="#fn-2"&gt;
 &lt;h2&gt;Moving Beyond Static&lt;/h2&gt;
 &lt;p&gt;I only thought of this advantage after the fact, but it occurs to me, that if
 I ever want to make this website dynamic, it would be very easy - I just need
-to remove Frozen-Flask and host it like any other site, the transition would 
+to remove Frozen-Flask and host it like any other site, the transition would
 be seamless.&lt;/p&gt;
 &lt;div class="footnote"&gt;
 &lt;hr&gt;
@@ -71,8 +71,8 @@ be seamless.&lt;/p&gt;
 &lt;li id="fn-2"&gt;
 &lt;p&gt;Any endpoints that are not called with display a warning, so you don't
   need to worry about pages being missed. Of course, if you don't link to
-  every possible input, some will be. You can provide a 
-  &lt;a href="http://pythonhosted.org/Frozen-Flask/#url-generators"&gt;URL generator&lt;/a&gt; to be 
+  every possible input, some will be. You can provide a
+  &lt;a href="http://pythonhosted.org/Frozen-Flask/#url-generators"&gt;URL generator&lt;/a&gt; to be
   safe.&amp;#160;&lt;a class="footnote-backref" href="#fnref-2" title="Jump back to footnote 2 in the text"&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;

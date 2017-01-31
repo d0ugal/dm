@@ -29,7 +29,7 @@ build and install projects. If you manually clone the repo and store it there
 it wont do the initial checkout.&lt;/p&gt;
 &lt;p&gt;However, to make things even easier I put a script together. I can now do
 this to install a specific gerrit review for a project.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;~/tripleo-util/install-project.sh tripleo-common 385323&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;~/tripleo-util/install-project.sh tripleo-common &lt;span class="m"&gt;385323&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 

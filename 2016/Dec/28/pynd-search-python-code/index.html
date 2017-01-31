@@ -68,7 +68,6 @@
           <h2 class="entry-title">
             <a href="http://www.dougalmatthews.com/2016/Dec/28/pynd-search-python-code/" rel="bookmark"
               title="Permalink to pynd - search Python code">pynd - search Python code</a></h2>
-              
         </header>
         <footer class="post-info">
           <time datetime="2016-12-28T11:11:10+00:00">
@@ -87,7 +86,7 @@ make that easier for me.</p>
 <p>pynd is best demonstrated with some simple examples from <a href="https://d0ugal.github.io/pynd/">the docs</a>, ran
 against <a href="http://d0ugal.github.io/retrace/">another project</a> of mine.</p>
 <h3>Find and list all public functions</h3>
-<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">pynd</span> <span class="o">--</span><span class="k">def</span> <span class="err">--</span><span class="nf">public</span>
+<div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">pynd</span> <span class="o">--</span><span class="k">def</span> <span class="o">--</span><span class="n">public</span>
 <span class="o">./</span><span class="n">retrace</span><span class="o">.</span><span class="n">py</span>
 <span class="mi">181</span><span class="p">:</span><span class="k">def</span> <span class="nf">retry</span><span class="p">(</span><span class="o">*</span><span class="n">dargs</span><span class="p">,</span> <span class="o">**</span><span class="n">dkwargs</span><span class="p">):</span>
 <span class="mi">105</span><span class="p">:</span>    <span class="k">def</span> <span class="nf">delay</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attempt_number</span><span class="p">):</span>
@@ -104,7 +103,7 @@ against <a href="http://d0ugal.github.io/retrace/">another project</a> of mine.<
 
 <p>or, with the --private flag.</p>
 <div class="highlight"><pre><span></span><span class="err">$</span> <span class="n">pynd</span> <span class="o">--</span><span class="n">private</span> <span class="o">--</span><span class="k">def</span>
-<span class="err">./</span><span class="nf">retrace</span><span class="o">.</span><span class="n">py</span>
+<span class="o">./</span><span class="n">retrace</span><span class="o">.</span><span class="n">py</span>
 <span class="mi">49</span><span class="p">:</span>    <span class="k">def</span> <span class="nf">_update_wrapper</span><span class="p">(</span><span class="n">wrapper</span><span class="p">,</span> <span class="n">wrapped</span><span class="p">,</span>
 <span class="mi">67</span><span class="p">:</span>    <span class="k">def</span> <span class="nf">_wraps</span><span class="p">(</span><span class="n">wrapped</span><span class="p">,</span> <span class="n">assigned</span><span class="o">=</span><span class="n">functools</span><span class="o">.</span><span class="n">WRAPPER_ASSIGNMENTS</span><span class="p">,</span>
 <span class="mi">233</span><span class="p">:</span>    <span class="k">def</span> <span class="nf">_setup_limit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">limit</span><span class="p">):</span>
@@ -127,7 +126,7 @@ against <a href="http://d0ugal.github.io/retrace/">another project</a> of mine.<
 <span class="o">./</span><span class="n">retrace</span><span class="o">.</span><span class="n">py</span>
 <span class="mi">181</span><span class="p">:</span><span class="k">def</span> <span class="nf">retry</span><span class="p">(</span><span class="o">*</span><span class="n">dargs</span><span class="p">,</span> <span class="o">**</span><span class="n">dkwargs</span><span class="p">):</span>
 <span class="n">The</span> <span class="n">retry</span> <span class="n">decorator</span><span class="o">.</span> <span class="n">Can</span> <span class="n">be</span> <span class="n">passed</span> <span class="nb">all</span> <span class="n">the</span> <span class="n">arguments</span> <span class="n">that</span> <span class="n">are</span> <span class="n">accepted</span> <span class="n">by</span>
-<span class="n">Retry</span><span class="o">.</span><span class="n">__init__</span><span class="o">.</span>
+<span class="n">Retry</span><span class="o">.</span><span class="fm">__init__</span><span class="o">.</span>
 <span class="mi">210</span><span class="p">:</span><span class="k">class</span> <span class="nc">Retry</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 <span class="n">The</span> <span class="n">Retry</span> <span class="n">decorator</span> <span class="n">class</span><span class="o">.</span>
 
@@ -202,6 +201,9 @@ in on <a href="https://github.com/d0ugal/pynd/issues/new">Github</a>.</p>
       <div class="span4 hidden-phone readinglist">
         <h4>Other recent posts ... </h4>
         <ul>
+          <li><a href="/2017/Jan/31/interactive-mistral-workflows-over-zaqar/" rel="bookmark" title="Permanent Link to Interactive Mistral Workflows over Zaqar">
+            Interactive Mistral Workflows over Zaqar
+          </a></li>
           <li><a href="/2017/Jan/13/static-websites-with-flask/" rel="bookmark" title="Permanent Link to Static Websites with Flask">
             Static Websites with Flask
           </a></li>
@@ -223,9 +225,6 @@ in on <a href="https://github.com/d0ugal/pynd/issues/new">Github</a>.</p>
           <li><a href="/2016/Nov/12/create-an-excellent-python-dev-env/" rel="bookmark" title="Permanent Link to Create an Excellent Python Dev Env">
             Create an Excellent Python Dev Env
           </a></li>
-          <li><a href="/2016/Nov/03/openstack-ocata-summit/" rel="bookmark" title="Permanent Link to OpenStack Ocata Summit">
-            OpenStack Ocata Summit
-          </a></li>
         </ul>
       </div>
     </div>
@@ -234,15 +233,15 @@ in on <a href="https://github.com/d0ugal/pynd/issues/new">Github</a>.</p>
     <hr />
 
     <p>
-      Thanks for reading. You should follow me on 
-      <a href="https://twitter.com/d0ugal">Twitter</a>. 
+      Thanks for reading. You should follow me on
+      <a href="https://twitter.com/d0ugal">Twitter</a>.
     </p>
 
     <p>
       Do you have any feedback or comments? The best place for discussion is on
       <a href="//www.reddit.com/submit" onclick="window.location =
           '//www.reddit.com/submit?url=' + encodeURIComponent(window.location);
-          return false">Reddit</a> 
+          return false">Reddit</a>
       or <a href="https://news.ycombinator.com/submit">Hacker News</a>.
       Otherwise, <a
           href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#100;&#111;&#117;&#103;&#97;&#108;&#64;&#100;&#111;&#117;&#103;&#97;&#108;&#109;&#97;&#116;&#116;&#104;&#101;&#119;&#115;&#46;&#99;&#111;&#109;">email
