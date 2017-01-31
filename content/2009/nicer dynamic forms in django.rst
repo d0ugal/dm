@@ -7,6 +7,7 @@ Nicer Dynamic Forms in Django
 :title: Nicer dynamic forms in django
 :author: Dougal Matthews
 :permalink: /articles/2009/dec/16/nicer-dynamic-forms-django/
+:alias: /articles/2009/dec/16/nicer-dynamic-forms-django/
 
 I used to make dynamic forms for Django in very bad way, I'm happy to admit
 that now as I've improved my process.

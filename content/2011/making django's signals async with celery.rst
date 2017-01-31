@@ -6,6 +6,7 @@ Making Django's Signals Async with Celery
 :date: 2011/10/10 17:21
 :title: Making Django's Signals Async with Celery
 :author: Dougal Matthews
+:alias: /2011/10/10/making-django's-signals-asynchronous-with-celery/
 
 **Update:** A comment on `the ticket`_ I opened by Alex Gaynor brought up a
 point that I hadn't fully considered. It's worth noticing before going

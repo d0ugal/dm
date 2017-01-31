@@ -7,6 +7,7 @@ Testing Your First Django App
 :title: Testing your first Django app
 :author: Dougal Matthews
 :permalink: /articles/2010/jan/20/testing-your-first-django-app/
+:alias: /articles/2010/jan/20/testing-your-first-django-app/
 
 This is my **unofficial** part five for the `Django tutorial`_. I've attempted
 to write this in a similar style to the Django documentation and hopefully

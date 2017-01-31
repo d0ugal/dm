@@ -49,4 +49,4 @@ EXTRA_PATH_METADATA = {'extra/CNAME': {'path': 'CNAME'}, }
 RELATIVE_URLS = False
 
 PLUGIN_PATHS = ['pelican-plugins']
-PLUGINS = ['sitemap', ]
+PLUGINS = ['sitemap', 'pelican_alias', ]

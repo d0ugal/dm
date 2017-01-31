@@ -4,6 +4,7 @@
 :title: Python Edinburgh
 :author: Dougal Matthews
 :permalink: /articles/2010/aug/12/python-edinburgh/
+:alias: /articles/2010/aug/12/python-edinburgh/
 
 Python Edinburgh is user group for Pythonistas in (surprisingly) Edinburgh.
 This is a kick start of a group that died out unfortunately and only met once
