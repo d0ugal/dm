@@ -3,19 +3,20 @@ category: python
 tags: vulture, cleanup, python, openstack
 date: 2016-12-16 08:24:10
 author: Dougal Matthews
+alias: 2016/Dec/15/finding-dead-code-with-vulture/
 
 Somebody recently introduced me to [Vulture], a Python project for finding
-dead code. 
+dead code.
 
 > Vulture uses the ast module to build abstract syntax trees for all given
 > files. While traversing all syntax trees it records the names of defined and
 > used objects. Afterwards, it reports the objects which have been defined, but
 > not used. This analysis ignores scopes and focuses only on object names.
 
-That quote is taken from the project readme, it gives you a good overview of 
+That quote is taken from the project readme, it gives you a good overview of
 how it works.
 
-After you have installed ([I installed] Vulture with [pipsi]) usage is as 
+After you have installed ([I installed] Vulture with [pipsi]) usage is as
 simple as...
 
     vulture path/to/code
@@ -32,7 +33,7 @@ fn()
 
 Saving that and running vulture against it will give me the following output.
 
-    $ vulture code.py 
+    $ vulture code.py
     code.py:2: Unused variable 'x'
 
 It cleverly finds the variable defined in a function that isn't used. It does
@@ -49,8 +50,8 @@ I used this trick to look for dead code in [MkDocs].
     $ vulture mkdocs --exclude mkdocs/tests
 
 You can see what that output looks like in this
-[gist](https://gist.github.com/d0ugal/fd50b633e586a8c5239e9bad61674197). I also 
-used it on some OpenStack projects I am involved with 
+[gist](https://gist.github.com/d0ugal/fd50b633e586a8c5239e9bad61674197). I also
+used it on some OpenStack projects I am involved with
 [and](https://review.openstack.org/#/c/409255/)
 [found](https://review.openstack.org/#/c/409256/)
 [some](https://review.openstack.org/#/c/409257/)
