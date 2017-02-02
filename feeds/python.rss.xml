@@ -7,7 +7,7 @@ before&lt;sup id="fnref-1"&gt;&lt;a class="footnote-ref" href="#fn-1"&gt;1&lt;/a
 &lt;a href="http://manpage.io/p/grep/"&gt;grep&lt;/a&gt; that understands Python syntax and idioms. &lt;/p&gt;
 &lt;p&gt;Over the last week or two I had a go at writing this and called it &lt;a href="https://d0ugal.github.io/pynd/"&gt;pynd&lt;/a&gt;
 (&lt;strong&gt;py&lt;/strong&gt;thon &lt;strong&gt;fi&lt;/strong&gt;nd). As a very young project it is likely to change and …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Dougal Matthews</dc:creator><pubDate>Wed, 28 Dec 2016 11:11:10 +0000</pubDate><guid isPermaLink="false">tag:www.dougalmatthews.com,2016-12-28:/2016/Dec/28/pynd-search-python-code/</guid><category>openstack</category><category>python</category><category>pynd</category></item><item><title>Finding dead code with Vulture</title><link>http://www.dougalmatthews.com/2016/Dec/16/finding-dead-code-with-vulture/</link><description>&lt;p&gt;Somebody recently introduced me to &lt;a href="https://pypi.python.org/pypi/vulture"&gt;Vulture&lt;/a&gt;, a Python project for finding
-dead code. &lt;/p&gt;
+dead code.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Vulture uses the ast module to build abstract syntax trees for all given
 files. While traversing all syntax trees it records the names of defined and

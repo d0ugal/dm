@@ -418,21 +418,21 @@ in on &lt;a href="https://github.com/d0ugal/pynd/issues/new"&gt;Github&lt;/a&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;</content><category term="openstack"></category><category term="python"></category><category term="pynd"></category></entry><entry><title>Finding dead code with Vulture</title><link href="http://www.dougalmatthews.com/2016/Dec/16/finding-dead-code-with-vulture/" rel="alternate"></link><published>2016-12-16T08:24:10+00:00</published><updated>2016-12-16T08:24:10+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2016-12-16:/2016/Dec/16/finding-dead-code-with-vulture/</id><summary type="html">&lt;p&gt;Somebody recently introduced me to &lt;a href="https://pypi.python.org/pypi/vulture"&gt;Vulture&lt;/a&gt;, a Python project for finding
-dead code. &lt;/p&gt;
+dead code.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Vulture uses the ast module to build abstract syntax trees for all given
 files. While traversing all syntax trees it records the names of defined and
 used objects. Afterwards, it reports the objects which have been defined …&lt;/p&gt;&lt;/blockquote&gt;</summary><content type="html">&lt;p&gt;Somebody recently introduced me to &lt;a href="https://pypi.python.org/pypi/vulture"&gt;Vulture&lt;/a&gt;, a Python project for finding
-dead code. &lt;/p&gt;
+dead code.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Vulture uses the ast module to build abstract syntax trees for all given
 files. While traversing all syntax trees it records the names of defined and
 used objects. Afterwards, it reports the objects which have been defined, but
 not used. This analysis ignores scopes and focuses only on object names.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;That quote is taken from the project readme, it gives you a good overview of 
+&lt;p&gt;That quote is taken from the project readme, it gives you a good overview of
 how it works.&lt;/p&gt;
-&lt;p&gt;After you have installed (&lt;a href="http://www.dougalmatthews.com/2016/Nov/12/create-an-excellent-python-dev-env/"&gt;I installed&lt;/a&gt; Vulture with &lt;a href="https://github.com/mitsuhiko/pipsi"&gt;pipsi&lt;/a&gt;) usage is as 
+&lt;p&gt;After you have installed (&lt;a href="http://www.dougalmatthews.com/2016/Nov/12/create-an-excellent-python-dev-env/"&gt;I installed&lt;/a&gt; Vulture with &lt;a href="https://github.com/mitsuhiko/pipsi"&gt;pipsi&lt;/a&gt;) usage is as
 simple as...&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;vulture path/to/code
 &lt;/pre&gt;&lt;/div&gt;
@@ -448,7 +448,7 @@ simple as...&lt;/p&gt;
 
 
 &lt;p&gt;Saving that and running vulture against it will give me the following output.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ vulture code.py 
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ vulture code.py
 code.py:2: Unused variable &lt;span class="s1"&gt;&amp;#39;x&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -466,8 +466,8 @@ the tests, so code only used in the tests will appear unused.&lt;/p&gt;
 
 
 &lt;p&gt;You can see what that output looks like in this
-&lt;a href="https://gist.github.com/d0ugal/fd50b633e586a8c5239e9bad61674197"&gt;gist&lt;/a&gt;. I also 
-used it on some OpenStack projects I am involved with 
+&lt;a href="https://gist.github.com/d0ugal/fd50b633e586a8c5239e9bad61674197"&gt;gist&lt;/a&gt;. I also
+used it on some OpenStack projects I am involved with
 &lt;a href="https://review.openstack.org/#/c/409255/"&gt;and&lt;/a&gt;
 &lt;a href="https://review.openstack.org/#/c/409256/"&gt;found&lt;/a&gt;
 &lt;a href="https://review.openstack.org/#/c/409257/"&gt;some&lt;/a&gt;

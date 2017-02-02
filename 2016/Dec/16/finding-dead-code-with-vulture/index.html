@@ -75,16 +75,16 @@
           </time>
         </footer><!-- /.post-info -->
         <p>Somebody recently introduced me to <a href="https://pypi.python.org/pypi/vulture">Vulture</a>, a Python project for finding
-dead code. </p>
+dead code.</p>
 <blockquote>
 <p>Vulture uses the ast module to build abstract syntax trees for all given
 files. While traversing all syntax trees it records the names of defined and
 used objects. Afterwards, it reports the objects which have been defined, but
 not used. This analysis ignores scopes and focuses only on object names.</p>
 </blockquote>
-<p>That quote is taken from the project readme, it gives you a good overview of 
+<p>That quote is taken from the project readme, it gives you a good overview of
 how it works.</p>
-<p>After you have installed (<a href="http://www.dougalmatthews.com/2016/Nov/12/create-an-excellent-python-dev-env/">I installed</a> Vulture with <a href="https://github.com/mitsuhiko/pipsi">pipsi</a>) usage is as 
+<p>After you have installed (<a href="http://www.dougalmatthews.com/2016/Nov/12/create-an-excellent-python-dev-env/">I installed</a> Vulture with <a href="https://github.com/mitsuhiko/pipsi">pipsi</a>) usage is as
 simple as...</p>
 <div class="highlight"><pre><span></span>vulture path/to/code
 </pre></div>
@@ -100,7 +100,7 @@ simple as...</p>
 
 
 <p>Saving that and running vulture against it will give me the following output.</p>
-<div class="highlight"><pre><span></span>$ vulture code.py 
+<div class="highlight"><pre><span></span>$ vulture code.py
 code.py:2: Unused variable <span class="s1">&#39;x&#39;</span>
 </pre></div>
 
@@ -118,8 +118,8 @@ the tests, so code only used in the tests will appear unused.</p>
 
 
 <p>You can see what that output looks like in this
-<a href="https://gist.github.com/d0ugal/fd50b633e586a8c5239e9bad61674197">gist</a>. I also 
-used it on some OpenStack projects I am involved with 
+<a href="https://gist.github.com/d0ugal/fd50b633e586a8c5239e9bad61674197">gist</a>. I also
+used it on some OpenStack projects I am involved with
 <a href="https://review.openstack.org/#/c/409255/">and</a>
 <a href="https://review.openstack.org/#/c/409256/">found</a>
 <a href="https://review.openstack.org/#/c/409257/">some</a>
