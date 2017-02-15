@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Dougal Matthews - Dougal Matthews</title><link>http://www.dougalmatthews.com/</link><description></description><lastBuildDate>Tue, 31 Jan 2017 07:40:41 +0000</lastBuildDate><item><title>Interactive Mistral Workflows over Zaqar</title><link>http://www.dougalmatthews.com/2017/Jan/31/interactive-mistral-workflows-over-zaqar/</link><description>&lt;p&gt;It is possible to do some really nice automation with the Mistral Workflow
+<rss version="2.0"><channel><title>Dougal Matthews - Dougal Matthews</title><link>http://www.dougalmatthews.com/</link><description></description><lastBuildDate>Tue, 14 Feb 2017 16:35:00 +0000</lastBuildDate><item><title>Mistral on-success, on-error and on-complete</title><link>http://www.dougalmatthews.com/2017/Feb/14/mistral-on-success-on-error-and-on-complete/</link><description>&lt;p&gt;I spent a bit of time today looking into the subtleties of the Mistral task
+properties &lt;code&gt;on-success&lt;/code&gt;, &lt;code&gt;on-complete&lt;/code&gt; and &lt;code&gt;on-error&lt;/code&gt; when used with the &lt;code&gt;fail&lt;/code&gt;
+engine commands.&lt;/p&gt;
+&lt;p&gt;As an &lt;a href="https://review.openstack.org/#/c/433557/"&gt;upcoming docs patch&lt;/a&gt; explains,
+these are similar to the Python try, except, finally blocks. Meaning, that it
+would look like the …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Dougal Matthews</dc:creator><pubDate>Tue, 14 Feb 2017 16:35:00 +0000</pubDate><guid isPermaLink="false">tag:www.dougalmatthews.com,2017-02-14:/2017/Feb/14/mistral-on-success-on-error-and-on-complete/</guid><category>python</category><category>openstack</category><category>workflow</category><category>mistral</category></item><item><title>Interactive Mistral Workflows over Zaqar</title><link>http://www.dougalmatthews.com/2017/Jan/31/interactive-mistral-workflows-over-zaqar/</link><description>&lt;p&gt;It is possible to do some really nice automation with the Mistral Workflow
 engine. However, sometimes user input is required or desirable. I set about to
 write an interactive Mistral Workflow, one that could communicate with a user
 over Zaqar.&lt;/p&gt;

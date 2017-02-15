@@ -23,12 +23,12 @@
   <link rel="apple-touch-icon" sizes="144x144" href="/theme/img/iconified/apple-touch-icon-144x144.png" />
   <link rel="apple-touch-icon" sizes="152x152" href="/theme/img/iconified/apple-touch-icon-152x152.png" />
 
-  <title>New Year's Python Meme - Dougal Matthews</title>
+  <title>Mistral on-success, on-error and on-complete - Dougal Matthews</title>
   <meta charset="utf-8" />
   <link href="http://www.dougalmatthews.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Dougal Matthews Full Atom Feed" />
   <link href="http://www.dougalmatthews.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Dougal Matthews RSS Feed" />
-  <link href="http://www.dougalmatthews.com/feeds/python.atom.xml" type="application/atom+xml" rel="alternate" title="Dougal Matthews Categories Atom Feed" />
-  <link href="http://www.dougalmatthews.com/feeds/python.rss.xml" type="application/rss+xml" rel="alternate" title="Dougal Matthews Categories RSS Feed" />
+  <link href="http://www.dougalmatthews.com/feeds/openstack.atom.xml" type="application/atom+xml" rel="alternate" title="Dougal Matthews Categories Atom Feed" />
+  <link href="http://www.dougalmatthews.com/feeds/openstack.rss.xml" type="application/rss+xml" rel="alternate" title="Dougal Matthews Categories RSS Feed" />
 
   <meta name="google-site-verification" content="IcOvKAxyUFNerZzvGS3tYBfHaQUhutWsnQrNZ8SDHrE" />
   <meta name="verify-v1" content="d4ZT12Eg5dza8IxtDZlqiZoC0EzBnLxeYeK2PTiaIrU=" />
@@ -66,50 +66,63 @@
       <div class="span8">
         <header>
           <h2 class="entry-title">
-            <a href="http://www.dougalmatthews.com/2011/Dec/23/new-years-python-meme/" rel="bookmark"
-              title="Permalink to New Year's Python Meme">New Year's Python Meme</a></h2>
+            <a href="http://www.dougalmatthews.com/2017/Feb/14/mistral-on-success-on-error-and-on-complete/" rel="bookmark"
+              title="Permalink to Mistral on-success, on-error and on-complete">Mistral on-success, on-error and on-complete</a></h2>
         </header>
         <footer class="post-info">
-          <time datetime="2011-12-23T14:21:00+00:00">
-            Fri 23 December 2011
+          <time datetime="2017-02-14T16:35:00+00:00">
+            Tue 14 February 2017
           </time>
         </footer><!-- /.post-info -->
-        <p><strong>What is the coolest Python application, framework, or library you
-have discovered in 2011?</strong></p>
-<p>I started using Tox in all my projects this year. It's got to be one of the
-best addition for testing multiple platforms and package versions.</p>
-<p><strong>What new programming technique did you learn in 2011?</strong></p>
-<p>I love testing, and have been good at writing tests for my code, but I've been
-naturally moving towards a stricter TDD testing style, and I've been some
-great benifits from this.</p>
-<p><strong>What’s the name of the open source project you contributed the
-most in 2011? What did you do?</strong></p>
-<p>I contributed mostly to a number of my own new (or newly released) projects;
-<a class="reference external" href="https://github.com/d0ugal/html5video">html5video</a>, <a class="reference external" href="https://github.com/d0ugal/znc_mailer">znc_mailer</a>, <a class="reference external" href="https://github.com/d0ugal/django-appregister">django-appregister</a>. <a class="reference external" href="https://github.com/d0ugal/django-urlmiddleware">django-urlmiddleware</a>,
-<a class="reference external" href="https://github.com/d0ugal/django-consent">django-consent</a>, <a class="reference external" href="https://github.com/d0ugal/django-gauge">django-gauge</a>.</p>
-<p><strong>What was the Python blog or website you read the most in 2011?</strong></p>
-<p>Planet Python and Python Redit. I've also started reading Hackernews more,
-which fairly often has Python related content.</p>
-<p><strong>What are the three top things you want to learn in 2012?</strong></p>
-<p>Pyramid, More of Python's internals, Haskell. The last has been on my list
-for a while.</p>
-<p><strong>What are the top software, app, or lib you wish someone would
-write in 2012?</strong></p>
-<p>I'd like somebody to build a CI server that uses ep.io to deploy testing apps
-and run the tests and then deploy to the production app.</p>
-<p><strong>Want to do your own list ? here’s how:</strong></p>
-<ul class="simple">
-<li>copy-paste the questions and answer to them in your blog</li>
-<li>tweet it with the #2012pythonmeme hashtag</li>
-</ul>
+        <p>I spent a bit of time today looking into the subtleties of the Mistral task
+properties <code>on-success</code>, <code>on-complete</code> and <code>on-error</code> when used with the <code>fail</code>
+engine commands.</p>
+<p>As an <a href="https://review.openstack.org/#/c/433557/">upcoming docs patch</a> explains,
+these are similar to the Python try, except, finally blocks. Meaning, that it
+would look like the following.</p>
+<div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">action</span><span class="p">()</span>
+    <span class="c1"># on-success</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="c1"># on-error</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="c1"># on-complete</span>
+</pre></div>
 
+
+<p>I was looking to see how the Mistral engine command would work in combination
+with these. In <a href="https://github.com/openstack/tripleo-common/blob/master/workbooks/baremetal.yaml">TripleO</a> we want to mark a workflow as failed if it sends a
+Zaqar message with the value <code>{"status": "FAILED"}</code>. So our task would look a
+bit like this...</p>
+<div class="highlight"><pre><span></span>      <span class="l l-Scalar l-Scalar-Plain">send_message</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">action</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">zaqar.queue_post</span>
+        <span class="l l-Scalar l-Scalar-Plain">input</span><span class="p p-Indicator">:</span>
+          <span class="l l-Scalar l-Scalar-Plain">queue_name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;% $.queue_name %&gt;</span>
+          <span class="l l-Scalar l-Scalar-Plain">messages</span><span class="p p-Indicator">:</span>
+            <span class="l l-Scalar l-Scalar-Plain">body</span><span class="p p-Indicator">:</span>
+              <span class="l l-Scalar l-Scalar-Plain">status</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;% $.get(&#39;status&#39;, &#39;SUCCESS&#39;) %&gt;</span>
+        <span class="l l-Scalar l-Scalar-Plain">on-complete</span><span class="p p-Indicator">:</span>
+          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">fail</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;% $.get(&#39;status&#39;) = &quot;FAILED&quot; %&gt;</span>
+</pre></div>
+
+
+<p>This task uses the <code>zaqar.queue_post</code> action to send a message containing the
+status. Once it is complete it will fail the workflow if the status is equal
+to <code>"FAILED"</code>. Then in the <code>mistral execution-list</code> the workflow will show as
+failed. This is good, because we want to surface the best error in the
+execution list.</p>
+<p>However, if the <code>zaqar.queue_post</code> action fails then we want to surface that
+error instead. At the moment it will still be possible to see it in the list
+of action executions. However, looking at the workflow executions it isn't
+obvious where the problem was.</p>
+<p>Changing the above example to on-success solves that. We only want to manually
+mark the workflow as having failed if the Zaqar message was sent with the
+FAILED status. Otherwise if the message fails to send, the workflow will error
+anyway with a more detailed error.</p>
       </div>
       <div class="span4 hidden-phone readinglist">
         <h4>Other recent posts ... </h4>
         <ul>
-          <li><a href="/2017/Feb/14/mistral-on-success-on-error-and-on-complete/" rel="bookmark" title="Permanent Link to Mistral on-success, on-error and on-complete">
-            Mistral on-success, on-error and on-complete
-          </a></li>
           <li><a href="/2017/Jan/31/interactive-mistral-workflows-over-zaqar/" rel="bookmark" title="Permanent Link to Interactive Mistral Workflows over Zaqar">
             Interactive Mistral Workflows over Zaqar
           </a></li>

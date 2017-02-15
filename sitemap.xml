@@ -5,7 +5,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.dougalmatthews.com/</loc>
-<lastmod>2017-02-02T07:28:39-00:00</lastmod>
+<lastmod>2017-02-15T09:11:09-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -41,6 +41,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://www.dougalmatthews.com/about/</loc>
 <lastmod>2013-07-28T16:51:00+01:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://www.dougalmatthews.com/2017/Feb/14/mistral-on-success-on-error-and-on-complete/</loc>
+<lastmod>2017-02-14T16:35:00+00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -313,7 +320,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.dougalmatthews.com/category/openstack.html</loc>
-<lastmod>2017-01-31T07:40:41-00:01</lastmod>
+<lastmod>2017-02-14T16:35:00-00:01</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -418,7 +425,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.dougalmatthews.com/tag/openstack/</loc>
-<lastmod>2017-01-31T07:40:41-00:01</lastmod>
+<lastmod>2017-02-14T16:35:00-00:01</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -502,7 +509,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.dougalmatthews.com/tag/mistral/</loc>
-<lastmod>2017-01-31T07:40:41-00:01</lastmod>
+<lastmod>2017-02-14T16:35:00-00:01</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -551,14 +558,14 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.dougalmatthews.com/tag/workflow/</loc>
-<lastmod>2016-11-18T14:35:00-00:01</lastmod>
+<lastmod>2017-02-14T16:35:00-00:01</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://www.dougalmatthews.com/tag/python/</loc>
-<lastmod>2017-01-31T07:40:41-00:01</lastmod>
+<lastmod>2017-02-14T16:35:00-00:01</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -712,7 +719,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.dougalmatthews.com/author/dougal-matthews/</loc>
-<lastmod>2017-01-31T07:40:41-00:01</lastmod>
+<lastmod>2017-02-14T16:35:00-00:01</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

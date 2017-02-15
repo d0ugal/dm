@@ -1,5 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews - openstack</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/tag/openstack.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2017-01-31T07:40:41+00:00</updated><entry><title>Interactive Mistral Workflows over Zaqar</title><link href="http://www.dougalmatthews.com/2017/Jan/31/interactive-mistral-workflows-over-zaqar/" rel="alternate"></link><published>2017-01-31T07:40:41+00:00</published><updated>2017-01-31T07:40:41+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2017-01-31:/2017/Jan/31/interactive-mistral-workflows-over-zaqar/</id><summary type="html">&lt;p&gt;It is possible to do some really nice automation with the Mistral Workflow
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews - openstack</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/tag/openstack.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2017-02-14T16:35:00+00:00</updated><entry><title>Mistral on-success, on-error and on-complete</title><link href="http://www.dougalmatthews.com/2017/Feb/14/mistral-on-success-on-error-and-on-complete/" rel="alternate"></link><published>2017-02-14T16:35:00+00:00</published><updated>2017-02-14T16:35:00+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2017-02-14:/2017/Feb/14/mistral-on-success-on-error-and-on-complete/</id><summary type="html">&lt;p&gt;I spent a bit of time today looking into the subtleties of the Mistral task
+properties &lt;code&gt;on-success&lt;/code&gt;, &lt;code&gt;on-complete&lt;/code&gt; and &lt;code&gt;on-error&lt;/code&gt; when used with the &lt;code&gt;fail&lt;/code&gt;
+engine commands.&lt;/p&gt;
+&lt;p&gt;As an &lt;a href="https://review.openstack.org/#/c/433557/"&gt;upcoming docs patch&lt;/a&gt; explains,
+these are similar to the Python try, except, finally blocks. Meaning, that it
+would look like the …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I spent a bit of time today looking into the subtleties of the Mistral task
+properties &lt;code&gt;on-success&lt;/code&gt;, &lt;code&gt;on-complete&lt;/code&gt; and &lt;code&gt;on-error&lt;/code&gt; when used with the &lt;code&gt;fail&lt;/code&gt;
+engine commands.&lt;/p&gt;
+&lt;p&gt;As an &lt;a href="https://review.openstack.org/#/c/433557/"&gt;upcoming docs patch&lt;/a&gt; explains,
+these are similar to the Python try, except, finally blocks. Meaning, that it
+would look like the following.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;action&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="c1"&gt;# on-success&lt;/span&gt;
+&lt;span class="k"&gt;except&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="c1"&gt;# on-error&lt;/span&gt;
+&lt;span class="k"&gt;finally&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="c1"&gt;# on-complete&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;I was looking to see how the Mistral engine command would work in combination
+with these. In &lt;a href="https://github.com/openstack/tripleo-common/blob/master/workbooks/baremetal.yaml"&gt;TripleO&lt;/a&gt; we want to mark a workflow as failed if it sends a
+Zaqar message with the value &lt;code&gt;{"status": "FAILED"}&lt;/code&gt;. So our task would look a
+bit like this...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;      &lt;span class="l l-Scalar l-Scalar-Plain"&gt;send_message&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+        &lt;span class="l l-Scalar l-Scalar-Plain"&gt;action&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;zaqar.queue_post&lt;/span&gt;
+        &lt;span class="l l-Scalar l-Scalar-Plain"&gt;input&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+          &lt;span class="l l-Scalar l-Scalar-Plain"&gt;queue_name&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;&amp;lt;% $.queue_name %&amp;gt;&lt;/span&gt;
+          &lt;span class="l l-Scalar l-Scalar-Plain"&gt;messages&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+            &lt;span class="l l-Scalar l-Scalar-Plain"&gt;body&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+              &lt;span class="l l-Scalar l-Scalar-Plain"&gt;status&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;&amp;lt;% $.get(&amp;#39;status&amp;#39;, &amp;#39;SUCCESS&amp;#39;) %&amp;gt;&lt;/span&gt;
+        &lt;span class="l l-Scalar l-Scalar-Plain"&gt;on-complete&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+          &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;fail&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;&amp;lt;% $.get(&amp;#39;status&amp;#39;) = &amp;quot;FAILED&amp;quot; %&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This task uses the &lt;code&gt;zaqar.queue_post&lt;/code&gt; action to send a message containing the
+status. Once it is complete it will fail the workflow if the status is equal
+to &lt;code&gt;"FAILED"&lt;/code&gt;. Then in the &lt;code&gt;mistral execution-list&lt;/code&gt; the workflow will show as
+failed. This is good, because we want to surface the best error in the
+execution list.&lt;/p&gt;
+&lt;p&gt;However, if the &lt;code&gt;zaqar.queue_post&lt;/code&gt; action fails then we want to surface that
+error instead. At the moment it will still be possible to see it in the list
+of action executions. However, looking at the workflow executions it isn't
+obvious where the problem was.&lt;/p&gt;
+&lt;p&gt;Changing the above example to on-success solves that. We only want to manually
+mark the workflow as having failed if the Zaqar message was sent with the
+FAILED status. Otherwise if the message fails to send, the workflow will error
+anyway with a more detailed error.&lt;/p&gt;</content><category term="python"></category><category term="openstack"></category><category term="workflow"></category><category term="mistral"></category></entry><entry><title>Interactive Mistral Workflows over Zaqar</title><link href="http://www.dougalmatthews.com/2017/Jan/31/interactive-mistral-workflows-over-zaqar/" rel="alternate"></link><published>2017-01-31T07:40:41+00:00</published><updated>2017-01-31T07:40:41+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2017-01-31:/2017/Jan/31/interactive-mistral-workflows-over-zaqar/</id><summary type="html">&lt;p&gt;It is possible to do some really nice automation with the Mistral Workflow
 engine. However, sometimes user input is required or desirable. I set about to
 write an interactive Mistral Workflow, one that could communicate with a user
 over Zaqar.&lt;/p&gt;
