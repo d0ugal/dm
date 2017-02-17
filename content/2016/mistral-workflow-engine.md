@@ -35,7 +35,7 @@ version: '2.0'
 hello_world:
     tasks:
         say_hello:
-            action: std.echo output="Hello Workflow!”
+            action: std.echo output="Hello Workflow!"
             publish:
                 output: <% task(say_hello).result %>
 ```
@@ -95,7 +95,7 @@ Mistral only provides a small set of [system actions] \(Mistrals standard
 library), but they are all useful. Mistral also ships OpenStack actions for all
 the OpenStack services - these are extremely useful.
 
-Most Mistral users will want to write custom actions eventually, the Mistral 
+Most Mistral users will want to write custom actions eventually, the Mistral
 documentation has a brief primer for [writing custom actions]. I hope to write
 more about this later and also make some improvements to the official
 documentation.
@@ -107,7 +107,7 @@ OpenStack is a great project, and it is huge. So unless you are using it
 already it is unlikely you will install OpenStack to use Mistral. Thankfully
 Mistral isn't tied to OpenStack at all, but it can integrate well. Essentially,
 if you want to use Mistral with OpenStack you would setup KeyStone
-authentication (Keystone is the OpenStack identity service). Otherwise you can 
+authentication (Keystone is the OpenStack identity service). Otherwise you can
 use keycloak or run Mistral without authentication (but behind a proxy which
 should add authentication).
 
