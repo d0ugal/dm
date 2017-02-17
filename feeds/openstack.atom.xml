@@ -369,7 +369,7 @@ in future posts.&lt;/p&gt;
 &lt;span class="l l-Scalar l-Scalar-Plain"&gt;hello_world&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
     &lt;span class="l l-Scalar l-Scalar-Plain"&gt;tasks&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
         &lt;span class="l l-Scalar l-Scalar-Plain"&gt;say_hello&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
-            &lt;span class="l l-Scalar l-Scalar-Plain"&gt;action&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;std.echo output=&amp;quot;Hello Workflow!”&lt;/span&gt;
+            &lt;span class="l l-Scalar l-Scalar-Plain"&gt;action&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;std.echo output=&amp;quot;Hello Workflow!&amp;quot;&lt;/span&gt;
             &lt;span class="l l-Scalar l-Scalar-Plain"&gt;publish&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
                 &lt;span class="l l-Scalar l-Scalar-Plain"&gt;output&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;&amp;lt;% task(say_hello).result %&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -420,7 +420,7 @@ of the workflow above (since it only called one action).&lt;/p&gt;
 &lt;p&gt;Mistral only provides a small set of &lt;a href="http://docs.openstack.org/developer/mistral/dsl/dsl_v2.html#system-actions"&gt;system actions&lt;/a&gt; (Mistrals standard
 library), but they are all useful. Mistral also ships OpenStack actions for all
 the OpenStack services - these are extremely useful.&lt;/p&gt;
-&lt;p&gt;Most Mistral users will want to write custom actions eventually, the Mistral 
+&lt;p&gt;Most Mistral users will want to write custom actions eventually, the Mistral
 documentation has a brief primer for &lt;a href="http://docs.openstack.org/developer/mistral/developer/creating_custom_action.html"&gt;writing custom actions&lt;/a&gt;. I hope to write
 more about this later and also make some improvements to the official
 documentation.&lt;/p&gt;
@@ -429,7 +429,7 @@ documentation.&lt;/p&gt;
 already it is unlikely you will install OpenStack to use Mistral. Thankfully
 Mistral isn't tied to OpenStack at all, but it can integrate well. Essentially,
 if you want to use Mistral with OpenStack you would setup KeyStone
-authentication (Keystone is the OpenStack identity service). Otherwise you can 
+authentication (Keystone is the OpenStack identity service). Otherwise you can
 use keycloak or run Mistral without authentication (but behind a proxy which
 should add authentication).&lt;/p&gt;
 &lt;p&gt;The documentation for this again is poor and something I want to write about
