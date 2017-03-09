@@ -5,7 +5,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.dougalmatthews.com/</loc>
-<lastmod>2017-02-17T10:59:40-00:00</lastmod>
+<lastmod>2017-03-09T14:42:47-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -41,6 +41,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://www.dougalmatthews.com/about/</loc>
 <lastmod>2013-07-28T16:51:00+01:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://www.dougalmatthews.com/2017/Mar/09/effective-code-review/</loc>
+<lastmod>2017-03-09T13:40:18+00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -306,7 +313,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.dougalmatthews.com/category/python.html</loc>
-<lastmod>2017-01-13T07:40:18-00:01</lastmod>
+<lastmod>2017-03-09T13:40:18-00:01</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -349,6 +356,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://www.dougalmatthews.com/category/extra.html</loc>
 <lastmod>1970-01-01T00:00:00-00:01</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://www.dougalmatthews.com/tag/codereview/</loc>
+<lastmod>2017-03-09T13:40:18-00:01</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -565,7 +579,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.dougalmatthews.com/tag/python/</loc>
-<lastmod>2017-02-14T16:35:00-00:01</lastmod>
+<lastmod>2017-03-09T13:40:18-00:01</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -669,6 +683,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://www.dougalmatthews.com/tag/programming/</loc>
+<lastmod>2017-03-09T13:40:18-00:01</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://www.dougalmatthews.com/tag/django/</loc>
 <lastmod>2014-03-02T11:57:00-00:01</lastmod>
 <changefreq>daily</changefreq>
@@ -719,7 +740,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://www.dougalmatthews.com/author/dougal-matthews/</loc>
-<lastmod>2017-02-14T16:35:00-00:01</lastmod>
+<lastmod>2017-03-09T13:40:18-00:01</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
