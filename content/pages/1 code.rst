@@ -5,7 +5,7 @@ Code
 :template: code
 
 I'm an active OpenSource developer, working on a number of
-interesting projects. As must of my development is on GitHub you
+interesting projects. As much of my development is on GitHub you
 can see most of `my activity there`_. I archive inactive projects
 `on GitHub too`_.
 
