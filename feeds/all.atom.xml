@@ -1,5 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/all.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2017-03-09T13:40:18+00:00</updated><entry><title>Effective Code Review</title><link href="http://www.dougalmatthews.com/2017/Mar/09/effective-code-review/" rel="alternate"></link><published>2017-03-09T13:40:18+00:00</published><updated>2017-03-09T13:40:18+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2017-03-09:/2017/Mar/09/effective-code-review/</id><summary type="html">&lt;p&gt;I recently had the chance to speak with Michael Kennedy from &lt;a href="https://talkpython.fm/"&gt;Talk
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/all.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2017-05-19T08:32:52+01:00</updated><entry><title>How I Gerrit</title><link href="http://www.dougalmatthews.com/2017/May/19/how-i-gerrit/" rel="alternate"></link><published>2017-05-19T08:32:52+01:00</published><updated>2017-05-19T08:32:52+01:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2017-05-19:/2017/May/19/how-i-gerrit/</id><summary type="html">&lt;p&gt;I use Gerrit every day, and it often feels like I am using it all day too. Over
+time I have started to develop a workflow that helps me more effectively manage
+the large volume of OpenStack reviews.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;tl;dr - skip the the bottom to see the dashboards I use …&lt;/strong&gt;&lt;/p&gt;</summary><content type="html">&lt;p&gt;I use Gerrit every day, and it often feels like I am using it all day too. Over
+time I have started to develop a workflow that helps me more effectively manage
+the large volume of OpenStack reviews.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;tl;dr - skip the the bottom to see the dashboards I use.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The general approach I take is to prioritise and filter reviews. I start
+filtering like this:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Look at starred reviews. These are reviews I have manually starred and want
+to keep track of.&lt;/li&gt;
+&lt;li&gt;Find patches passing CI and with an existing +2. These should be in good
+shape and ready for review.&lt;/li&gt;
+&lt;li&gt;Find patches passing CI but with no reviews. These are waiting for feedback.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;After that, it becomes a bit wild-west. I just look at everthing. I want to
+try and find a better way to group these, but the signal to noise ratio isn't
+great.&lt;/p&gt;
+&lt;h2&gt;Dashboards&lt;/h2&gt;
+&lt;p&gt;Gerrit has a neat Dashboard feature, that I think isn't very well exposed to
+users.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;https://review.openstack.org/#/dashboard/?foreach=owner:self&amp;amp;Open=is:open&amp;amp;Closed=is%253Aclosed
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;That is a very simple example - the dashboard shows you your open patches, then
+below your closed patches. You can quickly write dashboards like this with some
+URL hacking.&lt;/p&gt;
+&lt;p&gt;There seem to be two special query parameters, then the rest are the searches
+that you want. We have a base URL of https://review.openstack.org/#/dashboard/?
+and then &lt;code&gt;foreach&lt;/code&gt; can be used to apply a search to all searches in the
+dashboard, this can be useful if you want to limit to a project (or a user, as
+we did above). &lt;code&gt;title&lt;/code&gt; lets you set a title for the dashboard, pretty obvious!&lt;/p&gt;
+&lt;p&gt;After that you can arbitrary query parameters, where the name of the parameter
+is the section title and the value is the search itself.&lt;/p&gt;
+&lt;h2&gt;Gerrit Dash Creator&lt;/h2&gt;
+&lt;p&gt;There is a nice Python project that helps you generate dashboards. I don't know
+all that much about it, I just forked the project, added three dashboards and
+ran tox to verify them.&lt;/p&gt;
+&lt;p&gt;The best thing about this is the library of examples you can learn from.&lt;/p&gt;
+&lt;p&gt;I have three dashboards, &lt;a href="https://github.com/d0ugal/gerrit-dash-creator/blob/master/dashboards/d0ugal.dash"&gt;one for my patches&lt;/a&gt; and one for the two
+primary projects I am involved in; &lt;a href="https://github.com/d0ugal/gerrit-dash-creator/blob/master/dashboards/d0ugal-tripleo.dash"&gt;TripleO&lt;/a&gt; and &lt;a href="https://github.com/d0ugal/gerrit-dash-creator/blob/master/dashboards/d0ugal-mistral.dash"&gt;Mistral&lt;/a&gt;. Now I have started
+storing them here, I expect over time I'll end up with a few others.&lt;/p&gt;
+&lt;h2&gt;My Dashboards&lt;/h2&gt;
+&lt;p&gt;As these depend on your account - i.e. patches you have submitted, or if you
+have starred patches, your results will vary.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://review.openstack.org/#/dashboard/?title=My+Review+Dashboard&amp;amp;foreach=&amp;amp;Starred=is%253Astarred&amp;amp;Negative+Review=owner%253Aself+is%253Aopen+label%253ACode%252DReview%253C%253D%252D1&amp;amp;Failed+CI=owner%253Aself+label%253AVerified%253C%253D%252D1+is%253Aopen+NOT+label%253AWorkflow%253C%253D%252D1&amp;amp;Work+In+Progress=owner%253Aself+is%253Aopen+label%253AWorkflow%253C%253D%252D1&amp;amp;Waiting+For+Reviews=owner%253Aself+is%253Aopen+NOT+label%253AWorkflow%253C%253D%252D1+NOT+label%253AVerified%253C%253D%252D1+NOT+label%253ACode%252DReview%253E%253D2&amp;amp;Waiting+For+Second+Review=owner%253Aself+is%253Aopen+NOT+label%253AWorkflow%253E%253D1+NOT+label%253ACode%252DReview%253C%253D%252D2+label%253ACode%252DReview%253E%253D2&amp;amp;Reviewing=reviewer%253Aself+is%253Aopen+NOT+owner%253Aself+limit%253A20&amp;amp;My+Closed=owner%253Aself+is%253Aclosed+limit%253A20"&gt;My Dashboard&lt;/a&gt; - mostly patches I have submitted, but also a few others I want&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://review.openstack.org/#/dashboard/?title=TripleO+Review+Dashboard&amp;amp;foreach=%2528project%253Aopenstack%252Fpython%252Dtripleoclient+OR%250Aproject%253Aopenstack%252Ftripleo%252Dcommon%2529+is%253Aopen&amp;amp;Starred=is%253Astarred&amp;amp;Waiting+For+Second+Review=NOT+label%253AWorkflow%253C%253D%252D1+NOT+label%253ACode%252DReview%253C%253D%252D2+label%253ACode%252DReview%253E%253D2&amp;amp;Waiting+For+Reviews=NOT+label%253AWorkflow%253C%253D%252D1+NOT+label%253AVerified%253C%253D%252D1+NOT+label%253ACode%252DReview%253E%253D2&amp;amp;You+are+a+reviewer%252C+but+haven%2527t+voted+in+the+current+revision=NOT+label%253ACode%252DReview%253C%253D2%252Cself+reviewer%253Aself+NOT+owner%253Aself+limit%253A10&amp;amp;Latest+Reviews=limit%253A20"&gt;TripleO&lt;/a&gt; - TripleO patches. Limited to the projects I am core in and with some prioritisation.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://review.openstack.org/#/dashboard/?title=Mistral+Review+Dashboard&amp;amp;foreach=is%3Aopen&amp;amp;Starred=project%3A%5E.%2Amistral.%2A+is%3Astarred&amp;amp;Waiting+For+Second+Review=project%3A%5E.%2Amistral.%2A+NOT+label%3AWorkflow%3C%3D%2D1+NOT+label%3ACode%2DReview%3C%3D%2D2+label%3ACode%2DReview%3E%3D2&amp;amp;Waiting+For+Reviews=project%3A%5E.%2Amistral.%2A+NOT+label%3AWorkflow%3C%3D%2D1+NOT+label%3AVerified%3C%3D%2D1+NOT+label%3ACode%2DReview%3E%3D2&amp;amp;You+are+a+reviewer%2C+but+haven%27t+voted+in+the+current+revision=project%3A%5E.%2Amistral.%2A+NOT+label%3ACode%2DReview%3C%3D2%2Cself+reviewer%3Aself+NOT+owner%3Aself+limit%3A10&amp;amp;Patches+that+mention+Mistral=NOT+project%3A%5E.%2Amistral.%2A+message%3Amistral+limit%3A20&amp;amp;Latest+Reviews=project%3A%5E.%2Amistral.%2A+limit%3A20"&gt;Mistral&lt;/a&gt; - Mistral patches, prioritised by how far they have moved.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;My main takeaway from this is using the Gerrit starring feature to track
+specific reviews. This helps me follow along with features that are important
+or interesting to me. This has really helped my workflow, as I previously lost
+or forgot about important reviews in the noise.&lt;/p&gt;</content><category term="python"></category><category term="openstack"></category><category term="gerrit"></category><category term="codereview"></category></entry><entry><title>Effective Code Review</title><link href="http://www.dougalmatthews.com/2017/Mar/09/effective-code-review/" rel="alternate"></link><published>2017-03-09T13:40:18+00:00</published><updated>2017-03-09T13:40:18+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2017-03-09:/2017/Mar/09/effective-code-review/</id><summary type="html">&lt;p&gt;I recently had the chance to speak with Michael Kennedy from &lt;a href="https://talkpython.fm/"&gt;Talk
 Python&lt;/a&gt; about code review and the &lt;a href="https://www.youtube.com/watch?v=uIwl01Nazdg"&gt;talk I gave at EuroPython&lt;/a&gt; last year.&lt;/p&gt;
 &lt;p&gt;It was lots of fun, if you want to check it out it, it is embedded below.&lt;/p&gt;
 &lt;iframe width="100%" height="166" scrolling="no" frameborder="no"

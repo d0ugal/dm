@@ -23,12 +23,12 @@
   <link rel="apple-touch-icon" sizes="144x144" href="/theme/img/iconified/apple-touch-icon-144x144.png" />
   <link rel="apple-touch-icon" sizes="152x152" href="/theme/img/iconified/apple-touch-icon-152x152.png" />
 
-  <title>MkDocs - Docs with Markdown - Dougal Matthews</title>
+  <title>How I Gerrit - Dougal Matthews</title>
   <meta charset="utf-8" />
   <link href="http://www.dougalmatthews.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Dougal Matthews Full Atom Feed" />
   <link href="http://www.dougalmatthews.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="Dougal Matthews RSS Feed" />
-  <link href="http://www.dougalmatthews.com/feeds/python.atom.xml" type="application/atom+xml" rel="alternate" title="Dougal Matthews Categories Atom Feed" />
-  <link href="http://www.dougalmatthews.com/feeds/python.rss.xml" type="application/rss+xml" rel="alternate" title="Dougal Matthews Categories RSS Feed" />
+  <link href="http://www.dougalmatthews.com/feeds/openstack.atom.xml" type="application/atom+xml" rel="alternate" title="Dougal Matthews Categories Atom Feed" />
+  <link href="http://www.dougalmatthews.com/feeds/openstack.rss.xml" type="application/rss+xml" rel="alternate" title="Dougal Matthews Categories RSS Feed" />
 
   <meta name="google-site-verification" content="IcOvKAxyUFNerZzvGS3tYBfHaQUhutWsnQrNZ8SDHrE" />
   <meta name="verify-v1" content="d4ZT12Eg5dza8IxtDZlqiZoC0EzBnLxeYeK2PTiaIrU=" />
@@ -66,50 +66,71 @@
       <div class="span8">
         <header>
           <h2 class="entry-title">
-            <a href="http://www.dougalmatthews.com/2015/May/09/mkdocs-docs-with-markdown/" rel="bookmark"
-              title="Permalink to MkDocs - Docs with Markdown">MkDocs - Docs with Markdown</a></h2>
+            <a href="http://www.dougalmatthews.com/2017/May/19/how-i-gerrit/" rel="bookmark"
+              title="Permalink to How I Gerrit">How I Gerrit</a></h2>
         </header>
         <footer class="post-info">
-          <time datetime="2015-05-09T13:17:00+01:00">
-            Sat 09 May 2015
+          <time datetime="2017-05-19T08:32:52+01:00">
+            Fri 19 May 2017
           </time>
         </footer><!-- /.post-info -->
-        <p><a href="http://www.mkdocs.org">MkDocs</a> is an open source Python tool for lowering the barrier to writing
-documentation. The goal is relatively simple and focused, we want to make it
-easier to write <a href="http://ericholscher.com/blog/2014/feb/27/how-i-judge-documentation-quality/">high quality</a> prose based documentation.</p>
-<p>Originally started by Tom Christie, I took over maintenance and development
-about 6 months ago. Since then there has been a number of interesting changes,
-I want to start writing about these, but first this post will introduce the
-project for those unfamiliar with it.</p>
-<h2>Quick start</h2>
-<p>The <a href="http://www.mkdocs.org">MkDocs documentation</a> takes you through the process of getting
-started in detail. This is the super quick version.</p>
+        <p>I use Gerrit every day, and it often feels like I am using it all day too. Over
+time I have started to develop a workflow that helps me more effectively manage
+the large volume of OpenStack reviews.</p>
+<p><strong>tl;dr - skip the the bottom to see the dashboards I use.</strong></p>
+<p>The general approach I take is to prioritise and filter reviews. I start
+filtering like this:</p>
 <ol>
-<li>
-<p>Start a new project with <code>mkdocs new my_project</code>. This will create a new
-   directory called my_project or add a mkdocs config to an existing
-   directory. It will also create a index.md file within a docs dir.</p>
-</li>
-<li>
-<p>Move into the directory you provided above and run <code>mkdocs serve</code></p>
-</li>
-<li>
-<p>Now open up the index.md file and start editing, when you save, the browser
-   should automatically refresh and show the new changes.</p>
-</li>
+<li>Look at starred reviews. These are reviews I have manually starred and want
+to keep track of.</li>
+<li>Find patches passing CI and with an existing +2. These should be in good
+shape and ready for review.</li>
+<li>Find patches passing CI but with no reviews. These are waiting for feedback.</li>
 </ol>
-<h2>What next?</h2>
-<p>You can <a href="http://www.mkdocs.org/user-guide/styling-your-docs/">change the theme</a>, create a <a href="http://www.mkdocs.org/user-guide/styling-your-docs/#custom-themes">custom theme</a>, tweak the <a href="http://www.mkdocs.org/user-guide/styling-your-docs/#custom-themes">navigation
-configuration</a> and <a href="/user-guide/writing-your-docs/#configure-pages-and-navigation">page titles</a>.</p>
-<p>I plan to follow up this post and share some of the changes and improvements
-coming in MkDocs. Both from a technical and users point of view.</p>
+<p>After that, it becomes a bit wild-west. I just look at everthing. I want to
+try and find a better way to group these, but the signal to noise ratio isn't
+great.</p>
+<h2>Dashboards</h2>
+<p>Gerrit has a neat Dashboard feature, that I think isn't very well exposed to
+users.</p>
+<div class="highlight"><pre><span></span>https://review.openstack.org/#/dashboard/?foreach=owner:self&amp;Open=is:open&amp;Closed=is%253Aclosed
+</pre></div>
+
+
+<p>That is a very simple example - the dashboard shows you your open patches, then
+below your closed patches. You can quickly write dashboards like this with some
+URL hacking.</p>
+<p>There seem to be two special query parameters, then the rest are the searches
+that you want. We have a base URL of https://review.openstack.org/#/dashboard/?
+and then <code>foreach</code> can be used to apply a search to all searches in the
+dashboard, this can be useful if you want to limit to a project (or a user, as
+we did above). <code>title</code> lets you set a title for the dashboard, pretty obvious!</p>
+<p>After that you can arbitrary query parameters, where the name of the parameter
+is the section title and the value is the search itself.</p>
+<h2>Gerrit Dash Creator</h2>
+<p>There is a nice Python project that helps you generate dashboards. I don't know
+all that much about it, I just forked the project, added three dashboards and
+ran tox to verify them.</p>
+<p>The best thing about this is the library of examples you can learn from.</p>
+<p>I have three dashboards, <a href="https://github.com/d0ugal/gerrit-dash-creator/blob/master/dashboards/d0ugal.dash">one for my patches</a> and one for the two
+primary projects I am involved in; <a href="https://github.com/d0ugal/gerrit-dash-creator/blob/master/dashboards/d0ugal-tripleo.dash">TripleO</a> and <a href="https://github.com/d0ugal/gerrit-dash-creator/blob/master/dashboards/d0ugal-mistral.dash">Mistral</a>. Now I have started
+storing them here, I expect over time I'll end up with a few others.</p>
+<h2>My Dashboards</h2>
+<p>As these depend on your account - i.e. patches you have submitted, or if you
+have starred patches, your results will vary.</p>
+<ul>
+<li><a href="https://review.openstack.org/#/dashboard/?title=My+Review+Dashboard&amp;foreach=&amp;Starred=is%253Astarred&amp;Negative+Review=owner%253Aself+is%253Aopen+label%253ACode%252DReview%253C%253D%252D1&amp;Failed+CI=owner%253Aself+label%253AVerified%253C%253D%252D1+is%253Aopen+NOT+label%253AWorkflow%253C%253D%252D1&amp;Work+In+Progress=owner%253Aself+is%253Aopen+label%253AWorkflow%253C%253D%252D1&amp;Waiting+For+Reviews=owner%253Aself+is%253Aopen+NOT+label%253AWorkflow%253C%253D%252D1+NOT+label%253AVerified%253C%253D%252D1+NOT+label%253ACode%252DReview%253E%253D2&amp;Waiting+For+Second+Review=owner%253Aself+is%253Aopen+NOT+label%253AWorkflow%253E%253D1+NOT+label%253ACode%252DReview%253C%253D%252D2+label%253ACode%252DReview%253E%253D2&amp;Reviewing=reviewer%253Aself+is%253Aopen+NOT+owner%253Aself+limit%253A20&amp;My+Closed=owner%253Aself+is%253Aclosed+limit%253A20">My Dashboard</a> - mostly patches I have submitted, but also a few others I want</li>
+<li><a href="https://review.openstack.org/#/dashboard/?title=TripleO+Review+Dashboard&amp;foreach=%2528project%253Aopenstack%252Fpython%252Dtripleoclient+OR%250Aproject%253Aopenstack%252Ftripleo%252Dcommon%2529+is%253Aopen&amp;Starred=is%253Astarred&amp;Waiting+For+Second+Review=NOT+label%253AWorkflow%253C%253D%252D1+NOT+label%253ACode%252DReview%253C%253D%252D2+label%253ACode%252DReview%253E%253D2&amp;Waiting+For+Reviews=NOT+label%253AWorkflow%253C%253D%252D1+NOT+label%253AVerified%253C%253D%252D1+NOT+label%253ACode%252DReview%253E%253D2&amp;You+are+a+reviewer%252C+but+haven%2527t+voted+in+the+current+revision=NOT+label%253ACode%252DReview%253C%253D2%252Cself+reviewer%253Aself+NOT+owner%253Aself+limit%253A10&amp;Latest+Reviews=limit%253A20">TripleO</a> - TripleO patches. Limited to the projects I am core in and with some prioritisation.</li>
+<li><a href="https://review.openstack.org/#/dashboard/?title=Mistral+Review+Dashboard&amp;foreach=is%3Aopen&amp;Starred=project%3A%5E.%2Amistral.%2A+is%3Astarred&amp;Waiting+For+Second+Review=project%3A%5E.%2Amistral.%2A+NOT+label%3AWorkflow%3C%3D%2D1+NOT+label%3ACode%2DReview%3C%3D%2D2+label%3ACode%2DReview%3E%3D2&amp;Waiting+For+Reviews=project%3A%5E.%2Amistral.%2A+NOT+label%3AWorkflow%3C%3D%2D1+NOT+label%3AVerified%3C%3D%2D1+NOT+label%3ACode%2DReview%3E%3D2&amp;You+are+a+reviewer%2C+but+haven%27t+voted+in+the+current+revision=project%3A%5E.%2Amistral.%2A+NOT+label%3ACode%2DReview%3C%3D2%2Cself+reviewer%3Aself+NOT+owner%3Aself+limit%3A10&amp;Patches+that+mention+Mistral=NOT+project%3A%5E.%2Amistral.%2A+message%3Amistral+limit%3A20&amp;Latest+Reviews=project%3A%5E.%2Amistral.%2A+limit%3A20">Mistral</a> - Mistral patches, prioritised by how far they have moved.</li>
+</ul>
+<p>My main takeaway from this is using the Gerrit starring feature to track
+specific reviews. This helps me follow along with features that are important
+or interesting to me. This has really helped my workflow, as I previously lost
+or forgot about important reviews in the noise.</p>
       </div>
       <div class="span4 hidden-phone readinglist">
         <h4>Other recent posts ... </h4>
         <ul>
-          <li><a href="/2017/May/19/how-i-gerrit/" rel="bookmark" title="Permanent Link to How I Gerrit">
-            How I Gerrit
-          </a></li>
           <li><a href="/2017/Mar/09/effective-code-review/" rel="bookmark" title="Permanent Link to Effective Code Review">
             Effective Code Review
           </a></li>
