@@ -1,12 +1,12 @@
 ##########################################
 # Site Settings
 
-baseURL = "https://example.com/"
-title = "Hugo Theme MemE"
+baseURL = "https://www.dougalmatthews.com/"
+title = "Dougal Matthews"
 languageCode = "en"
 hasCJKLanguage = false
 # Copyright information (Markdown supported)
-copyright = "[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)"
+copyright = "Dougal Matthews"
 
 # Name of theme
 theme = "meme"
@@ -25,7 +25,7 @@ pluralizeListTitles = false
 summaryLength = 42
 
 # Enable Emoji emoticons support?
-enableEmoji = false
+enableEmoji = true
 
 # Text to display for footnote return links
 footnoteReturnLinkContents = "↩"
@@ -98,17 +98,17 @@ uglyURLs = false
 # Author’s information
 [author]
     # Name
-    name = "reuixiy"
+    name = "Dougal Matthews"
     # Email
-    email = "reuixiy@gmail.com"
+    email = "dougal@dougalmatthews.com"
     # Motto or introduction
-    motto = "Viva La Vida"
+    motto = ""
     # Avatar
     avatar = "/icons/apple-touch-icon.png"
     # Personal website, default: baseURL
-    website = "https://io-oi.me/"
+    website = "https://www.dougalmatthews.com/"
     # Twitter
-    twitter = "reuixiy"
+    twitter = "d0ugal"
 
 # Related content
 [related]
