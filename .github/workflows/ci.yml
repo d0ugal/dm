@@ -1,0 +1,40 @@
+# .github/workflows/ci.yml
+
+name: ci
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 'Clone gohugoio/hugoBasicExample repository'
+      run: |
+        git clone --recurse-submodules https://github.com/d0ugal/dm.git
+
+    - name: 'Check out MemE into themes/meme folder'
+      uses: actions/checkout@v2
+      with:
+        path: dm/themes/meme
+
+    - name: 'Install Hugo'
+      uses: peaceiris/actions-hugo@v2
+      with:
+        hugo-version: latest
+        extended: true
+
+    - name: 'Build site'
+      run: |
+        cd dm
+        hugo --gc --minify --cleanDestinationDir --baseURL="https://www.dougalmatthews.com/"
+
+    - name: 'Deploy to GitHub Pages'
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: dm/public
+        force_orphan: true
