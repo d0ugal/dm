@@ -532,7 +532,7 @@ uglyURLs = false
     defaultTheme = "light"
     # Note: light or dark
 
-    hideThemeToggle = false
+    hideThemeToggle = true
     hideThemeToggleInHome = false
     # Note: If dark mode is enabled and
     #       theme toggle is hidden, your
@@ -1291,7 +1291,7 @@ uglyURLs = false
     #       https://busuanzi.ibruce.info/
 
     # Socials
-    enableSocials = true
+    enableSocials = false
     # Note: see data/Socials.toml
 
 
@@ -1347,7 +1347,7 @@ uglyURLs = false
     # Note: render only in production
     #       environment
 
-    enableForceHTTPS = false
+    enableForceHTTPS = true
     # Note: use JavaScript for redirection.
     #       You can enable this if your
     #       server does not support forced
@@ -1357,7 +1357,7 @@ uglyURLs = false
     ######################################
     # Smooth Scroll
 
-    enableSmoothScroll = true
+    enableSmoothScroll = false
 
 
     ######################################
