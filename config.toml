@@ -1098,7 +1098,7 @@ uglyURLs = false
 
     enablePostUpdatedBadge = true
 
-    displayUpdatedBadge = true
+    displayUpdatedBadge = false
     # Note: *global settings*
     #       `badge` in post’s Front Matter
     #       has a higher priority than here
