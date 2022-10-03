@@ -1272,7 +1272,7 @@ uglyURLs = false
     iconAnimation = true
 
     # Display links to Hugo and MemE?
-    displayPoweredBy = false
+    displayPoweredBy = true
 
     displaySiteCopyright = true
 
