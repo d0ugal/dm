@@ -1,5 +1,6 @@
 #!/bin/sh -xe
 
+touch ./output/tmp;
 rm -r ./output/*;
 ./build.sh;
 
