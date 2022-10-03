@@ -202,13 +202,13 @@ uglyURLs = false
 #               `lang-switcher`, `search`)
 
 [menu]
-     # Menu bar
-     [[menu.main]]
-         pageref = "/"
-         name = "Home"
-         weight = 1
-         pre = "internal"
-         post = "home"
+    ## Menu bar
+    # [[menu.main]]
+    #     pageref = "/"
+    #     name = "Home"
+    #     weight = 1
+    #     pre = "internal"
+    #     post = "home"
     [[menu.main]]
         pageref = "/posts/"
         name = "Posts"
@@ -217,6 +217,12 @@ uglyURLs = false
         post = "archive"
     [[menu.main]]
         weight = 3
+        identifier = "theme-switcher"
+    [[menu.main]]
+        weight = 4
+        identifier = "lang-switcher"
+    [[menu.main]]
+        weight = 5
         identifier = "search"
         post = "search"
 
