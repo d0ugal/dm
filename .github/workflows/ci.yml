@@ -12,9 +12,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: 'Clone dm/dm repository'
+    - name: 'Clone gohugoio/hugoBasicExample repository'
       run: |
         git clone --recurse-submodules https://github.com/d0ugal/dm.git
+
+    - name: 'Check out MemE into themes/meme folder'
+      uses: actions/checkout@v2
+      with:
+        path: dm/themes/meme
 
     - name: 'Install Hugo'
       uses: peaceiris/actions-hugo@v2
