@@ -1157,7 +1157,7 @@ uglyURLs = false
     ######################################
     # Post Share
 
-    enablePostShare = false
+    enablePostShare = true
 
     displayPostShare = true
     # Note: *global settings*
