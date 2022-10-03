@@ -26,12 +26,9 @@ slowly getting into running and cycling.
 Curriculum vitae
 ~~~~~~~~~~~~~~~~
 
-Thanks for showing an interest in my CV. If you have any questions or
-need a different format, please `get in touch`_. Otherwise, just `download
-the pdf copy`_.
+Thanks for showing an interest in my CV. I'd be happy to send you a copy, jus `get in touch`_. 
 
 .. _get in touch: dougal@dougalmatthews.com
-.. _download the pdf copy: /theme/dougalmatthews.pdf
 
 
 Conferences and User Groups
@@ -48,19 +45,18 @@ occasionally speak at conferences when I have the opportunity.
 Development Environment
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-I mostly write Python in Sublime Text 3. When writing for the web I
-typically use Flask or Django. This website however is a static website
-with Pelican - which is awesome.
+I mostly write Python in vim. When writing for the web I typically use Flask or
+Django. This website however is a static website with Pelican - which is
+awesome.
 
 My current ideal general purpose web stack looks something like Nginx,
-Gunicorn, Postgres, Python, Redis. However, this very much depends on
-the project and other tools such as ElasticSearch make a great addition.
-I try to automate all my systems administration work and even my local
-development environment. For this I have used Chef but more recently
-I've been preferring to use Salt Stack.
+Gunicorn, Postgres, Python, Redis. However, this very much depends on the
+project and other tools such as ElasticSearch make a great addition. I try to
+automate all my systems administration work and even my local development
+environment. For this I have used Chef but more recently I've been preferring
+to use Salt Stack.
 
-I usually work within OSX but spend much of that time in iTerm 2 and
-using Ubuntu (or, at least, Debian) virtual machines.
+I work happily on MacOS and Linux.
 
 
 Getting in touch.
