@@ -217,9 +217,6 @@ uglyURLs = false
         post = "archive"
     [[menu.main]]
         weight = 3
-        identifier = "theme-switcher"
-    [[menu.main]]
-        weight = 4
         identifier = "search"
         post = "search"
 
