@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews - centos</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/tag/centos.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2008-09-03T19:25:00+01:00</updated><entry><title>Changing default storage engine in MySQL</title><link href="http://www.dougalmatthews.com/2008/Sep/03/changing-default-storage-engine-in-mysql/" rel="alternate"></link><published>2008-09-03T19:25:00+01:00</published><updated>2008-09-03T19:25:00+01:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2008-09-03:/2008/Sep/03/changing-default-storage-engine-in-mysql/</id><summary type="html">&lt;p&gt;It took me a while to find the answer to this, so I thought I'd share it to
+avoid anybody else wasting time with this. I needed to change the default
+storage engine so Django would use innoDB rather than MyISAM. Otherwise, it
+seemed to take the default.&lt;/p&gt;
+&lt;p&gt;You first …&lt;/p&gt;</summary><content type="html">&lt;p&gt;It took me a while to find the answer to this, so I thought I'd share it to
+avoid anybody else wasting time with this. I needed to change the default
+storage engine so Django would use innoDB rather than MyISAM. Otherwise, it
+seemed to take the default.&lt;/p&gt;
+&lt;p&gt;You first need to locate the MySQL config file named my.cnf. On CentOS 5.2 it
+is located at /etc/my.cnf but this will probably vary across platforms.&lt;/p&gt;
+&lt;p&gt;Then in that file find the [mysqld] and add add the following line below it
+as shown below.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;[mysqld]
+default-storage-engine = innodb
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Finally, make sure you restart MySQL.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;service mysqld restart
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;It's pretty easy when you know how, and you'll now had transactional tables by
+default.&lt;/p&gt;
+&lt;p&gt;Alterantivaley though, you could use a &lt;a class="reference external" href="http://www.postgresql.org/"&gt;much better database&lt;/a&gt;.&lt;/p&gt;
+</content><category term="mysql"></category><category term="centos"></category><category term="django"></category><category term="innodb"></category><category term="mysql"></category></entry></feed>

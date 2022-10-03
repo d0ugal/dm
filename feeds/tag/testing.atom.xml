@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews - testing</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/tag/testing.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2010-01-20T19:25:00+00:00</updated><entry><title>Testing your first Django app</title><link href="http://www.dougalmatthews.com/2010/Jan/20/testing-your-first-django-app/" rel="alternate"></link><published>2010-01-20T19:25:00+00:00</published><updated>2010-01-20T19:25:00+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2010-01-20:/2010/Jan/20/testing-your-first-django-app/</id><summary type="html">&lt;p&gt;This is my &lt;strong&gt;unofficial&lt;/strong&gt; part five for the &lt;a class="reference external" href="http://docs.djangoproject.com/en/1.1/intro/tutorial01/#intro-tutorial01"&gt;Django tutorial&lt;/a&gt;. I've attempted
+to write this in a similar style to the Django documentation and hopefully
+this will be useful for those looking for the next step after the tutorial or
+trying out testing with django for the first time. Testing …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This is my &lt;strong&gt;unofficial&lt;/strong&gt; part five for the &lt;a class="reference external" href="http://docs.djangoproject.com/en/1.1/intro/tutorial01/#intro-tutorial01"&gt;Django tutorial&lt;/a&gt;. I've attempted
+to write this in a similar style to the Django documentation and hopefully
+this will be useful for those looking for the next step after the tutorial or
+trying out testing with django for the first time. Testing is something I
+think we can all do better, I certainly know I could do better testing my code
+sometimes.&lt;/p&gt;
+&lt;p&gt;If you don't have the polls app from the end of &lt;a class="reference external" href="http://docs.djangoproject.com/en/1.1/intro/tutorial04/#intro-tutorial04"&gt;part four&lt;/a&gt; and don't want to
+do it again you can grab it from &lt;a class="reference external" href="https://github.com/d0ugal/django_tutorial/commits/P4"&gt;my github&lt;/a&gt;. The code added in this tutorial
+is also available in the &lt;a class="reference external" href="https://github.com/d0ugal/django_tutorial/commits/master"&gt;master branch&lt;/a&gt; of the repository.&lt;/p&gt;
+&lt;hr class="docutils" /&gt;
+&lt;p&gt;This tutorial begins where Tutorial 4 left off. We're continuing the
+Web-poll application and will focus on testing our application and
+proving that it works as expected.&lt;/p&gt;
+&lt;div class="section" id="the-testing-environment"&gt;
+&lt;h2&gt;The testing environment&lt;/h2&gt;
+&lt;p&gt;Let's first look at how you run the tests, make sure you are in the
+mysite directory and run the command &lt;cite&gt;python manage.py test&lt;/cite&gt;. You will
+see output similar to this:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Creating test database...
+Creating table auth_permission
+Creating table auth_group
+Creating table auth_user
+Creating table auth_message
+Creating table django_admin_log
+Creating table django_content_type
+Creating table django_session
+Creating table django_site
+Creating table polls_poll
+Creating table polls_choice
+Installing index for auth.Permission model
+Installing index for auth.Message model
+Installing index for admin.LogEntry model
+Installing index for polls.Choice model
+...................................
+------------------------------------------------------------------
+Ran 35 tests in 0.565s
+
+OK
+Destroying test database...
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You have successfully ran the test suite for the project. If your output
+doesn't look like this and it appears some of the tests have failed you
+may want to take a moment and go back to make sure your project matches
+the end of part 4.&lt;/p&gt;
+&lt;p&gt;When you run the test suite Django creates a new test database,
+synchronises your applications and loads any fixtures into the database.
+Each test is then executed in turn wrapped inside a database transaction
+so it can be rolled back after each test is completed. At the end of the
+tests Django destroys the test database for you.&lt;/p&gt;
+&lt;p&gt;What did we just test? &lt;cite&gt;manage.py test&lt;/cite&gt; runs all the tests for each of
+the applications in your INSTALLED_APPS setting. All of the
+django.contrib applications ship with tests, as should all of yours.
+This is great as we can use this to test that the contrib applications
+are all configured correctly.&lt;/p&gt;
+&lt;p&gt;Run the same command again but include the verbose flag so we can see
+more information about what actually just happened. To do this run the
+command &lt;cite&gt;python manage.py test -v 2&lt;/cite&gt;. There will be more output this
+time showing each of the tests that were carried out with the test
+outcome.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="what-is-a-test"&gt;
+&lt;h2&gt;What is a test?&lt;/h2&gt;
+&lt;p&gt;With Django (and Python in general) there are two main ways to write tests for
+your projects test suite; doctests and unit tests. In Django both of these use
+the standard python modules &lt;a class="reference external" href="http://docs.python.org/library/doctest.html"&gt;doctest&lt;/a&gt; and &lt;a class="reference external" href="http://docs.python.org/library/unittest.html"&gt;unittest&lt;/a&gt;. Doctests are written
+in Python docstrings and unit test are defined with classes. Good generic
+examples and explanations can be found on both of these in the Django
+documentation &lt;a class="reference external" href="http://docs.djangoproject.com/en/1.1/topics/testing/#writing-doctests"&gt;here&lt;/a&gt; and &lt;a class="reference external" href="http://docs.djangoproject.com/en/1.1/topics/testing/#writing-unit-tests"&gt;here also&lt;/a&gt;. If your unsure which to use, &lt;a class="reference external" href="http://docs.djangoproject.com/en/dev/topics/testing/#which-should-i-use"&gt;read
+this&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;For the sake of being succinct we  will focus on unit tests in this
+tutorial.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="writing-a-test"&gt;
+&lt;h2&gt;Writing a test&lt;/h2&gt;
+&lt;p&gt;In part one it was noted in passing that when you created your polls
+application the file &lt;cite&gt;tests.py&lt;/cite&gt; was created. The more adventurous of you
+will have taken a look and seen a simple (but redundant) example
+unit test and doctest. Django's test runner by default runs any tests
+that you create in &lt;cite&gt;tests.py&lt;/cite&gt; in the application package. This is
+similar to the auto detection of admin configurations in the &lt;cite&gt;admin.py&lt;/cite&gt;
+files.&lt;/p&gt;
+&lt;p&gt;To run only the tests for a specific application run the following
+command &lt;cite&gt;python manage.py test polls&lt;/cite&gt;. This will run the two
+default tests that are present in the polls application we created
+earlier in the tutorial.&lt;/p&gt;
+&lt;p&gt;Delete the contents of the tests.py file and add the following test
+case.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;datetime&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;datetime&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.test&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;TestCase&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;mysite.polls.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Poll&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;PollTest&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;TestCase&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;setUp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;question&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;What is your favourite colour?&amp;quot;&lt;/span&gt;
+        &lt;span class="n"&gt;now&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;now&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;poll&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Poll&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;create&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;question&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;question&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;pub_date&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;now&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;poll&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;choice_set&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;create&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;choice&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Red&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;votes&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;poll&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;choice_set&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;create&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;choice&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Bue&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;votes&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;poll&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;choice_set&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;create&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;choice&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Green&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;votes&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;test_models&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;assertEqual&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;poll&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;choice_set&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;all&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;In this test case the &lt;cite&gt;setUp&lt;/cite&gt; method creates a new poll and adds three
+choices to the poll. Remember since the test runner creates its own
+database there is no data yet. &lt;cite&gt;setUp&lt;/cite&gt; is called at the start of each
+test defined within your test case class. The test verifies that the
+number of choices in the created poll is equal to 3. A test is a method
+that starts with &lt;cite&gt;test_&lt;/cite&gt; and is a property of a class extending
+TestCase.&lt;/p&gt;
+&lt;p&gt;Try playing with this and making the test fail by changing the number or
+adding/removing choices. The test can also end with an error result if
+there is an uncaught exception, this can be done by adding
+&lt;cite&gt;Poll.objects.get(pk=2)&lt;/cite&gt; as there isn't a poll with that id. It's
+worth familiarising yourself with the different possible test results.&lt;/p&gt;
+&lt;p&gt;When running your the tests by running &lt;cite&gt;python manage.py test polls&lt;/cite&gt;
+the output displays a single &lt;cite&gt;.&lt;/cite&gt; for each test that passes. If a test
+fails a &lt;cite&gt;F&lt;/cite&gt; will be displated and if there is an error &lt;cite&gt;E&lt;/cite&gt; will be
+displayed. A failure is when one of the assertions fails and an error
+happens when there is an uncaught exception while running the test.&lt;/p&gt;
+&lt;p&gt;Let's add another test case that does something more useful.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# ...&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.test&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Client&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;mysite.polls.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Poll&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Choice&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;PollTest&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;TestCase&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+
+    &lt;span class="c1"&gt;# ...&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;test_voting&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Client&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+        &lt;span class="c1"&gt;# Perform a vote on the poll by mocking a POST request.&lt;/span&gt;
+        &lt;span class="n"&gt;response&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;post&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/polls/1/vote/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;choice&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,})&lt;/span&gt;
+        &lt;span class="c1"&gt;# In the vote view we redirect the user, so check the&lt;/span&gt;
+        &lt;span class="c1"&gt;# response status code is 302.&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;assertEqual&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;status_code&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;302&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="c1"&gt;# Get the choice and check there is now one vote.&lt;/span&gt;
+        &lt;span class="n"&gt;choice&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Choice&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;objects&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pk&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;assertEqual&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;choice&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;votes&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;In this example we make use of the Django test client. Using the client
+we are able to simulate requests without the need for a server, rather
+the request object is mocked and the view is invoked with the mock
+request. In this test we create a POST request that mocks a vote on the
+poll and then checks both the status_code of the response (to check we
+have been redirected) and verifies the number of votes has increased.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="test-driven-development"&gt;
+&lt;h2&gt;Test driven development&lt;/h2&gt;
+&lt;p&gt;Test driven development is the practice of writing tests that fail and
+show what the system should do and then write or change the code to
+make the test(s) pass.&lt;/p&gt;
+&lt;p&gt;Next we want to add some Ajax to our application, to do this we want to
+be able to call the vote with an Ajax request and recieve some simple
+information we can work with rather than the full html response. First
+we will write the test for how we want this to work. We want the system
+to return &lt;cite&gt;'1'&lt;/cite&gt; on a valid vote and &lt;cite&gt;'0'&lt;/cite&gt; on an invalid vote in the http
+response.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;PollTest&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;TestCase&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+
+    &lt;span class="c1"&gt;# ...&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;test_ajax_vote&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+
+        &lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Client&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+        &lt;span class="c1"&gt;# Extra parameters to make this a Ajax style request.&lt;/span&gt;
+        &lt;span class="n"&gt;kwargs&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;HTTP_X_REQUESTED_WITH&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;XMLHttpRequest&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+
+        &lt;span class="c1"&gt;# A valid vote&lt;/span&gt;
+        &lt;span class="n"&gt;response&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;post&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/polls/1/vote/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;choice&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,},&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;assertEqual&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;status_code&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;200&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;assertEqual&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+        &lt;span class="c1"&gt;# A invalid vote - choice doesn&amp;#39;t exist&lt;/span&gt;
+        &lt;span class="n"&gt;response&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;post&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/polls/1/vote/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;choice&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;10&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,},&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;assertEqual&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;status_code&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;200&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;assertEqual&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+        &lt;span class="c1"&gt;# An invalid vote - poll doesn&amp;#39;t exist&lt;/span&gt;
+        &lt;span class="n"&gt;response&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;post&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;/polls/2/vote/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;choice&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,},&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;assertEqual&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;status_code&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;404&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Add this to your tests and then run the test suite. You should get
+output similar to this;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;F..
+===================================================================
+FAIL: test_ajax_vote (mysite.polls.tests.PollTest)
+-------------------------------------------------------------------
+Traceback (most recent call last):
+  File &amp;quot;/mysite/polls/tests.py&amp;quot;, line 41, in test_ajax_vote
+    self.assertEqual(response.status_code, 200)
+AssertionError: 302 != 200
+
+-------------------------------------------------------------------
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;We have not updated our view, so rather than returning something useful
+for the Ajax request the server has returned a redirect to the results
+page. This then means the test fails at the first hurdle when we check
+the response code.&lt;/p&gt;
+&lt;p&gt;Now all we need to do is update the code in the vote view to make the
+tests pass. Change your view so it matches the following.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;vote&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;poll_id&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;get_object_or_404&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Poll&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;pk&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;poll_id&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;selected_choice&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;choice_set&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pk&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;POST&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;choice&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+    &lt;span class="k"&gt;except&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ne"&gt;KeyError&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Choice&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DoesNotExist&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="c1"&gt;# bad vote, return &amp;#39;0&amp;#39;&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;is_ajax&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;HttpResponse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;0&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="c1"&gt;# Redisplay the poll voting form.&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;render_to_response&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;polls/poll_detail.html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="s1"&gt;&amp;#39;object&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="s1"&gt;&amp;#39;error_message&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;You didn&amp;#39;t select a choice.&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="p"&gt;})&lt;/span&gt;
+    &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;selected_choice&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;votes&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+        &lt;span class="n"&gt;selected_choice&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+        &lt;span class="c1"&gt;# vote saved, return &amp;#39;1&amp;#39;&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;is_ajax&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;HttpResponse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;1&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="c1"&gt;# Always return an HttpResponseRedirect after successfully dealing&lt;/span&gt;
+        &lt;span class="c1"&gt;# with POST data. This prevents data from being posted twice if a&lt;/span&gt;
+        &lt;span class="c1"&gt;# user hits the Back button.&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;HttpResponseRedirect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;reverse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;poll_results&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;,)))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Re-run the test suite and it should now pass. You have successfully
+written your first tests for the polls app and even done a little bit of
+test driven development.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="what-next-and-further-reading"&gt;
+&lt;h2&gt;What next and further reading&lt;/h2&gt;
+&lt;p&gt;Now you should have a good understanding of testing basics and hopefully
+a better idea of how to test your applications. Testing is really quite
+straight forward much of the time, you simply write a bit more code to
+make sure the code you have actually works - it's invaluable when you
+get into the routine and have a comprehensive test suite.&lt;/p&gt;
+&lt;p&gt;Here are a few resources that you should look at for taking the next
+step.&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Python &lt;a class="reference external" href="http://docs.python.org/library/unittest.html"&gt;unittest documentation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Python &lt;a class="reference external" href="http://docs.python.org/library/doctest.html"&gt;doctest documentation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;The Django &lt;a class="reference external" href="http://docs.djangoproject.com/en/dev/topics/testing/"&gt;testing documentation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Eric Holscher's awesome &lt;a class="reference external" href="http://djangocon.blip.tv/file/3039829/"&gt;DjangoCon talk about testing&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr class="docutils" /&gt;
+&lt;p&gt;Finally, leaving you with this message:&lt;/p&gt;
+&lt;blockquote&gt;
+&amp;quot;Code without tests is broken as designed&amp;quot;
+- Jacob Kaplan-Moss&lt;/blockquote&gt;
+&lt;/div&gt;
+</content><category term="python"></category><category term="testing"></category><category term="unittest"></category><category term="tdd"></category><category term="django"></category><category term="python"></category></entry></feed>

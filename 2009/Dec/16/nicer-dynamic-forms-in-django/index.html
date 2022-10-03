@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <link rel="icon" href="/theme/img/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="/theme/css/bootstrap.css" type="text/css" media="screen, projection" />
+  <link rel="stylesheet" href="/theme/css/bootstrap-responsive.css" type="text/css" media="screen, projection" />
+  <link href='http://fonts.googleapis.com/css?family=Lato:regular|PT+Serif+Caption|PT+Serif|Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+  <link href="/theme/css/monokai.css" rel="stylesheet" type="text/css" />
+  <link href="/theme/css/style.css" rel="stylesheet" type="text/css" />
+
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="57x57" href="/theme/img/iconified/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="60x60" href="/theme/img/iconified/apple-touch-icon-60x60.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/theme/img/iconified/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="76x76" href="/theme/img/iconified/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/theme/img/iconified/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="120x120" href="/theme/img/iconified/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/theme/img/iconified/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="/theme/img/iconified/apple-touch-icon-152x152.png" />
+
+  <title>Nicer dynamic forms in django - Dougal Matthews</title>
+  <meta charset="utf-8" />
+  <link href="http://www.dougalmatthews.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Dougal Matthews Full Atom Feed" />
+
+  <meta name="google-site-verification" content="IcOvKAxyUFNerZzvGS3tYBfHaQUhutWsnQrNZ8SDHrE" />
+  <meta name="verify-v1" content="d4ZT12Eg5dza8IxtDZlqiZoC0EzBnLxeYeK2PTiaIrU=" />
+  <meta name="msvalidate.01" content="08FE3976E4596314289973311F691DC2" />
+  <meta name="y_key" content="ef34f6756bc76371" />
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="navbar-centre">
+        <a class="brand" href="/"><span class="red">Dougal</span> <span class="white">Matthews</span></a>
+        <ul class="nav">
+            <li ><a href="/code/">Code</a></li>
+            <!--<li ><a href="/projects/">Projects</a></li>-->
+            <li ><a href="/work/">Work</a></li>
+            <li ><a href="/talks/">Talks</a></li>
+            <li ><a href="/about/">About</a></li>
+        <ul class="nav">
+      </div>
+    </div>
+  </div>
+
+  <div id="content_wrapper">
+
+    <div id="content" class="container prepent-top">
+
+<section id="content" class="body">
+  <div class="entry-content">
+    <div class="row">
+      <div class="span8">
+        <header>
+          <h2 class="entry-title">
+            <a href="http://www.dougalmatthews.com/2009/Dec/16/nicer-dynamic-forms-in-django/" rel="bookmark"
+              title="Permalink to Nicer dynamic forms in django">Nicer dynamic forms in django</a></h2>
+        </header>
+        <footer class="post-info">
+          <time datetime="2009-12-16T19:25:00+00:00">
+            Wed 16 December 2009
+          </time>
+        </footer><!-- /.post-info -->
+        <p>I used to make dynamic forms for Django in very bad way, I'm happy to admit
+that now as I've improved my process.</p>
+<p>Basically the solution is to use <cite>type()</cite> as I'm sure many of you know. If your
+doing that already there isn't much for you here. If your messing around with
+'<cite>self.fields[&quot;name&quot;]</cite>' in your forms then read on.</p>
+<p>Lets take a simple use case; a quiz system. You can think of it like who
+wants to be a millionaire. We will have a Question with four possible
+answers. So two models...</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+
+<span class="k">class</span> <span class="nc">Question</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">test</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Answer</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">question</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Question</span><span class="p">)</span>
+    <span class="n">test</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+    <span class="n">is_correct</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+<p>Basically we want a form that stores both the question and the
+answers and checks the answer is a valid choice. You could do it this way.</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">forms</span>
+
+<span class="k">class</span> <span class="nc">QuizForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">Form</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">question</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">QuizForm</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">fields</span><span class="p">[</span><span class="s1">&#39;question&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">widget</span><span class="o">=</span> \
+            <span class="n">forms</span><span class="o">.</span><span class="n">HiddenInput</span><span class="p">,</span> <span class="n">initial</span><span class="o">=</span><span class="n">question</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fields</span><span class="p">[</span><span class="s1">&#39;answers&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">forms</span><span class="o">.</span><span class="n">ModelChoiceField</span><span class="p">(</span><span class="n">queryset</span><span class="o">=</span> \
+            <span class="n">question</span><span class="o">.</span><span class="n">answers_set</span><span class="p">)</span>
+</pre></div>
+<p>Now in this example that's actually not too bad. It's still a bit hacky
+as we tap into the fields dict after calling the parents constructor. I
+have a variant of this where I moved the field generation out of the
+<cite>__init__</cite> but that doesn't really change much - just gives you the
+option of calling it later. Remember this is a very simple example,
+what if you need to generate a class based on 20 parameters?</p>
+<p>So how can we solve this with <cite>type()</cite>? Well lets step back a minute and
+quickly refresh ourselves with the builtin function <cite>type()</cite>. There are
+two ways to use this function the first is by calling <cite>type(object)</cite>
+and the type of that object is returned. The second is to create
+classes at runtime by using <cite>type()</cite> as a class constructor.</p>
+<p>First lets look at an example that has exactly with the same result
+as the previous example.</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">quiz_form_factory</span><span class="p">(</span><span class="n">question</span><span class="p">):</span>
+
+    <span class="n">properties</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;question&#39;</span> <span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">widget</span><span class="o">=</span><span class="n">forms</span><span class="o">.</span><span class="n">HiddenInput</span><span class="p">,</span> \
+            <span class="n">initial</span><span class="o">=</span><span class="n">question</span><span class="o">.</span><span class="n">id</span><span class="p">),</span>
+        <span class="s1">&#39;answers&#39;</span> <span class="p">:</span> <span class="n">forms</span><span class="o">.</span><span class="n">ModelChoiceField</span><span class="p">(</span><span class="n">queryset</span><span class="o">=</span> \
+            <span class="n">question</span><span class="o">.</span><span class="n">answers_set</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="s1">&#39;QuizForm&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">Form</span><span class="p">,),</span> <span class="n">properties</span><span class="p">)</span>
+</pre></div>
+<p>And there we go, it's as simple as that. When using <cite>type()</cite> to
+construct classes it takes three parameters
+<cite>type(class_name, base_classes_tuple, properties_dict)</cite>; the name
+of the class, the base classes it inherits from and the properties the
+created class will have.</p>
+<p>Besides the above implementation the usage is slightly different.</p>
+<div class="highlight"><pre><span></span><span class="c1"># start with a random question</span>
+<span class="n">question</span> <span class="o">=</span> <span class="n">Question</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;?&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># method A</span>
+<span class="n">quiz_form</span> <span class="o">=</span> <span class="n">QuizForm</span><span class="p">(</span><span class="n">question</span><span class="p">)</span>
+<span class="c1"># or with POST data</span>
+<span class="n">quiz_form</span> <span class="o">=</span> <span class="n">QuizForm</span><span class="p">(</span><span class="n">question</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">)</span>
+
+<span class="c1"># method B</span>
+<span class="n">QuizForm</span> <span class="o">=</span> <span class="n">quiz_form_factory</span><span class="p">(</span><span class="n">question</span><span class="p">)</span>
+<span class="n">quiz_form</span> <span class="o">=</span> <span class="n">QuizForm</span><span class="p">()</span>
+<span class="c1"># or with POST data</span>
+<span class="n">quiz_form</span> <span class="o">=</span> <span class="n">QuizForm</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">)</span>
+</pre></div>
+<p>Again, perhaps I should have chosen a more complex example as the
+the first method may not look to bad and  requires less code but its
+not <em>nice</em>. Using this approach basically class initialisation with the
+preparation and modification of said class. The second is  much
+clearer as you explicitly generate a class then create an instance of it.</p>
+<p>The main advantage for me is the clarify this gives you and the code
+used to make it dynamic is clear and better structured. It's also
+worth mentioning that with a <cite>type()</cite> constructed form it behaves
+exactly like a regular form after creation where with method A the
+developer needs to pass in the question instance each time and be aware
+of this requirement and how it varies from a typical Django style form.</p>
+
+      </div>
+      <div class="span4 hidden-phone readinglist">
+        <h4>Other recent posts ... </h4>
+        <ul>
+          <li><a href="/2014/Mar/02/python-glasgow-march-dojo/" rel="bookmark" title="Permanent Link to Python Glasgow March Dojo">
+            Python Glasgow March Dojo
+          </a></li>
+          <li><a href="//notes/running-a-code-dojo/" rel="bookmark" title="Permanent Link to Running a Code Dojo">
+            Running a Code Dojo
+          </a></li>
+          <li><a href="/2013/Nov/18/joining-red-hat/" rel="bookmark" title="Permanent Link to Joining Red Hat">
+            Joining Red Hat
+          </a></li>
+          <li><a href="//notes/postgres-the-cool-stuff/" rel="bookmark" title="Permanent Link to PostgreSQL, The cool stuff.">
+            PostgreSQL, The cool stuff.
+          </a></li>
+          <li><a href="//notes/sublimetext/" rel="bookmark" title="Permanent Link to SublimeText">
+            SublimeText
+          </a></li>
+        </ul>
+      </div>
+    </div>
+  </div><!-- /.entry-content -->
+
+    <hr />
+
+    <p>
+      Thanks for reading. You should follow me on
+      <a href="https://twitter.com/d0ugal">Twitter</a>.
+    </p>
+
+    <p>
+      Do you have any feedback or comments? The best place for discussion is on
+      <a href="//www.reddit.com/submit" onclick="window.location =
+          '//www.reddit.com/submit?url=' + encodeURIComponent(window.location);
+          return false">Reddit</a>
+      or <a href="https://news.ycombinator.com/submit">Hacker News</a>.
+      Otherwise, <a
+          href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#100;&#111;&#117;&#103;&#97;&#108;&#64;&#100;&#111;&#117;&#103;&#97;&#108;&#109;&#97;&#116;&#116;&#104;&#101;&#119;&#115;&#46;&#99;&#111;&#109;">email
+      me</a>.
+    </p>
+
+</section>
+
+    </div>
+
+  </div>
+
+  <script src="/theme/js/bootstrap.min.js"></script>
+
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-947562-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script');
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      ga.setAttribute('async', 'true');
+      document.documentElement.firstChild.appendChild(ga);
+    })();
+
+  </script>
+  <script src="/theme/js/anti-butt.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Dougal Matthews - blogofile</title><link href="http://www.dougalmatthews.com/" rel="alternate"></link><link href="http://www.dougalmatthews.com/feeds/tag/blogofile.atom.xml" rel="self"></link><id>http://www.dougalmatthews.com/</id><updated>2011-02-22T19:25:00+00:00</updated><entry><title>Blogofile - rethinking simple websites</title><link href="http://www.dougalmatthews.com/2011/Feb/22/blogofile-rethinking-simple-websites/" rel="alternate"></link><published>2011-02-22T19:25:00+00:00</published><updated>2011-02-22T19:25:00+00:00</updated><author><name>Dougal Matthews</name></author><id>tag:www.dougalmatthews.com,2011-02-22:/2011/Feb/22/blogofile-rethinking-simple-websites/</id><summary type="html">&lt;p&gt;This website has gone through a number of different solutions over the years
+but during &lt;a class="reference external" href="http://sitesprint.info/"&gt;SiteSprint&lt;/a&gt;(II) I settled on a new site built with &lt;a class="reference external" href="https://github.com/montylounge/django-mingus"&gt;Mingus&lt;/a&gt;.
+Mingus offers a great feature set and is really well made (it makes use of
+many reusable apps that already exist). However, I was …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This website has gone through a number of different solutions over the years
+but during &lt;a class="reference external" href="http://sitesprint.info/"&gt;SiteSprint&lt;/a&gt;(II) I settled on a new site built with &lt;a class="reference external" href="https://github.com/montylounge/django-mingus"&gt;Mingus&lt;/a&gt;.
+Mingus offers a great feature set and is really well made (it makes use of
+many reusable apps that already exist). However, I was tired. Tired of
+blogging platforms, I needed to go back to basics.&lt;/p&gt;
+&lt;p&gt;So, step up &lt;a class="reference external" href="http://www.blogofile.com/"&gt;Blogofile&lt;/a&gt;. Firstly, what is it? Essentially it is a static
+site generator. You get to use Python, a templating language and a fairly
+simple but standard MVC architecture. However, the net result isn't a WSGI
+Python app, but rather a static media. A whole set of HTML and your other
+files like HTML and CSS too. One clever trick it uses is to take advantage of
+folder structure and index.html files to create nice URL's.&lt;/p&gt;
+&lt;p&gt;As I use &lt;a class="reference external" href="http://disqus.com/"&gt;Disqus&lt;/a&gt; for all my comments the content of my blog rarely ever
+changes. I add or update a post now and then but on a day to day basis, it
+rarely changes. Rendering the page on each request is really inefficient and
+caching each page is overkill. My CV for example is stored as markdown on my
+site and rendered to html, a pdf or a doc as requested - now I only need to
+do this once.&lt;/p&gt;
+&lt;p&gt;For me, the main advantage comes from editing almost everything in vim. Now if
+I want to work on a post or do some maintenance I don't need to go through
+the Django admin and work in there. I can simply edit in vim and push back
+to the git repository. Which also means everything is version controlled and
+maintained in a sane way which fits into my workflow.&lt;/p&gt;
+&lt;p&gt;Hosting isn't really an issue for me with Django as with tools like
+&lt;a class="reference external" href="http://docs.fabfile.org/"&gt;Fabric&lt;/a&gt;, &lt;a class="reference external" href="https://github.com/opscode/chef"&gt;Chef&lt;/a&gt; and &lt;a class="reference external" href="http://gunicorn.org/"&gt;Gunicorn&lt;/a&gt; it doesn't need to be painful anymore.
+However, there is something to be said for the simplicity of deploying a
+completely static site. I don't need to worry about a wsgi server, a database
+or anything else and backing up isn't an issue.&lt;/p&gt;
+&lt;p&gt;I do have a few gripes with Blogfile though, they are fairly minor but
+nothin' is perfect. I'm not a fan of &lt;a class="reference external" href="http://www.makotemplates.org/"&gt;Mako&lt;/a&gt;, I'd much rather edit &lt;a class="reference external" href="http://jinja.pocoo.org/"&gt;Jinja2&lt;/a&gt;
+templates. I'm pondering adding this functionality and the nice thing about
+blogofile is that it should be fairly straightforward to do so. When working
+on your Blogofile site there is a handy server for testing locally but you
+need to rebuild manually to see the changes. This is a little annoying and I
+usually have two tabs open, one doing the rebuild every 10 seconds and one
+serving.&lt;/p&gt;
+&lt;p&gt;Incidentally, you can see the code for my Blogofile Blog on
+&lt;a class="reference external" href="https://github.com/d0ugal/dm"&gt;github&lt;/a&gt;.&lt;/p&gt;
+</content><category term="python"></category><category term="python"></category><category term="blogofile"></category><category term="meta"></category></entry></feed>

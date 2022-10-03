@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>Dougal Matthews - ruby</title><link>http://www.dougalmatthews.com/</link><description></description><lastBuildDate>Sun, 27 Feb 2011 19:25:00 +0000</lastBuildDate><item><title>My Vagrant Workflow</title><link>http://www.dougalmatthews.com/2011/Feb/27/my-vagrant-workflow/</link><description>&lt;p&gt;&lt;a class="reference external" href="http://vagrantup.com"&gt;Vagrant&lt;/a&gt; is a command line tool for managing virtual machines aimed at
+virtualising your development environment. It is essentially a wrapper around
+Oracle's &lt;a class="reference external" href="http://www.virtualbox.org"&gt;VirtualBox&lt;/a&gt; but a very good one.&lt;/p&gt;
+&lt;p&gt;Getting started is really easy, there is a good quick start on the Vagrant
+website, or you can try my version …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Dougal Matthews</dc:creator><pubDate>Sun, 27 Feb 2011 19:25:00 +0000</pubDate><guid isPermaLink="false">tag:www.dougalmatthews.com,2011-02-27:/2011/Feb/27/my-vagrant-workflow/</guid><category>python</category><category>vagrant</category><category>chef</category><category>python</category><category>django</category><category>ruby</category></item></channel></rss>

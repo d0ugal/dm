@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>Dougal Matthews - mongodb</title><link>http://www.dougalmatthews.com/</link><description></description><lastBuildDate>Fri, 30 Mar 2012 23:47:00 +0100</lastBuildDate><item><title>MongoDb</title><link>http://www.dougalmatthews.com/notes/mongodb/</link><description>&lt;div class="section" id="bulk-loading"&gt;
+&lt;h2&gt;Bulk Loading&lt;/h2&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Disable balancer (when sharding)&lt;/li&gt;
+&lt;li&gt;Disable safe writes&lt;/li&gt;
+&lt;li&gt;Batch load in bulks&lt;/li&gt;
+&lt;li&gt;Verify database afterwards!&lt;/li&gt;
+&lt;li&gt;Verify replicas.&lt;/li&gt;
+&lt;li&gt;Create indexes afterwards (use background=1 to avoid locking the db)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Dougal Matthews</dc:creator><pubDate>Fri, 30 Mar 2012 23:47:00 +0100</pubDate><guid isPermaLink="false">tag:www.dougalmatthews.com,2012-03-30:/notes/mongodb/</guid><category>mongodb</category></item></channel></rss>

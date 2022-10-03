@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <link rel="icon" href="/theme/img/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="/theme/css/bootstrap.css" type="text/css" media="screen, projection" />
+  <link rel="stylesheet" href="/theme/css/bootstrap-responsive.css" type="text/css" media="screen, projection" />
+  <link href='http://fonts.googleapis.com/css?family=Lato:regular|PT+Serif+Caption|PT+Serif|Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+  <link href="/theme/css/monokai.css" rel="stylesheet" type="text/css" />
+  <link href="/theme/css/style.css" rel="stylesheet" type="text/css" />
+
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="57x57" href="/theme/img/iconified/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="60x60" href="/theme/img/iconified/apple-touch-icon-60x60.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="/theme/img/iconified/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="76x76" href="/theme/img/iconified/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/theme/img/iconified/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="120x120" href="/theme/img/iconified/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="/theme/img/iconified/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="/theme/img/iconified/apple-touch-icon-152x152.png" />
+
+  <title>PostgreSQL, The cool stuff. - Dougal Matthews</title>
+  <meta charset="utf-8" />
+  <link href="http://www.dougalmatthews.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Dougal Matthews Full Atom Feed" />
+
+  <meta name="google-site-verification" content="IcOvKAxyUFNerZzvGS3tYBfHaQUhutWsnQrNZ8SDHrE" />
+  <meta name="verify-v1" content="d4ZT12Eg5dza8IxtDZlqiZoC0EzBnLxeYeK2PTiaIrU=" />
+  <meta name="msvalidate.01" content="08FE3976E4596314289973311F691DC2" />
+  <meta name="y_key" content="ef34f6756bc76371" />
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="navbar-centre">
+        <a class="brand" href="/"><span class="red">Dougal</span> <span class="white">Matthews</span></a>
+        <ul class="nav">
+            <li ><a href="/code/">Code</a></li>
+            <!--<li ><a href="/projects/">Projects</a></li>-->
+            <li ><a href="/work/">Work</a></li>
+            <li ><a href="/talks/">Talks</a></li>
+            <li ><a href="/about/">About</a></li>
+        <ul class="nav">
+      </div>
+    </div>
+  </div>
+
+  <div id="content_wrapper">
+
+    <div id="content" class="container prepent-top">
+
+<section id="content" class="body">
+  <div class="entry-content">
+    <div class="row">
+      <div class="span8">
+        <header>
+          <h2 class="entry-title">
+            <a href="http://www.dougalmatthews.com//notes/postgres-the-cool-stuff/" rel="bookmark"
+              title="Permalink to PostgreSQL, The cool stuff.">PostgreSQL, The cool stuff.</a></h2>
+        </header>
+        <footer class="post-info">
+          <time datetime="2013-11-09T18:23:00+00:00">
+            Sat 09 November 2013
+          </time>
+        </footer><!-- /.post-info -->
+        <p>A collection of my favourite Postgres features. Rather than going into much
+detail I will link you to the relevant documentation (for now).</p>
+<div class="section" id="hstore">
+<h2>hstore</h2>
+<p>Create a column which can store key value data in it. This can then be queried
+by keys and values. As a data type this maps well to a Python dictionary.</p>
+<p>Quick example - insert data, select one key and filter by one key.</p>
+<div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">example</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<span class="n">id</span><span class="w"> </span><span class="nb">serial</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span><span class="w"></span>
+<span class="k">data</span><span class="w"> </span><span class="n">hstore</span><span class="p">);</span><span class="w"></span>
+
+<span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">example</span><span class="w"> </span><span class="p">(</span><span class="k">data</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"></span>
+<span class="p">(</span><span class="s1">&#39;name =&gt; &quot;John Smith&quot;, age =&gt; 28, gender =&gt; &quot;M&quot;&#39;</span><span class="p">),</span><span class="w"></span>
+<span class="p">(</span><span class="s1">&#39;name =&gt; &quot;Jane Smith&quot;, age =&gt; 24&#39;</span><span class="p">);</span><span class="w"></span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="k">data</span><span class="o">-&gt;</span><span class="s1">&#39;name&#39;</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">example</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="k">data</span><span class="o">-&gt;</span><span class="s1">&#39;age&#39;</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">example</span><span class="w"></span>
+<span class="k">WHERE</span><span class="w"> </span><span class="k">data</span><span class="o">-&gt;</span><span class="s1">&#39;age&#39;</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s1">&#39;25&#39;</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+<ul class="simple">
+<li><a class="reference external" href="http://www.postgresql.org/docs/9.3/static/hstore.html">http://www.postgresql.org/docs/9.3/static/hstore.html</a></li>
+</ul>
+</div>
+<div class="section" id="pl-python">
+<h2>PL/Python</h2>
+<p>Use Python on the database. This allows you to reuse code, do faster python
+(as there is no round trip) and add database constraints with Python.</p>
+<p>How to many a simple max function that given two numbers returns the biggest.</p>
+<div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">LANGUAGE</span><span class="w"> </span><span class="n">plpythonu</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">CREATE</span><span class="w"> </span><span class="k">FUNCTION</span><span class="w"> </span><span class="n">pymax</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="nb">integer</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="nb">integer</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">RETURNS</span><span class="w"> </span><span class="nb">integer</span><span class="w"></span>
+<span class="k">AS</span><span class="w"> </span><span class="err">$$</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">b</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">b</span><span class="w"></span>
+<span class="err">$$</span><span class="w"> </span><span class="k">LANGUAGE</span><span class="w"> </span><span class="n">plpythonu</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">SELECT</span><span class="w"> </span><span class="n">pymax</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+<ul class="simple">
+<li><a class="reference external" href="http://www.postgresql.org/docs/9.3/static/plpython.html">http://www.postgresql.org/docs/9.3/static/plpython.html</a></li>
+</ul>
+</div>
+<div class="section" id="foreign-data-wrappers">
+<h2>Foreign Data Wrappers</h2>
+<p>Access data in other databases from Postgres. There are a large number of
+wrappers that allow you to query databases like Redis or MongoDB. This is
+particularly useful for doing reports and joins on a NoSQL data or migrating
+data from one database to Postgres.</p>
+<ul class="simple">
+<li><a class="reference external" href="http://www.craigkerstiens.com/2013/08/05/a-look-at-FDWs/">http://www.craigkerstiens.com/2013/08/05/a-look-at-FDWs/</a></li>
+<li><a class="reference external" href="https://github.com/dpage/redis_fdw">https://github.com/dpage/redis_fdw</a></li>
+<li><a class="reference external" href="https://github.com/citusdata/mongo_fdw">https://github.com/citusdata/mongo_fdw</a></li>
+</ul>
+</div>
+<div class="section" id="psycopg2-and-async">
+<h2>Psycopg2 and Async</h2>
+<p>The Python psycopg2 driver supports async. This allows you to make queries and
+rather than wait for the result you can continue doing something while you wait.
+Typically this is used when working with something like Twisted but for slower or
+longer queries it would be useful.</p>
+<p>Quick async example on an intentionally slow query.</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">psycopg2</span>
+<span class="kn">from</span> <span class="nn">psycopg2.extras</span> <span class="kn">import</span> <span class="n">wait_select</span>
+
+<span class="n">aconn</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="k">async</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">wait_select</span><span class="p">(</span><span class="n">aconn</span><span class="p">)</span>
+<span class="n">acurs</span> <span class="o">=</span> <span class="n">aconn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+<span class="n">acurs</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT pg_sleep(5); SELECT * FROM example;&quot;</span><span class="p">)</span>
+<span class="n">wait_select</span><span class="p">(</span><span class="n">acurs</span><span class="o">.</span><span class="n">connection</span><span class="p">)</span>
+<span class="n">acurs</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+<ul class="simple">
+<li><a class="reference external" href="http://initd.org/psycopg/docs/advanced.html#asynchronous-notifications">http://initd.org/psycopg/docs/advanced.html#asynchronous-notifications</a></li>
+</ul>
+</div>
+<div class="section" id="table-inheritance">
+<h2>Table Inheritance</h2>
+<p>Rather than implementing 1-2-1 relationships between tables to fake inheritance
+you can actually extend tables via inheritance.</p>
+<p>Inheriting from another table is very easy, just part of the child table
+definition.</p>
+<div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">detailed_example</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">more_data</span><span class="w"> </span><span class="n">hstore</span><span class="w"></span>
+<span class="p">)</span><span class="w"> </span><span class="k">INHERITS</span><span class="w"> </span><span class="p">(</span><span class="n">example</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+<ul class="simple">
+<li><a class="reference external" href="http://www.postgresql.org/docs/9.3/static/tutorial-inheritance.html">http://www.postgresql.org/docs/9.3/static/tutorial-inheritance.html</a></li>
+</ul>
+</div>
+<div class="section" id="transaction-savepoints">
+<h2>Transaction Savepoints</h2>
+<p>In a database transaction you can create savepoints and roll back a transaction
+to that point (rather than all or nothing.)</p>
+<p>Nice example, borrowed from the docs.</p>
+<div class="highlight"><pre><span></span><span class="k">BEGIN</span><span class="p">;</span><span class="w"></span>
+<span class="k">UPDATE</span><span class="w"> </span><span class="n">accounts</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">100</span><span class="p">.</span><span class="mi">00</span><span class="w"></span>
+<span class="w">    </span><span class="k">WHERE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Alice&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="n">SAVEPOINT</span><span class="w"> </span><span class="n">my_savepoint</span><span class="p">;</span><span class="w"></span>
+<span class="k">UPDATE</span><span class="w"> </span><span class="n">accounts</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">100</span><span class="p">.</span><span class="mi">00</span><span class="w"></span>
+<span class="w">    </span><span class="k">WHERE</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Bob&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="o">~~</span><span class="w"> </span><span class="n">oops</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="n">forget</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">Wally</span><span class="s1">&#39;s account</span>
+<span class="s1">ROLLBACK TO my_savepoint;</span>
+<span class="s1">UPDATE accounts SET balance = balance + 100.00</span>
+<span class="s1">    WHERE name = &#39;</span><span class="n">Wally</span><span class="err">&#39;</span><span class="p">;</span><span class="w"></span>
+<span class="k">COMMIT</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+<ul class="simple">
+<li><a class="reference external" href="http://www.postgresql.org/docs/9.3/static/tutorial-transactions.html">http://www.postgresql.org/docs/9.3/static/tutorial-transactions.html</a></li>
+</ul>
+</div>
+
+      </div>
+      <div class="span4 hidden-phone readinglist">
+        <h4>Other recent posts ... </h4>
+        <ul>
+          <li><a href="/2014/Mar/02/python-glasgow-march-dojo/" rel="bookmark" title="Permanent Link to Python Glasgow March Dojo">
+            Python Glasgow March Dojo
+          </a></li>
+          <li><a href="//notes/running-a-code-dojo/" rel="bookmark" title="Permanent Link to Running a Code Dojo">
+            Running a Code Dojo
+          </a></li>
+          <li><a href="/2013/Nov/18/joining-red-hat/" rel="bookmark" title="Permanent Link to Joining Red Hat">
+            Joining Red Hat
+          </a></li>
+          <li><a href="//notes/sublimetext/" rel="bookmark" title="Permanent Link to SublimeText">
+            SublimeText
+          </a></li>
+        </ul>
+      </div>
+    </div>
+  </div><!-- /.entry-content -->
+
+    <hr />
+
+    <p>
+      Thanks for reading. You should follow me on
+      <a href="https://twitter.com/d0ugal">Twitter</a>.
+    </p>
+
+    <p>
+      Do you have any feedback or comments? The best place for discussion is on
+      <a href="//www.reddit.com/submit" onclick="window.location =
+          '//www.reddit.com/submit?url=' + encodeURIComponent(window.location);
+          return false">Reddit</a>
+      or <a href="https://news.ycombinator.com/submit">Hacker News</a>.
+      Otherwise, <a
+          href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#100;&#111;&#117;&#103;&#97;&#108;&#64;&#100;&#111;&#117;&#103;&#97;&#108;&#109;&#97;&#116;&#116;&#104;&#101;&#119;&#115;&#46;&#99;&#111;&#109;">email
+      me</a>.
+    </p>
+
+</section>
+
+    </div>
+
+  </div>
+
+  <script src="/theme/js/bootstrap.min.js"></script>
+
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-947562-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script');
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      ga.setAttribute('async', 'true');
+      document.documentElement.firstChild.appendChild(ga);
+    })();
+
+  </script>
+  <script src="/theme/js/anti-butt.js"></script>
+
+</body>
+</html>

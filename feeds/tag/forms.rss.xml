@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>Dougal Matthews - forms</title><link>http://www.dougalmatthews.com/</link><description></description><lastBuildDate>Wed, 16 Dec 2009 19:25:00 +0000</lastBuildDate><item><title>Nicer dynamic forms in django</title><link>http://www.dougalmatthews.com/2009/Dec/16/nicer-dynamic-forms-in-django/</link><description>&lt;p&gt;I used to make dynamic forms for Django in very bad way, I'm happy to admit
+that now as I've improved my process.&lt;/p&gt;
+&lt;p&gt;Basically the solution is to use &lt;cite&gt;type()&lt;/cite&gt; as I'm sure many of you know. If your
+doing that already there isn't much for you here. If your …&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Dougal Matthews</dc:creator><pubDate>Wed, 16 Dec 2009 19:25:00 +0000</pubDate><guid isPermaLink="false">tag:www.dougalmatthews.com,2009-12-16:/2009/Dec/16/nicer-dynamic-forms-in-django/</guid><category>python</category><category>forms</category><category>type</category><category>django</category><category>python</category></item></channel></rss>
