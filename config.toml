@@ -1103,7 +1103,7 @@ uglyURLs = false
     ######################################
     # Post Copyright
 
-    enablePostCopyright = false
+    enablePostCopyright = true
 
     displayPostCopyright = true
     # Note: *global settings*
