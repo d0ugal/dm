@@ -1,4 +1,4 @@
 ghp-import==0.4.1
-Markdown==2.6.7
+Markdown==3.7
 pelican==3.7.1
 pelican_alias==1.1
