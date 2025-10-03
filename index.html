@@ -1,305 +1,74 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-
-  <link rel="icon" href="/theme/img/favicon.ico" type="image/x-icon" />
-  <link rel="stylesheet" href="/theme/css/bootstrap.css" type="text/css" media="screen, projection" />
-  <link rel="stylesheet" href="/theme/css/bootstrap-responsive.css" type="text/css" media="screen, projection" />
-  <link href='http://fonts.googleapis.com/css?family=Lato:regular|PT+Serif+Caption|PT+Serif|Droid+Sans+Mono' rel='stylesheet' type='text/css'>
-  <link href="/theme/css/monokai.css" rel="stylesheet" type="text/css" />
-  <link href="/theme/css/style.css" rel="stylesheet" type="text/css" />
-
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-  <link rel="apple-touch-icon" sizes="57x57" href="/theme/img/iconified/apple-touch-icon-57x57.png" />
-  <link rel="apple-touch-icon" sizes="60x60" href="/theme/img/iconified/apple-touch-icon-60x60.png" />
-  <link rel="apple-touch-icon" sizes="72x72" href="/theme/img/iconified/apple-touch-icon-72x72.png" />
-  <link rel="apple-touch-icon" sizes="76x76" href="/theme/img/iconified/apple-touch-icon-76x76.png" />
-  <link rel="apple-touch-icon" sizes="114x114" href="/theme/img/iconified/apple-touch-icon-114x114.png" />
-  <link rel="apple-touch-icon" sizes="120x120" href="/theme/img/iconified/apple-touch-icon-120x120.png" />
-  <link rel="apple-touch-icon" sizes="144x144" href="/theme/img/iconified/apple-touch-icon-144x144.png" />
-  <link rel="apple-touch-icon" sizes="152x152" href="/theme/img/iconified/apple-touch-icon-152x152.png" />
-
-  <title>Dougal Matthews</title>
-  <meta charset="utf-8" />
-  <link href="http://www.dougalmatthews.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Dougal Matthews Full Atom Feed" />
-
-  <meta name="google-site-verification" content="IcOvKAxyUFNerZzvGS3tYBfHaQUhutWsnQrNZ8SDHrE" />
-  <meta name="verify-v1" content="d4ZT12Eg5dza8IxtDZlqiZoC0EzBnLxeYeK2PTiaIrU=" />
-  <meta name="msvalidate.01" content="08FE3976E4596314289973311F691DC2" />
-  <meta name="y_key" content="ef34f6756bc76371" />
-
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dougal Matthews</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="container">
 
-  <div class="navbar">
-    <div class="navbar-inner">
-      <div class="navbar-centre">
-        <a class="brand" href="/"><span class="red">Dougal</span> <span class="white">Matthews</span></a>
-        <ul class="nav">
-            <li ><a href="/code/">Code</a></li>
-            <!--<li ><a href="/projects/">Projects</a></li>-->
-            <li ><a href="/work/">Work</a></li>
-            <li ><a href="/talks/">Talks</a></li>
-            <li ><a href="/about/">About</a></li>
-        <ul class="nav">
-      </div>
+        <header class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="name">Dougal Matthews</h1>
+                    <p class="tagline">Developer & Problem Solver</p>
+                    <p class="location">Based in Scotland</p>
+                </div>
+                <div class="hero-image">
+                    <img src="dm.jpg" alt="Dougal Matthews" class="profile-photo">
+                </div>
+            </div>
+        </header>
+
+        <main class="content">
+            <section id="about" class="about">
+                <h2>About</h2>
+                <p>I'm a developer with a passion for solving challenging problems and building robust systems. I specialize in backend development, monitoring, and creating elegant solutions to complex technical challenges.</p>
+                
+                <p>I'm an active open source contributor, having worked on projects like MkDocs and OpenStack. I also maintain several personal projects including Prometheus exporters for monitoring various systems, and home automation solutions.</p>
+                
+            </section>
+
+
+
+            <section id="contact" class="contact">
+                <h2>Get In Touch</h2>
+                <p>I'm always interested in speaking, helping with the community, new projects or having a chat.</p>
+                <div class="contact-links">
+                    <a href="mailto:dougal@dougalmatthews.com" class="contact-link">
+                        <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2" fill="none"/>
+                        </svg>
+                        dougal@dougalmatthews.com
+                    </a>
+                    <a href="https://github.com/d0ugal" class="contact-link" target="_blank" rel="noopener noreferrer">
+                        <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" stroke="currentColor" stroke-width="2" fill="none"/>
+                        </svg>
+                        GitHub
+                    </a>
+                    <a href="https://www.linkedin.com/in/dougal-matthews-890bb7179/" class="contact-link" target="_blank" rel="noopener noreferrer">
+                        <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <rect x="2" y="9" width="4" height="12" stroke="currentColor" stroke-width="2" fill="none"/>
+                            <circle cx="4" cy="4" r="2" stroke="currentColor" stroke-width="2" fill="none"/>
+                        </svg>
+                        LinkedIn
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Dougal Matthews</p>
+        </footer>
     </div>
-  </div>
-
-  <div id="content_wrapper">
-
-    <div id="content" class="container prepent-top">
-
-
-  <div class="narrow">
-      <div class="intro">
-        <p>
-          Hi, I'm Dougal, a developer living in Scotland.
-        </p>
-        <p>
-          If you want to get in touch, drop me an
-          <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#100;&#111;&#117;&#103;&#97;&#108;&#64;&#100;&#111;&#117;&#103;&#97;&#108;&#109;&#97;&#116;&#116;&#104;&#101;&#119;&#115;&#46;&#99;&#111;&#109;">email</a>.
-          Otherwise, have a look around and see my latest posts below.
-        </p>
-      </div>
-
-      <div class="article_list">
-
-          <article>
-            <time datetime="2014-03-02T11:57:00+00:00">
-              02 Mar 2014
-            </time>
-            <header>
-              <a href="2014/Mar/02/python-glasgow-march-dojo/" rel="bookmark" title="Permanent Link to Python Glasgow March Dojo">
-                Python Glasgow March Dojo
-              </a>
-            </header>
-          </article>
-
-
-          <article>
-            <time datetime="2014-03-02T10:09:00+00:00">
-              02 Mar 2014
-            </time>
-            <header>
-              <a href="/notes/running-a-code-dojo/" rel="bookmark" title="Permanent Link to Running a Code Dojo">
-                Running a Code Dojo
-              </a>
-            </header>
-          </article>
-
-
-          <article>
-            <time datetime="2013-11-18T08:34:00+00:00">
-              18 Nov 2013
-            </time>
-            <header>
-              <a href="2013/Nov/18/joining-red-hat/" rel="bookmark" title="Permanent Link to Joining Red Hat">
-                Joining Red Hat
-              </a>
-            </header>
-          </article>
-
-
-          <article>
-            <time datetime="2013-11-09T18:23:00+00:00">
-              09 Nov 2013
-            </time>
-            <header>
-              <a href="/notes/postgres-the-cool-stuff/" rel="bookmark" title="Permanent Link to PostgreSQL, The cool stuff.">
-                PostgreSQL, The cool stuff.
-              </a>
-            </header>
-          </article>
-
-
-          <article>
-            <time datetime="2013-08-04T21:56:00+01:00">
-              04 Aug 2013
-            </time>
-            <header>
-              <a href="/notes/sublimetext/" rel="bookmark" title="Permanent Link to SublimeText">
-                SublimeText
-              </a>
-            </header>
-          </article>
-
-
-          <article>
-            <time datetime="2013-07-28T19:25:00+01:00">
-              28 Jul 2013
-            </time>
-            <header>
-              <a href="2013/Jul/28/python-glasgow/" rel="bookmark" title="Permanent Link to Python Glasgow">
-                Python Glasgow
-              </a>
-            </header>
-          </article>
-
-
-          <article>
-            <time datetime="2012-03-30T23:47:00+01:00">
-              30 Mar 2012
-            </time>
-            <header>
-              <a href="/notes/mongodb/" rel="bookmark" title="Permanent Link to MongoDb">
-                MongoDb
-              </a>
-            </header>
-          </article>
-
-
-          <article>
-            <time datetime="2011-12-23T14:21:00+00:00">
-              23 Dec 2011
-            </time>
-            <header>
-              <a href="2011/Dec/23/new-years-python-meme/" rel="bookmark" title="Permanent Link to New Year's Python Meme">
-                New Year's Python Meme
-              </a>
-            </header>
-          </article>
-
-
-          <article>
-            <time datetime="2011-10-10T17:21:00+01:00">
-              10 Oct 2011
-            </time>
-            <header>
-              <a href="2011/Oct/10/making-djangos-signals-async-with-celery/" rel="bookmark" title="Permanent Link to Making Django's Signals Async with Celery">
-                Making Django's Signals Async with Celery
-              </a>
-            </header>
-          </article>
-
-
-          <article>
-            <time datetime="2011-02-27T19:25:00+00:00">
-              27 Feb 2011
-            </time>
-            <header>
-              <a href="2011/Feb/27/my-vagrant-workflow/" rel="bookmark" title="Permanent Link to My Vagrant Workflow">
-                My Vagrant Workflow
-              </a>
-            </header>
-          </article>
-
-
-          <article>
-            <time datetime="2011-02-22T19:25:00+00:00">
-              22 Feb 2011
-            </time>
-            <header>
-              <a href="2011/Feb/22/blogofile-rethinking-simple-websites/" rel="bookmark" title="Permanent Link to Blogofile - rethinking simple websites">
-                Blogofile - rethinking simple websites
-              </a>
-            </header>
-          </article>
-
-
-          <article>
-            <time datetime="2010-08-12T19:25:00+01:00">
-              12 Aug 2010
-            </time>
-            <header>
-              <a href="2010/Aug/12/python-edinburgh/" rel="bookmark" title="Permanent Link to Python Edinburgh">
-                Python Edinburgh
-              </a>
-            </header>
-          </article>
-
-
-          <article>
-            <time datetime="2010-01-20T19:25:00+00:00">
-              20 Jan 2010
-            </time>
-            <header>
-              <a href="2010/Jan/20/testing-your-first-django-app/" rel="bookmark" title="Permanent Link to Testing your first Django app">
-                Testing your first Django app
-              </a>
-            </header>
-          </article>
-
-
-          <article>
-            <time datetime="2010-01-08T19:25:00+00:00">
-              08 Jan 2010
-            </time>
-            <header>
-              <a href="2010/Jan/08/fun-with-balls/" rel="bookmark" title="Permanent Link to Fun with Balls">
-                Fun with Balls
-              </a>
-            </header>
-          </article>
-
-
-          <article>
-            <time datetime="2009-12-16T19:25:00+00:00">
-              16 Dec 2009
-            </time>
-            <header>
-              <a href="2009/Dec/16/nicer-dynamic-forms-in-django/" rel="bookmark" title="Permanent Link to Nicer dynamic forms in django">
-                Nicer dynamic forms in django
-              </a>
-            </header>
-          </article>
-
-
-          <article>
-            <time datetime="2008-09-03T19:25:00+01:00">
-              03 Sep 2008
-            </time>
-            <header>
-              <a href="2008/Sep/03/changing-default-storage-engine-in-mysql/" rel="bookmark" title="Permanent Link to Changing default storage engine in MySQL">
-                Changing default storage engine in MySQL
-              </a>
-            </header>
-          </article>
-
-
-          <article>
-            <time datetime="2008-07-02T19:25:00+01:00">
-              02 Jul 2008
-            </time>
-            <header>
-              <a href="2008/Jul/02/javascript-detecting-caps-lock/" rel="bookmark" title="Permanent Link to JavaScript - Detecting Caps lock">
-                JavaScript - Detecting Caps lock
-              </a>
-            </header>
-          </article>
-
-      </div>
-  </div>
-
-
-    </div>
-
-  </div>
-
-  <script src="/theme/js/bootstrap.min.js"></script>
-
-  <script type="text/javascript">
-
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-947562-1']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-      var ga = document.createElement('script');
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      ga.setAttribute('async', 'true');
-      document.documentElement.firstChild.appendChild(ga);
-    })();
-
-  </script>
-  <script src="/theme/js/anti-butt.js"></script>
 
 </body>
 </html>

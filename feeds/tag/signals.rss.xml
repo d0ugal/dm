@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Dougal Matthews - signals</title><link>http://www.dougalmatthews.com/</link><description></description><lastBuildDate>Mon, 10 Oct 2011 17:21:00 +0100</lastBuildDate><item><title>Making Django's Signals Async with Celery</title><link>http://www.dougalmatthews.com/2011/Oct/10/making-djangos-signals-async-with-celery/</link><description>&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; A comment on &lt;a class="reference external" href="https://code.djangoproject.com/ticket/17029"&gt;the ticket&lt;/a&gt; I opened by Alex Gaynor brought up a
-point that I hadn't fully considered. It's worth noticing before going
-further in this post and also worth pointing out my monkey patch doesn't
-answer this question.&lt;/p&gt;
-&lt;blockquote&gt;
-After speaking with Carl, I'm marking this as wontfix …&lt;/blockquote&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Dougal Matthews</dc:creator><pubDate>Mon, 10 Oct 2011 17:21:00 +0100</pubDate><guid isPermaLink="false">tag:www.dougalmatthews.com,2011-10-10:/2011/Oct/10/making-djangos-signals-async-with-celery/</guid><category>python</category><category>python</category><category>django</category><category>signals</category><category>celery</category></item></channel></rss>
