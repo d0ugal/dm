@@ -1,5 +1,4 @@
 # Dougal Matthews
-test
 
 A minimal personal website.
 
