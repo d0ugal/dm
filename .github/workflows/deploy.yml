@@ -19,6 +19,3 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./
           cname: dougalmatthews.com
-          exclude_assets: |
-            .github/**
-            README.md
