@@ -1,23 +1,36 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base"],
-  "packageRules": [
-    {
-      "matchDepTypes": ["action"],
-      "matchPackageNames": ["actions/checkout", "actions/configure-pages", "actions/upload-pages-artifact", "actions/deploy-pages"],
-      "enabled": true
-    }
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  extends: [
+    'config:recommended',
   ],
-  "prConcurrentLimit": 3,
-  "prHourlyLimit": 2,
-  "schedule": ["before 6am on monday"],
-  "timezone": "Europe/London",
-  "labels": ["dependencies"],
-  "commitMessagePrefix": "chore:",
-  "commitMessageAction": "update",
-  "commitMessageTopic": "{{depName}}",
-  "commitMessageExtra": "to {{newVersion}}",
-  "semanticCommits": "enabled",
-  "semanticCommitType": "chore",
-  "semanticCommitScope": "deps"
+  packageRules: [
+    {
+      matchDepTypes: [
+        'action',
+      ],
+      matchPackageNames: [
+        'actions/checkout',
+        'actions/configure-pages',
+        'actions/upload-pages-artifact',
+        'actions/deploy-pages',
+      ],
+      enabled: true,
+    },
+  ],
+  prConcurrentLimit: 3,
+  prHourlyLimit: 2,
+  schedule: [
+    'before 6am on monday',
+  ],
+  timezone: 'Europe/London',
+  labels: [
+    'dependencies',
+  ],
+  commitMessagePrefix: 'chore:',
+  commitMessageAction: 'update',
+  commitMessageTopic: '{{depName}}',
+  commitMessageExtra: 'to {{newVersion}}',
+  semanticCommits: 'enabled',
+  semanticCommitType: 'chore',
+  semanticCommitScope: 'deps',
 }
