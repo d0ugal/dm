@@ -1,0 +1,7 @@
+# Binary assets (Prettier ignores these anyway, listed for clarity)
+*.jpg
+*.png
+*.ico
+
+# VCS / tooling
+.git/
