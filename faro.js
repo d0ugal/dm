@@ -12,9 +12,10 @@ const appVersion =
     ? config.version.trim()
     : "dev";
 const replaySamplingRate =
-  typeof config.replaySamplingRate === "number"
+  typeof config.replaySamplingRate === "number" &&
+  Number.isFinite(config.replaySamplingRate)
     ? Math.max(0, Math.min(1, config.replaySamplingRate))
-    : 0.1;
+    : 1;
 
 if (typeof window !== "undefined" && collectorEndpoint) {
   try {
@@ -25,8 +26,20 @@ if (typeof window !== "undefined" && collectorEndpoint) {
         version: appVersion,
         environment: "production",
       },
+      sessionTracking: {
+        samplingRate: 1,
+      },
+      trackResources: true,
+      experimental: {
+        trackNavigation: true,
+      },
       instrumentations: [
-        ...getWebInstrumentations(),
+        // These are the SDK defaults today; keep them explicit for future Faro upgrades.
+        ...getWebInstrumentations({
+          captureConsole: true,
+          enableContentSecurityPolicyInstrumentation: true,
+          enablePerformanceInstrumentation: true,
+        }),
         new TracingInstrumentation(),
         new ReplayInstrumentation({
           recordAfter: "load",

@@ -54,7 +54,7 @@ jobs:
           jq --null-input --raw-output \
             --arg endpoint "$GRAFANA_FARO_COLLECTOR_ENDPOINT" \
             --arg version "$GITHUB_SHA" \
-            '"window.DOUGALMATTHEWS_COM_CONFIG = " + ({grafanaFaroCollectorEndpoint: $endpoint, replaySamplingRate: 0.1, version: $version} | @json) + ";\n"' \
+            '"window.DOUGALMATTHEWS_COM_CONFIG = " + ({grafanaFaroCollectorEndpoint: $endpoint, replaySamplingRate: 1, version: $version} | @json) + ";\n"' \
             > faro-config.js
       - name: Prepare Pages artifact
         run: |
