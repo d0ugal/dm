@@ -5,3 +5,8 @@
 
 # VCS / tooling
 .git/
+node_modules/
+
+# Generated during deployment
+faro.bundle.js
+public/
