@@ -11,8 +11,8 @@ Grafana Faro is bundled from `faro.js` and only initializes when
 
 The bundle enables the standard Faro Web SDK instrumentations, experimental
 navigation tracking, all resource timing, tracing, and session replay. Replay
-sampling is set to 100% of sampled sessions and uses the replay package's
-default text/input masking.
+sampling is set to 100% of sampled sessions. Text and input masking are
+disabled for replay.
 
 After applying Terraform in the `ha` repo, Terraform manages the GitHub Actions
 secret `GRAFANA_FARO_COLLECTOR_ENDPOINT` from:
