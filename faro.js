@@ -44,6 +44,9 @@ if (typeof window !== "undefined" && collectorEndpoint) {
         new ReplayInstrumentation({
           recordAfter: "load",
           recordCrossOriginIframes: false,
+          maskAllInputs: false,
+          maskInputOptions: {},
+          maskTextSelector: "",
           samplingRate: replaySamplingRate,
         }),
       ],
