@@ -9,6 +9,11 @@ A more minimal README.
 Grafana Faro is bundled from `faro.js` and only initializes when
 `faro-config.js` contains a non-empty collector endpoint.
 
+The bundle enables the standard Faro Web SDK instrumentations, experimental
+navigation tracking, all resource timing, tracing, and session replay. Replay
+sampling is set to 100% of sampled sessions and uses the replay package's
+default text/input masking.
+
 After applying Terraform in the `ha` repo, Terraform manages the GitHub Actions
 secret `GRAFANA_FARO_COLLECTOR_ENDPOINT` from:
 
