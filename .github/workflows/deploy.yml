@@ -31,13 +31,39 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v7
+      - name: Setup Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: "24"
+          cache: "npm"
+      - name: Build assets
+        run: |
+          npm ci
+          npm run build
       - name: Setup Pages
         uses: actions/configure-pages@v6
+      - name: Configure Faro
+        env:
+          GRAFANA_FARO_COLLECTOR_ENDPOINT: ${{ secrets.GRAFANA_FARO_COLLECTOR_ENDPOINT }}
+        run: |
+          if [[ "$GRAFANA_FARO_COLLECTOR_ENDPOINT" != https://* ]]; then
+            echo "::error::GRAFANA_FARO_COLLECTOR_ENDPOINT must be a non-empty https URL"
+            exit 1
+          fi
+
+          jq --null-input --raw-output \
+            --arg endpoint "$GRAFANA_FARO_COLLECTOR_ENDPOINT" \
+            --arg version "$GITHUB_SHA" \
+            '"window.DOUGALMATTHEWS_COM_CONFIG = " + ({grafanaFaroCollectorEndpoint: $endpoint, replaySamplingRate: 0.1, version: $version} | @json) + ";\n"' \
+            > faro-config.js
+      - name: Prepare Pages artifact
+        run: |
+          mkdir -p public
+          cp index.html style.css dm.jpg faro-config.js faro.bundle.js public/
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:
-          # Upload entire repository
-          path: '.'
+          path: public
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5

@@ -13,4 +13,7 @@ jobs:
       - uses: actions/setup-node@v7
         with:
           node-version: "24"
-      - run: npx --yes prettier@latest --check "**/*.{html,css,js,json,md}"
+          cache: "npm"
+      - run: npm ci
+      - run: npm run build
+      - run: npm run lint

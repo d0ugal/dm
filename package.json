@@ -1,0 +1,17 @@
+{
+  "name": "dougalmatthews-com",
+  "private": true,
+  "scripts": {
+    "build": "esbuild faro.js --bundle --format=iife --global-name=DougalMatthewsFaro --target=es2020 --minify --outfile=faro.bundle.js",
+    "lint": "prettier --check \"**/*.{html,css,js,json,md}\""
+  },
+  "dependencies": {
+    "@grafana/faro-instrumentation-replay": "2.9.0",
+    "@grafana/faro-web-sdk": "2.9.0",
+    "@grafana/faro-web-tracing": "2.9.0"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2",
+    "prettier": "3.9.6"
+  }
+}
